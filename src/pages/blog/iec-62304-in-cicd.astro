@@ -1,0 +1,124 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost
+  title="How SENTRA Enforces IEC 62304 in CI/CD"
+  description="A practical guide to automating IEC 62304 compliance for medical device software using SENTRA in your CI/CD pipeline."
+  date="2026-03-05"
+>
+
+<h2>The IEC 62304 challenge</h2>
+
+<p>IEC 62304 defines the software development lifecycle for medical device software. If you're building software that's part of a medical device — whether it's a patient monitor, diagnostic tool, or health data platform — you need to demonstrate compliance to FDA (510(k)/PMA) or EU MDR notified bodies.</p>
+
+<p>The standard requires:</p>
+
+<ul>
+  <li>Traceability from requirements to source code</li>
+  <li>Input validation and error handling in safety-critical paths</li>
+  <li>Documentation for each development phase (clauses 5.1 through 5.8)</li>
+  <li>Verification and testing evidence</li>
+</ul>
+
+<p>Traditionally, this means months of manual documentation, spreadsheet-based traceability matrices, and gate reviews. With AI coding agents generating code at scale, the manual approach breaks down.</p>
+
+<h2>Automating compliance with SENTRA</h2>
+
+<p>SENTRA's <code>fda-iec-62304</code> standards pack automates IEC 62304 compliance checks. Here's how to set it up.</p>
+
+<h3>Step 1: Install and configure</h3>
+
+<pre><code>pip install sentra
+sentra init                        # Select: Medical device
+sentra add-pack fda-iec-62304</code></pre>
+
+<p>The IEC 62304 pack includes 14 rules:</p>
+
+<ul>
+  <li><strong>4 code rules</strong> — traceability headers, unsafe casts, input validation, error handling</li>
+  <li><strong>8 documentation obligations</strong> — one per IEC 62304 clause (5.1 through 5.8)</li>
+  <li><strong>2 ML/AI rules</strong> — model validation and data provenance (for AI-enabled devices)</li>
+</ul>
+
+<h3>Step 2: Add traceability headers</h3>
+
+<p>The pack requires every source file to contain a traceability header linking to a requirement:</p>
+
+<pre><code>"""Patient data processor.
+
+Requirement: REQ-001 — Patient data ingestion
+IEC 62304 Class: B
+"""</code></pre>
+
+<p>Files without this header are flagged as <code>high</code> severity. AI coding agents can be instructed to include these headers, and SENTRA catches it when they don't.</p>
+
+<h3>Step 3: Add to CI/CD</h3>
+
+<p>Add SENTRA as a gate on every pull request:</p>
+
+<pre><code># .github/workflows/iec62304-gate.yml
+name: IEC 62304 Gate
+on: [pull_request]
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install sentra
+      - run: sentra gate --git-range "origin/main...HEAD" --decorate-pr
+        env:
+          GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
+
+<p>Every PR is now scanned against IEC 62304 rules. Critical and high findings block the merge. Findings are posted as inline PR comments.</p>
+
+<h3>Step 4: Track documentation obligations</h3>
+
+<p>IEC 62304 requires documentation at each phase. SENTRA tracks these as <code>documentation_obligation</code> rules — they appear in reports but never fail the gate, because they're not code-enforceable.</p>
+
+<p>Generate an HTML report for your auditor:</p>
+
+<pre><code>sentra report --format html</code></pre>
+
+<p>The report shows a compliance checklist with each IEC 62304 clause, its status, and remediation guidance.</p>
+
+<h3>Step 5: Reconcile with work items</h3>
+
+<p>Link findings to your DevOps work items automatically:</p>
+
+<pre><code>sentra reconcile --dry-run    # Preview what will happen
+sentra reconcile              # Create/update/close work items</code></pre>
+
+<p>This creates a traceable chain from requirement → code → finding → work item — exactly what auditors need to see.</p>
+
+<h2>What auditors see</h2>
+
+<p>When an auditor asks "how do you ensure IEC 62304 compliance?", you can show:</p>
+
+<ol>
+  <li><strong>CI/CD gate history</strong> — every PR was scanned against IEC 62304 rules</li>
+  <li><strong>SARIF reports</strong> — machine-readable compliance evidence</li>
+  <li><strong>HTML reports</strong> — human-readable with severity charts and documentation checklists</li>
+  <li><strong>Audit log</strong> — every scan, gate, and reconcile action timestamped</li>
+  <li><strong>Work item traceability</strong> — findings linked to requirements in Azure DevOps or GitHub</li>
+</ol>
+
+<p>This is continuous compliance — not a one-time audit prep exercise, but evidence generated on every code change.</p>
+
+<h2>Try it</h2>
+
+<p>Clone our example medical device project to see it in action:</p>
+
+<pre><code>git clone https://github.com/maxgerhardson/sentra-example-medfiles
+cd sentra-example-medfiles
+pip install sentra
+sentra scan
+sentra gate</code></pre>
+
+<p>The example includes intentional findings so you can see realistic scan output. <a href="https://docs.sentra.dev/tutorials/medical-device-walkthrough">Full walkthrough in the docs</a>.</p>
+
+</BlogPost>

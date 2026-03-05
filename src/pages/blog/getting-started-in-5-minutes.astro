@@ -1,0 +1,106 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost
+  title="Getting Started with SENTRA in 5 Minutes"
+  description="Install SENTRA, scan your code, and enforce a quality gate — all in under 5 minutes."
+  date="2026-03-05"
+>
+
+<h2>What you'll build</h2>
+
+<p>By the end of this tutorial, you'll have SENTRA scanning your Python project against OWASP Top 10 security rules and blocking non-compliant PRs in CI/CD.</p>
+
+<p>Total time: about 5 minutes.</p>
+
+<h2>1. Install (30 seconds)</h2>
+
+<pre><code>pip install sentra</code></pre>
+
+<p>That's it. SENTRA is a single Python package with no external dependencies for core functionality. Both <code>sentra</code> and <code>guard</code> commands are available.</p>
+
+<h2>2. Initialize (30 seconds)</h2>
+
+<pre><code>cd your-project
+sentra init</code></pre>
+
+<p>The setup wizard asks 5 questions:</p>
+
+<ol>
+  <li><strong>DevOps Platform</strong> — Choose your work item tracker (GitHub, Azure DevOps, Jira, or none)</li>
+  <li><strong>Project Type</strong> — General, Medical device, or SOC2/Fintech</li>
+  <li><strong>Governance Profile</strong> — Strict, Standard, or Permissive</li>
+  <li><strong>Output Directory</strong> — Where scan results are written (default: <code>out/</code>)</li>
+  <li><strong>Pre-commit Hook</strong> — Whether to scan on every commit</li>
+</ol>
+
+<p>For a quick start, accept all defaults. This creates <code>.guard.yaml</code> in your project root.</p>
+
+<h2>3. Enable OWASP rules (15 seconds)</h2>
+
+<pre><code>sentra add-pack owasp-top-10</code></pre>
+
+<p>This enables 22 security rules covering all OWASP Top 10 categories: injection, auth failures, cryptographic issues, SSRF, and more.</p>
+
+<h2>4. Scan (30 seconds)</h2>
+
+<pre><code>sentra scan</code></pre>
+
+<p>SENTRA evaluates every Python file against the enabled rules. You'll see output like:</p>
+
+<pre><code>CRITICAL  OWASP-A03-005  src/api.py:42    eval() executes arbitrary code
+HIGH      OWASP-A01-001  src/auth.py:18   Hardcoded credentials detected
+MEDIUM    OWASP-A02-001  src/crypto.py:9  Weak hashing algorithm (MD5)
+
+3 findings (1 critical, 1 high, 1 medium)
+Next: sentra gate — enforce quality gates</code></pre>
+
+<p>Results are written to <code>out/findings.json</code> (machine-readable) and <code>out/report.md</code> (human-readable).</p>
+
+<h2>5. Gate (15 seconds)</h2>
+
+<pre><code>sentra gate</code></pre>
+
+<p>The gate exits with code 0 (pass) or 1 (fail). By default, <code>critical</code> and <code>high</code> findings fail the gate. Fix those findings, re-run, and the gate passes.</p>
+
+<h2>6. Add to CI/CD (2 minutes)</h2>
+
+<p>Add this to your GitHub Actions workflow:</p>
+
+<pre><code># .github/workflows/sentra.yml
+name: SENTRA Gate
+on: [pull_request]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install sentra
+      - run: sentra gate --git-range "origin/main...HEAD"</code></pre>
+
+<p>Every PR is now gated. Non-compliant code can't merge.</p>
+
+<h2>Bonus: Dashboard</h2>
+
+<pre><code>pip install "sentra[server]"
+sentra serve</code></pre>
+
+<p>Open <a href="http://localhost:8000/dashboard">http://localhost:8000/dashboard</a> for a web UI showing findings, rules, governance policies, and scan trends.</p>
+
+<h2>What's next</h2>
+
+<ul>
+  <li><a href="https://docs.sentra.dev/getting-started/configuration">Configuration reference</a> — all <code>.guard.yaml</code> options</li>
+  <li><a href="https://docs.sentra.dev/standards-packs/overview">Standards packs</a> — IEC 62304, OWASP, SOC2 details</li>
+  <li><a href="https://docs.sentra.dev/guides/dashboard">Dashboard guide</a> — full walkthrough</li>
+  <li><code>sentra trial</code> — unlock enterprise features for 30 days</li>
+</ul>
+
+<p>Questions? <a href="https://github.com/maxgerhardson/sentra/discussions">Open a discussion</a> on GitHub.</p>
+
+</BlogPost>

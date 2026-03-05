@@ -1,0 +1,112 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  author?: string;
+}
+
+const { title, description, date, author = "Max Gerhardson" } = Astro.props;
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | SENTRA Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">SENTRA</a>
+      <div class="nav-links">
+        <a href="/pricing">Pricing</a>
+        <a href="/use-cases/medical-devices">Use Cases</a>
+        <a href="https://docs.sentra.dev">Docs</a>
+        <a href="/blog">Blog</a>
+        <a href="https://github.com/maxgerhardson/sentra" class="btn btn-outline btn-sm">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <article class="blog-article">
+      <div class="container article-inner">
+        <div class="article-meta">
+          <a href="/blog" class="back-link">&larr; Back to Blog</a>
+          <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <span class="author">by {author}</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="article-desc">{description}</p>
+        <div class="article-content">
+          <slot />
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025-2026 Max Gerhardson. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<style>
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border); padding: 0.75rem 0;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--color-primary-light); letter-spacing: -0.02em; }
+  .nav-brand:hover { text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+  .nav-links a { color: var(--color-text-muted); font-size: 0.95rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--color-text); text-decoration: none; }
+  .btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
+  .btn-outline { background: transparent; color: var(--color-primary-light); border: 2px solid var(--color-primary); border-radius: 8px; }
+
+  main { margin-top: 60px; }
+
+  .blog-article { padding: 4rem 0; }
+  .article-inner { max-width: 750px; margin: 0 auto; }
+  .article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; color: var(--color-text-muted); font-size: 0.9rem; }
+  .back-link { color: var(--color-primary-light); }
+  .article-inner h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.15; }
+  .article-desc { font-size: 1.2rem; color: var(--color-text-muted); margin-bottom: 2.5rem; line-height: 1.6; }
+
+  .article-content { line-height: 1.8; }
+  .article-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.6rem; }
+  .article-content h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; }
+  .article-content p { margin-bottom: 1.25rem; color: var(--color-text); }
+  .article-content ul, .article-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .article-content li { margin-bottom: 0.5rem; }
+  .article-content blockquote {
+    border-left: 3px solid var(--color-primary);
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    background: var(--color-surface);
+    border-radius: 0 8px 8px 0;
+  }
+  .article-content blockquote p { margin: 0; color: var(--color-text-muted); font-style: italic; }
+
+  .footer { border-top: 1px solid var(--color-border); padding: 2rem 0; }
+  .footer p { color: var(--color-text-muted); font-size: 0.85rem; }
+
+  @media (max-width: 768px) {
+    .article-inner h1 { font-size: 1.75rem; }
+    .nav-links a:not(.btn) { display: none; }
+  }
+</style>

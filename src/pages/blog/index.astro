@@ -1,5 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
+
+const posts = [
+  {
+    title: "Why AI-Generated Code Needs Governance",
+    description: "AI coding agents ship code faster than any team can review it. Here's why that's a compliance problem — and what to do about it.",
+    date: "2026-03-05",
+    slug: "why-ai-code-needs-governance",
+    tags: ["governance", "ai-agents", "compliance"],
+  },
+  {
+    title: "How SENTRA Enforces IEC 62304 in CI/CD",
+    description: "A practical guide to automating IEC 62304 compliance for medical device software using SENTRA in your CI/CD pipeline.",
+    date: "2026-03-05",
+    slug: "iec-62304-in-cicd",
+    tags: ["iec-62304", "medical-devices", "ci-cd"],
+  },
+  {
+    title: "Getting Started with SENTRA in 5 Minutes",
+    description: "Install SENTRA, scan your code, and enforce a quality gate — all in under 5 minutes.",
+    date: "2026-03-05",
+    slug: "getting-started-in-5-minutes",
+    tags: ["tutorial", "quickstart"],
+  },
+];
 ---
 
 <Base title="Blog" description="SENTRA blog — governance, compliance, and AI coding agent best practices.">
@@ -13,16 +37,20 @@ import Base from '../../layouts/Base.astro';
 
 <section class="blog-list">
   <div class="container blog-inner">
-    <p class="coming-soon">Blog posts coming soon. Follow us on <a href="https://github.com/maxgerhardson/sentra">GitHub</a> for updates.</p>
-
-    <div class="blog-preview">
-      <h3>Upcoming posts</h3>
-      <ul>
-        <li><strong>Why AI-Generated Code Needs Governance</strong> — The compliance gap that Copilot, Cursor, and Claude Code create</li>
-        <li><strong>How SENTRA Enforces IEC 62304 in CI/CD</strong> — End-to-end medical device compliance walkthrough</li>
-        <li><strong>Getting Started with SENTRA in 5 Minutes</strong> — Install, scan, gate tutorial</li>
-      </ul>
-    </div>
+    {posts.map(post => (
+      <a href={`/blog/${post.slug}`} class="blog-card">
+        <div class="blog-card-meta">
+          <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <div class="blog-tags">
+            {post.tags.map(tag => (
+              <span class="blog-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+        <h2>{post.title}</h2>
+        <p>{post.description}</p>
+      </a>
+    ))}
   </div>
 </section>
 
@@ -31,12 +59,40 @@ import Base from '../../layouts/Base.astro';
 <style>
   .blog-hero { padding: 6rem 0 3rem; text-align: center; }
   .blog-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
-  .blog-inner { max-width: 700px; margin: 0 auto; }
-  .coming-soon { color: var(--color-text-muted); text-align: center; margin-bottom: 3rem; font-size: 1.1rem; }
-  .blog-preview { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; }
-  .blog-preview h3 { margin-bottom: 1rem; }
-  .blog-preview ul { list-style: none; }
-  .blog-preview li { padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); }
-  .blog-preview li:last-child { border-bottom: none; }
-  .blog-preview strong { color: var(--color-text); }
+  .blog-inner { max-width: 750px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .blog-card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.15s;
+    color: var(--color-text);
+  }
+  .blog-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .blog-tags { display: flex; gap: 0.5rem; }
+  .blog-tag {
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  .blog-card h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .blog-card p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
 </style>

@@ -1,0 +1,73 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost
+  title="Why AI-Generated Code Needs Governance"
+  description="AI coding agents ship code faster than any team can review it. Here's why that's a compliance problem — and what to do about it."
+  date="2026-03-05"
+>
+
+<h2>The speed problem</h2>
+
+<p>AI coding agents — GitHub Copilot, Cursor, Claude Code, Windsurf — have fundamentally changed how fast code gets written. A developer with Copilot can produce 2-3x more code per day. An autonomous agent can generate entire modules in minutes.</p>
+
+<p>This is great for velocity. It's terrible for compliance.</p>
+
+<h2>What goes wrong</h2>
+
+<p>When a human writes code, they carry context about security requirements, regulatory obligations, and organizational standards. An AI coding agent doesn't. It optimizes for "correct" — which usually means "compiles and passes existing tests."</p>
+
+<p>Here's what slips through:</p>
+
+<ul>
+  <li><strong>Security vulnerabilities.</strong> AI-generated code frequently contains hardcoded secrets, SQL injection vectors, weak hashing, and eval() calls. The OWASP Top 10 reads like a checklist of things AI agents do naturally.</li>
+  <li><strong>Missing traceability.</strong> Regulated industries (medical devices, fintech, defense) require every code change to trace back to a requirement. AI agents don't add traceability headers unless you tell them to — and even then, they often get it wrong.</li>
+  <li><strong>Architectural violations.</strong> AI doesn't know about your team's coding standards, import restrictions, complexity limits, or naming conventions. It generates code that works but doesn't conform.</li>
+  <li><strong>Documentation gaps.</strong> Compliance frameworks like IEC 62304 and SOC2 require documentation obligations to be tracked alongside code. AI agents don't think about audit evidence.</li>
+</ul>
+
+<h2>Manual review doesn't scale</h2>
+
+<p>The traditional answer is code review. But when AI agents generate code 3x faster, the review bottleneck grows 3x too. You can't hire enough reviewers to keep up, and even experienced reviewers miss security issues in AI-generated code because it <em>looks</em> correct.</p>
+
+<p>Studies show that developers accept AI suggestions ~30% of the time without modification. That's 30% of code entering your codebase with no human scrutiny beyond a quick glance.</p>
+
+<h2>The governance gap</h2>
+
+<p>Existing static analysis tools (SonarQube, ESLint, pylint) catch some issues, but they weren't designed for the AI era. They don't understand:</p>
+
+<ul>
+  <li>Regulatory compliance standards (IEC 62304, SOC2, OWASP)</li>
+  <li>Work item traceability requirements</li>
+  <li>Governance policies (who can approve what, when human review is required)</li>
+  <li>Documentation obligations that exist alongside code</li>
+</ul>
+
+<p>What's needed is a <strong>governance runtime</strong> — something that sits between AI agents and production, enforcing standards automatically.</p>
+
+<h2>What governance looks like</h2>
+
+<p>A governance runtime for AI-generated code should:</p>
+
+<ol>
+  <li><strong>Scan</strong> every change against regulatory standards, not just generic lint rules</li>
+  <li><strong>Gate</strong> pull requests in CI/CD, blocking non-compliant code before it merges</li>
+  <li><strong>Trace</strong> findings to work items, creating audit evidence automatically</li>
+  <li><strong>Report</strong> in formats auditors understand (SARIF, HTML with compliance checklists)</li>
+  <li><strong>Adapt</strong> governance policies to the risk level (strict for medical devices, permissive for internal tools)</li>
+</ol>
+
+<p>This is what we built <a href="https://sentra.dev">SENTRA</a> to do. It's a governance runtime that scans, gates, and traces compliance automatically — with pre-built packs for IEC 62304, OWASP Top 10, and SOC2.</p>
+
+<h2>Getting started</h2>
+
+<p>If your team uses AI coding agents and operates under any compliance requirements, governance isn't optional — it's the cost of maintaining velocity without accumulating risk.</p>
+
+<pre><code>pip install sentra
+sentra init
+sentra scan</code></pre>
+
+<p>Three commands. Free forever for core features. <a href="https://docs.sentra.dev/getting-started/quickstart">Read the quickstart</a>.</p>
+
+</BlogPost>
