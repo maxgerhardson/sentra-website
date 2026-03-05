@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Medical Devices" description="How SENTRA enforces IEC 62304 compliance for medical device software teams.">
+
+<section class="uc-hero">
+  <div class="container">
+    <div class="uc-badge">Use Case</div>
+    <h1>IEC 62304 Compliance for Medical Device Software</h1>
+    <p class="uc-sub">Enforce FDA and EU MDR regulatory standards automatically on AI-generated code.</p>
+  </div>
+</section>
+
+<section class="uc-content">
+  <div class="container uc-inner">
+    <h2>The Challenge</h2>
+    <p>Medical device software must comply with IEC 62304, which requires traceability from requirements to code, input validation, error handling, and extensive documentation. When AI agents generate code, compliance verification becomes a bottleneck.</p>
+
+    <h2>How SENTRA Helps</h2>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>Automated Traceability</h3>
+        <p>Every source file is checked for requirement traceability headers. Findings link to Azure DevOps or GitHub work items. Reconciliation auto-creates items for untracked code.</p>
+      </div>
+      <div class="feature-item">
+        <h3>IEC 62304 Rule Pack</h3>
+        <p>14 pre-built rules covering code enforcement (unsafe casts, input validation, error handling) and documentation obligations (clauses 5.1 through 5.8).</p>
+      </div>
+      <div class="feature-item">
+        <h3>Audit Evidence Generation</h3>
+        <p>HTML and SARIF reports serve as audit artifacts. Documentation obligations appear in reports for auditor review. Audit log tracks every scan, gate, and reconcile action.</p>
+      </div>
+      <div class="feature-item">
+        <h3>CI/CD Gate</h3>
+        <p>Block non-compliant PRs in GitHub Actions or Azure Pipelines. PR decoration posts findings as inline comments. Status checks report pass/fail.</p>
+      </div>
+    </div>
+
+    <h2>Quick Start</h2>
+    <pre><code>pip install sentra
+sentra init                          # Select: Medical device (IEC 62304)
+sentra add-pack fda-iec-62304        # Enable the IEC 62304 pack
+sentra scan                          # Run your first compliance scan
+sentra gate                          # Enforce the gate</code></pre>
+
+    <div class="uc-cta">
+      <a href="https://docs.sentra.dev/tutorials/medical-device-walkthrough" class="btn btn-primary">Full Walkthrough</a>
+      <a href="https://docs.sentra.dev/standards-packs/iec-62304" class="btn btn-outline">IEC 62304 Pack Details</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .uc-hero { padding: 6rem 0 3rem; text-align: center; }
+  .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+  .uc-inner { max-width: 800px; margin: 0 auto; }
+  .uc-inner h2 { margin-top: 3rem; margin-bottom: 1rem; }
+  .uc-inner p { color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.7; }
+  .feature-list { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+  .feature-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; }
+  .feature-item h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .feature-item p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+  .uc-inner pre { margin: 1.5rem 0; }
+  .uc-cta { display: flex; gap: 1rem; margin-top: 2rem; }
+  @media (max-width: 600px) { .uc-cta { flex-direction: column; } }
+</style>

@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" description="About SENTRA and the team behind it.">
+
+<section class="about-hero">
+  <div class="container">
+    <h1>About SENTRA</h1>
+    <p class="about-sub">Built by an engineer who saw the compliance gap that AI coding agents create.</p>
+  </div>
+</section>
+
+<section class="about-story">
+  <div class="container about-content">
+    <h2>The Problem</h2>
+    <p>AI coding agents — Copilot, Cursor, Claude Code — generate code faster than any team can review it. But regulated industries (medical devices, fintech, enterprise SaaS) need every line of code to meet compliance standards.</p>
+    <p>Manual code review doesn't scale. Existing static analysis tools don't understand regulatory standards. Teams are stuck choosing between speed and compliance.</p>
+
+    <h2>The Solution</h2>
+    <p>SENTRA is a governance runtime that sits between AI agents and production. It scans code against regulatory standards (IEC 62304, OWASP, SOC2), gates PRs in CI/CD, traces findings to work items, and generates audit evidence — all automatically.</p>
+    <p>The free tier is genuinely useful with no limits. Enterprise features (parallel scan, audit logging, approval gates, token vault) serve teams that need them.</p>
+
+    <h2>Built With</h2>
+    <div class="tech-grid">
+      <div class="tech-item">Python 3.11+</div>
+      <div class="tech-item">FastAPI</div>
+      <div class="tech-item">Typer + Rich</div>
+      <div class="tech-item">~1,500 tests</div>
+      <div class="tech-item">Docker</div>
+      <div class="tech-item">GitHub Actions</div>
+    </div>
+
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:hello@sentra.dev">hello@sentra.dev</a></p>
+    <p>GitHub: <a href="https://github.com/maxgerhardson/sentra">github.com/maxgerhardson/sentra</a></p>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .about-hero { padding: 6rem 0 3rem; text-align: center; }
+  .about-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
+  .about-content { max-width: 750px; margin: 0 auto; }
+  .about-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+  .about-content p { color: var(--color-text-muted); margin-bottom: 1rem; }
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0; }
+  .tech-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 600px) { .tech-grid { grid-template-columns: 1fr 1fr; } }
+</style>

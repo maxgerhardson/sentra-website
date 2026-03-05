@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="SaaS" description="How SENTRA governs AI-generated code in SaaS CI/CD pipelines.">
+
+<section class="uc-hero">
+  <div class="container">
+    <div class="uc-badge">Use Case</div>
+    <h1>AI Code Governance for SaaS Teams</h1>
+    <p class="uc-sub">Enforce quality and security standards on every pull request — automatically.</p>
+  </div>
+</section>
+
+<section class="uc-content">
+  <div class="container uc-inner">
+    <h2>The Challenge</h2>
+    <p>SaaS teams are adopting AI coding agents (Copilot, Cursor, Claude Code) for faster development. But AI-generated code can introduce security vulnerabilities, code quality issues, and compliance gaps that slip through code review.</p>
+
+    <h2>How SENTRA Helps</h2>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>CI/CD Quality Gate</h3>
+        <p>Add SENTRA to GitHub Actions or Azure Pipelines. Every PR is scanned against your rules. Critical/high findings block merge. Two lines of YAML to set up.</p>
+      </div>
+      <div class="feature-item">
+        <h3>PR Decoration</h3>
+        <p>Findings posted as inline PR comments on GitHub and Azure DevOps. Developers see issues in context without leaving their workflow.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Custom Rule Packs</h3>
+        <p>Define organization-specific rules in YAML. Enforce naming conventions, architectural boundaries, import restrictions, complexity limits — anything expressible as regex, AST, or file policy.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Work Item Traceability</h3>
+        <p>Auto-create GitHub Issues or Jira tickets for findings. Reconcile on every scan. Close items when findings are fixed. Full audit trail.</p>
+      </div>
+    </div>
+
+    <h2>Quick Start</h2>
+    <pre><code>pip install sentra
+sentra init
+sentra add-pack owasp-top-10
+sentra gate --git-range "origin/main...HEAD" --decorate-pr</code></pre>
+
+    <div class="uc-cta">
+      <a href="https://docs.sentra.dev/guides/ci-cd-integration" class="btn btn-primary">CI/CD Integration Guide</a>
+      <a href="https://docs.sentra.dev/getting-started/quickstart" class="btn btn-outline">Quickstart</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .uc-hero { padding: 6rem 0 3rem; text-align: center; }
+  .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+  .uc-inner { max-width: 800px; margin: 0 auto; }
+  .uc-inner h2 { margin-top: 3rem; margin-bottom: 1rem; }
+  .uc-inner p { color: var(--color-text-muted); margin-bottom: 1rem; }
+  .feature-list { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+  .feature-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; }
+  .feature-item h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .feature-item p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+  .uc-cta { display: flex; gap: 1rem; margin-top: 2rem; }
+</style>

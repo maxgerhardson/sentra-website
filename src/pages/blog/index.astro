@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Blog" description="SENTRA blog — governance, compliance, and AI coding agent best practices.">
+
+<section class="blog-hero">
+  <div class="container">
+    <h1>Blog</h1>
+    <p class="blog-sub">Governance, compliance, and AI coding agent best practices.</p>
+  </div>
+</section>
+
+<section class="blog-list">
+  <div class="container blog-inner">
+    <p class="coming-soon">Blog posts coming soon. Follow us on <a href="https://github.com/maxgerhardson/sentra">GitHub</a> for updates.</p>
+
+    <div class="blog-preview">
+      <h3>Upcoming posts</h3>
+      <ul>
+        <li><strong>Why AI-Generated Code Needs Governance</strong> — The compliance gap that Copilot, Cursor, and Claude Code create</li>
+        <li><strong>How SENTRA Enforces IEC 62304 in CI/CD</strong> — End-to-end medical device compliance walkthrough</li>
+        <li><strong>Getting Started with SENTRA in 5 Minutes</strong> — Install, scan, gate tutorial</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .blog-hero { padding: 6rem 0 3rem; text-align: center; }
+  .blog-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
+  .blog-inner { max-width: 700px; margin: 0 auto; }
+  .coming-soon { color: var(--color-text-muted); text-align: center; margin-bottom: 3rem; font-size: 1.1rem; }
+  .blog-preview { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; }
+  .blog-preview h3 { margin-bottom: 1rem; }
+  .blog-preview ul { list-style: none; }
+  .blog-preview li { padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); }
+  .blog-preview li:last-child { border-bottom: none; }
+  .blog-preview strong { color: var(--color-text); }
+</style>

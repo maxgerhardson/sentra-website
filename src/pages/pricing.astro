@@ -1,0 +1,201 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Pricing" description="SENTRA pricing — free forever for core features, enterprise tiers for advanced needs.">
+
+<section class="pricing-hero">
+  <div class="container">
+    <h1>Simple, transparent pricing</h1>
+    <p class="pricing-sub">Free forever for core features. Enterprise tiers for teams that need advanced governance.</p>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="container">
+    <div class="tier-grid">
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Free</h3>
+          <div class="tier-price"><span class="price-amount">$0</span><span class="price-period">forever</span></div>
+        </div>
+        <p class="tier-desc">Everything you need to start governing AI-generated code.</p>
+        <ul class="tier-features">
+          <li>Unlimited scans and gates</li>
+          <li>All standards packs (IEC 62304, OWASP, SOC2)</li>
+          <li>Management dashboard</li>
+          <li>REST API (25+ endpoints)</li>
+          <li>HTML, JUnit, SARIF, CSV reports</li>
+          <li>Work item traceability</li>
+          <li>PR decoration</li>
+          <li>Pre-commit hooks</li>
+          <li>Custom rule packs</li>
+          <li>Auto-patching</li>
+        </ul>
+        <a href="https://docs.sentra.dev/getting-started/installation" class="btn btn-outline tier-cta">Install Free</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Team</h3>
+          <div class="tier-price"><span class="price-amount">$29</span><span class="price-period">/mo</span></div>
+        </div>
+        <p class="tier-desc">Performance and intelligence for growing teams.</p>
+        <ul class="tier-features">
+          <li>Everything in Free, plus:</li>
+          <li>Parallel scanning (multi-threaded)</li>
+          <li>ML severity estimation</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="mailto:hello@sentra.dev?subject=Team%20License" class="btn btn-primary tier-cta">Get Started</a>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-header">
+          <h3>Organization</h3>
+          <div class="tier-price"><span class="price-amount">$99</span><span class="price-period">/mo</span></div>
+        </div>
+        <p class="tier-desc">Advanced governance for compliance-driven organizations.</p>
+        <ul class="tier-features">
+          <li>Everything in Team, plus:</li>
+          <li>Token vault (secrets management)</li>
+          <li>Governance profiles</li>
+          <li>Dedicated support channel</li>
+        </ul>
+        <a href="mailto:hello@sentra.dev?subject=Org%20License" class="btn btn-primary tier-cta">Get Started</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Enterprise</h3>
+          <div class="tier-price"><span class="price-amount">$299</span><span class="price-period">/mo</span></div>
+        </div>
+        <p class="tier-desc">Full platform for regulated industries and large teams.</p>
+        <ul class="tier-features">
+          <li>Everything in Organization, plus:</li>
+          <li>Audit logging</li>
+          <li>Async approval gates</li>
+          <li>SSO/OIDC integration</li>
+          <li>RBAC (5 roles, 10+ permissions)</li>
+          <li>Custom onboarding</li>
+        </ul>
+        <a href="mailto:hello@sentra.dev?subject=Enterprise%20License" class="btn btn-primary tier-cta">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="trial-banner">
+  <div class="container trial-inner">
+    <h2>Try Enterprise free for 30 days</h2>
+    <p>No credit card required. All enterprise features unlocked.</p>
+    <pre><code>pip install sentra && sentra trial</code></pre>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Is the free tier really unlimited?</h3>
+        <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens when my trial expires?</h3>
+        <p>Enterprise features (parallel scan, ML, vault, approvals, audit) become unavailable. All core features continue working. No data loss.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I use SENTRA in commercial products?</h3>
+        <p>Yes. The free tier is available for commercial use. See the <a href="https://github.com/maxgerhardson/sentra/blob/main/LICENSE">license</a> for details.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need an internet connection?</h3>
+        <p>No. SENTRA runs entirely offline. License validation is offline (HMAC-based). No telemetry, no phone-home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .pricing-hero { padding: 6rem 0 3rem; text-align: center; }
+  .pricing-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
+
+  .tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  .tier-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .tier-card.featured { border-color: var(--color-primary); box-shadow: 0 0 30px rgba(124, 58, 237, 0.2); }
+  .tier-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .tier-header { margin-bottom: 1rem; }
+  .tier-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .price-amount { font-size: 2.5rem; font-weight: 800; }
+  .price-period { color: var(--color-text-muted); font-size: 1rem; margin-left: 0.25rem; }
+
+  .tier-desc { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+  .tier-features { list-style: none; margin-bottom: 2rem; flex: 1; }
+  .tier-features li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+  .tier-features li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: 700;
+  }
+  .tier-features li:first-child { font-weight: 600; color: var(--color-primary-light); }
+  .tier-features li:first-child::before { content: ""; }
+
+  .tier-cta { text-align: center; width: 100%; }
+
+  .trial-banner { background: var(--color-bg-alt); text-align: center; }
+  .trial-banner h2 { margin-bottom: 0.75rem; }
+  .trial-banner p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .trial-banner pre { display: inline-block; padding: 0.75rem 2rem; }
+
+  .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .faq-item h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+  .faq-item p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  @media (max-width: 1024px) { .tier-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .tier-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Fintech" description="How SENTRA enforces SOC2 and OWASP compliance for fintech teams.">
+
+<section class="uc-hero">
+  <div class="container">
+    <div class="uc-badge">Use Case</div>
+    <h1>SOC2 + OWASP Compliance for Fintech</h1>
+    <p class="uc-sub">Automated security governance for financial technology teams using AI coding agents.</p>
+  </div>
+</section>
+
+<section class="uc-content">
+  <div class="container uc-inner">
+    <h2>The Challenge</h2>
+    <p>Fintech companies face dual pressure: ship fast with AI coding tools, and pass SOC2 audits with evidence of security controls. AI-generated code can introduce OWASP vulnerabilities (SQL injection, hardcoded secrets, auth failures) that manual review misses at scale.</p>
+
+    <h2>How SENTRA Helps</h2>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>Combined SOC2 + OWASP Scanning</h3>
+        <p>Enable both packs simultaneously — 38 rules covering access control, cryptographic failures, injection, logging, change management, and all 9 SOC2 Trust Services Criteria.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Audit Evidence on Every PR</h3>
+        <p>SARIF reports integrate with GitHub Code Scanning. HTML reports with severity charts and compliance checklists serve as SOC2 audit artifacts.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Continuous Compliance</h3>
+        <p>Gate every PR in CI/CD. Critical and high severity findings block merge. Documentation obligations track non-code compliance items without blocking development.</p>
+      </div>
+    </div>
+
+    <h2>Quick Start</h2>
+    <pre><code>pip install sentra
+sentra init
+sentra add-pack owasp-top-10
+sentra add-pack soc2
+sentra scan</code></pre>
+
+    <div class="uc-cta">
+      <a href="https://docs.sentra.dev/standards-packs/owasp-top-10" class="btn btn-primary">OWASP Pack Details</a>
+      <a href="https://docs.sentra.dev/standards-packs/soc2" class="btn btn-outline">SOC2 Pack Details</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .uc-hero { padding: 6rem 0 3rem; text-align: center; }
+  .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+  .uc-inner { max-width: 800px; margin: 0 auto; }
+  .uc-inner h2 { margin-top: 3rem; margin-bottom: 1rem; }
+  .uc-inner p { color: var(--color-text-muted); margin-bottom: 1rem; }
+  .feature-list { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+  .feature-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; }
+  .feature-item h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .feature-item p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+  .uc-cta { display: flex; gap: 1rem; margin-top: 2rem; }
+</style>

@@ -1,0 +1,248 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Governance Runtime for AI-Generated Code">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">Open-core &middot; Free forever &middot; Enterprise ready</div>
+    <h1>Governance runtime for<br /><span class="gradient-text">AI-generated code</span></h1>
+    <p class="hero-sub">
+      Scan, gate, and trace compliance automatically in CI/CD.
+      Enforce IEC 62304, OWASP, SOC2 on code from Copilot, Cursor, Claude Code, and AI agents.
+    </p>
+    <div class="hero-install">
+      <pre><code>pip install sentra</code></pre>
+    </div>
+    <div class="hero-actions">
+      <a href="https://docs.sentra.dev/getting-started/quickstart" class="btn btn-primary">Get Started</a>
+      <a href="https://github.com/maxgerhardson/sentra" class="btn btn-outline">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- Terminal Demo -->
+<section class="demo">
+  <div class="container">
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">Terminal</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line"><span class="prompt">$</span> sentra init</div>
+        <div class="terminal-line dim">  SENTRA — Setup Wizard</div>
+        <div class="terminal-line dim">  Config: .guard.yaml  DevOps: github  Packs: owasp-top-10</div>
+        <div class="terminal-line">&nbsp;</div>
+        <div class="terminal-line"><span class="prompt">$</span> sentra scan</div>
+        <div class="terminal-line dim">  Scanning 47 files against 22 rules...</div>
+        <div class="terminal-line"><span class="sev-crit">CRITICAL</span> OWASP-A03-005 &middot; src/api.py:42 &middot; eval() executes arbitrary code</div>
+        <div class="terminal-line"><span class="sev-high">HIGH</span>     OWASP-A01-001 &middot; src/auth.py:18 &middot; Hardcoded credentials</div>
+        <div class="terminal-line"><span class="sev-med">MEDIUM</span>   SOC2-CC7-001  &middot; src/app.py:7  &middot; No structured logging</div>
+        <div class="terminal-line dim">  3 findings (1 critical, 1 high, 1 medium)</div>
+        <div class="terminal-line">&nbsp;</div>
+        <div class="terminal-line"><span class="prompt">$</span> sentra gate</div>
+        <div class="terminal-line"><span class="gate-fail">GATE FAILED</span> — 2 blocking findings (critical, high)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Value Props -->
+<section class="value-props">
+  <div class="container">
+    <h2 class="section-title">Why SENTRA?</h2>
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F6E1;</div>
+        <h3>Enforce Standards Automatically</h3>
+        <p>Pre-built packs for IEC 62304 (medical devices), OWASP Top 10 (web security), and SOC2 (compliance). Or write your own.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x26D4;</div>
+        <h3>Gate Every PR</h3>
+        <p>Block non-compliant code in CI/CD. GitHub Actions and Azure Pipelines integration. PR decoration with inline findings.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F517;</div>
+        <h3>Trace Everything</h3>
+        <p>Link findings to Azure DevOps, GitHub Issues, or Jira work items. Auto-create, update, and close items on reconcile.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F4CA;</div>
+        <h3>Dashboard &amp; API</h3>
+        <p>Web management console with 25+ REST API endpoints. Scan metrics, governance policies, audit trail, approval workflows.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F916;</div>
+        <h3>Built for AI Agents</h3>
+        <p>Agent context generation, pre-commit hooks, auto-patching. Works with Copilot, Cursor, Claude Code, and custom agents.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F680;</div>
+        <h3>Free &amp; Open Core</h3>
+        <p>Unlimited scans, all packs, full dashboard, complete API — free forever. Enterprise features for teams that need them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Standards -->
+<section class="standards">
+  <div class="container">
+    <h2 class="section-title">Standards Packs</h2>
+    <p class="section-sub">Pre-built regulatory rule sets. Enable in one command.</p>
+    <div class="standards-grid">
+      <div class="standard-card">
+        <h3>IEC 62304</h3>
+        <div class="badge" style="background: #7c3aed33; color: #a78bfa;">14 rules</div>
+        <p>Medical device software lifecycle. FDA 510(k), EU MDR. Traceability headers, input validation, documentation obligations.</p>
+        <code>sentra add-pack fda-iec-62304</code>
+      </div>
+      <div class="standard-card">
+        <h3>OWASP Top 10</h3>
+        <div class="badge" style="background: #ef444433; color: #fca5a5;">22 rules</div>
+        <p>Web application security. SQL injection, XSS, auth failures, SSRF. Composite pattern detection for precision.</p>
+        <code>sentra add-pack owasp-top-10</code>
+      </div>
+      <div class="standard-card">
+        <h3>SOC2</h3>
+        <div class="badge" style="background: #06b6d433; color: #67e8f9;">16 rules</div>
+        <p>Trust Services Criteria. Access control, logging, change management. Audit evidence generation.</p>
+        <code>sentra add-pack soc2</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container cta-inner">
+    <h2>Ready to govern your AI-generated code?</h2>
+    <pre><code>pip install sentra && sentra init && sentra scan</code></pre>
+    <div class="cta-actions">
+      <a href="https://docs.sentra.dev/getting-started/quickstart" class="btn btn-primary">Read the Quickstart</a>
+      <a href="/pricing" class="btn btn-outline">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .hero { padding: 8rem 0 4rem; text-align: center; }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  .hero h1 { margin-bottom: 1.5rem; }
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+  .hero-install {
+    margin-bottom: 2rem;
+  }
+  .hero-install pre {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 1.15rem;
+    border: 2px solid var(--color-primary);
+    background: var(--color-surface);
+  }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  .demo { padding: 2rem 0 5rem; }
+  .terminal {
+    max-width: 750px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+  .terminal-header {
+    background: #2d2640;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-dot.red { background: #ff5f57; }
+  .terminal-dot.yellow { background: #ffbd2e; }
+  .terminal-dot.green { background: #28c840; }
+  .terminal-title { margin-left: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }
+  .terminal-body {
+    background: #1a1428;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .terminal-line { white-space: pre; }
+  .terminal-line.dim { color: var(--color-text-muted); }
+  .prompt { color: var(--color-success); }
+  .sev-crit { color: #ef4444; font-weight: 600; }
+  .sev-high { color: #f97316; font-weight: 600; }
+  .sev-med { color: #f59e0b; font-weight: 600; }
+  .gate-fail { color: #ef4444; font-weight: 700; }
+
+  .section-title { text-align: center; margin-bottom: 1rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; }
+
+  .value-props { background: var(--color-bg-alt); }
+  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .prop-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .prop-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .prop-card h3 { margin-bottom: 0.75rem; font-size: 1.2rem; }
+  .prop-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .standard-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .standard-card h3 { margin-bottom: 0.75rem; }
+  .standard-card .badge { margin-bottom: 1rem; }
+  .standard-card p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+  .standard-card code { font-size: 0.85rem; }
+
+  .cta { text-align: center; background: var(--color-bg-alt); }
+  .cta h2 { margin-bottom: 1.5rem; }
+  .cta pre { display: inline-block; padding: 0.75rem 2rem; margin-bottom: 2rem; font-size: 1rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .props-grid, .standards-grid { grid-template-columns: 1fr; }
+    .hero { padding: 5rem 0 3rem; }
+    .hero-actions, .cta-actions { flex-direction: column; align-items: center; }
+  }
+</style>
