@@ -97,12 +97,9 @@ import Base from '../layouts/Base.astro';
   <div class="container">
     <h2 class="section-title">Install in Seconds</h2>
     <p class="section-sub">One command. Downloads a platform-specific binary. No runtime dependencies.</p>
-    <div class="install-grid" style="max-width: 500px; margin-left: auto; margin-right: auto;">
-      <div class="install-card">
-        <h3>npm</h3>
-        <pre><code>npm install -g sentrik</code></pre>
-        <p>Downloads a platform binary. No Python, no Docker, no extra dependencies. Works on macOS, Linux, and Windows.</p>
-      </div>
+    <div class="install-single">
+      <pre><code>npm install -g sentrik</code></pre>
+      <p>Downloads a platform binary. No Python, no Docker, no extra dependencies. Works on macOS, Linux, and Windows.</p>
     </div>
   </div>
 </section>
@@ -265,17 +262,20 @@ import Base from '../layouts/Base.astro';
   .prop-card p { color: var(--color-text-muted); font-size: 0.95rem; }
 
   .install-options { padding: 5rem 0; }
-  .install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .install-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 2rem;
+  .install-single {
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
   }
-  .install-card h3 { margin-bottom: 1rem; font-size: 1.15rem; }
-  .install-rec { color: var(--color-primary-light); font-size: 0.85rem; font-weight: 400; }
-  .install-card pre { margin-bottom: 0.75rem; font-size: 0.9rem; }
-  .install-card p { color: var(--color-text-muted); font-size: 0.9rem; }
+  .install-single pre {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-primary);
+    background: var(--color-surface);
+  }
+  .install-single p { color: var(--color-text-muted); font-size: 0.95rem; }
 
   .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .standard-card {
