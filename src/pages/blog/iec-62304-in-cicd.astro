@@ -3,8 +3,8 @@ import BlogPost from '../../layouts/BlogPost.astro';
 ---
 
 <BlogPost
-  title="How SENTRA Enforces IEC 62304 in CI/CD"
-  description="A practical guide to automating IEC 62304 compliance for medical device software using SENTRA in your CI/CD pipeline."
+  title="How sentrik Enforces IEC 62304 in CI/CD"
+  description="A practical guide to automating IEC 62304 compliance for medical device software using sentrik in your CI/CD pipeline."
   date="2026-03-05"
 >
 
@@ -23,15 +23,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 <p>Traditionally, this means months of manual documentation, spreadsheet-based traceability matrices, and gate reviews. With AI coding agents generating code at scale, the manual approach breaks down.</p>
 
-<h2>Automating compliance with SENTRA</h2>
+<h2>Automating compliance with sentrik</h2>
 
-<p>SENTRA's <code>fda-iec-62304</code> standards pack automates IEC 62304 compliance checks. Here's how to set it up.</p>
+<p>sentrik's <code>fda-iec-62304</code> standards pack automates IEC 62304 compliance checks. Here's how to set it up.</p>
 
 <h3>Step 1: Install and configure</h3>
 
-<pre><code>pip install sentra
-sentra init                        # Select: Medical device
-sentra add-pack fda-iec-62304</code></pre>
+<pre><code>npm install -g sentrik
+sentrik add-pack fda-iec-62304      # Or auto-detected from README</code></pre>
 
 <p>The IEC 62304 pack includes 14 rules:</p>
 
@@ -51,11 +50,11 @@ Requirement: REQ-001 — Patient data ingestion
 IEC 62304 Class: B
 """</code></pre>
 
-<p>Files without this header are flagged as <code>high</code> severity. AI coding agents can be instructed to include these headers, and SENTRA catches it when they don't.</p>
+<p>Files without this header are flagged as <code>high</code> severity. AI coding agents can be instructed to include these headers, and sentrik catches it when they don't.</p>
 
 <h3>Step 3: Add to CI/CD</h3>
 
-<p>Add SENTRA as a gate on every pull request:</p>
+<p>Add sentrik as a gate on every pull request:</p>
 
 <pre><code># .github/workflows/iec62304-gate.yml
 name: IEC 62304 Gate
@@ -66,11 +65,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
-      - run: pip install sentra
-      - run: sentra gate --git-range "origin/main...HEAD" --decorate-pr
+          node-version: "20"
+      - run: npm install -g sentrik
+      - run: sentrik gate --git-range "origin/main...HEAD" --decorate-pr
         env:
           GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
 
@@ -78,11 +77,11 @@ jobs:
 
 <h3>Step 4: Track documentation obligations</h3>
 
-<p>IEC 62304 requires documentation at each phase. SENTRA tracks these as <code>documentation_obligation</code> rules — they appear in reports but never fail the gate, because they're not code-enforceable.</p>
+<p>IEC 62304 requires documentation at each phase. sentrik tracks these as <code>documentation_obligation</code> rules — they appear in reports but never fail the gate, because they're not code-enforceable.</p>
 
 <p>Generate an HTML report for your auditor:</p>
 
-<pre><code>sentra report --format html</code></pre>
+<pre><code>sentrik report --format html</code></pre>
 
 <p>The report shows a compliance checklist with each IEC 62304 clause, its status, and remediation guidance.</p>
 
@@ -90,8 +89,8 @@ jobs:
 
 <p>Link findings to your DevOps work items automatically:</p>
 
-<pre><code>sentra reconcile --dry-run    # Preview what will happen
-sentra reconcile              # Create/update/close work items</code></pre>
+<pre><code>sentrik reconcile --dry-run    # Preview what will happen
+sentrik reconcile              # Create/update/close work items</code></pre>
 
 <p>This creates a traceable chain from requirement → code → finding → work item — exactly what auditors need to see.</p>
 
@@ -111,14 +110,13 @@ sentra reconcile              # Create/update/close work items</code></pre>
 
 <h2>Try it</h2>
 
-<p>Clone our example medical device project to see it in action:</p>
+<p>Try it on any project with medical device software. Install sentrik and scan:</p>
 
-<pre><code>git clone https://github.com/maxgerhardson/sentra-example-medfiles
-cd sentra-example-medfiles
-pip install sentra
-sentra scan
-sentra gate</code></pre>
+<pre><code>npm install -g sentrik
+sentrik add-pack fda-iec-62304
+sentrik scan
+sentrik gate</code></pre>
 
-<p>The example includes intentional findings so you can see realistic scan output. <a href="https://docs.sentra.dev/tutorials/medical-device-walkthrough">Full walkthrough in the docs</a>.</p>
+<p>sentrik will flag missing traceability headers, unsafe code patterns, and documentation gaps. See the <a href="https://maxgerhardson.github.io/sentrik-docs/tutorials/medical-device-walkthrough">medical device walkthrough</a> in the docs for a full example.</p>
 
 </BlogPost>

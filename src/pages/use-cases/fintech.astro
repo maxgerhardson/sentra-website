@@ -2,27 +2,27 @@
 import Base from '../../layouts/Base.astro';
 ---
 
-<Base title="Fintech" description="How SENTRA enforces SOC2 and OWASP compliance for fintech teams.">
+<Base title="Fintech" description="How sentrik enforces PCI DSS, SOC2, and OWASP compliance for fintech teams.">
 
 <section class="uc-hero">
   <div class="container">
     <div class="uc-badge">Use Case</div>
-    <h1>SOC2 + OWASP Compliance for Fintech</h1>
-    <p class="uc-sub">Automated security governance for financial technology teams using AI coding agents.</p>
+    <h1>PCI DSS + SOC2 + OWASP Compliance for Fintech</h1>
+    <p class="uc-sub">Automated security and payment card governance for financial technology teams using AI coding agents.</p>
   </div>
 </section>
 
 <section class="uc-content">
   <div class="container uc-inner">
     <h2>The Challenge</h2>
-    <p>Fintech companies face dual pressure: ship fast with AI coding tools, and pass SOC2 audits with evidence of security controls. AI-generated code can introduce OWASP vulnerabilities (SQL injection, hardcoded secrets, auth failures) that manual review misses at scale.</p>
+    <p>Fintech companies face triple pressure: ship fast with AI coding tools, pass SOC2 audits with evidence of security controls, and meet PCI DSS requirements for handling payment card data. AI-generated code can introduce OWASP vulnerabilities (SQL injection, hardcoded secrets, auth failures) that manual review misses at scale.</p>
 
-    <h2>How SENTRA Helps</h2>
+    <h2>How sentrik Helps</h2>
 
     <div class="feature-list">
       <div class="feature-item">
-        <h3>Combined SOC2 + OWASP Scanning</h3>
-        <p>Enable both packs simultaneously — 38 rules covering access control, cryptographic failures, injection, logging, change management, and all 9 SOC2 Trust Services Criteria.</p>
+        <h3>Combined PCI DSS + SOC2 + OWASP Scanning</h3>
+        <p>Enable all three packs simultaneously &mdash; 54 rules covering cardholder data protection, access control, cryptographic failures, injection, logging, change management, and all 9 SOC2 Trust Services Criteria.</p>
       </div>
       <div class="feature-item">
         <h3>Audit Evidence on Every PR</h3>
@@ -35,15 +35,14 @@ import Base from '../../layouts/Base.astro';
     </div>
 
     <h2>Quick Start</h2>
-    <pre><code>pip install sentra
-sentra init
-sentra add-pack owasp-top-10
-sentra add-pack soc2
-sentra scan</code></pre>
+    <pre><code>npm install -g sentrik
+sentrik add-pack soc2        # OWASP auto-enabled, add SOC2
+sentrik add-pack pci-dss     # Add PCI DSS for payment card rules
+sentrik scan</code></pre>
 
     <div class="uc-cta">
-      <a href="https://docs.sentra.dev/standards-packs/owasp-top-10" class="btn btn-primary">OWASP Pack Details</a>
-      <a href="https://docs.sentra.dev/standards-packs/soc2" class="btn btn-outline">SOC2 Pack Details</a>
+      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Get Started</a>
+      <a href="/pricing" class="btn btn-outline">View Pricing</a>
     </div>
   </div>
 </section>
@@ -61,5 +60,6 @@ sentra scan</code></pre>
   .feature-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; }
   .feature-item h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
   .feature-item p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+  .uc-inner pre { margin: 1.5rem 0 1rem; }
   .uc-cta { display: flex; gap: 1rem; margin-top: 2rem; }
 </style>

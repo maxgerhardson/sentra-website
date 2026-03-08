@@ -7,18 +7,18 @@ import Base from '../layouts/Base.astro';
 <!-- Hero -->
 <section class="hero">
   <div class="container hero-inner">
-    <div class="hero-badge">Open-core &middot; Free forever &middot; Enterprise ready</div>
+    <div class="hero-badge">Zero config &middot; Free forever &middot; Enterprise ready</div>
     <h1>Governance runtime for<br /><span class="gradient-text">AI-generated code</span></h1>
     <p class="hero-sub">
-      Scan, gate, and trace compliance automatically in CI/CD.
-      Enforce IEC 62304, OWASP, SOC2 on code from Copilot, Cursor, Claude Code, and AI agents.
+      Scan, gate, and trace compliance automatically. No setup needed &mdash;
+      auto-detects your project, applies sensible defaults, shows findings inline.
     </p>
     <div class="hero-install">
-      <pre><code>pip install sentra</code></pre>
+      <pre><code>npm install -g sentrik</code></pre>
     </div>
     <div class="hero-actions">
-      <a href="https://docs.sentra.dev/getting-started/quickstart" class="btn btn-primary">Get Started</a>
-      <a href="https://github.com/maxgerhardson/sentra" class="btn btn-outline">View on GitHub</a>
+      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Get Started</a>
+      <a href="https://maxgerhardson.github.io/sentrik-docs" class="btn btn-outline">Read the Docs</a>
     </div>
   </div>
 </section>
@@ -34,33 +34,39 @@ import Base from '../layouts/Base.astro';
         <span class="terminal-title">Terminal</span>
       </div>
       <div class="terminal-body">
-        <div class="terminal-line"><span class="prompt">$</span> sentra init</div>
-        <div class="terminal-line dim">  SENTRA — Setup Wizard</div>
-        <div class="terminal-line dim">  Config: .guard.yaml  DevOps: github  Packs: owasp-top-10</div>
+        <div class="terminal-line"><span class="prompt">$</span> npm install -g sentrik</div>
+        <div class="terminal-line dim">  sentrik: Binary installed</div>
         <div class="terminal-line">&nbsp;</div>
-        <div class="terminal-line"><span class="prompt">$</span> sentra scan</div>
+        <div class="terminal-line"><span class="prompt">$</span> cd my-project && sentrik scan</div>
+        <div class="terminal-line dim">  Detected: python, javascript &middot; CI: github &middot; Packs: owasp-top-10</div>
         <div class="terminal-line dim">  Scanning 47 files against 22 rules...</div>
         <div class="terminal-line"><span class="sev-crit">CRITICAL</span> OWASP-A03-005 &middot; src/api.py:42 &middot; eval() executes arbitrary code</div>
         <div class="terminal-line"><span class="sev-high">HIGH</span>     OWASP-A01-001 &middot; src/auth.py:18 &middot; Hardcoded credentials</div>
-        <div class="terminal-line"><span class="sev-med">MEDIUM</span>   SOC2-CC7-001  &middot; src/app.py:7  &middot; No structured logging</div>
+        <div class="terminal-line"><span class="sev-med">MEDIUM</span>   OWASP-A02-003 &middot; src/app.py:7  &middot; MD5 used for hashing</div>
         <div class="terminal-line dim">  3 findings (1 critical, 1 high, 1 medium)</div>
         <div class="terminal-line">&nbsp;</div>
-        <div class="terminal-line"><span class="prompt">$</span> sentra gate</div>
-        <div class="terminal-line"><span class="gate-fail">GATE FAILED</span> — 2 blocking findings (critical, high)</div>
+        <div class="terminal-line"><span class="prompt">$</span> sentrik gate</div>
+        <div class="terminal-line"><span class="gate-fail">GATE FAILED</span> &mdash; 2 blocking findings (critical, high)</div>
       </div>
     </div>
+    <p class="demo-caption">No config files. No wizard. Just scan.</p>
   </div>
 </section>
 
 <!-- Value Props -->
 <section class="value-props">
   <div class="container">
-    <h2 class="section-title">Why SENTRA?</h2>
+    <h2 class="section-title">Why sentrik?</h2>
     <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-icon">&#x26A1;</div>
+        <h3>Zero Config</h3>
+        <p>Auto-detects your project type, languages, and CI platform. Works immediately &mdash; no wizard, no setup files, no prompts.</p>
+      </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F6E1;</div>
         <h3>Enforce Standards Automatically</h3>
-        <p>Pre-built packs for IEC 62304 (medical devices), OWASP Top 10 (web security), and SOC2 (compliance). Or write your own.</p>
+        <p>6 pre-built packs &mdash; IEC 62304, OWASP Top 10, SOC2, HIPAA, PCI DSS, and ISO 27001. Or write your own.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x26D4;</div>
@@ -68,24 +74,34 @@ import Base from '../layouts/Base.astro';
         <p>Block non-compliant code in CI/CD. GitHub Actions and Azure Pipelines integration. PR decoration with inline findings.</p>
       </div>
       <div class="prop-card">
+        <div class="prop-icon">&#x1F4BB;</div>
+        <h3>VS Code &amp; Cursor</h3>
+        <p>Install the extension and findings appear inline on save. Auto-initializes, scans in background, status bar shows count. Zero interaction.</p>
+      </div>
+      <div class="prop-card">
         <div class="prop-icon">&#x1F517;</div>
         <h3>Trace Everything</h3>
         <p>Link findings to Azure DevOps, GitHub Issues, or Jira work items. Auto-create, update, and close items on reconcile.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F4CA;</div>
-        <h3>Dashboard &amp; API</h3>
-        <p>Web management console with 25+ REST API endpoints. Scan metrics, governance policies, audit trail, approval workflows.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F916;</div>
         <h3>Built for AI Agents</h3>
         <p>Agent context generation, pre-commit hooks, auto-patching. Works with Copilot, Cursor, Claude Code, and custom agents.</p>
       </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F680;</div>
-        <h3>Free &amp; Open Core</h3>
-        <p>Unlimited scans, all packs, full dashboard, complete API — free forever. Enterprise features for teams that need them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Install Options -->
+<section class="install-options">
+  <div class="container">
+    <h2 class="section-title">Install in Seconds</h2>
+    <p class="section-sub">One command. Downloads a platform-specific binary. No runtime dependencies.</p>
+    <div class="install-grid" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+      <div class="install-card">
+        <h3>npm</h3>
+        <pre><code>npm install -g sentrik</code></pre>
+        <p>Downloads a platform binary. No Python, no Docker, no extra dependencies. Works on macOS, Linux, and Windows.</p>
       </div>
     </div>
   </div>
@@ -95,25 +111,43 @@ import Base from '../layouts/Base.astro';
 <section class="standards">
   <div class="container">
     <h2 class="section-title">Standards Packs</h2>
-    <p class="section-sub">Pre-built regulatory rule sets. Enable in one command.</p>
+    <p class="section-sub">Pre-built regulatory rule sets. Auto-detected from your README, or enable in one command.</p>
     <div class="standards-grid">
       <div class="standard-card">
         <h3>IEC 62304</h3>
         <div class="badge" style="background: #7c3aed33; color: #a78bfa;">14 rules</div>
         <p>Medical device software lifecycle. FDA 510(k), EU MDR. Traceability headers, input validation, documentation obligations.</p>
-        <code>sentra add-pack fda-iec-62304</code>
+        <code>sentrik add-pack fda-iec-62304</code>
       </div>
       <div class="standard-card">
         <h3>OWASP Top 10</h3>
         <div class="badge" style="background: #ef444433; color: #fca5a5;">22 rules</div>
-        <p>Web application security. SQL injection, XSS, auth failures, SSRF. Composite pattern detection for precision.</p>
-        <code>sentra add-pack owasp-top-10</code>
+        <p>Web application security. SQL injection, XSS, auth failures, SSRF. Auto-enabled for every project.</p>
+        <code>sentrik add-pack owasp-top-10</code>
       </div>
       <div class="standard-card">
         <h3>SOC2</h3>
         <div class="badge" style="background: #06b6d433; color: #67e8f9;">16 rules</div>
         <p>Trust Services Criteria. Access control, logging, change management. Audit evidence generation.</p>
-        <code>sentra add-pack soc2</code>
+        <code>sentrik add-pack soc2</code>
+      </div>
+      <div class="standard-card">
+        <h3>HIPAA</h3>
+        <div class="badge" style="background: #10b98133; color: #6ee7b7;">15 rules</div>
+        <p>Health data privacy and security. PHI handling, encryption requirements, access controls, audit trails for healthcare applications.</p>
+        <code>sentrik add-pack hipaa</code>
+      </div>
+      <div class="standard-card">
+        <h3>PCI DSS</h3>
+        <div class="badge" style="background: #f59e0b33; color: #fcd34d;">16 rules</div>
+        <p>Payment card security. Cardholder data protection, encryption, secure coding, network segmentation for fintech and e-commerce.</p>
+        <code>sentrik add-pack pci-dss</code>
+      </div>
+      <div class="standard-card">
+        <h3>ISO 27001</h3>
+        <div class="badge" style="background: #3b82f633; color: #93c5fd;">14 rules</div>
+        <p>Information security management. Risk assessment controls, data classification, incident response, security policy enforcement.</p>
+        <code>sentrik add-pack iso-27001</code>
       </div>
     </div>
   </div>
@@ -123,9 +157,9 @@ import Base from '../layouts/Base.astro';
 <section class="cta">
   <div class="container cta-inner">
     <h2>Ready to govern your AI-generated code?</h2>
-    <pre><code>pip install sentra && sentra init && sentra scan</code></pre>
+    <pre><code>npm install -g sentrik && sentrik scan</code></pre>
     <div class="cta-actions">
-      <a href="https://docs.sentra.dev/getting-started/quickstart" class="btn btn-primary">Read the Quickstart</a>
+      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Read the Quickstart</a>
       <a href="/pricing" class="btn btn-outline">View Pricing</a>
     </div>
   </div>
@@ -172,7 +206,7 @@ import Base from '../layouts/Base.astro';
   }
   .hero-actions { display: flex; gap: 1rem; justify-content: center; }
 
-  .demo { padding: 2rem 0 5rem; }
+  .demo { padding: 2rem 0 3rem; }
   .terminal {
     max-width: 750px;
     margin: 0 auto;
@@ -207,6 +241,13 @@ import Base from '../layouts/Base.astro';
   .sev-high { color: #f97316; font-weight: 600; }
   .sev-med { color: #f59e0b; font-weight: 600; }
   .gate-fail { color: #ef4444; font-weight: 700; }
+  .demo-caption {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-top: 1.25rem;
+    font-style: italic;
+  }
 
   .section-title { text-align: center; margin-bottom: 1rem; }
   .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; }
@@ -222,6 +263,19 @@ import Base from '../layouts/Base.astro';
   .prop-icon { font-size: 2rem; margin-bottom: 1rem; }
   .prop-card h3 { margin-bottom: 0.75rem; font-size: 1.2rem; }
   .prop-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  .install-options { padding: 5rem 0; }
+  .install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .install-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .install-card h3 { margin-bottom: 1rem; font-size: 1.15rem; }
+  .install-rec { color: var(--color-primary-light); font-size: 0.85rem; font-weight: 400; }
+  .install-card pre { margin-bottom: 0.75rem; font-size: 0.9rem; }
+  .install-card p { color: var(--color-text-muted); font-size: 0.9rem; }
 
   .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .standard-card {
@@ -241,7 +295,7 @@ import Base from '../layouts/Base.astro';
   .cta-actions { display: flex; gap: 1rem; justify-content: center; }
 
   @media (max-width: 768px) {
-    .props-grid, .standards-grid { grid-template-columns: 1fr; }
+    .props-grid, .standards-grid, .install-grid { grid-template-columns: 1fr; }
     .hero { padding: 5rem 0 3rem; }
     .hero-actions, .cta-actions { flex-direction: column; align-items: center; }
   }

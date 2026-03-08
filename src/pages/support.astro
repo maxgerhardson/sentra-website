@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Support" description="Get help with sentrik — report bugs, ask questions, or reach the team.">
+
+<section class="support-hero">
+  <div class="container">
+    <h1>Support</h1>
+    <p class="support-sub">Have a question, found a bug, or need help getting set up? We're here to help.</p>
+  </div>
+</section>
+
+<section class="support-channels">
+  <div class="container">
+    <div class="channel-grid">
+
+      <div class="channel-card">
+        <div class="channel-icon">&#x1F4E7;</div>
+        <h3>Email Support</h3>
+        <p>For bug reports, account questions, or anything else — email us directly.</p>
+        <a href="mailto:support@sentrik.dev" class="btn btn-primary">support@sentrik.dev</a>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-icon">&#x1F4AC;</div>
+        <h3>Community Discussions</h3>
+        <p>Ask questions, share how you're using sentrik, or request features. Browse answers from the community and maintainers.</p>
+        <a href="https://github.com/maxgerhardson/sentrik-community/discussions" class="btn btn-outline">GitHub Discussions</a>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-icon">&#x1F41B;</div>
+        <h3>Bug Reports</h3>
+        <p>Found something broken? Open an issue on GitHub with reproduction steps and we'll triage it.</p>
+        <a href="https://github.com/maxgerhardson/sentrik-community/issues/new?template=bug_report.yml" class="btn btn-outline">Report a Bug</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="support-resources">
+  <div class="container">
+    <h2 class="section-title">Self-Service Resources</h2>
+    <div class="resource-grid">
+      <a href="/faq" class="resource-card">
+        <h3>FAQ</h3>
+        <p>Answers to the most common questions about setup, licensing, CI/CD, and more.</p>
+      </a>
+      <a href="https://maxgerhardson.github.io/sentrik-docs" class="resource-card">
+        <h3>Documentation</h3>
+        <p>Full guides for installation, configuration, CLI reference, API endpoints, and standards packs.</p>
+      </a>
+      <a href="/blog/getting-started-in-5-minutes" class="resource-card">
+        <h3>Quickstart Guide</h3>
+        <p>Get up and running in under 5 minutes with zero configuration.</p>
+      </a>
+      <a href="https://maxgerhardson.github.io/sentrik-docs/guides/cli-reference" class="resource-card">
+        <h3>CLI Reference</h3>
+        <p>Every command, flag, and option available in the sentrik CLI.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="enterprise-support">
+  <div class="container enterprise-inner">
+    <h2>Need implementation assistance?</h2>
+    <p>Enterprise customers get dedicated support, onboarding calls, and help configuring custom packs for your regulatory requirements.</p>
+    <a href="mailto:support@sentrik.dev?subject=Enterprise%20Support%20Inquiry" class="btn btn-primary">Contact Us</a>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .support-hero { padding: 6rem 0 3rem; text-align: center; }
+  .support-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
+
+  .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
+  .channel-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .channel-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .channel-card h3 { margin-bottom: 0.75rem; }
+  .channel-card p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex: 1; }
+  .channel-card .btn { margin-bottom: 1.5rem; }
+
+  .section-title { text-align: center; margin-bottom: 2rem; }
+
+  .resource-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .resource-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .resource-card:hover { border-color: var(--color-primary); text-decoration: none; }
+  .resource-card h3 { margin-bottom: 0.5rem; color: var(--color-text); }
+  .resource-card p { color: var(--color-text-muted); font-size: 0.9rem; margin: 0; }
+
+  .enterprise-support { background: var(--color-bg-alt); text-align: center; }
+  .enterprise-inner p { color: var(--color-text-muted); font-size: 1.05rem; margin: 1rem auto 1.5rem; max-width: 600px; }
+
+  @media (max-width: 768px) {
+    .channel-grid { grid-template-columns: 1fr; }
+    .resource-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -14,23 +14,23 @@ const { title, description, date, author = "Max Gerhardson" } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <title>{title} | SENTRA Blog</title>
+  <title>{title} | sentrik Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <script defer data-domain="sentra.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="sentrik.dev" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-brand">SENTRA</a>
+      <a href="/" class="nav-brand"><img src="/logo.svg" alt="sentrik" class="nav-logo" /></a>
       <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
         <a href="/pricing">Pricing</a>
         <a href="/use-cases/medical-devices">Use Cases</a>
-        <a href="https://docs.sentra.dev">Docs</a>
         <a href="/blog">Blog</a>
-        <a href="https://github.com/maxgerhardson/sentra" class="btn btn-outline btn-sm">GitHub</a>
+        <a href="/about">About</a>
       </div>
     </div>
   </nav>
@@ -53,8 +53,32 @@ const { title, description, date, author = "Max Gerhardson" } = Astro.props;
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025-2026 Max Gerhardson. All rights reserved.</p>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="/logo.svg" alt="sentrik" class="footer-logo" />
+          <p class="footer-tagline">Governance runtime for AI-generated code</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/pricing">Pricing</a>
+          <a href="/blog">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Use Cases</h4>
+          <a href="/use-cases/medical-devices">Medical Devices</a>
+          <a href="/use-cases/fintech">Fintech</a>
+          <a href="/use-cases/saas">SaaS</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="https://maxgerhardson.github.io/sentrik-docs">Documentation</a>
+          <a href="mailto:info@sentrik.dev">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025-2026 Sentrik. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </body>
@@ -71,15 +95,16 @@ const { title, description, date, author = "Max Gerhardson" } = Astro.props;
     border-bottom: 1px solid var(--color-border); padding: 0.75rem 0;
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-  .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--color-primary-light); letter-spacing: -0.02em; }
+  .nav-brand { display: flex; align-items: center; }
   .nav-brand:hover { text-decoration: none; }
+  .nav-logo { height: 104px; width: auto; }
   .nav-links { display: flex; align-items: center; gap: 1.75rem; }
   .nav-links a { color: var(--color-text-muted); font-size: 0.95rem; font-weight: 500; }
   .nav-links a:hover { color: var(--color-text); text-decoration: none; }
   .btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
   .btn-outline { background: transparent; color: var(--color-primary-light); border: 2px solid var(--color-primary); border-radius: 8px; }
 
-  main { margin-top: 60px; }
+  main { margin-top: 120px; }
 
   .blog-article { padding: 4rem 0; }
   .article-inner { max-width: 750px; margin: 0 auto; }
@@ -89,10 +114,12 @@ const { title, description, date, author = "Max Gerhardson" } = Astro.props;
   .article-desc { font-size: 1.2rem; color: var(--color-text-muted); margin-bottom: 2.5rem; line-height: 1.6; }
 
   .article-content { line-height: 1.8; }
-  .article-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.6rem; }
-  .article-content h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; }
+  .article-content h2 { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); margin-bottom: 1.5rem; font-size: 1.6rem; }
+  .article-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .article-content h3 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.25rem; }
   .article-content p { margin-bottom: 1.25rem; color: var(--color-text); }
-  .article-content ul, .article-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .article-content pre { margin: 1.5rem 0; }
+  .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
   .article-content li { margin-bottom: 0.5rem; }
   .article-content blockquote {
     border-left: 3px solid var(--color-primary);
@@ -103,11 +130,27 @@ const { title, description, date, author = "Max Gerhardson" } = Astro.props;
   }
   .article-content blockquote p { margin: 0; color: var(--color-text-muted); font-style: italic; }
 
-  .footer { border-top: 1px solid var(--color-border); padding: 2rem 0; }
-  .footer p { color: var(--color-text-muted); font-size: 0.85rem; }
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding: 4rem 0 2rem;
+    background: var(--color-bg-alt);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+  .footer-col { display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-logo { height: 24px; width: auto; margin-bottom: 0.5rem; }
+  .footer-col h4 { margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .footer-col a { color: var(--color-text-muted); font-size: 0.9rem; }
+  .footer-col a:hover { color: var(--color-text); }
+  .footer-tagline { color: var(--color-text-muted); font-size: 0.9rem; }
+  .footer-bottom { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+  .footer-bottom p { color: var(--color-text-muted); font-size: 0.85rem; }
 
   @media (max-width: 768px) {
     .article-inner h1 { font-size: 1.75rem; }
     .nav-links a:not(.btn) { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
   }
 </style>

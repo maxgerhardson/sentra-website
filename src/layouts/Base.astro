@@ -13,24 +13,24 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <title>{title} | SENTRA</title>
+  <title>{title} | sentrik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <script defer data-domain="sentra.dev" src="https://plausible.io/js/script.js"></script>
+  <script defer data-domain="sentrik.dev" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-brand">SENTRA</a>
+      <a href="/" class="nav-brand"><img src="/logo.svg" alt="sentrik" class="nav-logo" /></a>
       <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
         <a href="/pricing">Pricing</a>
         <a href="/use-cases/medical-devices">Use Cases</a>
-        <a href="https://docs.sentra.dev">Docs</a>
         <a href="/blog">Blog</a>
+        <a href="/support">Support</a>
         <a href="/about">About</a>
-        <a href="https://github.com/maxgerhardson/sentra" class="btn btn-outline btn-sm">GitHub</a>
       </div>
     </div>
   </nav>
@@ -43,14 +43,13 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
     <div class="container footer-inner">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>SENTRA</h4>
+          <img src="/logo.svg" alt="sentrik" class="footer-logo" />
           <p class="footer-tagline">Governance runtime for AI-generated code</p>
         </div>
         <div class="footer-col">
           <h4>Product</h4>
           <a href="/pricing">Pricing</a>
-          <a href="https://docs.sentra.dev">Documentation</a>
-          <a href="https://github.com/maxgerhardson/sentra/releases">Changelog</a>
+          <a href="/blog">Blog</a>
         </div>
         <div class="footer-col">
           <h4>Use Cases</h4>
@@ -59,14 +58,15 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
           <a href="/use-cases/saas">SaaS</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
-          <a href="https://github.com/maxgerhardson/sentra">GitHub</a>
-          <a href="https://hub.docker.com/r/maxgerhardson/sentra">Docker Hub</a>
-          <a href="https://pypi.org/project/sentra/">PyPI</a>
+          <h4>Resources</h4>
+          <a href="https://maxgerhardson.github.io/sentrik-docs">Documentation</a>
+          <a href="/faq">FAQ</a>
+          <a href="/support">Support</a>
+          <a href="mailto:support@sentrik.dev">Contact</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025-2026 Max Gerhardson. All rights reserved.</p>
+        <p>&copy; 2025-2026 Sentrik. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -87,22 +87,18 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
     background: rgba(15, 11, 26, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-  .nav-brand {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--color-primary-light);
-    letter-spacing: -0.02em;
-  }
+  .nav-brand { display: flex; align-items: center; margin-left: -28px; }
   .nav-brand:hover { text-decoration: none; }
+  .nav-logo { height: 104px; width: auto; }
   .nav-links { display: flex; align-items: center; gap: 1.75rem; }
-  .nav-links a { color: var(--color-text-muted); font-size: 0.95rem; font-weight: 500; }
+  .nav-links a { color: var(--color-text-muted); font-size: 0.95rem; font-weight: 500; white-space: nowrap; }
   .nav-links a:hover { color: var(--color-text); text-decoration: none; }
   .btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
 
-  main { margin-top: 60px; }
+  main { margin-top: 120px; }
 
   .footer {
     border-top: 1px solid var(--color-border);
@@ -111,6 +107,7 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
   }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
   .footer-col { display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-logo { height: 72px; width: auto; margin-bottom: 0.5rem; }
   .footer-col h4 { margin-bottom: 0.5rem; font-size: 0.95rem; }
   .footer-col a { color: var(--color-text-muted); font-size: 0.9rem; }
   .footer-col a:hover { color: var(--color-text); }

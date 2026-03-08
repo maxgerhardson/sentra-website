@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Pricing" description="SENTRA pricing — free forever for core features, enterprise tiers for advanced needs.">
+<Base title="Pricing" description="sentrik pricing — free forever for core features, enterprise tiers for advanced needs.">
 
 <section class="pricing-hero">
   <div class="container">
@@ -18,70 +18,70 @@ import Base from '../layouts/Base.astro';
       <div class="tier-card">
         <div class="tier-header">
           <h3>Free</h3>
-          <div class="tier-price"><span class="price-amount">$0</span><span class="price-period">forever</span></div>
+          <div class="tier-price"><span class="price-amount">$0</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
         </div>
         <p class="tier-desc">Everything you need to start governing AI-generated code.</p>
         <ul class="tier-features">
           <li>Unlimited scans and gates</li>
-          <li>All standards packs (IEC 62304, OWASP, SOC2)</li>
+          <li>6 standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001)</li>
           <li>Management dashboard</li>
           <li>REST API (25+ endpoints)</li>
           <li>HTML, JUnit, SARIF, CSV reports</li>
           <li>Work item traceability</li>
           <li>PR decoration</li>
           <li>Pre-commit hooks</li>
-          <li>Custom rule packs</li>
           <li>Auto-patching</li>
+          <li>Community support (GitHub Discussions)</li>
         </ul>
-        <a href="https://docs.sentra.dev/getting-started/installation" class="btn btn-outline tier-cta">Install Free</a>
+        <a href="/blog/getting-started-in-5-minutes" class="btn btn-outline tier-cta">Install Free</a>
       </div>
 
       <div class="tier-card">
         <div class="tier-header">
           <h3>Team</h3>
-          <div class="tier-price"><span class="price-amount">$29</span><span class="price-period">/mo</span></div>
+          <div class="tier-price"><span class="price-amount">$29</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
         </div>
         <p class="tier-desc">Performance and intelligence for growing teams.</p>
         <ul class="tier-features">
           <li>Everything in Free, plus:</li>
           <li>Parallel scanning (multi-threaded)</li>
           <li>ML severity estimation</li>
-          <li>Priority support</li>
+          <li>Email support</li>
         </ul>
-        <a href="https://portal.sentra.dev/checkout/team" class="btn btn-primary tier-cta">Get Started</a>
+        <a href="mailto:sales@sentrik.dev?subject=Team%20License" class="btn btn-primary tier-cta">Get Started</a>
       </div>
 
       <div class="tier-card featured">
         <div class="tier-badge">Most Popular</div>
         <div class="tier-header">
           <h3>Organization</h3>
-          <div class="tier-price"><span class="price-amount">$99</span><span class="price-period">/mo</span></div>
+          <div class="tier-price"><span class="price-amount">$99</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
         </div>
         <p class="tier-desc">Advanced governance for compliance-driven organizations.</p>
         <ul class="tier-features">
           <li>Everything in Team, plus:</li>
-          <li>Token vault (secrets management)</li>
+          <li>Pack overrides (tune rules per-project)</li>
           <li>Governance profiles</li>
-          <li>Dedicated support channel</li>
+          <li>Priority email support</li>
         </ul>
-        <a href="https://portal.sentra.dev/checkout/org" class="btn btn-primary tier-cta">Get Started</a>
+        <a href="mailto:sales@sentrik.dev?subject=Organization%20License" class="btn btn-primary tier-cta">Get Started</a>
       </div>
 
       <div class="tier-card">
         <div class="tier-header">
           <h3>Enterprise</h3>
-          <div class="tier-price"><span class="price-amount">$299</span><span class="price-period">/mo</span></div>
+          <div class="tier-price"><span class="price-amount">Custom</span></div>
         </div>
         <p class="tier-desc">Full platform for regulated industries and large teams.</p>
         <ul class="tier-features">
           <li>Everything in Organization, plus:</li>
+          <li>Custom pack authoring &amp; import</li>
           <li>Audit logging</li>
           <li>Async approval gates</li>
-          <li>SSO/OIDC integration</li>
           <li>RBAC (5 roles, 10+ permissions)</li>
-          <li>Custom onboarding</li>
+          <li>Dedicated support + implementation assistance</li>
         </ul>
-        <a href="mailto:hello@sentra.dev?subject=Enterprise%20License" class="btn btn-primary tier-cta">Contact Sales</a>
+        <a href="mailto:sales@sentrik.dev?subject=Enterprise%20Inquiry" class="btn btn-primary tier-cta">Contact Sales</a>
       </div>
 
     </div>
@@ -92,30 +92,17 @@ import Base from '../layouts/Base.astro';
   <div class="container trial-inner">
     <h2>Try Enterprise free for 30 days</h2>
     <p>No credit card required. All enterprise features unlocked.</p>
-    <pre><code>pip install sentra && sentra trial</code></pre>
+    <pre><code>npm install -g sentrik && sentrik trial</code></pre>
   </div>
 </section>
 
-<section class="faq">
-  <div class="container">
-    <h2 class="section-title">FAQ</h2>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>Is the free tier really unlimited?</h3>
-        <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What happens when my trial expires?</h3>
-        <p>Enterprise features (parallel scan, ML, vault, approvals, audit) become unavailable. All core features continue working. No data loss.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I use SENTRA in commercial products?</h3>
-        <p>Yes. The free tier is available for commercial use. See the <a href="https://github.com/maxgerhardson/sentra/blob/main/LICENSE">license</a> for details.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Do I need an internet connection?</h3>
-        <p>No. SENTRA runs entirely offline. License validation is offline (HMAC-based). No telemetry, no phone-home.</p>
-      </div>
+<section class="faq-link">
+  <div class="container faq-link-inner">
+    <h2>Have questions?</h2>
+    <p>Check our FAQ for answers about setup, licensing, CI/CD, and more.</p>
+    <div class="faq-link-actions">
+      <a href="/faq" class="btn btn-outline">View FAQ</a>
+      <a href="/support" class="btn btn-outline">Contact Support</a>
     </div>
   </div>
 </section>
@@ -155,6 +142,7 @@ import Base from '../layouts/Base.astro';
   .tier-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
   .price-amount { font-size: 2.5rem; font-weight: 800; }
   .price-period { color: var(--color-text-muted); font-size: 1rem; margin-left: 0.25rem; }
+  .price-seat { display: block; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.15rem; }
 
   .tier-desc { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
@@ -183,15 +171,9 @@ import Base from '../layouts/Base.astro';
   .trial-banner p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
   .trial-banner pre { display: inline-block; padding: 0.75rem 2rem; }
 
-  .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  .faq-item {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 1.5rem;
-  }
-  .faq-item h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
-  .faq-item p { color: var(--color-text-muted); font-size: 0.95rem; }
+  .faq-link { background: var(--color-bg-alt); text-align: center; }
+  .faq-link-inner p { color: var(--color-text-muted); margin: 0.75rem 0 1.5rem; }
+  .faq-link-actions { display: flex; gap: 1rem; justify-content: center; }
 
   @media (max-width: 1024px) { .tier-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) {

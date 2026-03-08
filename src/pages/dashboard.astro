@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Dashboard" description="sentrik's built-in management dashboard — findings, rules, policies, work items, and audit log in one web UI.">
+
+<section class="dash-hero">
+  <div class="container">
+    <h1>Management Dashboard</h1>
+    <p class="dash-sub">A built-in web UI for managing findings, rules, governance policies, work items, and audit trails. No separate install — it ships with sentrik.</p>
+  </div>
+</section>
+
+<section class="dash-start">
+  <div class="container dash-start-inner">
+    <pre><code>npm install -g sentrik
+sentrik serve</code></pre>
+    <p>Open <a href="http://localhost:8000/dashboard">http://localhost:8000/dashboard</a> in your browser.</p>
+  </div>
+</section>
+
+<section class="dash-tabs">
+  <div class="container">
+    <h2 class="section-title">11 Tabs. Everything You Need.</h2>
+    <div class="tabs-grid">
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F4CA;</div>
+        <h3>Overview</h3>
+        <p>Scan metrics at a glance — severity breakdown, top files, scan duration, cache hit rate, and findings-over-time trend chart.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F50D;</div>
+        <h3>Findings</h3>
+        <p>Searchable, filterable list of all findings with severity, rule ID, file location, and remediation guidance. Click to expand details.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F4C4;</div>
+        <h3>Reports</h3>
+        <p>Generate and download HTML, JUnit XML, SARIF, and CSV reports. One click for audit-ready artifacts.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F6E1;</div>
+        <h3>Policies</h3>
+        <p>Configure governance profiles (strict, standard, permissive), human review gates, auto-patch settings, and gate thresholds.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F4E6;</div>
+        <h3>Packs</h3>
+        <p>Enable, disable, and configure standards packs. Override individual rules within a pack. Import and export custom packs.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F4CB;</div>
+        <h3>Rules</h3>
+        <p>Browse all active rules with severity, type (regex, AST, file policy), and auto-fix status. Search and filter across packs.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F3AF;</div>
+        <h3>Work Items</h3>
+        <p>View linked Azure DevOps, GitHub, or Jira work items. Reconcile findings — auto-create, update, and close items.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F517;</div>
+        <h3>Integration</h3>
+        <p>Connect to Azure DevOps, GitHub, or Jira. Test connections, configure tokens, and see environment variable status.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x1F4DC;</div>
+        <h3>Audit Log</h3>
+        <p>Timestamped log of every scan, gate, reconcile, and config change. Filter by action type. Export for compliance evidence.</p>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x2705;</div>
+        <h3>Approvals</h3>
+        <p>Async approval gates for enterprise workflows. Review pending requests, approve or reject, track timeout and status.</p>
+        <span class="enterprise-badge">Enterprise</span>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-icon">&#x2699;</div>
+        <h3>Settings</h3>
+        <p>Full configuration viewer and editor. Validate config, toggle features, and manage output paths — all from the browser.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="dash-features">
+  <div class="container">
+    <h2 class="section-title">Built-In Features</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <h3>Dark Mode</h3>
+        <p>Light and dark themes with one-click toggle. Preference saved in localStorage.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Global Search</h3>
+        <p>Press <code>Ctrl+K</code> to search across findings, rules, and work items instantly.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Keyboard Shortcuts</h3>
+        <p>Press <code>?</code> for the help overlay. Navigate tabs, trigger scans, and copy data without touching the mouse.</p>
+      </div>
+      <div class="feature-item">
+        <h3>REST API</h3>
+        <p>25+ API endpoints power the dashboard. Use them directly for CI/CD integration, custom tooling, or remote scanning.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Live Scan Progress</h3>
+        <p>Server-Sent Events stream scan progress in real time. Watch files being processed as they happen.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Scan Trends</h3>
+        <p>SVG line chart showing findings over time. Track whether your codebase is getting cleaner or accumulating debt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dash-cta">
+  <div class="container dash-cta-inner">
+    <h2>Try it now</h2>
+    <pre><code>npm install -g sentrik && sentrik serve</code></pre>
+    <div class="cta-actions">
+      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Get Started</a>
+      <a href="/pricing" class="btn btn-outline">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .dash-hero { padding: 6rem 0 3rem; text-align: center; }
+  .dash-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  .dash-start { padding: 0 0 3rem; text-align: center; }
+  .dash-start-inner pre { display: inline-block; padding: 0.75rem 2rem; font-size: 1.05rem; border: 2px solid var(--color-primary); margin-bottom: 1rem; }
+  .dash-start-inner p { color: var(--color-text-muted); }
+
+  .section-title { text-align: center; margin-bottom: 3rem; }
+
+  .tabs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .tab-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: relative;
+  }
+  .tab-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  .tab-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .tab-card p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+  .enterprise-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .dash-features { background: var(--color-bg-alt); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .feature-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .feature-item h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .feature-item p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
+
+  .dash-cta { text-align: center; }
+  .dash-cta h2 { margin-bottom: 1.5rem; }
+  .dash-cta pre { display: inline-block; padding: 0.75rem 2rem; margin-bottom: 2rem; font-size: 1rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .tabs-grid, .features-grid { grid-template-columns: 1fr; }
+    .cta-actions { flex-direction: column; align-items: center; }
+  }
+</style>

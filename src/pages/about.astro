@@ -2,11 +2,11 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="About" description="About SENTRA and the team behind it.">
+<Base title="About" description="About sentrik and the team behind it.">
 
 <section class="about-hero">
   <div class="container">
-    <h1>About SENTRA</h1>
+    <h1>About sentrik</h1>
     <p class="about-sub">Built by an engineer who saw the compliance gap that AI coding agents create.</p>
   </div>
 </section>
@@ -18,22 +18,13 @@ import Base from '../layouts/Base.astro';
     <p>Manual code review doesn't scale. Existing static analysis tools don't understand regulatory standards. Teams are stuck choosing between speed and compliance.</p>
 
     <h2>The Solution</h2>
-    <p>SENTRA is a governance runtime that sits between AI agents and production. It scans code against regulatory standards (IEC 62304, OWASP, SOC2), gates PRs in CI/CD, traces findings to work items, and generates audit evidence — all automatically.</p>
-    <p>The free tier is genuinely useful with no limits. Enterprise features (parallel scan, audit logging, approval gates, token vault) serve teams that need them.</p>
-
-    <h2>Built With</h2>
-    <div class="tech-grid">
-      <div class="tech-item">Python 3.11+</div>
-      <div class="tech-item">FastAPI</div>
-      <div class="tech-item">Typer + Rich</div>
-      <div class="tech-item">~1,500 tests</div>
-      <div class="tech-item">Docker</div>
-      <div class="tech-item">GitHub Actions</div>
-    </div>
+    <p>sentrik is a governance runtime that sits between AI agents and production. It scans code against regulatory standards (IEC 62304, OWASP, SOC2), gates PRs in CI/CD, traces findings to work items, and generates audit evidence — all automatically.</p>
+    <p>The free tier is genuinely useful with no limits. Enterprise features (parallel scan, audit logging, approval gates, custom packs) serve teams that need them.</p>
 
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:hello@sentra.dev">hello@sentra.dev</a></p>
-    <p>GitHub: <a href="https://github.com/maxgerhardson/sentra">github.com/maxgerhardson/sentra</a></p>
+    <p>General: <a href="mailto:info@sentrik.dev">info@sentrik.dev</a></p>
+    <p>Support: <a href="mailto:support@sentrik.dev">support@sentrik.dev</a></p>
+    <p>Docs: <a href="https://maxgerhardson.github.io/sentrik-docs">docs.sentrik.dev</a></p>
   </div>
 </section>
 
@@ -45,15 +36,5 @@ import Base from '../layouts/Base.astro';
   .about-content { max-width: 750px; margin: 0 auto; }
   .about-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
   .about-content p { color: var(--color-text-muted); margin-bottom: 1rem; }
-  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0; }
-  .tech-item {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-  @media (max-width: 600px) { .tech-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { }
 </style>

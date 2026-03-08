@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#7c3aed"/>
-  <text x="16" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="white">S</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="56" height="56">
+  <rect x="6" y="5" width="44" height="11" rx="3" fill="#2a2a3e"/>
+  <rect x="6" y="5" width="25" height="11" rx="3" fill="#6366f1"/>
+  <rect x="6" y="22" width="44" height="11" rx="3" fill="#2a2a3e"/>
+  <rect x="25" y="22" width="25" height="11" rx="3" fill="#6366f1"/>
+  <rect x="6" y="39" width="44" height="11" rx="3" fill="#2a2a3e"/>
+  <rect x="6" y="39" width="25" height="11" rx="3" fill="#6366f1"/>
 </svg>
