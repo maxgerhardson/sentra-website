@@ -1,11 +1,3 @@
-# COMING SOON MODE — to launch the full site, change to:
-#   command = "npm run build"
-#   publish = "dist"
 [build]
-  command = "echo 'Coming soon mode'"
-  publish = "coming-soon"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  command = "npm run build"
+  publish = "dist"
