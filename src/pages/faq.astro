@@ -22,7 +22,7 @@ import Base from '../layouts/Base.astro';
         <div class="faq-answer">
           <p>The fastest way is via npm:</p>
           <pre><code>npm install -g sentrik</code></pre>
-          <p>This downloads a platform-specific binary (macOS, Linux, Windows). No Python, Docker, or other dependencies required. You can also install via pip (<code>pip install sentrik</code>) or run with Docker.</p>
+          <p>This downloads a platform-specific binary (macOS, Linux, Windows). No Python, Docker, or other dependencies required.</p>
         </div>
       </details>
 
@@ -36,7 +36,7 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>What languages does sentrik support?</summary>
         <div class="faq-answer">
-          <p>sentrik scans any text-based source file. Regex and file policy rules work across all languages. AST-based checks (complexity analysis, mutable defaults, star imports) are Python-specific. Standards packs like OWASP Top 10 use regex patterns that match common vulnerability patterns across Python, JavaScript, TypeScript, Java, C#, and more.</p>
+          <p>sentrik scans any text-based source file using regex pattern matching. All 6 standards packs include rules for Python, JavaScript, TypeScript, Java, C#, Go, Rust, and C/C++. Python projects get additional deep analysis via AST checks (complexity metrics, mutable defaults, star imports, nested functions). Custom rules can target any language using <code>file_glob</code> patterns.</p>
         </div>
       </details>
 
@@ -182,7 +182,7 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>Is the free tier really unlimited?</summary>
         <div class="faq-answer">
-          <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits. The free tier includes all 6 standards packs, the dashboard, REST API, all report formats, work item traceability, PR decoration, and pre-commit hooks.</p>
+          <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits. The free tier includes 6 core standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001), the dashboard, REST API, all report formats, and pre-commit hooks.</p>
         </div>
       </details>
 
@@ -190,8 +190,8 @@ import Base from '../layouts/Base.astro';
         <summary>What do I get with a paid tier?</summary>
         <div class="faq-answer">
           <ul>
-            <li><strong>Team ($29/mo)</strong> &mdash; Parallel scanning (multi-threaded), ML severity estimation, email support</li>
-            <li><strong>Organization ($99/mo)</strong> &mdash; Pack overrides, governance profiles, priority email support</li>
+            <li><strong>Team ($29/mo)</strong> &mdash; PR decoration, work item traceability, auto-patching, parallel scanning (multi-threaded), email support</li>
+            <li><strong>Organization ($99/mo)</strong> &mdash; 6 industry packs (IEC 81001, 21 CFR Part 11, ISO 14971, MISRA C/C++, DO-178C, ISO 26262), pack overrides, governance profiles, priority email support</li>
             <li><strong>Enterprise (custom pricing)</strong> &mdash; Custom pack authoring &amp; import, audit logging, async approval gates, RBAC, dedicated support + implementation assistance</li>
           </ul>
         </div>
@@ -200,14 +200,14 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>How do license keys work?</summary>
         <div class="faq-answer">
-          <p>License keys are HMAC-signed strings that validate entirely offline. No internet connection required, no phone-home, no telemetry. Set your key via the <code>GUARD_LICENSE_KEY</code> environment variable or in your config file.</p>
+          <p>License keys validate entirely offline. No internet connection required, no phone-home, no telemetry. Set your key via the <code>GUARD_LICENSE_KEY</code> environment variable or in your config file.</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Can I try Enterprise features before buying?</summary>
         <div class="faq-answer">
-          <p>Yes. Run <code>sentrik trial</code> to generate a free 30-day Enterprise key. All features are unlocked during the trial. No credit card required.</p>
+          <p>Yes. Visit <a href="https://sentrik.dev/pricing">sentrik.dev/pricing</a> to start a free trial. All features are unlocked during the trial period. No credit card required.</p>
         </div>
       </details>
 
@@ -238,12 +238,80 @@ import Base from '../layouts/Base.astro';
     </div>
 
     <div class="faq-category">
+      <h2>Auto-Remediation</h2>
+
+      <details class="faq-item">
+        <summary>Can sentrik automatically fix findings?</summary>
+        <div class="faq-answer">
+          <p>Yes. Use <code>sentrik vulns --fix</code> to apply version bumps for vulnerable dependencies, or <code>--create-pr</code> to generate a pull request. For code findings, <code>sentrik apply-patches</code> applies auto-fixes like replacing eval() calls, switching weak crypto, and commenting out unsafe patterns.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What types of fixes are supported?</summary>
+        <div class="faq-answer">
+          <p>Dependency version bumps (requirements.txt, package.json, pyproject.toml, Cargo.toml), code pattern replacements (strcpy&rarr;strncpy, gets&rarr;fgets), and comment-out of unsafe code. Check the Rules tab in the dashboard to see which rules have auto-fix enabled.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Supply Chain &amp; Dependencies</h2>
+
+      <details class="faq-item">
+        <summary>Does sentrik generate SBOMs?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik sbom</code> generates Software Bills of Materials in CycloneDX and SPDX formats from your dependency manifests (package.json, requirements.txt, Cargo.toml, go.mod, CMakeLists.txt, and lockfiles).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik scan for vulnerable dependencies?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik vulns</code> checks all dependencies against the OSV.dev vulnerability database and shows CVE IDs, severity, and available fix versions.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik check dependency licenses?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik licenses</code> queries package registries for license metadata and flags copyleft risk (GPL, AGPL). Use <code>--copyleft-only</code> to see only risky licenses.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Organization &amp; Auditors</h2>
+
+      <details class="faq-item">
+        <summary>Can I view compliance across multiple repositories?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik org-dashboard</code> aggregates findings and compliance scores across all projects in a directory. Available at the Organization tier and above.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can external auditors review findings without VPN access?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik auditor create</code> generates a time-boxed portal link. Auditors get read-only access to compliance scores, findings by rule, audit history, and report downloads &mdash; no source code or secrets exposed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik integrate with GRC platforms like Drata?</summary>
+        <div class="faq-answer">
+          <p>Yes. Configure <code>GUARD_GRC_WEBHOOK_URL</code> to push scan results, gate outcomes, and vulnerability data to Drata, Vanta, Secureframe, or any webhook endpoint.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
       <h2>Privacy &amp; Security</h2>
 
       <details class="faq-item">
         <summary>Does sentrik send my code anywhere?</summary>
         <div class="faq-answer">
-          <p>No. sentrik runs entirely on your machine or in your CI environment. No code is uploaded, no telemetry is collected, no external services are contacted. License validation is offline (HMAC-based). The only network calls are ones you explicitly configure (DevOps integrations, PR decoration).</p>
+          <p>No. sentrik runs entirely on your machine or in your CI environment. No code is uploaded, no telemetry is collected, no external services are contacted. License validation is offline. The only network calls are ones you explicitly configure (DevOps integrations, PR decoration, vulnerability scanning).</p>
         </div>
       </details>
 

@@ -14,8 +14,8 @@ import Base from '../layouts/Base.astro';
 <section class="dash-start">
   <div class="container dash-start-inner">
     <pre><code>npm install -g sentrik
-sentrik serve</code></pre>
-    <p>Open <a href="http://localhost:8000/dashboard">http://localhost:8000/dashboard</a> in your browser.</p>
+sentrik dashboard</code></pre>
+    <p>The sentrik dashboard opens automatically in an app window.</p>
   </div>
 </section>
 
@@ -51,7 +51,7 @@ sentrik serve</code></pre>
       <div class="tab-card">
         <div class="tab-icon">&#x1F4E6;</div>
         <h3>Packs</h3>
-        <p>Enable, disable, and configure standards packs. Override individual rules within a pack. Import and export custom packs.</p>
+        <p>Enable, disable, and configure standards packs. Override individual rules within a pack. Import and export custom packs (Enterprise).</p>
       </div>
 
       <div class="tab-card">
@@ -64,18 +64,21 @@ sentrik serve</code></pre>
         <div class="tab-icon">&#x1F3AF;</div>
         <h3>Work Items</h3>
         <p>View linked Azure DevOps, GitHub, or Jira work items. Reconcile findings — auto-create, update, and close items.</p>
+        <span class="team-badge">Team</span>
       </div>
 
       <div class="tab-card">
         <div class="tab-icon">&#x1F517;</div>
         <h3>Integration</h3>
-        <p>Connect to Azure DevOps, GitHub, or Jira. Test connections, configure tokens, and see environment variable status.</p>
+        <p>Connect to Azure DevOps, GitHub, or Jira. Test connections, configure OAuth, and see environment variable status.</p>
+        <span class="team-badge">Team</span>
       </div>
 
       <div class="tab-card">
         <div class="tab-icon">&#x1F4DC;</div>
         <h3>Audit Log</h3>
         <p>Timestamped log of every scan, gate, reconcile, and config change. Filter by action type. Export for compliance evidence.</p>
+        <span class="enterprise-badge">Enterprise</span>
       </div>
 
       <div class="tab-card">
@@ -92,6 +95,17 @@ sentrik serve</code></pre>
       </div>
 
     </div>
+  </div>
+</section>
+
+<section class="dash-screenshots">
+  <div class="container">
+    <h2 class="section-title">See It In Action</h2>
+    <img src="/images/dashboard-overview.png" alt="sentrik dashboard overview" class="screenshot" loading="lazy" />
+    <img src="/images/finding-detail.png" alt="Finding detail with remediation guidance" class="screenshot" loading="lazy" />
+    <img src="/images/ai-chat-panel-1.png" alt="AI Chat — understanding a finding" class="screenshot" loading="lazy" />
+    <img src="/images/ai-chat-panel-2.png" alt="AI Chat — applying a fix" class="screenshot" loading="lazy" />
+    <img src="/images/vuln-scan-results.png" alt="Vulnerability scan results" class="screenshot" loading="lazy" />
   </div>
 </section>
 
@@ -130,7 +144,7 @@ sentrik serve</code></pre>
 <section class="dash-cta">
   <div class="container dash-cta-inner">
     <h2>Try it now</h2>
-    <pre><code>npm install -g sentrik && sentrik serve</code></pre>
+    <pre><code>npm install -g sentrik && sentrik dashboard</code></pre>
     <div class="cta-actions">
       <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Get Started</a>
       <a href="/pricing" class="btn btn-outline">View Pricing</a>
@@ -141,6 +155,8 @@ sentrik serve</code></pre>
 </Base>
 
 <style>
+  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .dash-screenshots { padding: 3rem 0; }
   .dash-hero { padding: 6rem 0 3rem; text-align: center; }
   .dash-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
@@ -161,18 +177,19 @@ sentrik serve</code></pre>
   .tab-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
   .tab-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
   .tab-card p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0; }
-  .enterprise-badge {
+  .enterprise-badge, .team-badge {
     position: absolute;
     top: 1rem;
     right: 1rem;
     padding: 0.15rem 0.6rem;
     border-radius: 4px;
-    background: var(--color-primary);
     color: #fff;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
   }
+  .enterprise-badge { background: var(--color-primary); }
+  .team-badge { background: #2563eb; }
 
   .dash-features { background: var(--color-bg-alt); }
   .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

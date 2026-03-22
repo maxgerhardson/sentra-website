@@ -18,7 +18,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-sans);
@@ -26,6 +26,7 @@ body {
   color: var(--color-text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a { color: var(--color-primary-light); text-decoration: none; }
@@ -44,7 +45,7 @@ code, pre {
   border-radius: 6px;
 }
 code { padding: 0.15em 0.4em; font-size: 0.9em; }
-pre { padding: 1.25rem; overflow-x: auto; border: 1px solid var(--color-border); }
+pre { padding: 1.25rem; overflow-x: auto; border: 1px solid var(--color-border); max-width: 100%; }
 pre code { padding: 0; background: none; }
 
 .btn {

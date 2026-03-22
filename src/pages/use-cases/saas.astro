@@ -30,11 +30,23 @@ import Base from '../../layouts/Base.astro';
       </div>
       <div class="feature-item">
         <h3>Custom Rule Packs</h3>
-        <p>Define organization-specific rules in YAML. Enforce naming conventions, architectural boundaries, import restrictions, complexity limits — anything expressible as regex, AST, or file policy.</p>
+        <p>Define organization-specific rules in YAML. Enforce naming conventions, architectural boundaries, import restrictions, and complexity limits using regex patterns and file policies across any language. Python projects also benefit from deep AST analysis.</p>
       </div>
       <div class="feature-item">
         <h3>Work Item Traceability</h3>
         <p>Auto-create GitHub Issues or Jira tickets for findings. Reconcile on every scan. Close items when findings are fixed. Full audit trail.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Organization-Wide Dashboards</h3>
+        <p>Multi-repo dashboards aggregate findings across 50+ projects. Track compliance trends, identify patterns, enforce standards across your org. Long-term metrics database for trend analysis.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Auto-Remediation &amp; Architecture Enforcement</h3>
+        <p><code>--fix</code> flag automatically applies fixes. <code>--create-pr</code> generates pull requests with remediations. Define architecture rules to enforce import restrictions and module boundaries.</p>
+      </div>
+      <div class="feature-item">
+        <h3>AI Agent Compliance SDK</h3>
+        <p>AI agents call <code>check_code()</code> and <code>get_compliance_context()</code> during generation. Shift compliance left &mdash; AI writes compliant code the first time, not after the scan fails.</p>
       </div>
     </div>
 
@@ -53,6 +65,7 @@ sentrik gate --git-range "origin/main...HEAD" --decorate-pr</code></pre>
 </Base>
 
 <style>
+  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
   .uc-hero { padding: 6rem 0 3rem; text-align: center; }
   .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
   .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }

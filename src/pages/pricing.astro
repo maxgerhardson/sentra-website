@@ -2,12 +2,12 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Pricing" description="sentrik pricing — free forever for core features, enterprise tiers for advanced needs.">
+<Base title="Pricing" description="sentrik pricing — free tier available, enterprise tiers for advanced needs.">
 
 <section class="pricing-hero">
   <div class="container">
     <h1>Simple, transparent pricing</h1>
-    <p class="pricing-sub">Free forever for core features. Enterprise tiers for teams that need advanced governance.</p>
+    <p class="pricing-sub">Free tier available. Enterprise tiers for teams that need advanced governance.</p>
   </div>
 </section>
 
@@ -23,14 +23,15 @@ import Base from '../layouts/Base.astro';
         <p class="tier-desc">Everything you need to start governing AI-generated code.</p>
         <ul class="tier-features">
           <li>Unlimited scans and gates</li>
-          <li>6 standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001)</li>
+          <li>6 core standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001)</li>
           <li>Management dashboard</li>
-          <li>REST API (25+ endpoints)</li>
+          <li>MCP server for AI coding tools</li>
+          <li>REST API (75+ endpoints)</li>
           <li>HTML, JUnit, SARIF, CSV reports</li>
-          <li>Work item traceability</li>
-          <li>PR decoration</li>
           <li>Pre-commit hooks</li>
-          <li>Auto-patching</li>
+          <li>SBOM generation &amp; license scanning</li>
+          <li>Heuristic confidence scoring</li>
+          <li>Vulnerability scanning (OSV.dev)</li>
           <li>Community support (GitHub Discussions)</li>
         </ul>
         <a href="/blog/getting-started-in-5-minutes" class="btn btn-outline tier-cta">Install Free</a>
@@ -44,10 +45,16 @@ import Base from '../layouts/Base.astro';
         <p class="tier-desc">Performance and intelligence for growing teams.</p>
         <ul class="tier-features">
           <li>Everything in Free, plus:</li>
+          <li>Dashboard AI Chat (Fix with AI)</li>
+          <li>PR decoration</li>
+          <li>Work item traceability</li>
+          <li>Auto-remediation (--fix + auto-PR generation)</li>
           <li>Parallel scanning (multi-threaded)</li>
+          <li>Change impact analysis</li>
+          <li>Architecture rules enforcement</li>
           <li>Email support</li>
         </ul>
-        <a href="mailto:sales@sentrik.dev?subject=Team%20License" class="btn btn-primary tier-cta">Get Started</a>
+        <a href="#" class="btn btn-primary tier-cta" data-tier="team" onclick="startCheckout('team')">Get Started</a>
       </div>
 
       <div class="tier-card featured">
@@ -59,12 +66,17 @@ import Base from '../layouts/Base.astro';
         <p class="tier-desc">Advanced governance for compliance-driven organizations.</p>
         <ul class="tier-features">
           <li>Everything in Team, plus:</li>
+          <li>6 industry packs (IEC 81001, 21 CFR Part 11, ISO 14971, MISRA C/C++, DO-178C, ISO 26262)</li>
           <li>Pack overrides (tune rules per-project)</li>
-          <li>ML severity estimation</li>
+          <li>Severity rescoring (heuristic)</li>
           <li>Governance profiles</li>
+          <li>Multi-repo organization dashboard</li>
+          <li>Long-term metrics database &amp; trends</li>
+          <li>LLM-powered confidence scoring</li>
+          <li>Policy-as-Code engine</li>
           <li>Priority email support</li>
         </ul>
-        <a href="mailto:sales@sentrik.dev?subject=Organization%20License" class="btn btn-primary tier-cta">Get Started</a>
+        <a href="#" class="btn btn-primary tier-cta" data-tier="org" onclick="startCheckout('org')">Get Started</a>
       </div>
 
       <div class="tier-card">
@@ -79,9 +91,17 @@ import Base from '../layouts/Base.astro';
           <li>Audit logging</li>
           <li>Async approval gates</li>
           <li>RBAC (5 roles, 10+ permissions)</li>
+          <li>Auditor portal with time-boxed access</li>
+          <li>Evidence export for compliance audits</li>
+          <li>GRC platform integration (Drata, Vanta, Secureframe)</li>
+          <li>C/C++ semantic analysis (clang-tidy/cppcheck)</li>
+          <li>AI agent compliance SDK</li>
           <li>Dedicated support + implementation assistance</li>
         </ul>
+        <!-- TODO: Add screenshot of org dashboard -->
+        <!-- TODO: Add screenshot of auditor portal -->
         <a href="mailto:sales@sentrik.dev?subject=Enterprise%20Inquiry" class="btn btn-primary tier-cta">Contact Sales</a>
+        <!-- Enterprise stays as mailto — custom pricing requires sales conversation -->
       </div>
 
     </div>
@@ -92,7 +112,7 @@ import Base from '../layouts/Base.astro';
   <div class="container trial-inner">
     <h2>Try Enterprise free for 30 days</h2>
     <p>No credit card required. All enterprise features unlocked.</p>
-    <pre><code>npm install -g sentrik && sentrik trial</code></pre>
+    <pre><code>npm install -g sentrik && sentrik dashboard</code></pre>
   </div>
 </section>
 
@@ -181,3 +201,19 @@ import Base from '../layouts/Base.astro';
     .faq-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script is:inline>
+  const CHECKOUT_URLS = {
+    team: 'https://buy.stripe.com/test_9B600i0Uxemv2m13Fe7bW01',
+    org: 'https://buy.stripe.com/test_3cIeVc8mZbaj3q58Zy7bW00',
+  };
+
+  function startCheckout(tier) {
+    const url = CHECKOUT_URLS[tier];
+    if (url) {
+      window.location.href = url;
+    } else {
+      window.location.href = 'mailto:sales@sentrik.dev?subject=' + encodeURIComponent(tier.charAt(0).toUpperCase() + tier.slice(1)) + '%20License';
+    }
+  }
+</script>

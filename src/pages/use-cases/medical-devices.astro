@@ -15,7 +15,8 @@ import Base from '../../layouts/Base.astro';
 <section class="uc-content">
   <div class="container uc-inner">
     <h2>The Challenge</h2>
-    <p>Medical device software must comply with IEC 62304, which requires traceability from requirements to code, input validation, error handling, and extensive documentation. When devices handle patient data, HIPAA adds requirements for PHI protection, encryption, and audit trails. When AI agents generate code, compliance verification becomes a bottleneck.</p>
+    <p>Medical device software must comply with IEC 62304, which requires traceability from requirements to code, input validation, error handling, and extensive documentation. Historically, IEC 62304 tooling targeted C/C++ and legacy embedded stacks. Modern medical devices increasingly use Python, JavaScript, and cloud-connected architectures where no governance tooling existed &mdash; until now.</p>
+    <p>When devices handle patient data, HIPAA adds requirements for PHI protection, encryption, and audit trails. When AI agents generate code, compliance verification becomes a bottleneck.</p>
 
     <h2>How sentrik Helps</h2>
 
@@ -36,6 +37,18 @@ import Base from '../../layouts/Base.astro';
         <h3>CI/CD Gate</h3>
         <p>Block non-compliant PRs in GitHub Actions or Azure Pipelines. PR decoration posts findings as inline comments. Status checks report pass/fail.</p>
       </div>
+      <div class="feature-item">
+        <h3>Auditor Portal &amp; SBOM Generation</h3>
+        <p>Time-boxed access portals for FDA/notified body reviewers. Auto-generate SBOMs tied to each scan. Export evidence to GRC platforms for streamlined audit preparation.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Confidence-Ranked Findings</h3>
+        <p>Heuristic + LLM-powered confidence scoring ranks findings by accuracy. Auditors see high-confidence issues first. Reduces false positive review time.</p>
+      </div>
+      <div class="feature-item">
+        <h3>C/C++ Semantic Analysis</h3>
+        <p>Deep analysis via clang-tidy and cppcheck for MISRA C, CERT C, and C++ Core Guidelines compliance. Goes beyond regex to real AST-level checking.</p>
+      </div>
     </div>
 
     <h2>Quick Start</h2>
@@ -54,6 +67,7 @@ sentrik gate                          # Enforce the gate</code></pre>
 </Base>
 
 <style>
+  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
   .uc-hero { padding: 6rem 0 3rem; text-align: center; }
   .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
   .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }

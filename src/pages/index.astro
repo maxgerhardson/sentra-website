@@ -7,7 +7,7 @@ import Base from '../layouts/Base.astro';
 <!-- Hero -->
 <section class="hero">
   <div class="container hero-inner">
-    <div class="hero-badge">Zero config &middot; Free forever &middot; Enterprise ready</div>
+    <div class="hero-badge">Zero config &middot; Works instantly &middot; Enterprise ready</div>
     <h1>Governance runtime for<br /><span class="gradient-text">AI-generated code</span></h1>
     <p class="hero-sub">
       Scan, gate, and trace compliance automatically. No setup needed &mdash;
@@ -53,6 +53,64 @@ import Base from '../layouts/Base.astro';
   </div>
 </section>
 
+<!-- AI Integration Showcase -->
+<section class="mcp-section">
+  <div class="container">
+    <h2 class="section-title">AI That Writes Compliant Code</h2>
+    <p class="section-sub">Your AI agent checks compliance rules <em>before</em> writing code. Not after.</p>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>&#x1F916; MCP: Compliance During Generation</h3>
+        <p>Claude Code, Cursor, and VS Code call sentrik via the Model Context Protocol. The AI asks &ldquo;what rules apply?&rdquo; and writes code that passes the gate on the first try.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/mcp-in-action.png" alt="Claude Code calling sentrik MCP tools" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>&#x1F50D; Dashboard: Fix with AI</h3>
+        <p>Click any finding, chat with an LLM, and apply the fix &mdash; all from the browser. Compliance officers triage findings without touching an IDE.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/ai-chat-panel.png" alt="AI chat panel fixing a compliance finding" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>&#x1F4E6; Vulnerable Dependencies? Chat, Understand, Fix.</h3>
+        <p>Scan dependencies for known CVEs. Click any vulnerability to chat with AI about the risk, where it&rsquo;s used in your code, and what breaks on upgrade. Then click <strong>Apply Fix</strong> to patch the version &mdash; or run <code>--create-pr</code> to open a pull request.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/vuln-chat-1.png" alt="Vulnerability scan — AI chat about CVE risk" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>&#x1F50D; Understand Before You Upgrade</h3>
+        <p>The AI explains what the vulnerability means, which parts of your code are affected, and whether the upgrade introduces breaking changes. Then apply the fix with one click.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/vuln-chat-2.png" alt="AI explains vulnerability impact and fix" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>&#x1F4BB; Dashboard &amp; Compliance Reports</h3>
+        <p>Real-time compliance score, severity trends, scan history, and one-click evidence export for auditors. Everything from the CLI is reflected in the dashboard.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/dashboard-overview.png" alt="sentrik dashboard overview" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Value Props -->
 <section class="value-props">
   <div class="container">
@@ -66,7 +124,7 @@ import Base from '../layouts/Base.astro';
       <div class="prop-card">
         <div class="prop-icon">&#x1F6E1;</div>
         <h3>Enforce Standards Automatically</h3>
-        <p>6 pre-built packs &mdash; IEC 62304, OWASP Top 10, SOC2, HIPAA, PCI DSS, and ISO 27001. Or write your own.</p>
+        <p>12 pre-built packs covering medical devices, aviation, automotive, fintech, and more. Python, JS, Java, C#, Go, C++, Rust. Or write your own.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x26D4;</div>
@@ -88,6 +146,21 @@ import Base from '../layouts/Base.astro';
         <h3>Built for AI Agents</h3>
         <p>Agent context generation, pre-commit hooks, auto-patching. Works with Copilot, Cursor, Claude Code, and custom agents.</p>
       </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F4E6;</div>
+        <h3>Supply Chain Security</h3>
+        <p>SBOM generation (CycloneDX/SPDX), vulnerability scanning against OSV.dev, license compliance with copyleft detection. Auto-remediation with <code>--fix</code> and <code>--create-pr</code>.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F916;</div>
+        <h3>Works Inside Your AI Agent</h3>
+        <p>MCP server integration for Claude Code, Cursor, and VS Code. Your AI agent checks compliance <em>during</em> code generation &mdash; not after. It writes compliant code the first time.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F3E2;</div>
+        <h3>Enterprise Governance</h3>
+        <p>Multi-repo org dashboard, auditor portal with time-boxed access, GRC integration (Drata, Vanta, Secureframe), evidence export for auditors, long-term metrics database.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -108,41 +181,41 @@ import Base from '../layouts/Base.astro';
 <section class="standards">
   <div class="container">
     <h2 class="section-title">Standards Packs</h2>
-    <p class="section-sub">Pre-built regulatory rule sets. Auto-detected from your README, or enable in one command.</p>
+    <p class="section-sub">12 pre-built regulatory rule sets across 8+ languages. Auto-detected from your README, or enable in one command. Plus SBOM generation, vulnerability tracking, license scanning, and C/C++ semantic analysis.</p>
     <div class="standards-grid">
       <div class="standard-card">
         <h3>IEC 62304</h3>
-        <div class="badge" style="background: #7c3aed33; color: #a78bfa;">14 rules</div>
+        <div class="badge" style="background: #7c3aed33; color: #a78bfa;">14 checks &middot; 8 languages</div>
         <p>Medical device software lifecycle. FDA 510(k), EU MDR. Traceability headers, input validation, documentation obligations.</p>
         <code>sentrik add-pack fda-iec-62304</code>
       </div>
       <div class="standard-card">
         <h3>OWASP Top 10</h3>
-        <div class="badge" style="background: #ef444433; color: #fca5a5;">22 rules</div>
+        <div class="badge" style="background: #ef444433; color: #fca5a5;">22 checks &middot; 8 languages</div>
         <p>Web application security. SQL injection, XSS, auth failures, SSRF. Auto-enabled for every project.</p>
         <code>sentrik add-pack owasp-top-10</code>
       </div>
       <div class="standard-card">
         <h3>SOC2</h3>
-        <div class="badge" style="background: #06b6d433; color: #67e8f9;">16 rules</div>
+        <div class="badge" style="background: #06b6d433; color: #67e8f9;">16 checks &middot; 8 languages</div>
         <p>Trust Services Criteria. Access control, logging, change management. Audit evidence generation.</p>
         <code>sentrik add-pack soc2</code>
       </div>
       <div class="standard-card">
         <h3>HIPAA</h3>
-        <div class="badge" style="background: #10b98133; color: #6ee7b7;">15 rules</div>
+        <div class="badge" style="background: #10b98133; color: #6ee7b7;">15 checks &middot; 8 languages</div>
         <p>Health data privacy and security. PHI handling, encryption requirements, access controls, audit trails for healthcare applications.</p>
         <code>sentrik add-pack hipaa</code>
       </div>
       <div class="standard-card">
         <h3>PCI DSS</h3>
-        <div class="badge" style="background: #f59e0b33; color: #fcd34d;">16 rules</div>
+        <div class="badge" style="background: #f59e0b33; color: #fcd34d;">16 checks &middot; 8 languages</div>
         <p>Payment card security. Cardholder data protection, encryption, secure coding, network segmentation for fintech and e-commerce.</p>
         <code>sentrik add-pack pci-dss</code>
       </div>
       <div class="standard-card">
         <h3>ISO 27001</h3>
-        <div class="badge" style="background: #3b82f633; color: #93c5fd;">14 rules</div>
+        <div class="badge" style="background: #3b82f633; color: #93c5fd;">14 checks &middot; 8 languages</div>
         <p>Information security management. Risk assessment controls, data classification, incident response, security policy enforcement.</p>
         <code>sentrik add-pack iso-27001</code>
       </div>
@@ -203,6 +276,8 @@ import Base from '../layouts/Base.astro';
   }
   .hero-actions { display: flex; gap: 1rem; justify-content: center; }
 
+  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+
   .demo { padding: 2rem 0 3rem; }
   .terminal {
     max-width: 750px;
@@ -261,6 +336,27 @@ import Base from '../layouts/Base.astro';
   .prop-card h3 { margin-bottom: 0.75rem; font-size: 1.2rem; }
   .prop-card p { color: var(--color-text-muted); font-size: 0.95rem; }
 
+  /* AI Showcase Section */
+  .mcp-section { padding: 5rem 0; background: var(--color-bg-alt); }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; margin: 3rem 0; }
+  .showcase-block.reverse { grid-template-columns: 1.2fr 1fr; }
+  .showcase-block.reverse .showcase-text { order: 2; }
+  .showcase-block.reverse .showcase-img { order: 1; }
+  .showcase-text h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .showcase-text p { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; }
+  .showcase-img .screenshot { margin: 0; max-width: 100%; }
+  @media (max-width: 768px) {
+    .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; }
+    .showcase-block.reverse .showcase-text, .showcase-block.reverse .showcase-img { order: unset; }
+  }
+  .mcp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 2rem 0; }
+  .mcp-card { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; }
+  .mcp-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+  .mcp-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px; }
+  .mcp-card.mcp-highlight { border-color: #7c3aed; box-shadow: 0 0 0 1px #7c3aed30; }
+  .mcp-code { background: #1a1a2e; color: #e0e0e8; padding: 10px 14px; border-radius: 6px; font-size: 0.8rem; margin: 0; overflow-x: auto; }
+  @media (max-width: 900px) { .mcp-grid { grid-template-columns: 1fr; } }
+
   .install-options { padding: 5rem 0; }
   .install-single {
     max-width: 550px;
@@ -298,5 +394,9 @@ import Base from '../layouts/Base.astro';
     .props-grid, .standards-grid, .install-grid { grid-template-columns: 1fr; }
     .hero { padding: 5rem 0 3rem; }
     .hero-actions, .cta-actions { flex-direction: column; align-items: center; }
+    .terminal-body { overflow-x: auto; }
+    .terminal-line { white-space: pre-wrap; word-break: break-word; font-size: 0.75rem; }
+    .hero-install pre, .install-single pre, .cta pre { font-size: 0.85rem; padding: 0.75rem 1rem; max-width: 100%; }
+    .standard-card code { word-break: break-all; font-size: 0.75rem; }
   }
 </style>

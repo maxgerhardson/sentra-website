@@ -32,6 +32,18 @@ import Base from '../../layouts/Base.astro';
         <h3>Continuous Compliance</h3>
         <p>Gate every PR in CI/CD. Critical and high severity findings block merge. Documentation obligations track non-code compliance items without blocking development.</p>
       </div>
+      <div class="feature-item">
+        <h3>GRC Integration &amp; Evidence Export</h3>
+        <p>Auto-export evidence to Drata, Vanta, or Secureframe for SOC2 audit workflows. Auditor portals with time-boxed access. Compliance score tracking for continuous readiness.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Change Impact &amp; License Compliance</h3>
+        <p>Analyze what scope changes ripple through your codebase. SBOM generation tracks all dependencies and license compliance for cardholder data systems.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Policy-as-Code</h3>
+        <p>Define custom policies beyond regex: &ldquo;no API calls in src/billing/ may use HTTP&rdquo;, &ldquo;all files must have copyright header.&rdquo; Enforce organizational standards automatically.</p>
+      </div>
     </div>
 
     <h2>Quick Start</h2>
@@ -50,6 +62,7 @@ sentrik scan</code></pre>
 </Base>
 
 <style>
+  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
   .uc-hero { padding: 6rem 0 3rem; text-align: center; }
   .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
   .uc-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }

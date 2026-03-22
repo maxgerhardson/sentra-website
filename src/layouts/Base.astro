@@ -23,8 +23,8 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-brand"><img src="/logo.svg" alt="sentrik" class="nav-logo" /></a>
-      <div class="nav-links">
+      <a href="/" class="nav-brand" id="nav-brand"><img src="/logo.svg" alt="sentrik" class="nav-logo" /></a>
+      <div class="nav-links" id="nav-links">
         <a href="/dashboard">Dashboard</a>
         <a href="/pricing">Pricing</a>
         <a href="/use-cases/medical-devices">Use Cases</a>
@@ -66,10 +66,36 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025-2026 Sentrik. All rights reserved.</p>
+        <p>&copy; 2025-2026 sentrik. All rights reserved.</p>
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (function() {
+      var brand = document.getElementById('nav-brand');
+      var links = document.getElementById('nav-links');
+      if (!brand || !links) return;
+
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      brand.addEventListener('click', function(e) {
+        if (isMobile()) {
+          e.preventDefault();
+          links.classList.toggle('open');
+        }
+      });
+
+      var allLinks = links.querySelectorAll('a');
+      for (var i = 0; i < allLinks.length; i++) {
+        allLinks[i].addEventListener('click', function() {
+          links.classList.remove('open');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
 
@@ -89,6 +115,7 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
     border-bottom: 1px solid var(--color-border);
     padding: 0.5rem 0;
   }
+  .nav-inner { position: relative; }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
   .nav-brand { display: flex; align-items: center; margin-left: -28px; }
   .nav-brand:hover { text-decoration: none; }
@@ -116,11 +143,30 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
   .footer-bottom p { color: var(--color-text-muted); font-size: 0.85rem; }
 
   @media (max-width: 768px) {
-    .nav-links { gap: 1rem; font-size: 0.85rem; }
+    .nav-brand { cursor: pointer; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(15, 11, 26, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      padding: 0.75rem 0;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-links a:last-child { border-bottom: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {
-    .nav-links a:not(.btn) { display: none; }
     .footer-grid { grid-template-columns: 1fr; }
   }
 </style>

@@ -18,9 +18,7 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 <pre><code>npm install -g sentrik</code></pre>
 
-<p>This downloads a platform-specific binary. No Python, no runtime dependencies. Both <code>sentrik</code> and <code>guard</code> commands are available.</p>
-
-<p>That's all you need. The npm package downloads a platform-specific binary automatically.</p>
+<p>That's all you need. The npm package downloads a platform-specific binary automatically. No Python, no runtime dependencies.</p>
 
 <h2>2. Scan (30 seconds)</h2>
 
@@ -90,21 +88,41 @@ jobs:
 
 <h2>Bonus: VS Code / Cursor Extension</h2>
 
-<p>Install the sentrik extension and findings appear inline as you type. It auto-initializes on first open, scans in the background on every save, and shows the finding count in the status bar. Zero interaction needed.</p>
+<p>Install the sentrik extension and findings appear inline on save. It auto-initializes on first open, scans in the background on every save, and shows the finding count in the status bar. Zero interaction needed.</p>
 
 <h2>Bonus: Dashboard</h2>
 
-<pre><code>sentrik serve</code></pre>
+<pre><code>sentrik dashboard</code></pre>
 
-<p>Open <a href="http://localhost:8000/dashboard">http://localhost:8000/dashboard</a> for a web UI showing findings, rules, governance policies, and scan trends.</p>
+<p>The sentrik dashboard opens automatically &mdash; a web UI showing findings, rules, governance policies, and scan trends. Use <code>--no-open</code> to disable auto-launch.</p>
+
+<h2>Bonus: Auto-Remediation</h2>
+
+<p>Found vulnerable dependencies? Fix them automatically:</p>
+
+<pre><code>sentrik vulns --fix              # Apply version bumps locally
+sentrik vulns --fix --create-pr  # Generate a pull request with fixes</code></pre>
+
+<p>For code findings, <code>sentrik apply-patches</code> applies auto-fixes like replacing eval() calls, switching weak crypto, and commenting out unsafe patterns.</p>
+
+<h2>Bonus: Supply Chain</h2>
+
+<p>Generate a Software Bill of Materials and check for known vulnerabilities:</p>
+
+<pre><code>sentrik sbom     # Generate SBOM (CycloneDX / SPDX)
+sentrik vulns    # Check dependencies against OSV.dev</code></pre>
+
+<p>Works with package.json, requirements.txt, Cargo.toml, go.mod, and lockfiles.</p>
 
 <h2>What's next</h2>
 
 <ul>
   <li><a href="https://maxgerhardson.github.io/sentrik-docs/getting-started/configuration">Configuration reference</a> &mdash; all <code>.sentrik/config.yaml</code> options</li>
-  <li><a href="https://maxgerhardson.github.io/sentrik-docs/standards-packs/overview">Standards packs</a> &mdash; IEC 62304, OWASP, SOC2 details</li>
+  <li><a href="https://maxgerhardson.github.io/sentrik-docs/standards-packs/overview">Standards packs</a> &mdash; IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001</li>
   <li><a href="https://maxgerhardson.github.io/sentrik-docs/guides/dashboard">Dashboard guide</a> &mdash; full walkthrough</li>
-  <li><code>sentrik trial</code> &mdash; unlock enterprise features for 30 days</li>
+  <li><a href="https://maxgerhardson.github.io/sentrik-docs/guides/cli-reference">CLI reference</a> &mdash; all 30+ commands including <code>sbom</code>, <code>vulns</code>, <code>licenses</code></li>
+  <li><a href="https://maxgerhardson.github.io/sentrik-docs/guides/mcp-integration">MCP Integration</a> &mdash; connect sentrik to Claude Code, Cursor, and VS Code</li>
+  <li><a href="https://maxgerhardson.github.io/sentrik-docs/api/reference">API reference</a> &mdash; 75+ REST API endpoints</li>
 </ul>
 
 <p>Questions? Email us at <a href="mailto:info@sentrik.dev">info@sentrik.dev</a>.</p>
