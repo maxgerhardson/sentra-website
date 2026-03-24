@@ -36,7 +36,7 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>What languages does sentrik support?</summary>
         <div class="faq-answer">
-          <p>sentrik scans any text-based source file using regex pattern matching. All 6 standards packs include rules for Python, JavaScript, TypeScript, Java, C#, Go, Rust, and C/C++. Python projects get additional deep analysis via AST checks (complexity metrics, mutable defaults, star imports, nested functions). Custom rules can target any language using <code>file_glob</code> patterns.</p>
+          <p>sentrik scans any text-based source file using regex pattern matching. Core packs include rules for Python, JavaScript, TypeScript, Java, C#, Go, Rust, and C/C++. Dedicated packs add deep coverage for PHP/Laravel and Kotlin/Android. Python projects get additional analysis via AST checks (complexity metrics, mutable defaults, star imports, nested functions). Custom rules can target any language using <code>file_glob</code> patterns.</p>
         </div>
       </details>
 
@@ -107,14 +107,16 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>Which standards packs are available?</summary>
         <div class="faq-answer">
-          <p>sentrik ships with 6 built-in packs, all free:</p>
+          <p>sentrik ships with 8 free packs:</p>
           <ul>
-            <li><strong>IEC 62304</strong> &mdash; Medical device software (14 rules)</li>
-            <li><strong>OWASP Top 10</strong> &mdash; Web application security (22 rules)</li>
-            <li><strong>SOC2</strong> &mdash; Trust Services Criteria (16 rules)</li>
-            <li><strong>HIPAA</strong> &mdash; Health data privacy (15 rules)</li>
-            <li><strong>PCI DSS</strong> &mdash; Payment card security (16 rules)</li>
-            <li><strong>ISO 27001</strong> &mdash; Information security management (14 rules)</li>
+            <li><strong>IEC 62304</strong> &mdash; Medical device software (31 rules)</li>
+            <li><strong>OWASP Top 10</strong> &mdash; Web application security (69 rules)</li>
+            <li><strong>SOC2</strong> &mdash; Trust Services Criteria (30 rules)</li>
+            <li><strong>HIPAA</strong> &mdash; Health data privacy (25 rules)</li>
+            <li><strong>PCI DSS</strong> &mdash; Payment card security (33 rules)</li>
+            <li><strong>ISO 27001</strong> &mdash; Information security management (32 rules)</li>
+            <li><strong>PHP Security</strong> &mdash; PHP/Laravel code injection, SQLi, XSS (15 rules)</li>
+            <li><strong>Kotlin Security</strong> &mdash; Kotlin/Android/Spring Boot (13 rules)</li>
           </ul>
           <p>Run <code>sentrik list-packs</code> to see all available packs and their status.</p>
         </div>
@@ -182,7 +184,7 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>Is the free tier really unlimited?</summary>
         <div class="faq-answer">
-          <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits. The free tier includes 6 core standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001), the dashboard, REST API, all report formats, and pre-commit hooks.</p>
+          <p>Yes. Unlimited scans, unlimited files, unlimited rules, unlimited users. No throttling, no nag screens, no time limits. The free tier includes 8 standards packs (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001, PHP Security, Kotlin Security), the dashboard, REST API, all report formats, and pre-commit hooks.</p>
         </div>
       </details>
 
