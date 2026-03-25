@@ -156,7 +156,7 @@ import Base from '../layouts/Base.astro';
   run: sentrik gate --git-range "origin/main...HEAD" --decorate-pr --status-check
   env:
     GITHUB_TOKEN: $&lbrace;&lbrace; secrets.GITHUB_TOKEN &rbrace;&rbrace;</code></pre>
-          <p>The <code>--decorate-pr</code> flag posts findings as PR comments. <code>--status-check</code> reports pass/fail as a commit status.</p>
+          <p>The <code>--decorate-pr</code> flag posts a compliance summary comment on the PR showing per-framework findings breakdown, blocking count, and top findings. <code>--status-check</code> reports pass/fail as a commit status.</p>
         </div>
       </details>
 
