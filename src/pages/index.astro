@@ -23,7 +23,7 @@ import Base from '../layouts/Base.astro';
   </div>
 </section>
 
-<!-- Terminal Demo -->
+<!-- Live Terminal Demo -->
 <section class="demo">
   <div class="container">
     <div class="terminal">
@@ -31,25 +31,21 @@ import Base from '../layouts/Base.astro';
         <span class="terminal-dot red"></span>
         <span class="terminal-dot yellow"></span>
         <span class="terminal-dot green"></span>
-        <span class="terminal-title">Terminal</span>
+        <span class="terminal-title">sentrik &mdash; Full Compliance Lifecycle</span>
       </div>
       <div class="terminal-body">
-        <div class="terminal-line"><span class="prompt">$</span> npm install -g sentrik</div>
-        <div class="terminal-line dim">  sentrik: Binary installed</div>
-        <div class="terminal-line">&nbsp;</div>
-        <div class="terminal-line"><span class="prompt">$</span> cd my-project && sentrik scan</div>
-        <div class="terminal-line dim">  Detected: python, javascript &middot; CI: github &middot; Packs: owasp-top-10</div>
-        <div class="terminal-line dim">  Scanning 47 files against 22 rules...</div>
-        <div class="terminal-line"><span class="sev-crit">CRITICAL</span> OWASP-A03-005 &middot; src/api.py:42 &middot; eval() executes arbitrary code</div>
-        <div class="terminal-line"><span class="sev-high">HIGH</span>     OWASP-A01-001 &middot; src/auth.py:18 &middot; Hardcoded credentials</div>
-        <div class="terminal-line"><span class="sev-med">MEDIUM</span>   OWASP-A02-003 &middot; src/app.py:7  &middot; MD5 used for hashing</div>
-        <div class="terminal-line dim">  3 findings (1 critical, 1 high, 1 medium)</div>
-        <div class="terminal-line">&nbsp;</div>
-        <div class="terminal-line"><span class="prompt">$</span> sentrik gate</div>
-        <div class="terminal-line"><span class="gate-fail">GATE FAILED</span> &mdash; 2 blocking findings (critical, high)</div>
+        <div id="main-player"></div>
       </div>
     </div>
-    <p class="demo-caption">No config files. No wizard. Just scan.</p>
+    <p class="demo-caption">Real output from a medical device API project &mdash; IEC 62304 + HIPAA + OWASP + SOC2</p>
+
+    <div class="demo-tabs">
+      <button class="demo-tab active" data-cast="/recordings/05-full-lifecycle.cast">Full Lifecycle</button>
+      <button class="demo-tab" data-cast="/recordings/01-init-and-scan.cast">Scan &amp; Findings</button>
+      <button class="demo-tab" data-cast="/recordings/02-fix-and-gate.cast">Fix &amp; Gate</button>
+      <button class="demo-tab" data-cast="/recordings/03-supply-chain.cast">Supply Chain</button>
+      <button class="demo-tab" data-cast="/recordings/04-compliance.cast">Reports &amp; Evidence</button>
+    </div>
   </div>
 </section>
 
@@ -292,7 +288,7 @@ import Base from '../layouts/Base.astro';
 
   .demo { padding: 2rem 0 3rem; }
   .terminal {
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
@@ -313,10 +309,11 @@ import Base from '../layouts/Base.astro';
   .terminal-title { margin-left: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }
   .terminal-body {
     background: #1a1428;
-    padding: 1.25rem;
+    padding: 0;
     font-family: var(--font-mono);
     font-size: 0.9rem;
     line-height: 1.8;
+    overflow: hidden;
   }
   .terminal-line { white-space: pre; }
   .terminal-line.dim { color: var(--color-text-muted); }
@@ -331,6 +328,44 @@ import Base from '../layouts/Base.astro';
     font-size: 0.95rem;
     margin-top: 1.25rem;
     font-style: italic;
+  }
+  .demo-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .demo-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .demo-tab:hover {
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+  .demo-tab.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #fff;
+  }
+  #main-player {
+    min-height: 300px;
+  }
+  /* Override asciinema player styles to match site theme */
+  :global(.ap-wrapper) {
+    border-radius: 0 !important;
+  }
+  :global(.asciinema-player-wrapper) {
+    background: #1a1428 !important;
   }
 
   .section-title { text-align: center; margin-bottom: 1rem; }
