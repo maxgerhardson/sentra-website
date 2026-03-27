@@ -97,43 +97,54 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
       }
     })();
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
-      var container = document.getElementById('main-player');
-      if (!container || typeof AsciinemaPlayer === 'undefined') return;
+    (function() {
+      function initPlayer() {
+        var container = document.getElementById('main-player');
+        if (!container) return;
+        if (typeof AsciinemaPlayer === 'undefined') {
+          setTimeout(initPlayer, 200);
+          return;
+        }
 
-      var currentPlayer = null;
+        function loadCast(src) {
+          container.innerHTML = '';
+          try {
+            AsciinemaPlayer.create(src, container, {
+              cols: 120,
+              rows: 35,
+              fit: 'width',
+              autoPlay: true,
+              speed: 1.5,
+              theme: 'monokai',
+              idleTimeLimit: 2
+            });
+          } catch(e) {
+            container.innerHTML = '<p style="color:#999;padding:1rem;">Loading demo...</p>';
+          }
+        }
 
-      function loadCast(src) {
-        container.innerHTML = '';
-        try {
-          currentPlayer = AsciinemaPlayer.create(src, container, {
-            cols: 120,
-            rows: 35,
-            fit: 'width',
-            autoPlay: true,
-            speed: 1.5,
-            theme: 'monokai',
-            idleTimeLimit: 2,
-          });
-        } catch(e) {
-          container.innerHTML = '<p style="color:#999;padding:1rem;">Loading demo...</p>';
+        loadCast('/recordings/05-full-lifecycle.cast');
+
+        var tabs = document.querySelectorAll('.demo-tab');
+        for (var i = 0; i < tabs.length; i++) {
+          (function(tab) {
+            tab.addEventListener('click', function() {
+              for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('active'); }
+              tab.classList.add('active');
+              loadCast(tab.getAttribute('data-cast'));
+            });
+          })(tabs[i]);
         }
       }
 
-      // Initial load
-      loadCast('/recordings/05-full-lifecycle.cast');
-
-      // Tab switching
-      document.querySelectorAll('.demo-tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          document.querySelectorAll('.demo-tab').forEach(function(t) { t.classList.remove('active'); });
-          tab.classList.add('active');
-          loadCast(tab.getAttribute('data-cast'));
-        });
-      });
-    });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPlayer);
+      } else {
+        initPlayer();
+      }
+    })();
   </script>
 </body>
 </html>
