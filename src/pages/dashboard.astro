@@ -21,7 +21,7 @@ sentrik dashboard</code></pre>
 
 <section class="dash-tabs">
   <div class="container">
-    <h2 class="section-title">11 Tabs. Everything You Need.</h2>
+    <h2 class="section-title">Everything You Need. One Dashboard.</h2>
     <div class="tabs-grid">
 
       <div class="tab-card">
@@ -101,11 +101,62 @@ sentrik dashboard</code></pre>
 <section class="dash-screenshots">
   <div class="container">
     <h2 class="section-title">See It In Action</h2>
-    <img src="/images/dashboard-overview.png" alt="sentrik dashboard overview" class="screenshot" loading="lazy" />
-    <img src="/images/finding-detail.png" alt="Finding detail with remediation guidance" class="screenshot" loading="lazy" />
-    <img src="/images/ai-chat-panel-1.png" alt="AI Chat — understanding a finding" class="screenshot" loading="lazy" />
-    <img src="/images/ai-chat-panel-2.png" alt="AI Chat — applying a fix" class="screenshot" loading="lazy" />
-    <img src="/images/vuln-scan-results.png" alt="Vulnerability scan results" class="screenshot" loading="lazy" />
+    <p class="section-sub">Real screenshots from a medical device API project scanned with 4 standards packs (IEC 62304, HIPAA, OWASP, SOC2).</p>
+
+    <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <img src="/images/dash-overview.png" alt="Dashboard overview — compliance score, severity chart, scan metrics" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Overview &mdash; 100% compliance score, severity breakdown, scan trends</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-findings.png" alt="Findings list with severity, rule ID, and descriptions" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Findings &mdash; searchable list with severity, rule ID, and remediation guidance</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-vulnerabilities.png" alt="Vulnerability scan showing CVEs in dependencies" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Vulnerabilities &mdash; CVE scan results with severity and fix versions</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-rules.png" alt="Active rules browser with severity and type filters" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Rules &mdash; browse all active rules by severity, type, and standard</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-packs.png" alt="Standards packs management" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Packs &mdash; enable, disable, and configure standards packs</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-work-items.png" alt="Work items synced from GitHub Issues" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Work Items &mdash; synced GitHub Issues with requirement traceability</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-policies.png" alt="Governance policies configuration" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Policies &mdash; governance profiles, human review gates, auto-patch controls</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-audit-log.png" alt="Audit log with HMAC integrity signatures" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Audit Log &mdash; every scan, gate, and reconcile event with HMAC integrity</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/dash-history.png" alt="Historical scan runs with trend analysis" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">History &mdash; historical scan runs with finding trends over time</p>
+      </div>
+    </div>
+
+    <h3 class="section-title" style="margin-top:3rem">AI Chat &amp; Vulnerability Triage</h3>
+    <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <img src="/images/ai-chat-panel-1.png" alt="AI Chat — understanding a finding" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Fix with AI &mdash; chat with an LLM about any finding</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/vuln-chat-1.png" alt="Vulnerability scan with AI chat" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Vulnerability Chat &mdash; AI explains CVE impact on your code</p>
+      </div>
+      <div class="screenshot-item">
+        <img src="/images/vuln-chat-2.png" alt="AI explains vulnerability fix" class="screenshot" loading="lazy" />
+        <p class="screenshot-label">Understand Before You Upgrade &mdash; AI checks for breaking changes</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -155,8 +206,16 @@ sentrik dashboard</code></pre>
 </Base>
 
 <style>
-  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
   .dash-screenshots { padding: 3rem 0; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2rem; }
+  .screenshot-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .screenshot-item { }
+  .screenshot-item .screenshot { transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+  .screenshot-item .screenshot:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .screenshot-label { text-align: center; color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.75rem; }
+  @media (max-width: 900px) { .screenshot-gallery { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .screenshot-gallery { grid-template-columns: 1fr; } }
   .dash-hero { padding: 6rem 0 3rem; text-align: center; }
   .dash-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
