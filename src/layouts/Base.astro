@@ -18,6 +18,7 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.css" />
   <script defer data-domain="sentrik.dev" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -95,6 +96,44 @@ const { title, description = "Governance runtime for AI-generated code. Scan, ga
         });
       }
     })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      var container = document.getElementById('main-player');
+      if (!container || typeof AsciinemaPlayer === 'undefined') return;
+
+      var currentPlayer = null;
+
+      function loadCast(src) {
+        container.innerHTML = '';
+        try {
+          currentPlayer = AsciinemaPlayer.create(src, container, {
+            cols: 120,
+            rows: 35,
+            fit: 'width',
+            autoPlay: true,
+            speed: 1.5,
+            theme: 'monokai',
+            idleTimeLimit: 2,
+          });
+        } catch(e) {
+          container.innerHTML = '<p style="color:#999;padding:1rem;">Loading demo...</p>';
+        }
+      }
+
+      // Initial load
+      loadCast('/recordings/05-full-lifecycle.cast');
+
+      // Tab switching
+      document.querySelectorAll('.demo-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.demo-tab').forEach(function(t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          loadCast(tab.getAttribute('data-cast'));
+        });
+      });
+    });
   </script>
 </body>
 </html>
