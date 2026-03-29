@@ -13,8 +13,20 @@ const { title } = Astro.props;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script defer data-domain="sentrik.dev" src="https://plausible.io/js/script.js"></script>
-  <style>
+  <style is:global>
     @import '../styles/global.css';
+  </style>
+  <style>
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border); padding: 0.5rem 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: center; }
+    .nav-brand { display: flex; align-items: center; }
+    .nav-brand:hover { text-decoration: none; }
+    .nav-logo { height: 80px; width: auto; }
+    main { margin-top: 100px; }
   </style>
 </head>
 <body>
