@@ -1,29 +1,26 @@
 ---
-import Base from '../layouts/Base.astro';
+import ComingSoon from '../layouts/ComingSoon.astro';
 ---
 
-<Base title="Governance Runtime for AI-Generated Code">
+<ComingSoon title="The Compliance Layer for AI-Generated Code">
 
 <!-- Hero -->
 <section class="hero">
   <div class="container hero-inner">
-    <div class="hero-badge">Zero config &middot; Works instantly &middot; Enterprise ready</div>
-    <h1>Governance runtime for<br /><span class="gradient-text">AI-generated code</span></h1>
+    <div class="hero-badge">Coming Soon</div>
+    <h1>The compliance layer for<br /><span class="gradient-text">AI-generated code</span></h1>
     <p class="hero-sub">
-      Scan, gate, and trace compliance automatically. No setup needed &mdash;
-      auto-detects your project, applies sensible defaults, shows findings inline.
+      Your developers use AI to write code. Who checks if it's compliant?
+      Sentrik scans, gates, and traces regulatory compliance automatically
+      &mdash; IEC 62304, HIPAA, SOC2, OWASP, and more.
     </p>
-    <div class="hero-install">
-      <pre><code>npm install -g sentrik</code></pre>
-    </div>
     <div class="hero-actions">
-      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Get Started</a>
-      <a href="https://maxgerhardson.github.io/sentrik-docs" class="btn btn-outline">Read the Docs</a>
+      <a href="mailto:hello@sentrik.dev?subject=Demo%20Request&body=I'd%20like%20to%20see%20a%20demo%20of%20Sentrik." class="btn btn-primary">Request a Demo</a>
     </div>
   </div>
 </section>
 
-<!-- Live Terminal Demo -->
+<!-- Terminal Demo -->
 <section class="demo">
   <div class="container">
     <div class="terminal">
@@ -37,7 +34,7 @@ import Base from '../layouts/Base.astro';
         <div id="main-player"></div>
       </div>
     </div>
-    <p class="demo-caption">Real output from a medical device API project &mdash; IEC 62304 + HIPAA + OWASP + SOC2</p>
+    <p class="demo-caption">Real output from a medical device API &mdash; 24 critical findings found, fixed, and gated in minutes</p>
 
     <div class="demo-tabs">
       <button class="demo-tab active" data-cast="/recordings/05-full-lifecycle.cast">Full Lifecycle</button>
@@ -49,7 +46,32 @@ import Base from '../layouts/Base.astro';
   </div>
 </section>
 
-<!-- AI Integration Showcase -->
+<!-- The Problem -->
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">The Problem</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-stat">70%</div>
+        <p>of new code is AI-generated at regulated companies</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">6 weeks</div>
+        <p>average time to prepare compliance evidence for a single audit</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">4-5 tools</div>
+        <p>required today to cover security + compliance + audit evidence</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">$0</div>
+        <p>that those tools know about IEC 62304, HIPAA clauses, or SOC2 controls</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Showcase -->
 <section class="mcp-section">
   <div class="container">
     <h2 class="section-title">AI That Writes Compliant Code</h2>
@@ -57,118 +79,71 @@ import Base from '../layouts/Base.astro';
 
     <div class="showcase-block">
       <div class="showcase-text">
-        <h3>&#x1F916; MCP: Compliance During Generation</h3>
-        <p>Claude Code, Cursor, and VS Code call sentrik via the Model Context Protocol. The AI asks &ldquo;what rules apply?&rdquo; and writes code that passes the gate on the first try.</p>
+        <h3>Compliance During Code Generation</h3>
+        <p>Claude Code, Cursor, and VS Code call Sentrik via the Model Context Protocol. The AI asks &ldquo;what rules apply?&rdquo; and writes code that passes the gate on the first try.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/mcp-in-action.png" alt="Claude Code calling sentrik MCP tools" class="screenshot" loading="lazy" />
+        <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot" loading="lazy" />
       </div>
     </div>
 
     <div class="showcase-block reverse">
       <div class="showcase-text">
-        <h3>&#x1F50D; Dashboard: Fix with AI</h3>
+        <h3>Fix Findings with AI</h3>
         <p>Click any finding, chat with an LLM, and apply the fix &mdash; all from the browser. Compliance officers triage findings without touching an IDE.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/ai-chat-panel.png" alt="AI chat panel fixing a compliance finding" class="screenshot" loading="lazy" />
+        <img src="/images/ai-chat-panel.png" alt="AI chat panel explaining how to fix a compliance finding" class="screenshot" loading="lazy" />
       </div>
     </div>
 
     <div class="showcase-block">
       <div class="showcase-text">
-        <h3>&#x1F4E6; Vulnerable Dependencies? Chat, Understand, Fix.</h3>
-        <p>Scan dependencies for known CVEs. Click any vulnerability to chat with AI about the risk, where it&rsquo;s used in your code, and what breaks on upgrade. Then click <strong>Apply Fix</strong> to patch the version &mdash; or run <code>--create-pr</code> to open a pull request.</p>
+        <h3>Dashboard &amp; Compliance Reports</h3>
+        <p>Real-time compliance score, severity trends, scan history, and one-click evidence export for auditors. Everything an auditor needs, generated automatically.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/vuln-chat-1.png" alt="Vulnerability scan — AI chat about CVE risk" class="screenshot" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block reverse">
-      <div class="showcase-text">
-        <h3>&#x1F50D; Understand Before You Upgrade</h3>
-        <p>The AI explains what the vulnerability means, which parts of your code are affected, and whether the upgrade introduces breaking changes. Then apply the fix with one click.</p>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/vuln-chat-2.png" alt="AI explains vulnerability impact and fix" class="screenshot" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>&#x1F4BB; Dashboard &amp; Compliance Reports</h3>
-        <p>Real-time compliance score, severity trends, scan history, and one-click evidence export for auditors. Everything from the CLI is reflected in the dashboard.</p>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/dashboard-overview.png" alt="sentrik dashboard overview" class="screenshot" loading="lazy" />
+        <img src="/images/dashboard-overview.png" alt="Sentrik compliance dashboard" class="screenshot" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- Value Props -->
+<!-- What It Does -->
 <section class="value-props">
   <div class="container">
-    <h2 class="section-title">Why sentrik?</h2>
+    <h2 class="section-title">One Tool. Full Compliance Lifecycle.</h2>
     <div class="props-grid">
       <div class="prop-card">
         <div class="prop-icon">&#x26A1;</div>
-        <h3>Zero Config</h3>
-        <p>Auto-detects your project type, languages, and CI platform. Works immediately &mdash; no wizard, no setup files, no prompts.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F6E1;</div>
-        <h3>Enforce Standards Automatically</h3>
-        <p>14 pre-built packs covering medical devices, aviation, automotive, fintech, PHP/Laravel, Kotlin/Android, and more. Python, JS, Java, C#, Go, C++, Rust, PHP, Kotlin. Or write your own.</p>
+        <h3>Scan in Seconds</h3>
+        <p>366 rules across 14 regulatory frameworks. SQL injection, hardcoded secrets, missing encryption, weak crypto &mdash; mapped to specific regulatory clauses.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x26D4;</div>
         <h3>Gate Every PR</h3>
-        <p>Block non-compliant code in CI/CD. GitHub Actions, Azure Pipelines, and GitLab CI. PR comments show per-framework compliance summary, file coverage map, and top findings.</p>
+        <p>Block non-compliant code in CI/CD. GitHub Actions, Azure Pipelines, GitLab CI. PR comments show exactly which regulation you're violating.</p>
       </div>
       <div class="prop-card">
-        <div class="prop-icon">&#x1F4BB;</div>
-        <h3>VS Code &amp; Cursor</h3>
-        <p>Install the extension and findings appear inline on save. Auto-initializes, scans in background, status bar shows count. Zero interaction.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F517;</div>
-        <h3>Trace Everything</h3>
-        <p>Link findings to Azure DevOps, GitHub Issues, or Jira work items. Auto-create, update, and close items on reconcile.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F916;</div>
-        <h3>Built for AI Agents</h3>
-        <p>Agent context generation, MCP server integration, pre-commit hooks, auto-patching. <code>sentrik audit-mcp</code> scans MCP configs for security risks. Works with Copilot, Cursor, Claude Code, and custom agents.</p>
+        <div class="prop-icon">&#x1F4CB;</div>
+        <h3>Audit Evidence in One Click</h3>
+        <p>Per-framework compliance reports, trust center pages, evidence bundles, and audit-ready ZIPs. No more 6-week evidence collection sprints.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F4E6;</div>
         <h3>Supply Chain Security</h3>
-        <p>SBOM generation, CVE scanning (OSV.dev), license compliance, and dedicated secrets detection (AWS, GitHub, Stripe, Slack, private keys). Auto-remediation with <code>--fix</code> and <code>--create-pr</code>.</p>
+        <p>SBOM generation, CVE scanning, license compliance, secrets detection. Auto-fix vulnerable dependencies and create PRs.</p>
       </div>
       <div class="prop-card">
-        <div class="prop-icon">&#x1F916;</div>
-        <h3>Works Inside Your AI Agent</h3>
-        <p>MCP server integration for Claude Code, Cursor, and VS Code. Your AI agent checks compliance <em>during</em> code generation &mdash; not after. It writes compliant code the first time.</p>
+        <div class="prop-icon">&#x1F517;</div>
+        <h3>Full Traceability</h3>
+        <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Auto-sync with GitHub, Azure DevOps, and Jira.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F3E2;</div>
-        <h3>Security Posture Management</h3>
-        <p>ASPM posture scoring, delta analysis (new vs resolved findings), per-file code metrics (lines, nesting, functions). Multi-repo org dashboard, auditor portal, GRC integration, evidence export, long-term metrics.</p>
+        <h3>Enterprise Governance</h3>
+        <p>Governance profiles, async approval gates, HMAC-signed audit logs, RBAC, auditor portals, and GRC platform integration.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Install Options -->
-<section class="install-options">
-  <div class="container">
-    <h2 class="section-title">Install in Seconds</h2>
-    <p class="section-sub">One command. Downloads a platform-specific binary. No runtime dependencies.</p>
-    <div class="install-single">
-      <pre><code>npm install -g sentrik</code></pre>
-      <p>Downloads a platform binary. No Python, no Docker, no extra dependencies. Works on macOS, Linux, and Windows.</p>
     </div>
   </div>
 </section>
@@ -176,89 +151,50 @@ import Base from '../layouts/Base.astro';
 <!-- Standards -->
 <section class="standards">
   <div class="container">
-    <h2 class="section-title">Standards Packs</h2>
-    <p class="section-sub">12 pre-built regulatory rule sets across 8+ languages. Auto-detected from your README, or enable in one command. Plus SBOM generation, vulnerability tracking, license scanning, and C/C++ semantic analysis.</p>
+    <h2 class="section-title">14 Regulatory Frameworks. Built In.</h2>
+    <p class="section-sub">Medical devices, fintech, healthcare, automotive, aviation, embedded systems.</p>
     <div class="standards-grid">
-      <div class="standard-card">
-        <h3>IEC 62304</h3>
-        <div class="badge" style="background: #7c3aed33; color: #a78bfa;">14 checks &middot; 8 languages</div>
-        <p>Medical device software lifecycle. FDA 510(k), EU MDR. Traceability headers, input validation, documentation obligations.</p>
-        <code>sentrik add-pack fda-iec-62304</code>
-      </div>
-      <div class="standard-card">
-        <h3>OWASP Top 10</h3>
-        <div class="badge" style="background: #ef444433; color: #fca5a5;">22 checks &middot; 8 languages</div>
-        <p>Web application security. SQL injection, XSS, auth failures, SSRF. Auto-enabled for every project.</p>
-        <code>sentrik add-pack owasp-top-10</code>
-      </div>
-      <div class="standard-card">
-        <h3>SOC2</h3>
-        <div class="badge" style="background: #06b6d433; color: #67e8f9;">16 checks &middot; 8 languages</div>
-        <p>Trust Services Criteria. Access control, logging, change management. Audit evidence generation.</p>
-        <code>sentrik add-pack soc2</code>
-      </div>
-      <div class="standard-card">
-        <h3>HIPAA</h3>
-        <div class="badge" style="background: #10b98133; color: #6ee7b7;">15 checks &middot; 8 languages</div>
-        <p>Health data privacy and security. PHI handling, encryption requirements, access controls, audit trails for healthcare applications.</p>
-        <code>sentrik add-pack hipaa</code>
-      </div>
-      <div class="standard-card">
-        <h3>PCI DSS</h3>
-        <div class="badge" style="background: #f59e0b33; color: #fcd34d;">16 checks &middot; 8 languages</div>
-        <p>Payment card security. Cardholder data protection, encryption, secure coding, network segmentation for fintech and e-commerce.</p>
-        <code>sentrik add-pack pci-dss</code>
-      </div>
-      <div class="standard-card">
-        <h3>ISO 27001</h3>
-        <div class="badge" style="background: #3b82f633; color: #93c5fd;">14 checks &middot; 8 languages</div>
-        <p>Information security management. Risk assessment controls, data classification, incident response, security policy enforcement.</p>
-        <code>sentrik add-pack iso-27001</code>
-      </div>
-      <div class="standard-card">
-        <h3>PHP Security</h3>
-        <div class="badge" style="background: #6366f133; color: #a5b4fc;">15 checks &middot; PHP</div>
-        <p>PHP and Laravel security. Code injection, SQL injection, XSS, file inclusion, CSRF, mass assignment, session fixation.</p>
-        <code>sentrik add-pack php-security</code>
-      </div>
-      <div class="standard-card">
-        <h3>Kotlin Security</h3>
-        <div class="badge" style="background: #8b5cf633; color: #c4b5fd;">13 checks &middot; Kotlin</div>
-        <p>Kotlin, Android, and Spring Boot security. SQL injection, WebView exploits, insecure crypto, exported components, command injection.</p>
-        <code>sentrik add-pack kotlin-security</code>
-      </div>
+      <div class="standard-card"><h3>IEC 62304</h3><p>Medical device software lifecycle</p></div>
+      <div class="standard-card"><h3>OWASP Top 10</h3><p>Web application security</p></div>
+      <div class="standard-card"><h3>SOC2</h3><p>Trust services criteria</p></div>
+      <div class="standard-card"><h3>HIPAA</h3><p>Healthcare data protection</p></div>
+      <div class="standard-card"><h3>PCI DSS</h3><p>Payment card security</p></div>
+      <div class="standard-card"><h3>ISO 27001</h3><p>Information security management</p></div>
+      <div class="standard-card"><h3>DO-178C</h3><p>Aviation software certification</p></div>
+      <div class="standard-card"><h3>ISO 26262</h3><p>Automotive functional safety</p></div>
     </div>
+    <p class="section-sub" style="margin-top: 1.5rem; font-size: 0.9rem;">Plus MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, PHP Security, Kotlin Security</p>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta">
   <div class="container cta-inner">
-    <h2>Ready to govern your AI-generated code?</h2>
-    <pre><code>npm install -g sentrik && sentrik scan</code></pre>
+    <h2>Ready to see it in action?</h2>
+    <p class="cta-sub">We're onboarding design partners in medical devices, fintech, and SaaS.</p>
     <div class="cta-actions">
-      <a href="/blog/getting-started-in-5-minutes" class="btn btn-primary">Read the Quickstart</a>
-      <a href="/pricing" class="btn btn-outline">View Pricing</a>
+      <a href="mailto:hello@sentrik.dev?subject=Demo%20Request&body=I'd%20like%20to%20see%20a%20demo%20of%20Sentrik.%0A%0ACompany:%0ARole:%0AFrameworks%20we%20need:%20" class="btn btn-primary btn-lg">Request a Demo</a>
     </div>
   </div>
 </section>
 
-</Base>
+</ComingSoon>
 
 <style>
-  .hero { padding: 8rem 0 4rem; text-align: center; }
+  .hero { padding: 10rem 0 4rem; text-align: center; }
   .hero-badge {
     display: inline-block;
-    padding: 0.35rem 1rem;
+    padding: 0.4rem 1.2rem;
     border-radius: 20px;
-    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     color: #fff;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    opacity: 0.9;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
-  .hero h1 { margin-bottom: 1.5rem; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3.2rem; line-height: 1.15; }
   .gradient-text {
     background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
     -webkit-background-clip: text;
@@ -268,182 +204,81 @@ import Base from '../layouts/Base.astro';
   .hero-sub {
     font-size: 1.25rem;
     color: var(--color-text-muted);
-    max-width: 650px;
-    margin: 0 auto 2rem;
-    line-height: 1.6;
-  }
-  .hero-install {
-    margin-bottom: 2rem;
-  }
-  .hero-install pre {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    font-size: 1.15rem;
-    border: 2px solid var(--color-primary);
-    background: var(--color-surface);
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
   }
   .hero-actions { display: flex; gap: 1rem; justify-content: center; }
+  .btn-lg { padding: 0.9rem 2.5rem; font-size: 1.1rem; }
 
-  .screenshot { width: 100%; max-width: 900px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
 
-  .demo { padding: 2rem 0 3rem; }
-  .terminal {
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  }
-  .terminal-header {
-    background: #2d2640;
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+  .demo { padding: 2rem 0 4rem; }
+  .terminal { max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
+  .terminal-header { background: #2d2640; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
   .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
   .terminal-dot.red { background: #ff5f57; }
   .terminal-dot.yellow { background: #ffbd2e; }
   .terminal-dot.green { background: #28c840; }
   .terminal-title { margin-left: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }
-  .terminal-body {
-    background: #1a1428;
-    padding: 0;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    line-height: 1.8;
-    overflow: hidden;
-  }
-  .terminal-line { white-space: pre; }
-  .terminal-line.dim { color: var(--color-text-muted); }
-  .prompt { color: var(--color-success); }
-  .sev-crit { color: #ef4444; font-weight: 600; }
-  .sev-high { color: #f97316; font-weight: 600; }
-  .sev-med { color: #f59e0b; font-weight: 600; }
-  .gate-fail { color: #ef4444; font-weight: 700; }
-  .demo-caption {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: 0.95rem;
-    margin-top: 1.25rem;
-    font-style: italic;
-  }
-  .demo-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.25rem;
-    flex-wrap: wrap;
-  }
-  .demo-tab {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background: var(--color-surface);
-    color: var(--color-text-muted);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .demo-tab:hover {
-    border-color: var(--color-primary);
-    color: var(--color-text);
-  }
-  .demo-tab.active {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: #fff;
-  }
-  #main-player {
-    min-height: 300px;
-  }
-  /* Override asciinema player styles to match site theme */
-  :global(.ap-wrapper) {
-    border-radius: 0 !important;
-  }
-  :global(.asciinema-player-wrapper) {
-    background: #1a1428 !important;
-  }
+  .terminal-body { background: #1a1428; padding: 0; overflow: hidden; }
+  .demo-caption { text-align: center; color: var(--color-text-muted); font-size: 0.95rem; margin-top: 1.25rem; font-style: italic; }
+  .demo-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .demo-tab { padding: 0.5rem 1rem; font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text-muted); cursor: pointer; transition: all 0.2s ease; }
+  .demo-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
+  .demo-tab.active { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+  #main-player { min-height: 300px; }
+  :global(.ap-wrapper) { border-radius: 0 !important; }
 
-  .section-title { text-align: center; margin-bottom: 1rem; }
-  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; }
+  /* Problem stats */
+  .problem { padding: 5rem 0; }
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .problem-stat { font-size: 2.5rem; font-weight: 800; color: var(--color-accent); margin-bottom: 0.5rem; }
+  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
 
-  .value-props { background: var(--color-bg-alt); }
-  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .prop-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-  .prop-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .prop-card h3 { margin-bottom: 0.75rem; font-size: 1.2rem; }
-  .prop-card p { color: var(--color-text-muted); font-size: 0.95rem; }
-
-  /* AI Showcase Section */
+  /* Showcase */
   .mcp-section { padding: 5rem 0; background: var(--color-bg-alt); }
-  .showcase-block { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; margin: 3rem 0; }
-  .showcase-block.reverse { grid-template-columns: 1.2fr 1fr; }
-  .showcase-block.reverse .showcase-text { order: 2; }
-  .showcase-block.reverse .showcase-img { order: 1; }
-  .showcase-text h3 { font-size: 1.2rem; margin-bottom: 12px; }
-  .showcase-text p { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; }
-  .showcase-img .screenshot { margin: 0; max-width: 100%; }
-  @media (max-width: 768px) {
-    .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; }
-    .showcase-block.reverse .showcase-text, .showcase-block.reverse .showcase-img { order: unset; }
-  }
-  .mcp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 2rem 0; }
-  .mcp-card { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; }
-  .mcp-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
-  .mcp-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px; }
-  .mcp-card.mcp-highlight { border-color: #7c3aed; box-shadow: 0 0 0 1px #7c3aed30; }
-  .mcp-code { background: #1a1a2e; color: #e0e0e8; padding: 10px 14px; border-radius: 6px; font-size: 0.8rem; margin: 0; overflow-x: auto; }
-  @media (max-width: 900px) { .mcp-grid { grid-template-columns: 1fr; } }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; }
+  .showcase-block.reverse { direction: rtl; }
+  .showcase-block.reverse > * { direction: ltr; }
+  .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
 
-  .install-options { padding: 5rem 0; }
-  .install-single {
-    max-width: 550px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .install-single pre {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    border: 2px solid var(--color-primary);
-    background: var(--color-surface);
-  }
-  .install-single p { color: var(--color-text-muted); font-size: 0.95rem; }
+  /* Value props */
+  .value-props { padding: 5rem 0; }
+  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .prop-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s; }
+  .prop-card:hover { border-color: var(--color-primary); }
+  .prop-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .prop-card h3 { margin-bottom: 0.5rem; }
+  .prop-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-  .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .standard-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-  .standard-card h3 { margin-bottom: 0.75rem; }
-  .standard-card .badge { margin-bottom: 1rem; }
-  .standard-card p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
-  .standard-card code { font-size: 0.85rem; }
+  /* Standards */
+  .standards { padding: 5rem 0; background: var(--color-bg-alt); }
+  .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .standard-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color 0.2s; }
+  .standard-card:hover { border-color: var(--color-primary); }
+  .standard-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .standard-card p { color: var(--color-text-muted); font-size: 0.85rem; }
 
-  .cta { text-align: center; background: var(--color-bg-alt); }
-  .cta h2 { margin-bottom: 1.5rem; }
-  .cta pre { display: inline-block; padding: 0.75rem 2rem; margin-bottom: 2rem; font-size: 1rem; }
+  /* CTA */
+  .cta { padding: 6rem 0; text-align: center; }
+  .cta h2 { font-size: 2.2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
   .cta-actions { display: flex; gap: 1rem; justify-content: center; }
 
-  @media (max-width: 768px) {
-    .props-grid, .standards-grid, .install-grid { grid-template-columns: 1fr; }
-    .hero { padding: 5rem 0 3rem; }
-    .hero-actions, .cta-actions { flex-direction: column; align-items: center; }
-    .terminal-body { overflow-x: auto; }
-    .terminal-line { white-space: pre-wrap; word-break: break-word; font-size: 0.75rem; }
-    .hero-install pre, .install-single pre, .cta pre { font-size: 0.85rem; padding: 0.75rem 1rem; max-width: 100%; }
-    .standard-card code { word-break: break-all; font-size: 0.75rem; }
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.2rem; }
+    .problem-grid { grid-template-columns: 1fr 1fr; }
+    .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+    .props-grid { grid-template-columns: 1fr 1fr; }
+    .standards-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .problem-grid, .props-grid, .standards-grid { grid-template-columns: 1fr; }
   }
 </style>

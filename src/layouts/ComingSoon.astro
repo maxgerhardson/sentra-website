@@ -1,0 +1,89 @@
+---
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — sentrik</title>
+  <meta name="description" content="Sentrik — the compliance layer for AI-generated code. Scan, gate, and trace regulatory compliance automatically." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script defer data-domain="sentrik.dev" src="https://plausible.io/js/script.js"></script>
+  <style>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/logo.svg" alt="sentrik" class="nav-logo" />
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer" style="border-top: 1px solid var(--color-border); padding: 2rem 0;">
+    <div class="container" style="text-align: center;">
+      <p style="color: var(--color-text-muted); font-size: 0.85rem;">&copy; 2025-2026 sentrik. All rights reserved. &middot; <a href="mailto:hello@sentrik.dev" style="color: var(--color-primary-light);">hello@sentrik.dev</a></p>
+    </div>
+  </footer>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
+  <script is:inline>
+    (function() {
+      function initPlayer() {
+        var container = document.getElementById('main-player');
+        if (!container) return;
+        if (typeof AsciinemaPlayer === 'undefined') {
+          setTimeout(initPlayer, 200);
+          return;
+        }
+
+        function loadCast(src) {
+          container.innerHTML = '';
+          try {
+            AsciinemaPlayer.create(src, container, {
+              cols: 120,
+              rows: 35,
+              fit: 'width',
+              autoPlay: true,
+              speed: 1.5,
+              theme: 'monokai',
+              idleTimeLimit: 2
+            });
+          } catch(e) {
+            container.innerHTML = '<p style="color:#999;padding:1rem;">Loading demo...</p>';
+          }
+        }
+
+        loadCast('/recordings/05-full-lifecycle.cast');
+
+        var tabs = document.querySelectorAll('.demo-tab');
+        for (var i = 0; i < tabs.length; i++) {
+          (function(tab) {
+            tab.addEventListener('click', function() {
+              for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('active'); }
+              tab.classList.add('active');
+              loadCast(tab.getAttribute('data-cast'));
+            });
+          })(tabs[i]);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPlayer);
+      } else {
+        initPlayer();
+      }
+    })();
+  </script>
+</body>
+</html>
