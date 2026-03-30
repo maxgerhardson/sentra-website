@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Integrations" description="sentrik integrates with AI coding agents, CI/CD pipelines, DevOps platforms, and security tools.">
+
+<section class="integrations-hero">
+  <div class="container">
+    <h1>Works with your stack</h1>
+    <p class="integrations-sub">Sentrik plugs into the tools you already use &mdash; from AI coding agents to CI/CD pipelines to GRC platforms.</p>
+  </div>
+</section>
+
+<section class="integration-category">
+  <div class="container">
+    <h2 class="section-title">AI Coding Agents</h2>
+    <p class="section-sub">Give your AI agent real-time compliance context as it writes code.</p>
+    <div class="integration-grid">
+
+      <div class="integration-card featured">
+        <div class="integration-icon">
+          <span class="icon-text">CC</span>
+        </div>
+        <h3>Claude Code</h3>
+        <p>Native MCP server integration. Claude Code calls <code>scan_file</code>, <code>check_code_snippet</code>, and <code>get_compliance_context</code> as it generates code &mdash; fixing compliance issues before they're committed.</p>
+        <span class="integration-status status-native">Native MCP</span>
+      </div>
+
+      <div class="integration-card featured">
+        <div class="integration-icon">
+          <span class="icon-text">Cu</span>
+        </div>
+        <h3>Cursor</h3>
+        <p>Connects via MCP server. Cursor's agent mode uses Sentrik tools to check compliance context and validate code snippets during generation.</p>
+        <span class="integration-status status-native">Native MCP</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">VS</span>
+        </div>
+        <h3>VS Code</h3>
+        <p>Dedicated extension with scan-on-save, inline diagnostics, and status bar indicators. Zero configuration &mdash; install and start scanning.</p>
+        <span class="integration-status status-native">Extension</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">Cp</span>
+        </div>
+        <h3>GitHub Copilot</h3>
+        <p>Pre-commit hook catches issues in Copilot-generated code before it enters version control. CI/CD gate enforces compliance on every PR.</p>
+        <span class="integration-status status-hook">Pre-commit + CI</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="integration-category alt-bg">
+  <div class="container">
+    <h2 class="section-title">CI/CD Pipelines</h2>
+    <p class="section-sub">Gate your merges with compliance checks. One command in any pipeline.</p>
+    <div class="integration-grid">
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">GH</span>
+        </div>
+        <h3>GitHub Actions</h3>
+        <p>Built-in workflow template. PR decoration, commit status checks, and SARIF upload for Security tab integration.</p>
+        <span class="integration-status status-native">Template included</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">AZ</span>
+        </div>
+        <h3>Azure DevOps</h3>
+        <p>Pipeline template with OAuth-based work item traceability. Findings auto-create and close Azure Boards items.</p>
+        <span class="integration-status status-native">Template included</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">GL</span>
+        </div>
+        <h3>GitLab CI</h3>
+        <p>CI template with SARIF artifact output. Drop the template into your <code>.gitlab-ci.yml</code> and scan on every push.</p>
+        <span class="integration-status status-native">Template included</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon">
+          <span class="icon-text">JK</span>
+        </div>
+        <h3>Jenkins / Any CI</h3>
+        <p>Sentrik is a single binary. Run <code>sentrik gate</code> in any CI system that can execute shell commands.</p>
+        <span class="integration-status status-hook">CLI</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="integration-category">
+  <div class="container">
+    <h2 class="section-title">DevOps &amp; Project Management</h2>
+    <p class="section-sub">Trace findings to work items. Close tickets when code is fixed.</p>
+    <div class="integration-grid three-col">
+
+      <div class="integration-card">
+        <div class="integration-icon"><span class="icon-text">GH</span></div>
+        <h3>GitHub Issues</h3>
+        <p>Two-way sync: findings create issues, merged fixes close them. Filter by label and milestone.</p>
+        <span class="integration-status status-native">OAuth + PAT</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon"><span class="icon-text">AZ</span></div>
+        <h3>Azure Boards</h3>
+        <p>Full reconciliation with Azure DevOps work items. OAuth or PAT authentication with iteration path support.</p>
+        <span class="integration-status status-native">OAuth + PAT</span>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-icon"><span class="icon-text">JR</span></div>
+        <h3>Jira</h3>
+        <p>Create and close Jira issues from scan findings. Supports Cloud (OAuth) and Data Center (PAT) deployments.</p>
+        <span class="integration-status status-native">OAuth + PAT</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="integration-category alt-bg">
+  <div class="container">
+    <h2 class="section-title">Ecosystem Partners</h2>
+    <p class="section-sub">Tools in the AI-first SDLC space that complement Sentrik's governance layer.</p>
+    <div class="integration-grid three-col">
+
+      <div class="integration-card partner">
+        <h3>Shep AI</h3>
+        <p>Multi-session control center for AI coding agents. Shep orchestrates agent sessions; Sentrik governs what they produce.</p>
+        <span class="integration-status status-partner">Complementary</span>
+      </div>
+
+      <div class="integration-card partner">
+        <h3>Agentic QE</h3>
+        <p>AI-powered QA testing fleet. Agentic QE validates behavior; Sentrik validates compliance. Together they cover correctness and governance.</p>
+        <span class="integration-status status-partner">Complementary</span>
+      </div>
+
+      <div class="integration-card partner">
+        <h3>GRC Platforms</h3>
+        <p>Push compliance evidence to Drata, Vanta, or Secureframe via webhooks. Continuous attestation for SOC2, HIPAA, and ISO 27001 audits.</p>
+        <span class="integration-status status-native">Webhook API</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="integrations-cta">
+  <div class="container">
+    <h2>Set up in 60 seconds</h2>
+    <div class="cta-code">
+      <code>pip install sentrik && sentrik init</code>
+    </div>
+    <p class="cta-sub">Auto-detects your stack, creates config, and starts scanning. No account required.</p>
+    <a href="https://maxgerhardson.github.io/sentrik-docs/getting-started/quickstart/" class="btn btn-primary">Read the quickstart</a>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .integrations-hero { padding: 6rem 0 3rem; text-align: center; }
+  .integrations-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+  .integration-category { padding: 4rem 0; }
+  .integration-category.alt-bg { background: var(--color-bg-alt); }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .integration-grid.three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .integration-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .integration-card.featured {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
+  }
+  .integration-card.partner {
+    border-style: dashed;
+  }
+
+  .integration-icon {
+    margin-bottom: 1rem;
+  }
+  .icon-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .integration-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .integration-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .integration-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-top: 1rem;
+    width: fit-content;
+  }
+  .status-native {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+  }
+  .status-hook {
+    background: rgba(6, 182, 212, 0.15);
+    color: var(--color-accent);
+  }
+  .status-partner {
+    background: rgba(167, 139, 250, 0.15);
+    color: var(--color-primary-light);
+  }
+
+  .integrations-cta { padding: 5rem 0; text-align: center; }
+  .integrations-cta h2 { margin-bottom: 1.5rem; }
+  .cta-code {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+  }
+  .cta-sub { color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  @media (max-width: 1024px) {
+    .integration-grid { grid-template-columns: repeat(2, 1fr); }
+    .integration-grid.three-col { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .integration-grid,
+    .integration-grid.three-col { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,246 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Compare" description="How sentrik compares to linters, SAST tools, and spec-driven platforms like OpenSpec.">
+
+<section class="compare-hero">
+  <div class="container">
+    <h1>Sentrik vs. the alternatives</h1>
+    <p class="compare-sub">Linters catch syntax. SAST tools catch bugs. Sentrik enforces compliance &mdash; across frameworks, standards, and your entire AI-assisted SDLC.</p>
+  </div>
+</section>
+
+<section class="compare-table-section">
+  <div class="container">
+    <div class="table-wrapper">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="highlight">Sentrik</th>
+            <th>Linters<br><span class="tool-examples">ESLint, Pylint, RuboCop</span></th>
+            <th>SAST Tools<br><span class="tool-examples">Semgrep, CodeQL, Bandit</span></th>
+            <th>OpenSpec<br><span class="tool-examples">Spec-driven governance</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Regulatory standards packs (OWASP, SOC2, HIPAA, IEC 62304, ...)</td>
+            <td class="highlight"><span class="check">15 built-in</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">Community rules</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Supply chain scanning (SBOM, CVEs, licenses)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">Some tools</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>API spec &rarr; security rules (OpenAPI, AsyncAPI, protobuf)</td>
+            <td class="highlight"><span class="check">import-spec</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="check">Core feature</span></td>
+          </tr>
+          <tr>
+            <td>CI/CD gate with PR decoration</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="partial">Manual setup</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>AI agent integration (MCP server)</td>
+            <td class="highlight"><span class="check">Built-in</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">Partial</span></td>
+          </tr>
+          <tr>
+            <td>Work item traceability (Azure DevOps, GitHub, Jira)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Compliance reports &amp; evidence export</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">SARIF only</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Auto-remediation (fix + auto-PR)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="partial">Some fixers</span></td>
+            <td><span class="partial">Limited</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Management dashboard</td>
+            <td class="highlight"><span class="check">15 pages</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">SaaS only</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Audit logging &amp; GRC integration</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Custom rule authoring</td>
+            <td class="highlight"><span class="check">YAML + regex</span></td>
+            <td><span class="check">Plugin API</span></td>
+            <td><span class="check">DSL / YAML</span></td>
+            <td><span class="check">Spec-driven</span></td>
+          </tr>
+          <tr>
+            <td>Runs locally (no data leaves your machine)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="partial">Some SaaS</span></td>
+            <td><span class="check">Yes</span></td>
+          </tr>
+          <tr>
+            <td>Free tier</td>
+            <td class="highlight"><span class="check">Unlimited scans</span></td>
+            <td><span class="check">Open source</span></td>
+            <td><span class="partial">Varies</span></td>
+            <td><span class="check">Open source</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="compare-detail">
+  <div class="container">
+    <h2 class="section-title">Where each tool fits</h2>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Linters</h3>
+        <p class="detail-role">Code style &amp; syntax</p>
+        <p>Linters enforce formatting, naming conventions, and language idioms. They're essential for code consistency but don't understand regulatory requirements, security standards, or compliance obligations.</p>
+        <p class="detail-verdict"><strong>Use with Sentrik:</strong> Linters handle style. Sentrik handles compliance. They're complementary &mdash; run both.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>SAST Tools</h3>
+        <p class="detail-role">Bug &amp; vulnerability detection</p>
+        <p>SAST tools find security vulnerabilities through pattern matching and data flow analysis. Sentrik can ingest SARIF output from any SAST tool and enrich it with compliance mapping, severity rescoring, and work item traceability.</p>
+        <p class="detail-verdict"><strong>Use with Sentrik:</strong> Feed SAST output into Sentrik via <code>--provider sarif</code> to get compliance context, audit trails, and gate enforcement.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>OpenSpec</h3>
+        <p class="detail-role">Spec-driven development</p>
+        <p>OpenSpec uses API specifications to govern what AI agents can generate. It's a strong approach for greenfield API projects. Sentrik's <code>import-spec</code> command bridges the gap &mdash; it converts OpenAPI, AsyncAPI, and protobuf specs into enforceable security rules.</p>
+        <p class="detail-verdict"><strong>Use with Sentrik:</strong> If you use specs, run <code>sentrik import-spec</code> to turn them into rules. If you don't, Sentrik's 15 standards packs cover you anyway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare-cta">
+  <div class="container">
+    <h2>Try sentrik in 60 seconds</h2>
+    <div class="cta-code">
+      <code>pip install sentrik && sentrik init && sentrik scan</code>
+    </div>
+    <p class="cta-sub">Free tier. No account required. No data leaves your machine.</p>
+    <a href="https://maxgerhardson.github.io/sentrik-docs/getting-started/quickstart/" class="btn btn-primary">Read the quickstart</a>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .compare-hero { padding: 6rem 0 3rem; text-align: center; }
+  .compare-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  .compare-table-section { padding: 2rem 0 4rem; }
+  .table-wrapper { overflow-x: auto; }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .compare-table th,
+  .compare-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .compare-table thead th {
+    background: var(--color-surface);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+  .compare-table th.highlight,
+  .compare-table td.highlight {
+    background: rgba(124, 58, 237, 0.08);
+  }
+  .tool-examples { font-size: 0.75rem; color: var(--color-text-muted); font-weight: 400; }
+  .check { color: var(--color-success); }
+  .check::before { content: "\2713\00a0"; }
+  .cross { color: var(--color-text-muted); opacity: 0.5; }
+  .cross::before { content: "\2717\00a0"; }
+  .partial { color: var(--color-warning); }
+  .partial::before { content: "\25cb\00a0"; }
+
+  .compare-detail { padding: 4rem 0; }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 2.5rem; }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .detail-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .detail-card h3 { margin-bottom: 0.25rem; }
+  .detail-role {
+    color: var(--color-primary-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .detail-card p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.6; }
+  .detail-verdict { border-top: 1px solid var(--color-border); padding-top: 0.75rem; margin-top: 0.75rem; }
+  .detail-verdict strong { color: var(--color-text); }
+
+  .compare-cta { padding: 5rem 0; text-align: center; }
+  .compare-cta h2 { margin-bottom: 1.5rem; }
+  .cta-code {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+  }
+  .cta-sub { color: var(--color-text-muted); margin-bottom: 1.5rem; }
+
+  @media (max-width: 1024px) {
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .compare-table { font-size: 0.85rem; }
+    .compare-table th, .compare-table td { padding: 0.6rem 0.5rem; }
+  }
+</style>
