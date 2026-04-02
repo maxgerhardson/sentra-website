@@ -46,6 +46,19 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- AI Chat Demo Video -->
+<section class="video-demo">
+  <div class="container">
+    <h2 class="section-title">Fix Compliance Issues with AI</h2>
+    <p class="section-sub">Find a violation, ask the AI to explain it, get the fix, apply it &mdash; all from the dashboard.</p>
+    <div class="video-wrapper">
+      <video autoplay loop muted playsinline class="demo-video">
+        <source src="/recordings/ai-chat-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- The Problem -->
 <section class="problem">
   <div class="container">
@@ -213,6 +226,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 
   .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
 
+  .video-demo { padding: 3rem 0 4rem; }
+  .video-wrapper { max-width: 960px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
+  .demo-video { width: 100%; display: block; }
   .demo { padding: 2rem 0 4rem; }
   .terminal { max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
   .terminal-header { background: #2d2640; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
