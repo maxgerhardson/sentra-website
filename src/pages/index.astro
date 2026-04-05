@@ -59,7 +59,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <div class="step-num">2</div>
         <h3>Gate</h3>
         <code class="step-cmd">sentrik gate</code>
-        <p>Block non-compliant code in CI. One line in GitHub Actions, Azure Pipelines, or GitLab CI. PR comments show exactly which regulation you're violating.</p>
+        <p>Block non-compliant code in CI. PR comments show exactly which regulation you're violating.</p>
+        <pre class="step-yaml"><code>- name: Compliance Gate
+  run: sentrik gate
+    --git-range origin/main...HEAD
+    --decorate-pr</code></pre>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
@@ -156,10 +160,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
     </div>
 
-    <div class="showcase-block reverse">
+    <div class="showcase-block">
       <div class="showcase-text">
         <h3>AI-Assisted Code Generation</h3>
-        <p>Claude Code, Cursor, and VS Code call Sentrik via MCP. The AI checks compliance rules <em>before</em> writing code &mdash; so generated code passes the gate on the first try.</p>
+        <p>Claude Code, Cursor, and VS Code call Sentrik via MCP. The AI checks compliance rules <em>before</em> writing code &mdash; so generated code passes the gate on the first try. The VS Code extension scans on every save with inline diagnostics.</p>
       </div>
       <div class="showcase-img">
         <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
@@ -230,6 +234,93 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <div class="prop-icon">&#x1F517;</div>
         <h3>Full Traceability</h3>
         <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Detect requirement drift automatically and create work items in GitHub, Azure DevOps, or Jira.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integrations -->
+<section class="integrations">
+  <div class="container">
+    <h2 class="section-title">Works With Your Stack</h2>
+    <div class="integrations-grid">
+      <div class="integration-group">
+        <div class="integration-label">CI/CD</div>
+        <div class="integration-items">
+          <span class="integration-item">GitHub Actions</span>
+          <span class="integration-item">Azure Pipelines</span>
+          <span class="integration-item">GitLab CI</span>
+        </div>
+      </div>
+      <div class="integration-group">
+        <div class="integration-label">Work Items</div>
+        <div class="integration-items">
+          <span class="integration-item">GitHub Issues</span>
+          <span class="integration-item">Azure DevOps</span>
+          <span class="integration-item">Jira</span>
+        </div>
+      </div>
+      <div class="integration-group">
+        <div class="integration-label">AI Agents</div>
+        <div class="integration-items">
+          <span class="integration-item">Claude Code</span>
+          <span class="integration-item">Cursor</span>
+          <span class="integration-item">Copilot</span>
+        </div>
+      </div>
+      <div class="integration-group">
+        <div class="integration-label">Editors</div>
+        <div class="integration-items">
+          <span class="integration-item">VS Code</span>
+          <span class="integration-item">JetBrains</span>
+          <span class="integration-item">Any LSP</span>
+        </div>
+      </div>
+      <div class="integration-group">
+        <div class="integration-label">GRC</div>
+        <div class="integration-items">
+          <span class="integration-item">Drata</span>
+          <span class="integration-item">Vanta</span>
+          <span class="integration-item">Secureframe</span>
+        </div>
+      </div>
+      <div class="integration-group">
+        <div class="integration-label">Output</div>
+        <div class="integration-items">
+          <span class="integration-item">SARIF</span>
+          <span class="integration-item">JUnit XML</span>
+          <span class="integration-item">CycloneDX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Built for Regulated Industries -->
+<section class="regulated">
+  <div class="container">
+    <h2 class="section-title">Built for Regulated Industries</h2>
+    <p class="section-sub">From medical devices to aviation software &mdash; Sentrik is designed for teams where compliance isn't optional.</p>
+    <div class="regulated-grid">
+      <div class="regulated-card">
+        <div class="regulated-icon">&#x1F512;</div>
+        <h3>Air-Gapped Ready</h3>
+        <p>Offline license validation via HMAC. No phone-home, no cloud dependency. Works in classified and air-gapped environments.</p>
+      </div>
+      <div class="regulated-card">
+        <div class="regulated-icon">&#x1F9D1;&#x200D;&#x2696;&#xFE0F;</div>
+        <h3>Auditor Portal</h3>
+        <p>Dedicated read-only portal for compliance auditors. Generate access tokens, share evidence bundles, and export audit-ready ZIPs.</p>
+      </div>
+      <div class="regulated-card">
+        <div class="regulated-icon">&#x1F6E1;</div>
+        <h3>Governance Profiles</h3>
+        <p>Three profiles &mdash; strict, standard, permissive &mdash; control human review gates, auto-patching, and gate thresholds per software safety class.</p>
+      </div>
+      <div class="regulated-card">
+        <div class="regulated-icon">&#x270D;</div>
+        <h3>Signed Attestations</h3>
+        <p>Cryptographic HMAC-SHA256 signatures on every compliance attestation. Tamper-evident audit trails with per-entry integrity verification.</p>
       </div>
     </div>
   </div>
@@ -425,8 +516,61 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .prop-card h3 { margin-bottom: 0.5rem; }
   .prop-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
 
+  /* CI YAML snippet */
+  .step-yaml {
+    text-align: left;
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(15, 11, 26, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+  .step-yaml code { background: none; padding: 0; font-size: 0.72rem; color: var(--color-text-muted); }
+
+  /* Integrations */
+  .integrations { padding: 4rem 0; background: var(--color-bg-alt); }
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+  .integration-group { text-align: center; }
+  .integration-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .integration-items { display: flex; flex-direction: column; gap: 0.4rem; }
+  .integration-item {
+    font-size: 0.82rem;
+    color: var(--color-text);
+    padding: 0.35rem 0;
+  }
+
+  /* Regulated Industries */
+  .regulated { padding: 5rem 0; }
+  .regulated-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .regulated-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .regulated-card:hover { border-color: var(--color-primary); }
+  .regulated-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .regulated-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .regulated-card p { color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.6; }
+
   /* Standards */
-  .standards { padding: 5rem 0; }
+  .standards { padding: 5rem 0; background: var(--color-bg-alt); }
   .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .standard-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color 0.2s; }
   .standard-card:hover { border-color: var(--color-primary); }
@@ -465,12 +609,15 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; direction: ltr; }
     .props-grid { grid-template-columns: 1fr 1fr; }
     .standards-grid { grid-template-columns: 1fr 1fr; }
+    .integrations-grid { grid-template-columns: repeat(3, 1fr); }
+    .regulated-grid { grid-template-columns: 1fr 1fr; }
     .form-row { flex-direction: column; }
     .form-row-extra { flex-direction: column; }
   }
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
-    .problem-grid, .props-grid, .standards-grid { grid-template-columns: 1fr; }
+    .problem-grid, .props-grid, .standards-grid, .regulated-grid { grid-template-columns: 1fr; }
+    .integrations-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 
