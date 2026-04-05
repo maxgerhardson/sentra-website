@@ -85,6 +85,81 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- Code Intelligence -->
+<section class="intelligence-section">
+  <div class="container">
+    <h2 class="section-title">AI-Powered Code Intelligence</h2>
+    <p class="section-sub">Sentrik doesn't just scan &mdash; it understands your codebase, scores quality, reviews design decisions, and knows who should review what.</p>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Quality Gradient Scoring</h3>
+        <p>A single 0&ndash;100 quality score across six dimensions: compliance, complexity, test coverage, documentation, consistency, and dependency health. Track trends over time and set minimum thresholds in your gate.</p>
+        <code class="cli-hint">$ sentrik quality-score --verbose</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>Project Profile &amp; Design Constraints</h3>
+        <p>Sentrik auto-detects your languages, frameworks, architecture patterns, and conventions. AI agents query constraints <em>before</em> writing code &mdash; so generated code follows your established patterns, not generic ones.</p>
+        <code class="cli-hint">$ sentrik profile --for src/api/routes/</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/project-profile-dashboard.png" alt="Project profile showing detected languages, frameworks, architecture patterns and module map" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Design Decision Auditing</h3>
+        <p>An LLM reviews your code changes and surfaces design decisions that need human attention &mdash; security patterns, architecture choices, data model tradeoffs. Acknowledge decisions from the dashboard or CLI, and gate PRs until all are reviewed.</p>
+        <code class="cli-hint">$ sentrik review-design --git-range HEAD~3..HEAD</code>
+      </div>
+      <div class="showcase-img">
+        <div class="video-wrapper-inline">
+          <video autoplay loop muted playsinline controls class="demo-video">
+            <source src="/recordings/design-decisions-dashboard.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>Expertise-Gap Escalation</h3>
+        <p>Sentrik builds a developer profile from git history &mdash; languages, modules, commit patterns. When a PR touches code outside someone's expertise, it flags it for senior review. No more rubber-stamped approvals on unfamiliar code.</p>
+        <code class="cli-hint">$ sentrik check-expertise --profile</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/expertise-dashboard.png" alt="Developer expertise profile showing language and module activity" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLI Demos -->
+<section class="cli-demos">
+  <div class="container">
+    <h2 class="section-title">See It In Action</h2>
+    <p class="section-sub">Every feature works from the command line. One binary, zero config.</p>
+    <div class="cli-tabs">
+      <button class="cli-tab active" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
+      <button class="cli-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
+      <button class="cli-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
+      <button class="cli-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
+    </div>
+    <div class="video-wrapper">
+      <video id="cli-player" autoplay loop muted playsinline controls class="demo-video">
+        <source src="/recordings/quality-score-cli.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- The Problem -->
 <section class="problem">
   <div class="container">
@@ -312,6 +387,50 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .cta h2 { font-size: 2.2rem; margin-bottom: 0.75rem; }
   .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
   .cta-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  /* Code Intelligence */
+  .intelligence-section { padding: 5rem 0; background: var(--color-bg-alt); }
+  .cli-hint {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--color-primary-light);
+    font-family: var(--font-mono, 'Fira Code', monospace);
+  }
+  .video-wrapper-inline {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* CLI Demos */
+  .cli-demos { padding: 4rem 0; }
+  .cli-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cli-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .cli-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
+  .cli-tab.active { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
 
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }

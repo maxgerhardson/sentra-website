@@ -96,6 +96,32 @@ const { title } = Astro.props;
         initPlayer();
       }
     })();
+
+    // CLI demo tab switching
+    (function() {
+      function initCliTabs() {
+        var tabs = document.querySelectorAll('.cli-tab');
+        var player = document.getElementById('cli-player');
+        if (!tabs.length || !player) return;
+        for (var i = 0; i < tabs.length; i++) {
+          (function(tab) {
+            tab.addEventListener('click', function() {
+              for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('active'); }
+              tab.classList.add('active');
+              var src = tab.getAttribute('data-cli-video');
+              player.src = src;
+              player.load();
+              player.play();
+            });
+          })(tabs[i]);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCliTabs);
+      } else {
+        initCliTabs();
+      }
+    })();
   </script>
 </body>
 </html>
