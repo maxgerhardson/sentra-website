@@ -7,100 +7,16 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 <!-- Hero -->
 <section class="hero">
   <div class="container hero-inner">
-    <div class="hero-badge">Coming Soon</div>
-    <h1>The compliance layer for<br /><span class="gradient-text">AI-generated code</span></h1>
+    <div class="hero-badge">Early Access</div>
+    <h1>Stop auditing AI code<br /><span class="gradient-text">by hand</span></h1>
     <p class="hero-sub">
-      Your developers use AI to write code. Who checks if it's compliant?
-      Sentrik scans, gates, and traces regulatory compliance automatically
-      &mdash; IEC 62304, HIPAA, SOC2, OWASP, and more.
+      Sentrik scans every commit against 17 regulatory frameworks, blocks non-compliant code in CI, and generates audit evidence automatically. One CLI. Zero config.
     </p>
     <div class="hero-actions">
-      <a href="mailto:hello@sentrik.dev?subject=Demo%20Request&body=I'd%20like%20to%20see%20a%20demo%20of%20Sentrik." class="btn btn-primary">Request a Demo</a>
+      <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
+      <a href="https://github.com/maxgerhardson/sentrik-community" class="btn btn-outline btn-lg" target="_blank" rel="noopener">View on GitHub</a>
     </div>
-  </div>
-</section>
-
-<!-- Terminal Demo -->
-<section class="demo">
-  <div class="container">
-    <div class="terminal">
-      <div class="terminal-header">
-        <span class="terminal-dot red"></span>
-        <span class="terminal-dot yellow"></span>
-        <span class="terminal-dot green"></span>
-        <span class="terminal-title">sentrik &mdash; Full Compliance Lifecycle</span>
-      </div>
-      <div class="terminal-body">
-        <div id="main-player"></div>
-        <video id="cli-player" class="demo-video" autoplay loop muted playsinline controls style="display:none"></video>
-      </div>
-    </div>
-    <p class="demo-caption">Real output from a medical device API &mdash; 24 critical findings found, fixed, and gated in minutes</p>
-
-    <div class="demo-tabs">
-      <button class="demo-tab active" data-cast="/recordings/05-full-lifecycle.cast">Full Lifecycle</button>
-      <button class="demo-tab" data-cast="/recordings/01-init-and-scan.cast">Scan &amp; Findings</button>
-      <button class="demo-tab" data-cast="/recordings/02-fix-and-gate.cast">Fix &amp; Gate</button>
-      <button class="demo-tab" data-cast="/recordings/03-supply-chain.cast">Dependencies &amp; CVEs</button>
-      <button class="demo-tab" data-cast="/recordings/04-compliance.cast">Reports &amp; Evidence</button>
-      <span class="demo-tab-divider"></span>
-      <button class="demo-tab" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
-      <button class="demo-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
-      <button class="demo-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
-      <button class="demo-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
-    </div>
-  </div>
-</section>
-
-<!-- AI Chat Demo Video -->
-<section class="video-demo">
-  <div class="container">
-    <h2 class="section-title">Fix Compliance Issues with AI</h2>
-    <p class="section-sub">Find a violation, ask the AI to explain it, get the fix, apply it &mdash; all from the dashboard.</p>
-    <div class="video-wrapper">
-      <video autoplay loop muted playsinline controls class="demo-video">
-        <source src="/recordings/ai-chat-demo.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-<!-- Standards Packs Demo Video -->
-<section class="video-demo alt-bg">
-  <div class="container">
-    <h2 class="section-title">17 Standards Packs. Toggle On, Scan, Done.</h2>
-    <p class="section-sub">Enable compliance frameworks, browse 17 packs, and search by standard &mdash; all from the dashboard.</p>
-    <div class="video-wrapper">
-      <video autoplay loop muted playsinline controls class="demo-video">
-        <source src="/recordings/import-spec-packs.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-<!-- GitHub Integration Demo Video -->
-<section class="video-demo">
-  <div class="container">
-    <h2 class="section-title">Connect to GitHub in 60 Seconds</h2>
-    <p class="section-sub">Select your provider, fill in your repo, test the connection, and save &mdash; findings sync to Issues automatically.</p>
-    <div class="video-wrapper">
-      <video autoplay loop muted playsinline controls class="demo-video">
-        <source src="/recordings/github-setup.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-<!-- Design Decisions Demo Video -->
-<section class="video-demo alt-bg">
-  <div class="container">
-    <h2 class="section-title">Design Decision Auditing</h2>
-    <p class="section-sub">An LLM reviews your changes and surfaces design decisions that need human attention. Acknowledge from the dashboard or CLI.</p>
-    <div class="video-wrapper">
-      <video autoplay loop muted playsinline controls class="demo-video">
-        <source src="/recordings/design-decisions-dashboard.mp4" type="video/mp4">
-      </video>
-    </div>
+    <p class="hero-install"><code>pip install sentrik</code></p>
   </div>
 </section>
 
@@ -108,18 +24,19 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 <section class="problem">
   <div class="container">
     <h2 class="section-title">The Problem</h2>
+    <p class="section-sub">AI writes code faster than humans can review it. Compliance can't keep up.</p>
     <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-stat">70%</div>
-        <p>of new code is AI-generated at regulated companies</p>
-      </div>
       <div class="problem-card">
         <div class="problem-stat">6 weeks</div>
         <p>average time to prepare compliance evidence for a single audit</p>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">4-5 tools</div>
-        <p>required today to cover security + compliance + audit evidence</p>
+        <div class="problem-stat">4&ndash;5 tools</div>
+        <p>required today to cover security, compliance, and audit evidence</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">36%</div>
+        <p>of AI-generated code contains security vulnerabilities <a href="https://www.theregister.com/2025/01/24/ai_code_security/" target="_blank" rel="noopener" class="stat-cite">[Stanford/NIST]</a></p>
       </div>
       <div class="problem-card">
         <div class="problem-stat">17</div>
@@ -129,86 +46,102 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- AI Showcase -->
-<section class="mcp-section">
+<!-- How It Works -->
+<section class="how-it-works">
   <div class="container">
-    <h2 class="section-title">AI That Writes Compliant Code</h2>
-    <p class="section-sub">Your AI agent checks compliance rules <em>before</em> writing code. Not after.</p>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Compliance During Code Generation</h3>
-        <p>Claude Code, Cursor, and VS Code call Sentrik via the Model Context Protocol. The AI asks &ldquo;what rules apply?&rdquo; and writes code that passes the gate on the first try.</p>
+    <h2 class="section-title">Three Commands. Full Compliance.</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Scan</h3>
+        <code class="step-cmd">sentrik scan</code>
+        <p>416 rules check your code against IEC 62304, HIPAA, SOC2, OWASP, and 13 more frameworks. Findings map to specific regulatory clauses.</p>
       </div>
-      <div class="showcase-img">
-        <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Gate</h3>
+        <code class="step-cmd">sentrik gate</code>
+        <p>Block non-compliant code in CI. One line in your GitHub Actions, Azure Pipelines, or GitLab CI config. PR comments show exactly which regulation you're violating.</p>
       </div>
-    </div>
-
-    <div class="showcase-block reverse">
-      <div class="showcase-text">
-        <h3>Fix Findings with AI</h3>
-        <p>Click any finding, chat with an LLM, and apply the fix &mdash; all from the browser. Compliance officers triage findings without touching an IDE.</p>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/ai-chat-panel.png" alt="AI chat panel explaining how to fix a compliance finding" class="screenshot expandable" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Dashboard &amp; Compliance Reports</h3>
-        <p>Real-time compliance score, severity trends, scan history, and one-click evidence export for auditors. Everything an auditor needs, generated automatically.</p>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/dashboard-overview.png" alt="Sentrik compliance dashboard" class="screenshot expandable" loading="lazy" />
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Ship</h3>
+        <code class="step-cmd">sentrik attest</code>
+        <p>Generate cryptographically signed attestations, per-framework compliance reports, and audit-ready evidence bundles. No more 6-week evidence sprints.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Code Intelligence -->
-<section class="intelligence-section">
+<!-- Terminal Demo -->
+<section class="demo">
   <div class="container">
-    <h2 class="section-title">Code Intelligence</h2>
-    <p class="section-sub">Sentrik understands your codebase &mdash; it scores quality, profiles your stack, and knows who should review what.</p>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Quality Gradient Scoring</h3>
-        <p>A single 0&ndash;100 quality score across six dimensions: compliance, complexity, test coverage, documentation, consistency, and dependency health. Track trends over time and set minimum thresholds in your gate.</p>
-        <code class="cli-hint">$ sentrik quality-score --verbose</code>
+    <h2 class="section-title">See It In Action</h2>
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">sentrik</span>
       </div>
-      <div class="showcase-img">
-        <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot expandable" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block reverse">
-      <div class="showcase-text">
-        <h3>Project Profile &amp; Design Constraints</h3>
-        <p>Sentrik auto-detects your languages, frameworks, architecture patterns, and conventions. AI agents query constraints <em>before</em> writing code &mdash; so generated code follows your established patterns, not generic ones.</p>
-        <code class="cli-hint">$ sentrik profile --for src/api/routes/</code>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/project-profile-dashboard.png" alt="Project profile showing detected languages, frameworks, architecture patterns and module map" class="screenshot expandable" loading="lazy" />
+      <div class="terminal-body">
+        <div id="main-player"></div>
+        <video id="cli-player" class="demo-video" autoplay loop muted playsinline controls style="display:none"></video>
       </div>
     </div>
 
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Expertise-Gap Escalation</h3>
-        <p>Sentrik builds a developer profile from git history &mdash; languages, modules, commit patterns. When a PR touches code outside someone's expertise, it flags it for senior review. No more rubber-stamped approvals on unfamiliar code.</p>
-        <code class="cli-hint">$ sentrik check-expertise --profile</code>
+    <div class="demo-tabs">
+      <button class="demo-tab active" data-cast="/recordings/05-full-lifecycle.cast">Full Lifecycle</button>
+      <button class="demo-tab" data-cast="/recordings/01-init-and-scan.cast">Scan &amp; Findings</button>
+      <button class="demo-tab" data-cast="/recordings/02-fix-and-gate.cast">Fix &amp; Gate</button>
+      <button class="demo-tab" data-cast="/recordings/03-supply-chain.cast">Supply Chain</button>
+      <button class="demo-tab" data-cast="/recordings/04-compliance.cast">Reports</button>
+      <span class="demo-tab-divider"></span>
+      <button class="demo-tab" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
+      <button class="demo-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
+      <button class="demo-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
+      <button class="demo-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard -->
+<section class="dashboard-section">
+  <div class="container">
+    <h2 class="section-title">Dashboard &amp; AI Fixes</h2>
+    <p class="section-sub">A management console for compliance. Find a violation, ask the AI to explain it, apply the fix &mdash; all from the browser.</p>
+
+    <div class="video-wrapper">
+      <video autoplay loop muted playsinline controls class="demo-video" preload="metadata">
+        <source src="/recordings/ai-chat-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="dashboard-features">
+      <div class="showcase-block">
+        <div class="showcase-text">
+          <h3>AI-Assisted Code Generation</h3>
+          <p>Claude Code, Cursor, and VS Code call Sentrik via MCP. The AI checks compliance rules <em>before</em> writing code &mdash; so generated code passes the gate on the first try.</p>
+        </div>
+        <div class="showcase-img">
+          <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
+        </div>
       </div>
-      <div class="showcase-img">
-        <img src="/images/expertise-dashboard.png" alt="Developer expertise profile showing language and module activity" class="screenshot expandable" loading="lazy" />
+
+      <div class="showcase-block reverse">
+        <div class="showcase-text">
+          <h3>Design Decision Auditing</h3>
+          <p>An LLM reviews your changes and surfaces decisions that need human attention &mdash; security patterns, architecture choices, data model tradeoffs. Acknowledge from the dashboard or gate PRs until all are reviewed.</p>
+        </div>
+        <div class="showcase-img">
+          <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot expandable" loading="lazy" />
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- What It Does -->
+<!-- Key Features -->
 <section class="value-props">
   <div class="container">
     <h2 class="section-title">One Tool. Full Compliance Lifecycle.</h2>
@@ -216,32 +149,32 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="prop-card">
         <div class="prop-icon">&#x26A1;</div>
         <h3>Scan in Seconds</h3>
-        <p>416 rules across 17 regulatory frameworks. SQL injection, hardcoded secrets, AI model security, supply chain risks &mdash; mapped to specific regulatory clauses.</p>
+        <p>416 rules across 17 frameworks. SQL injection, hardcoded secrets, AI model security, supply chain risks &mdash; mapped to specific regulatory clauses.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x26D4;</div>
         <h3>Gate Every PR</h3>
-        <p>Block non-compliant code in CI/CD. GitHub Actions, Azure Pipelines, GitLab CI. PR comments show exactly which regulation you're violating.</p>
+        <p>Block non-compliant code in CI/CD. GitHub Actions, Azure Pipelines, GitLab CI. PR comments show exactly which rule was violated.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F4CB;</div>
-        <h3>Audit Evidence in One Click</h3>
-        <p>Per-framework compliance reports, trust center pages, evidence bundles, and audit-ready ZIPs. No more 6-week evidence collection sprints.</p>
+        <h3>Audit Evidence</h3>
+        <p>Per-framework compliance reports, trust center pages, signed attestations, and audit-ready ZIP bundles. Generated in seconds.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F4E6;</div>
-        <h3>Supply Chain Security</h3>
-        <p>SBOM generation, CVE scanning, license compliance, secrets detection. Auto-fix vulnerable dependencies and create PRs.</p>
+        <h3>Supply Chain</h3>
+        <p>SBOM generation, CVE scanning against OSV.dev, license compliance, and secrets detection. Auto-fix vulnerable deps and create PRs.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">&#x1F9E0;</div>
+        <h3>Code Intelligence</h3>
+        <p>Quality scoring across 6 dimensions, project profiling, expertise-gap detection, and design decision auditing with AI review.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F517;</div>
         <h3>Full Traceability</h3>
-        <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Auto-sync with GitHub, Azure DevOps, and Jira.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">&#x1F3E2;</div>
-        <h3>Enterprise Governance</h3>
-        <p>Governance profiles, async approval gates, HMAC-signed audit logs, RBAC, auditor portals, and GRC platform integration.</p>
+        <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Sync with GitHub, Azure DevOps, and Jira.</p>
       </div>
     </div>
   </div>
@@ -253,27 +186,37 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <h2 class="section-title">17 Regulatory Frameworks. Built In.</h2>
     <p class="section-sub">Medical devices, fintech, healthcare, automotive, aviation, embedded systems.</p>
     <div class="standards-grid">
-      <div class="standard-card"><h3>IEC 62304</h3><p>Medical device software lifecycle</p></div>
+      <div class="standard-card"><h3>IEC 62304</h3><p>Medical device software</p></div>
       <div class="standard-card"><h3>OWASP Top 10</h3><p>Web application security</p></div>
       <div class="standard-card"><h3>SOC2</h3><p>Trust services criteria</p></div>
       <div class="standard-card"><h3>HIPAA</h3><p>Healthcare data protection</p></div>
       <div class="standard-card"><h3>PCI DSS</h3><p>Payment card security</p></div>
-      <div class="standard-card"><h3>ISO 27001</h3><p>Information security management</p></div>
-      <div class="standard-card"><h3>DO-178C</h3><p>Aviation software certification</p></div>
-      <div class="standard-card"><h3>ISO 26262</h3><p>Automotive functional safety</p></div>
+      <div class="standard-card"><h3>ISO 27001</h3><p>Information security</p></div>
+      <div class="standard-card"><h3>DO-178C</h3><p>Aviation software</p></div>
+      <div class="standard-card"><h3>ISO 26262</h3><p>Automotive safety</p></div>
     </div>
-    <p class="section-sub" style="margin-top: 1.5rem; font-size: 0.9rem;">Plus MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, PHP Security, Kotlin Security, Supply Chain Security, NIST AI RMF, Go Security</p>
+    <p class="standards-also">Plus MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, NIST AI RMF, and language-specific packs for Python, Go, PHP, and Kotlin</p>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
+<!-- Early Access CTA -->
+<section class="cta" id="early-access">
   <div class="container cta-inner">
-    <h2>Ready to see it in action?</h2>
-    <p class="cta-sub">We're onboarding design partners in medical devices, fintech, and SaaS.</p>
-    <div class="cta-actions">
-      <a href="mailto:hello@sentrik.dev?subject=Demo%20Request&body=I'd%20like%20to%20see%20a%20demo%20of%20Sentrik.%0A%0ACompany:%0ARole:%0AFrameworks%20we%20need:%20" class="btn btn-primary btn-lg">Request a Demo</a>
-    </div>
+    <h2>Get Early Access</h2>
+    <p class="cta-sub">We're onboarding design partners in medical devices, fintech, and SaaS. Spots are limited.</p>
+    <form name="early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="early-access" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Request Access</button>
+      </div>
+      <div class="form-row-extra">
+        <input type="text" name="company" placeholder="Company (optional)" class="form-input form-input-sm" />
+        <input type="text" name="frameworks" placeholder="Frameworks you need (optional)" class="form-input form-input-sm" />
+      </div>
+    </form>
+    <p class="cta-alt">Or install now: <code>pip install sentrik</code> &middot; <a href="https://github.com/maxgerhardson/sentrik-community" target="_blank" rel="noopener">GitHub</a></p>
   </div>
 </section>
 
@@ -285,6 +228,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 </ComingSoon>
 
 <style>
+  /* Hero */
   .hero { padding: 10rem 0 4rem; text-align: center; }
   .hero-badge {
     display: inline-block;
@@ -306,15 +250,72 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     background-clip: text;
   }
   .hero-sub {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--color-text-muted);
-    max-width: 680px;
-    margin: 0 auto 2.5rem;
+    max-width: 640px;
+    margin: 0 auto 2rem;
     line-height: 1.7;
   }
-  .hero-actions { display: flex; gap: 1rem; justify-content: center; }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .btn-lg { padding: 0.9rem 2.5rem; font-size: 1.1rem; }
+  .hero-install {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .hero-install code {
+    padding: 0.4rem 0.8rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+  }
 
+  /* Problem */
+  .problem { padding: 5rem 0; background: var(--color-bg-alt); }
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .problem-stat { font-size: 2.5rem; font-weight: 800; color: var(--color-accent); margin-bottom: 0.5rem; }
+  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
+  .stat-cite { font-size: 0.75rem; color: var(--color-primary-light); }
+
+  /* How It Works */
+  .how-it-works { padding: 5rem 0; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .step-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.1rem;
+    margin: 0 auto 1rem;
+  }
+  .step-card h3 { margin-bottom: 0.75rem; }
+  .step-cmd {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    color: var(--color-accent);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  .step-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* Shared */
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
   .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
   .screenshot.expandable { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
   .screenshot.expandable:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
@@ -339,11 +340,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
   }
 
-  .video-demo { padding: 3rem 0 4rem; }
-  .video-demo.alt-bg { background: var(--color-bg-alt); }
+  /* Terminal Demo */
+  .demo { padding: 3rem 0 4rem; background: var(--color-bg-alt); }
   .video-wrapper { max-width: 960px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
   .demo-video { width: 100%; display: block; }
-  .demo { padding: 2rem 0 4rem; }
   .terminal { max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
   .terminal-header { background: #2d2640; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
   .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -352,7 +352,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .terminal-dot.green { background: #28c840; }
   .terminal-title { margin-left: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }
   .terminal-body { background: #1a1428; padding: 0; overflow: hidden; }
-  .demo-caption { text-align: center; color: var(--color-text-muted); font-size: 0.95rem; margin-top: 1.25rem; font-style: italic; }
   .demo-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap; }
   .demo-tab { padding: 0.5rem 1rem; font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text-muted); cursor: pointer; transition: all 0.2s ease; }
   .demo-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
@@ -362,39 +361,17 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   #cli-player { min-height: 300px; }
   :global(.ap-wrapper) { border-radius: 0 !important; }
 
-  /* Problem stats */
-  .problem { padding: 5rem 0; }
-  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
-  .problem-stat { font-size: 2.5rem; font-weight: 800; color: var(--color-accent); margin-bottom: 0.5rem; }
-  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
-
-  /* Showcase */
-  .mcp-section { padding: 5rem 0; background: var(--color-bg-alt); }
-  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
-  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  /* Dashboard Section */
+  .dashboard-section { padding: 5rem 0; }
+  .dashboard-features { margin-top: 4rem; }
   .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; }
   .showcase-block.reverse { direction: rtl; }
   .showcase-block.reverse > * { direction: ltr; }
   .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
   .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
 
-  /* Code Intelligence */
-  .intelligence-section { padding: 5rem 0; }
-  .cli-hint {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.4rem 0.8rem;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: var(--color-primary-light);
-    font-family: var(--font-mono, 'Fira Code', monospace);
-  }
-
-  /* Value props */
-  .value-props { padding: 5rem 0; }
+  /* Value Props */
+  .value-props { padding: 5rem 0; background: var(--color-bg-alt); }
   .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .prop-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s; }
   .prop-card:hover { border-color: var(--color-primary); }
@@ -403,25 +380,49 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .prop-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
 
   /* Standards */
-  .standards { padding: 5rem 0; background: var(--color-bg-alt); }
+  .standards { padding: 5rem 0; }
   .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .standard-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color 0.2s; }
   .standard-card:hover { border-color: var(--color-primary); }
   .standard-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
   .standard-card p { color: var(--color-text-muted); font-size: 0.85rem; }
+  .standards-also { text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1.5rem; }
 
-  /* CTA */
-  .cta { padding: 6rem 0; text-align: center; }
+  /* CTA / Form */
+  .cta { padding: 6rem 0; text-align: center; background: var(--color-bg-alt); }
   .cta h2 { font-size: 2.2rem; margin-bottom: 0.75rem; }
   .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
-  .cta-actions { display: flex; gap: 1rem; justify-content: center; }
+  .cta-form { max-width: 560px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .form-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--color-primary); }
+  .form-input::placeholder { color: var(--color-text-muted); }
+  .form-row-extra { display: flex; gap: 0.75rem; }
+  .form-input-sm { font-size: 0.85rem; padding: 0.5rem 0.75rem; }
+  .cta-alt { margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-text-muted); }
+  .cta-alt code { color: var(--color-accent); }
 
+  /* Responsive */
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }
     .problem-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
     .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; direction: ltr; }
     .props-grid { grid-template-columns: 1fr 1fr; }
     .standards-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { flex-direction: column; }
+    .form-row-extra { flex-direction: column; }
   }
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
@@ -430,7 +431,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 </style>
 
 <script>
-  // Lightbox for expandable screenshots
   function openLightbox(src, alt) {
     var lb = document.getElementById('lightbox');
     var img = document.getElementById('lightbox-img');
