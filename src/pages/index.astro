@@ -14,9 +14,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     </p>
     <div class="hero-actions">
       <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
-      <a href="https://github.com/maxgerhardson/sentrik-community" class="btn btn-outline btn-lg" target="_blank" rel="noopener">View on GitHub</a>
     </div>
-    <p class="hero-install"><code>pip install sentrik</code></p>
   </div>
 </section>
 
@@ -36,11 +34,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="problem-card">
         <div class="problem-stat">36%</div>
-        <p>of AI-generated code contains security vulnerabilities <a href="https://www.theregister.com/2025/01/24/ai_code_security/" target="_blank" rel="noopener" class="stat-cite">[Stanford/NIST]</a></p>
+        <p>of AI-generated code contains security vulnerabilities <a href="https://www.theregister.com/2025/01/24/ai_code_security/" target="_blank" rel="noopener" class="stat-cite">[Stanford]</a></p>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">17</div>
-        <p>regulatory frameworks covered out of the box, from OWASP to NIST AI RMF</p>
+        <div class="problem-stat">416</div>
+        <p>rules across 17 regulatory frameworks, ready out of the box</p>
       </div>
     </div>
   </div>
@@ -61,7 +59,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <div class="step-num">2</div>
         <h3>Gate</h3>
         <code class="step-cmd">sentrik gate</code>
-        <p>Block non-compliant code in CI. One line in your GitHub Actions, Azure Pipelines, or GitLab CI config. PR comments show exactly which regulation you're violating.</p>
+        <p>Block non-compliant code in CI. One line in GitHub Actions, Azure Pipelines, or GitLab CI. PR comments show exactly which regulation you're violating.</p>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
@@ -105,37 +103,84 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- Dashboard -->
+<!-- Mid-page CTA -->
+<section class="mid-cta">
+  <div class="container" style="text-align:center">
+    <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
+  </div>
+</section>
+
+<!-- Dashboard & AI -->
 <section class="dashboard-section">
   <div class="container">
-    <h2 class="section-title">Dashboard &amp; AI Fixes</h2>
-    <p class="section-sub">A management console for compliance. Find a violation, ask the AI to explain it, apply the fix &mdash; all from the browser.</p>
+    <h2 class="section-title">A Compliance Dashboard That Actually Helps</h2>
+    <p class="section-sub">Real-time compliance scores, findings browser, AI-powered fixes, and one-click audit evidence &mdash; all in the browser.</p>
 
-    <div class="video-wrapper">
-      <video autoplay loop muted playsinline controls class="demo-video" preload="metadata">
-        <source src="/recordings/ai-chat-demo.mp4" type="video/mp4">
-      </video>
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Compliance Overview</h3>
+        <p>See your compliance score, finding counts by severity, gate status, and scan duration at a glance. Governance banners flag when human review is required before merge.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/dashboard-overview.png" alt="Sentrik dashboard showing compliance score, findings summary, and gate status" class="screenshot expandable" loading="lazy" />
+      </div>
     </div>
 
-    <div class="dashboard-features">
-      <div class="showcase-block">
-        <div class="showcase-text">
-          <h3>AI-Assisted Code Generation</h3>
-          <p>Claude Code, Cursor, and VS Code call Sentrik via MCP. The AI checks compliance rules <em>before</em> writing code &mdash; so generated code passes the gate on the first try.</p>
-        </div>
-        <div class="showcase-img">
-          <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
-        </div>
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>Findings with Code Context</h3>
+        <p>Every finding shows the exact file, line number, regulatory clause, and code snippet. Filter by severity, rule, or framework. Export to CSV for auditors.</p>
       </div>
+      <div class="showcase-img">
+        <img src="/images/finding-detail.png" alt="Finding detail view showing code snippet with compliance violation highlighted" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
 
-      <div class="showcase-block reverse">
-        <div class="showcase-text">
-          <h3>Design Decision Auditing</h3>
-          <p>An LLM reviews your changes and surfaces decisions that need human attention &mdash; security patterns, architecture choices, data model tradeoffs. Acknowledge from the dashboard or gate PRs until all are reviewed.</p>
-        </div>
-        <div class="showcase-img">
-          <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot expandable" loading="lazy" />
-        </div>
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Fix with AI</h3>
+        <p>Click any finding, chat with an LLM, and apply the fix &mdash; all from the browser. Compliance officers triage findings without touching an IDE.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/ai-chat-panel.png" alt="AI chat panel explaining how to fix a compliance finding" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>AI-Assisted Code Generation</h3>
+        <p>Claude Code, Cursor, and VS Code call Sentrik via MCP. The AI checks compliance rules <em>before</em> writing code &mdash; so generated code passes the gate on the first try.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code Intelligence -->
+<section class="intelligence-section">
+  <div class="container">
+    <h2 class="section-title">Code Intelligence</h2>
+    <p class="section-sub">Sentrik understands your codebase &mdash; it scores quality, profiles your stack, and knows who should review what.</p>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Quality Gradient Scoring</h3>
+        <p>A 0&ndash;100 quality score across six dimensions: compliance, complexity, test coverage, documentation, consistency, and dependency health. Track trends over time and set minimum thresholds in your gate.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>Project Profile &amp; Expertise Tracking</h3>
+        <p>Auto-detects languages, frameworks, architecture patterns, and conventions. Builds developer expertise profiles from git history. When a PR touches code outside someone's expertise, it flags it for senior review.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/project-profile-dashboard.png" alt="Project profile showing detected languages, frameworks, and module map" class="screenshot expandable" loading="lazy" />
       </div>
     </div>
   </div>
@@ -163,18 +208,18 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F4E6;</div>
-        <h3>Supply Chain</h3>
+        <h3>Supply Chain Security</h3>
         <p>SBOM generation, CVE scanning against OSV.dev, license compliance, and secrets detection. Auto-fix vulnerable deps and create PRs.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F9E0;</div>
         <h3>Code Intelligence</h3>
-        <p>Quality scoring across 6 dimensions, project profiling, expertise-gap detection, and design decision auditing with AI review.</p>
+        <p>Quality scoring, project profiling, expertise-gap detection, and design decision auditing with AI-powered review.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x1F517;</div>
         <h3>Full Traceability</h3>
-        <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Sync with GitHub, Azure DevOps, and Jira.</p>
+        <p>Requirements &rarr; code &rarr; tests &rarr; work items &rarr; audit evidence. Auto-sync with GitHub, Azure DevOps, and Jira.</p>
       </div>
     </div>
   </div>
@@ -216,7 +261,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <input type="text" name="frameworks" placeholder="Frameworks you need (optional)" class="form-input form-input-sm" />
       </div>
     </form>
-    <p class="cta-alt">Or install now: <code>pip install sentrik</code> &middot; <a href="https://github.com/maxgerhardson/sentrik-community" target="_blank" rel="noopener">GitHub</a></p>
   </div>
 </section>
 
@@ -229,7 +273,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 
 <style>
   /* Hero */
-  .hero { padding: 10rem 0 4rem; text-align: center; }
+  .hero { padding: 10rem 0 5rem; text-align: center; }
   .hero-badge {
     display: inline-block;
     padding: 0.4rem 1.2rem;
@@ -253,24 +297,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     font-size: 1.2rem;
     color: var(--color-text-muted);
     max-width: 640px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
     line-height: 1.7;
   }
   .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .btn-lg { padding: 0.9rem 2.5rem; font-size: 1.1rem; }
-  .hero-install {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-  }
-  .hero-install code {
-    padding: 0.4rem 0.8rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: var(--color-accent);
-  }
 
   /* Problem */
   .problem { padding: 5rem 0; background: var(--color-bg-alt); }
@@ -289,7 +320,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
-    position: relative;
   }
   .step-num {
     width: 40px; height: 40px;
@@ -361,14 +391,20 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   #cli-player { min-height: 300px; }
   :global(.ap-wrapper) { border-radius: 0 !important; }
 
+  /* Mid-page CTA */
+  .mid-cta { padding: 3rem 0; }
+
   /* Dashboard Section */
-  .dashboard-section { padding: 5rem 0; }
-  .dashboard-features { margin-top: 4rem; }
-  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; }
+  .dashboard-section { padding: 5rem 0; background: var(--color-bg-alt); }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+  .showcase-block:last-child { margin-bottom: 0; }
   .showcase-block.reverse { direction: rtl; }
   .showcase-block.reverse > * { direction: ltr; }
   .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
   .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
+
+  /* Code Intelligence */
+  .intelligence-section { padding: 5rem 0; }
 
   /* Value Props */
   .value-props { padding: 5rem 0; background: var(--color-bg-alt); }
@@ -410,8 +446,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .form-input::placeholder { color: var(--color-text-muted); }
   .form-row-extra { display: flex; gap: 0.75rem; }
   .form-input-sm { font-size: 0.85rem; padding: 0.5rem 0.75rem; }
-  .cta-alt { margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-text-muted); }
-  .cta-alt code { color: var(--color-accent); }
 
   /* Responsive */
   @media (max-width: 900px) {
