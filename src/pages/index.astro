@@ -32,6 +32,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="terminal-body">
         <div id="main-player"></div>
+        <video id="cli-player" class="demo-video" autoplay loop muted playsinline controls style="display:none"></video>
       </div>
     </div>
     <p class="demo-caption">Real output from a medical device API &mdash; 24 critical findings found, fixed, and gated in minutes</p>
@@ -42,6 +43,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <button class="demo-tab" data-cast="/recordings/02-fix-and-gate.cast">Fix &amp; Gate</button>
       <button class="demo-tab" data-cast="/recordings/03-supply-chain.cast">Dependencies &amp; CVEs</button>
       <button class="demo-tab" data-cast="/recordings/04-compliance.cast">Reports &amp; Evidence</button>
+      <span class="demo-tab-divider"></span>
+      <button class="demo-tab" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
+      <button class="demo-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
+      <button class="demo-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
+      <button class="demo-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
     </div>
   </div>
 </section>
@@ -85,76 +91,14 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- Code Intelligence -->
-<section class="intelligence-section">
+<!-- Design Decisions Demo Video -->
+<section class="video-demo alt-bg">
   <div class="container">
-    <h2 class="section-title">AI-Powered Code Intelligence</h2>
-    <p class="section-sub">Sentrik doesn't just scan &mdash; it understands your codebase, scores quality, reviews design decisions, and knows who should review what.</p>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Quality Gradient Scoring</h3>
-        <p>A single 0&ndash;100 quality score across six dimensions: compliance, complexity, test coverage, documentation, consistency, and dependency health. Track trends over time and set minimum thresholds in your gate.</p>
-        <code class="cli-hint">$ sentrik quality-score --verbose</code>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block reverse">
-      <div class="showcase-text">
-        <h3>Project Profile &amp; Design Constraints</h3>
-        <p>Sentrik auto-detects your languages, frameworks, architecture patterns, and conventions. AI agents query constraints <em>before</em> writing code &mdash; so generated code follows your established patterns, not generic ones.</p>
-        <code class="cli-hint">$ sentrik profile --for src/api/routes/</code>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/project-profile-dashboard.png" alt="Project profile showing detected languages, frameworks, architecture patterns and module map" class="screenshot" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="showcase-block">
-      <div class="showcase-text">
-        <h3>Design Decision Auditing</h3>
-        <p>An LLM reviews your code changes and surfaces design decisions that need human attention &mdash; security patterns, architecture choices, data model tradeoffs. Acknowledge decisions from the dashboard or CLI, and gate PRs until all are reviewed.</p>
-        <code class="cli-hint">$ sentrik review-design --git-range HEAD~3..HEAD</code>
-      </div>
-      <div class="showcase-img">
-        <div class="video-wrapper-inline">
-          <video autoplay loop muted playsinline controls class="demo-video">
-            <source src="/recordings/design-decisions-dashboard.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-
-    <div class="showcase-block reverse">
-      <div class="showcase-text">
-        <h3>Expertise-Gap Escalation</h3>
-        <p>Sentrik builds a developer profile from git history &mdash; languages, modules, commit patterns. When a PR touches code outside someone's expertise, it flags it for senior review. No more rubber-stamped approvals on unfamiliar code.</p>
-        <code class="cli-hint">$ sentrik check-expertise --profile</code>
-      </div>
-      <div class="showcase-img">
-        <img src="/images/expertise-dashboard.png" alt="Developer expertise profile showing language and module activity" class="screenshot" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CLI Demos -->
-<section class="cli-demos">
-  <div class="container">
-    <h2 class="section-title">See It In Action</h2>
-    <p class="section-sub">Every feature works from the command line. One binary, zero config.</p>
-    <div class="cli-tabs">
-      <button class="cli-tab active" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
-      <button class="cli-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
-      <button class="cli-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
-      <button class="cli-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
-    </div>
+    <h2 class="section-title">Design Decision Auditing</h2>
+    <p class="section-sub">An LLM reviews your changes and surfaces design decisions that need human attention. Acknowledge from the dashboard or CLI.</p>
     <div class="video-wrapper">
-      <video id="cli-player" autoplay loop muted playsinline controls class="demo-video">
-        <source src="/recordings/quality-score-cli.mp4" type="video/mp4">
+      <video autoplay loop muted playsinline controls class="demo-video">
+        <source src="/recordings/design-decisions-dashboard.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -197,7 +141,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p>Claude Code, Cursor, and VS Code call Sentrik via the Model Context Protocol. The AI asks &ldquo;what rules apply?&rdquo; and writes code that passes the gate on the first try.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot" loading="lazy" />
+        <img src="/images/mcp-in-action.png" alt="AI agent checking compliance rules during code generation" class="screenshot expandable" loading="lazy" />
       </div>
     </div>
 
@@ -207,7 +151,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p>Click any finding, chat with an LLM, and apply the fix &mdash; all from the browser. Compliance officers triage findings without touching an IDE.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/ai-chat-panel.png" alt="AI chat panel explaining how to fix a compliance finding" class="screenshot" loading="lazy" />
+        <img src="/images/ai-chat-panel.png" alt="AI chat panel explaining how to fix a compliance finding" class="screenshot expandable" loading="lazy" />
       </div>
     </div>
 
@@ -217,7 +161,48 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p>Real-time compliance score, severity trends, scan history, and one-click evidence export for auditors. Everything an auditor needs, generated automatically.</p>
       </div>
       <div class="showcase-img">
-        <img src="/images/dashboard-overview.png" alt="Sentrik compliance dashboard" class="screenshot" loading="lazy" />
+        <img src="/images/dashboard-overview.png" alt="Sentrik compliance dashboard" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code Intelligence -->
+<section class="intelligence-section">
+  <div class="container">
+    <h2 class="section-title">Code Intelligence</h2>
+    <p class="section-sub">Sentrik understands your codebase &mdash; it scores quality, profiles your stack, and knows who should review what.</p>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Quality Gradient Scoring</h3>
+        <p>A single 0&ndash;100 quality score across six dimensions: compliance, complexity, test coverage, documentation, consistency, and dependency health. Track trends over time and set minimum thresholds in your gate.</p>
+        <code class="cli-hint">$ sentrik quality-score --verbose</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/quality-score-dashboard.png" alt="Quality score dashboard showing 6 dimensions with trend chart" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block reverse">
+      <div class="showcase-text">
+        <h3>Project Profile &amp; Design Constraints</h3>
+        <p>Sentrik auto-detects your languages, frameworks, architecture patterns, and conventions. AI agents query constraints <em>before</em> writing code &mdash; so generated code follows your established patterns, not generic ones.</p>
+        <code class="cli-hint">$ sentrik profile --for src/api/routes/</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/project-profile-dashboard.png" alt="Project profile showing detected languages, frameworks, architecture patterns and module map" class="screenshot expandable" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Expertise-Gap Escalation</h3>
+        <p>Sentrik builds a developer profile from git history &mdash; languages, modules, commit patterns. When a PR touches code outside someone's expertise, it flags it for senior review. No more rubber-stamped approvals on unfamiliar code.</p>
+        <code class="cli-hint">$ sentrik check-expertise --profile</code>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/expertise-dashboard.png" alt="Developer expertise profile showing language and module activity" class="screenshot expandable" loading="lazy" />
       </div>
     </div>
   </div>
@@ -292,6 +277,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- Screenshot Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
 </ComingSoon>
 
 <style>
@@ -326,6 +316,28 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .btn-lg { padding: 0.9rem 2.5rem; font-size: 1.1rem; }
 
   .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .screenshot.expandable { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .screenshot.expandable:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  }
 
   .video-demo { padding: 3rem 0 4rem; }
   .video-demo.alt-bg { background: var(--color-bg-alt); }
@@ -345,7 +357,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .demo-tab { padding: 0.5rem 1rem; font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text-muted); cursor: pointer; transition: all 0.2s ease; }
   .demo-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
   .demo-tab.active { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+  .demo-tab-divider { width: 1px; background: var(--color-border); margin: 0 0.25rem; align-self: stretch; }
   #main-player { min-height: 300px; }
+  #cli-player { min-height: 300px; }
   :global(.ap-wrapper) { border-radius: 0 !important; }
 
   /* Problem stats */
@@ -364,6 +378,20 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .showcase-block.reverse > * { direction: ltr; }
   .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
   .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
+
+  /* Code Intelligence */
+  .intelligence-section { padding: 5rem 0; }
+  .cli-hint {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--color-primary-light);
+    font-family: var(--font-mono, 'Fira Code', monospace);
+  }
 
   /* Value props */
   .value-props { padding: 5rem 0; }
@@ -388,50 +416,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
   .cta-actions { display: flex; gap: 1rem; justify-content: center; }
 
-  /* Code Intelligence */
-  .intelligence-section { padding: 5rem 0; background: var(--color-bg-alt); }
-  .cli-hint {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.4rem 0.8rem;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: var(--color-primary-light);
-    font-family: var(--font-mono, 'Fira Code', monospace);
-  }
-  .video-wrapper-inline {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  /* CLI Demos */
-  .cli-demos { padding: 4rem 0; }
-  .cli-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .cli-tab {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background: var(--color-surface);
-    color: var(--color-text-muted);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .cli-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
-  .cli-tab.active { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
-
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }
     .problem-grid { grid-template-columns: 1fr 1fr; }
@@ -444,3 +428,29 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     .problem-grid, .props-grid, .standards-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  // Lightbox for expandable screenshots
+  function openLightbox(src, alt) {
+    var lb = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('lightbox');
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('expandable')) {
+      e.preventDefault();
+      openLightbox(e.target.src, e.target.alt);
+    }
+  });
+</script>
