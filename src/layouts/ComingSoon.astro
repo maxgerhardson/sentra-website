@@ -104,28 +104,13 @@ const { title } = Astro.props;
 
         loadCast('/recordings/05-full-lifecycle.cast');
 
-        var cliPlayer = document.getElementById('cli-player');
         var tabs = document.querySelectorAll('.demo-tab');
         for (var i = 0; i < tabs.length; i++) {
           (function(tab) {
             tab.addEventListener('click', function() {
               for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('active'); }
               tab.classList.add('active');
-
-              var castSrc = tab.getAttribute('data-cast');
-              var videoSrc = tab.getAttribute('data-cli-video');
-
-              if (castSrc) {
-                container.style.display = '';
-                if (cliPlayer) cliPlayer.style.display = 'none';
-                loadCast(castSrc);
-              } else if (videoSrc && cliPlayer) {
-                container.style.display = 'none';
-                cliPlayer.style.display = 'block';
-                cliPlayer.src = videoSrc;
-                cliPlayer.load();
-                cliPlayer.play();
-              }
+              loadCast(tab.getAttribute('data-cast'));
             });
           })(tabs[i]);
         }

@@ -88,7 +88,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="terminal-body">
         <div id="main-player"></div>
-        <video id="cli-player" class="demo-video" autoplay loop muted playsinline controls style="display:none"></video>
       </div>
     </div>
 
@@ -99,10 +98,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <button class="demo-tab" data-cast="/recordings/03-supply-chain.cast">Supply Chain</button>
       <button class="demo-tab" data-cast="/recordings/04-compliance.cast">Reports</button>
       <span class="demo-tab-divider"></span>
-      <button class="demo-tab" data-cli-video="/recordings/quality-score-cli.mp4">Quality Score</button>
-      <button class="demo-tab" data-cli-video="/recordings/project-profile-cli.mp4">Project Profile</button>
-      <button class="demo-tab" data-cli-video="/recordings/design-decisions-cli.mp4">Design Review</button>
-      <button class="demo-tab" data-cli-video="/recordings/expertise-cli.mp4">Expertise Check</button>
+      <button class="demo-tab" data-cast="/recordings/quality-score.cast">Quality Score</button>
+      <button class="demo-tab" data-cast="/recordings/project-profile.cast">Project Profile</button>
+      <button class="demo-tab" data-cast="/recordings/design-review.cast">Design Review</button>
+      <button class="demo-tab" data-cast="/recordings/expertise.cast">Expertise Check</button>
     </div>
   </div>
 </section>
@@ -489,7 +488,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .demo-tab.active { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
   .demo-tab-divider { width: 1px; background: var(--color-border); margin: 0 0.25rem; align-self: stretch; }
   #main-player { min-height: 300px; }
-  #cli-player { min-height: 300px; }
   :global(.ap-wrapper) { border-radius: 0 !important; }
 
   /* Mid-page CTA */
