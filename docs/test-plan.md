@@ -287,7 +287,7 @@ These tests require a browser, VS Code GUI, interactive terminal, or running ser
 
 ### Prerequisites
 - Website built and running locally: `cd C:\Users\mgerh\sentra-website; npm run dev`
-- Docs site accessible at https://maxgerhardson.github.io/sentrik-docs (or built locally)
+- Docs site accessible at https://docs.sentrik.dev (or built locally)
 - Browser with DevTools available
 - Mobile device or browser responsive mode
 
