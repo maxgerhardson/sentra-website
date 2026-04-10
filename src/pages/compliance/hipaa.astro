@@ -1,0 +1,193 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="HIPAA Compliance for Healthcare Software">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">HIPAA</div>
+    <h1>HIPAA compliance<br /><span class="gradient-text">built into CI</span></h1>
+    <p class="hero-sub">
+      Sentrik scans your healthcare code against 25 HIPAA Security Rule controls, detects PHI exposure, enforces encryption requirements, and generates audit evidence for your compliance officer.
+    </p>
+    <div class="hero-actions">
+      <code class="hero-cmd">npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="hero-free">HIPAA pack available on Team tier — $29/month.</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">The HIPAA Problem</h2>
+    <p class="section-sub">AI agents write healthcare code fast. HIPAA violations ship even faster.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-stat">$3B+</div>
+        <p>GDPR fines in H1 2025 alone — HIPAA penalties are escalating too</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">48%</div>
+        <p>of AI-generated code contains security vulnerabilities</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">25</div>
+        <p>HIPAA Security Rule controls mapped to specific code patterns</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">30s</div>
+        <p>to scan your entire codebase for HIPAA violations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage">
+  <div class="container">
+    <h2 class="section-title">25 HIPAA Rules. Mapped to the Security Rule.</h2>
+    <p class="section-sub">Every finding cites the specific HIPAA section. Your compliance officer sees &sect;164.312, not just "high severity."</p>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>&sect;164.312(a) — Access Control</h3>
+        <p>Missing authentication, hardcoded credentials, permissive access patterns, debug mode in production</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;164.312(a)(2)(iv) — Encryption</h3>
+        <p>Weak cryptography (MD5, SHA-1), missing encryption at rest, plaintext PHI in storage</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;164.312(b) — Audit Controls</h3>
+        <p>Missing audit logging in modules handling patient data</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;164.312(c) — Integrity</h3>
+        <p>Unsafe deserialization, unvalidated input in healthcare data processing</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;164.312(e) — Transmission</h3>
+        <p>PHI in console logs, unencrypted cookies, localStorage with health data</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;164.308 — Administrative</h3>
+        <p>Risk analysis documentation, security training records, incident response plans, contingency planning</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence">
+  <div class="container">
+    <h2 class="section-title">Prove HIPAA Compliance to Your Auditor</h2>
+    <p class="section-sub">The Evidence Map shows exactly where your code satisfies each HIPAA requirement.</p>
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Evidence Map for HIPAA</h3>
+        <p>When your auditor asks "show me where you implement audit logging for ePHI access," you open the Evidence Map. It shows:</p>
+        <ul>
+          <li><strong>&sect;164.312(b)</strong> — audit logging found in <code>middleware/audit.py:14</code></li>
+          <li><strong>&sect;164.312(a)(2)(iv)</strong> — AES-256 encryption in <code>services/encryption.py:45</code></li>
+          <li><strong>&sect;164.308(a)(1)</strong> — risk analysis documented in <code>docs/risk-analysis.adoc</code></li>
+        </ul>
+        <p>Not just violations — proof of compliance.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/evidence-map-dashboard.png" alt="HIPAA compliance evidence map with code locations" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="phi">
+  <div class="container">
+    <h2 class="section-title">PHI Detection Built In</h2>
+    <p class="section-sub">Sentrik detects Protected Health Information exposure before it ships.</p>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>PHI in Logs</h3>
+        <p>Detects patient data being written to console.log, print statements, or logging frameworks</p>
+      </div>
+      <div class="rule-card">
+        <h3>PHI in Client Storage</h3>
+        <p>Flags health data stored in localStorage, sessionStorage, or unencrypted cookies</p>
+      </div>
+      <div class="rule-card">
+        <h3>Secrets Detection</h3>
+        <p>Finds hardcoded API keys, database passwords, and tokens that could expose ePHI</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="early-access">
+  <div class="container cta-inner">
+    <h2>Start HIPAA Scanning</h2>
+    <p class="cta-sub">25 HIPAA rules on the Team tier. Try the free tier first — includes OWASP and SOC 2.</p>
+    <div class="cta-cmd">
+      <code>npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="cta-or">or</p>
+    <form name="hipaa-early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="hipaa-early-access" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Get Early Access</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .hero { padding: 10rem 0 5rem; text-align: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; background: linear-gradient(135deg, #ef4444, #f97316); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3.2rem; line-height: 1.15; }
+  .gradient-text { background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.2rem; color: var(--color-text-muted); max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero-cmd { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 1rem; }
+  .hero-free { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  .problem { padding: 5rem 0; background: var(--color-bg-alt); }
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .problem-stat { font-size: 2.5rem; font-weight: 800; color: #ef4444; margin-bottom: 0.5rem; }
+  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+  .coverage, .phi { padding: 5rem 0; }
+  .phi { background: var(--color-bg-alt); }
+  .rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .rule-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; }
+  .rule-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .rule-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  .evidence { padding: 5rem 0; background: var(--color-bg-alt); }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+  .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
+  .showcase-text ul { color: var(--color-text-muted); line-height: 2.2; padding-left: 0; list-style: none; margin-top: 1rem; }
+  .showcase-text code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+
+  .cta { padding: 5rem 0; text-align: center; }
+  .cta h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .cta-cmd { margin-bottom: 1rem; }
+  .cta-cmd code { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 0.95rem; }
+  .cta-or { color: var(--color-text-muted); margin: 1rem 0; }
+  .cta-form { max-width: 480px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.75rem; }
+  .form-input { flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 1rem; }
+
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.2rem; }
+    .problem-grid { grid-template-columns: 1fr 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .showcase-block { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+  }
+</style>

@@ -1,0 +1,215 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="OWASP Top 10 Scanning for AI-Generated Code">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">OWASP Top 10</div>
+    <h1>Catch OWASP violations<br /><span class="gradient-text">before they ship</span></h1>
+    <p class="hero-sub">
+      69 rules covering all 10 OWASP categories. SQL injection, XSS, broken auth, SSRF, cryptographic failures — detected in seconds, blocked in CI, with AI-powered fixes.
+    </p>
+    <div class="hero-actions">
+      <code class="hero-cmd">npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="hero-free">Free tier includes OWASP Top 10 — no credit card, no time limit.</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">AI Writes Vulnerable Code</h2>
+    <p class="section-sub">AI coding agents produce working code with hidden security flaws.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-stat">48%</div>
+        <p>of AI-generated code contains security vulnerabilities</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">84%</div>
+        <p>of developers now use AI coding tools (Stack Overflow 2025)</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">69</div>
+        <p>OWASP rules checking for injection, XSS, auth, crypto, SSRF, and more</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">$0</div>
+        <p>cost of Sentrik's OWASP scanning — included in the free tier forever</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage">
+  <div class="container">
+    <h2 class="section-title">All 10 OWASP Categories. 69 Rules.</h2>
+    <p class="section-sub">Multi-language: Python, JavaScript, TypeScript, Go, PHP, Kotlin, Java, C/C++, Rust, and more.</p>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>A01 — Broken Access Control</h3>
+        <p>Wildcard CORS, debug mode, directory traversal, missing auth checks</p>
+      </div>
+      <div class="rule-card">
+        <h3>A02 — Cryptographic Failures</h3>
+        <p>MD5, SHA-1, weak random, ECB mode, hardcoded keys</p>
+      </div>
+      <div class="rule-card">
+        <h3>A03 — Injection</h3>
+        <p>SQL injection, OS command injection, LDAP injection, XPath injection</p>
+      </div>
+      <div class="rule-card">
+        <h3>A04 — Insecure Design</h3>
+        <p>Missing rate limiting, no input length limits</p>
+      </div>
+      <div class="rule-card">
+        <h3>A05 — Security Misconfiguration</h3>
+        <p>Default credentials, verbose errors, missing security headers</p>
+      </div>
+      <div class="rule-card">
+        <h3>A06 — Vulnerable Components</h3>
+        <p>Known CVEs in dependencies, outdated packages, no lock files</p>
+      </div>
+      <div class="rule-card">
+        <h3>A07 — Auth Failures</h3>
+        <p>Weak password validation, session fixation, token exposure</p>
+      </div>
+      <div class="rule-card">
+        <h3>A08 — Software Integrity</h3>
+        <p>Unsafe deserialization, missing subresource integrity, unsigned updates</p>
+      </div>
+      <div class="rule-card">
+        <h3>A09 — Logging Failures</h3>
+        <p>Sensitive data in logs, missing audit trails, no monitoring hooks</p>
+      </div>
+      <div class="rule-card">
+        <h3>A10 — SSRF</h3>
+        <p>Unvalidated URL fetching, DNS rebinding, internal network access</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fix">
+  <div class="container">
+    <h2 class="section-title">Find It. Fix It. Ship It.</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Scan</h3>
+        <code class="step-cmd">sentrik scan</code>
+        <p>69 OWASP rules in seconds. Every finding shows the file, line, and OWASP category.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Fix with AI</h3>
+        <p>Click any finding in the dashboard. The AI chat explains the vulnerability, suggests a fix, and applies the code change.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Gate in CI</h3>
+        <pre class="step-yaml"><code>- uses: maxgerhardson/sentrik-community@v1</code></pre>
+        <p>One line. Every PR checked. Non-compliant code blocked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="extras">
+  <div class="container">
+    <h2 class="section-title">Beyond OWASP</h2>
+    <p class="section-sub">The free tier also includes supply chain security and Python/Go language packs.</p>
+    <div class="rules-grid three">
+      <div class="rule-card">
+        <h3>Supply Chain Security</h3>
+        <p>SBOM generation, CVE scanning, license auditing, secrets detection. 26 rules.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Python Security</h3>
+        <p>eval/exec, pickle, subprocess, Django/Flask vulnerabilities. 18 rules.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Go Security</h3>
+        <p>Injection, crypto misuse, unsafe operations, concurrency bugs. 15 rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="early-access">
+  <div class="container cta-inner">
+    <h2>Start OWASP Scanning — Free</h2>
+    <p class="cta-sub">OWASP Top 10 is included in the free tier. 69 rules, no credit card, no time limit.</p>
+    <div class="cta-cmd">
+      <code>npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="cta-or">or</p>
+    <form name="owasp-early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="owasp-early-access" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Get Early Access</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .hero { padding: 10rem 0 5rem; text-align: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; background: linear-gradient(135deg, #22c55e, #06b6d4); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3.2rem; line-height: 1.15; }
+  .gradient-text { background: linear-gradient(135deg, #22c55e, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.2rem; color: var(--color-text-muted); max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero-cmd { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 1rem; }
+  .hero-free { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  .problem { padding: 5rem 0; background: var(--color-bg-alt); }
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .problem-stat { font-size: 2.5rem; font-weight: 800; color: #22c55e; margin-bottom: 0.5rem; }
+  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+  .coverage, .extras { padding: 5rem 0; }
+  .extras { background: var(--color-bg-alt); }
+  .rules-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .rules-grid.three { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .rule-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; }
+  .rule-card h3 { margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .rule-card p { color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+  .fix { padding: 5rem 0; background: var(--color-bg-alt); }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .step-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .step-num { width: 40px; height: 40px; background: #22c55e; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 1rem; }
+  .step-cmd { display: inline-block; padding: 0.3rem 0.7rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); color: var(--color-accent); border-radius: 6px; font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .step-yaml { text-align: left; margin-top: 0.75rem; padding: 0.5rem 0.8rem; background: rgba(15, 11, 26, 0.6); border: 1px solid var(--color-border); border-radius: 8px; font-size: 0.75rem; }
+  .step-yaml code { font-size: 0.75rem; color: var(--color-text-muted); }
+  .step-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  .cta { padding: 5rem 0; text-align: center; }
+  .cta h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .cta-cmd { margin-bottom: 1rem; }
+  .cta-cmd code { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 0.95rem; }
+  .cta-or { color: var(--color-text-muted); margin: 1rem 0; }
+  .cta-form { max-width: 480px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.75rem; }
+  .form-input { flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 1rem; }
+
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.2rem; }
+    .problem-grid { grid-template-columns: 1fr 1fr; }
+    .rules-grid { grid-template-columns: 1fr 1fr; }
+    .rules-grid.three { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+  }
+</style>
