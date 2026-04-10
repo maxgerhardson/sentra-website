@@ -280,27 +280,27 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         </div>
       </div>
       <div class="integration-group">
-        <div class="integration-label">AI Agents</div>
+        <div class="integration-label">AI Agents (MCP)</div>
         <div class="integration-items">
           <span class="integration-item">Claude Code</span>
           <span class="integration-item">Cursor</span>
-          <span class="integration-item">Copilot</span>
+          <span class="integration-item">Cline</span>
         </div>
       </div>
       <div class="integration-group">
         <div class="integration-label">Editors</div>
         <div class="integration-items">
           <span class="integration-item">VS Code</span>
-          <span class="integration-item">JetBrains</span>
-          <span class="integration-item">Any LSP</span>
+          <span class="integration-item">Cursor</span>
+          <span class="integration-item">LSP (any editor)</span>
         </div>
       </div>
       <div class="integration-group">
-        <div class="integration-label">GRC</div>
+        <div class="integration-label">Distribution</div>
         <div class="integration-items">
-          <span class="integration-item">Drata</span>
-          <span class="integration-item">Vanta</span>
-          <span class="integration-item">Secureframe</span>
+          <span class="integration-item">npm</span>
+          <span class="integration-item">Docker</span>
+          <span class="integration-item">pip</span>
         </div>
       </div>
       <div class="integration-group">
@@ -351,20 +351,69 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <h2 class="section-title">22 Regulatory Frameworks. Built In.</h2>
     <p class="section-sub">Medical devices, fintech, healthcare, automotive, aviation, embedded systems.</p>
     <div class="standards-grid">
-      <div class="standard-card"><h3>IEC 62304</h3><p>Medical device software</p></div>
       <div class="standard-card"><h3>OWASP Top 10</h3><p>Web application security</p></div>
-      <div class="standard-card"><h3>SOC2</h3><p>Trust services criteria</p></div>
+      <div class="standard-card"><h3>SOC 2</h3><p>Trust services criteria</p></div>
       <div class="standard-card"><h3>HIPAA</h3><p>Healthcare data protection</p></div>
       <div class="standard-card"><h3>PCI DSS</h3><p>Payment card security</p></div>
       <div class="standard-card"><h3>ISO 27001</h3><p>Information security</p></div>
-      <div class="standard-card"><h3>EU AI Act</h3><p>AI system governance</p></div>
       <div class="standard-card"><h3>GDPR</h3><p>Data protection &amp; privacy</p></div>
+      <div class="standard-card"><h3>IEC 62304</h3><p>Medical device software</p></div>
+      <div class="standard-card"><h3>EU AI Act</h3><p>AI system governance</p></div>
       <div class="standard-card"><h3>NIST 800-53</h3><p>Federal security controls</p></div>
       <div class="standard-card"><h3>CMMC 2.0</h3><p>Defense contractor security</p></div>
-      <div class="standard-card"><h3>DO-178C</h3><p>Aviation software</p></div>
-      <div class="standard-card"><h3>ISO 26262</h3><p>Automotive safety</p></div>
+      <div class="standard-card"><h3>Supply Chain</h3><p>SLSA, SBOM, dependency integrity</p></div>
+      <div class="standard-card"><h3>NIST AI RMF</h3><p>AI risk management</p></div>
     </div>
-    <p class="standards-also">Plus MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, NIST AI RMF, and language-specific packs for Python, Go, PHP, and Kotlin</p>
+    <p class="standards-also">Plus DO-178C, ISO 26262, MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, and language-specific packs for Python, Go, PHP, and Kotlin</p>
+  </div>
+</section>
+
+<!-- Free Tier -->
+<section class="free-tier">
+  <div class="container">
+    <h2 class="section-title">Start Free. No Credit Card.</h2>
+    <p class="section-sub">5 standards packs with 158 rules, forever free. Upgrade when you need more.</p>
+    <div class="free-grid">
+      <div class="free-card">
+        <h3>Free</h3>
+        <div class="free-price">$0<span>/forever</span></div>
+        <ul>
+          <li>OWASP Top 10 (69 rules)</li>
+          <li>SOC 2 (30 rules)</li>
+          <li>Python Security (18 rules)</li>
+          <li>Go Security (15 rules)</li>
+          <li>Supply Chain (26 rules)</li>
+          <li>Dashboard &amp; CLI</li>
+          <li>VS Code extension</li>
+          <li>GitHub Action</li>
+        </ul>
+        <a href="#early-access" class="btn btn-secondary" style="width:100%;text-align:center">Get Started</a>
+      </div>
+      <div class="free-card featured">
+        <h3>Team</h3>
+        <div class="free-price">$29<span>/mo</span></div>
+        <ul>
+          <li>Everything in Free</li>
+          <li>+11 packs: HIPAA, PCI-DSS, ISO 27001, GDPR, FDA IEC 62304, NIST, CMMC, EU AI Act, and more</li>
+          <li>Work item reconciliation</li>
+          <li>Risk scoring on all findings</li>
+          <li>Auto-fix vulnerable deps</li>
+        </ul>
+        <a href="#early-access" class="btn btn-primary" style="width:100%;text-align:center">Get Early Access</a>
+      </div>
+      <div class="free-card">
+        <h3>Organization</h3>
+        <div class="free-price">$99<span>/mo</span></div>
+        <ul>
+          <li>Everything in Team</li>
+          <li>+6 packs: MISRA-C, DO-178C, ISO 26262, ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
+          <li>Parallel scanning</li>
+          <li>Custom rules</li>
+          <li>Governance &amp; audit log</li>
+        </ul>
+        <a href="#early-access" class="btn btn-secondary" style="width:100%;text-align:center">Contact Us</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -600,6 +649,50 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .standard-card p { color: var(--color-text-muted); font-size: 0.85rem; }
   .standards-also { text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1.5rem; }
 
+  /* Free Tier Pricing */
+  .free-tier { padding: 5rem 0; }
+  .free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+  .free-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .free-card:hover { border-color: var(--color-primary); }
+  .free-card.featured {
+    border-color: var(--color-primary);
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+  }
+  .free-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .free-price { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; }
+  .free-price span { font-size: 0.9rem; font-weight: 400; color: var(--color-text-muted); }
+  .free-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 2;
+  }
+  .free-card li::before { content: "\2713 "; color: var(--color-primary-light); font-weight: 700; }
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: var(--color-primary); }
+
   /* CTA / Form */
   .cta { padding: 6rem 0; text-align: center; background: var(--color-bg-alt); }
   .cta h2 { font-size: 2.2rem; margin-bottom: 0.75rem; }
@@ -633,6 +726,8 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     .standards-grid { grid-template-columns: 1fr 1fr; }
     .integrations-grid { grid-template-columns: repeat(3, 1fr); }
     .regulated-grid { grid-template-columns: 1fr 1fr; }
+    .free-grid { grid-template-columns: 1fr; }
+    .free-card.featured { transform: none; }
     .form-row { flex-direction: column; }
     .form-row-extra { flex-direction: column; }
   }
