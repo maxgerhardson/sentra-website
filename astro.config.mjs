@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://sentra.dev',
+  site: 'https://sentrik.dev',
   trailingSlash: 'never',
+  integrations: [sitemap()],
   build: {
     format: 'file',
   },

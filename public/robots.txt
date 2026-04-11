@@ -46,4 +46,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://sentrik.dev/sitemap.xml
+Sitemap: https://sentrik.dev/sitemap-index.xml
