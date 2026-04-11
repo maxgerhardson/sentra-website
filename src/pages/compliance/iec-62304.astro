@@ -1,0 +1,266 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="IEC 62304 Compliance Automation for Medical Device Software" description="Automate IEC 62304 compliance in your CI/CD pipeline. 31 rules mapped to software lifecycle clauses. Traceability, risk management, and audit evidence generated automatically.">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">IEC 62304</div>
+    <h1>IEC 62304 compliance<br /><span class="gradient-text">automated in CI</span></h1>
+    <p class="hero-sub">
+      Sentrik maps 31 rules to IEC 62304 software lifecycle clauses, enforces them on every commit, and generates the audit evidence your notified body needs. No more spreadsheet traceability.
+    </p>
+    <div class="hero-actions">
+      <code class="hero-cmd">npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="hero-free">IEC 62304 pack available on Team tier &mdash; $29/month.</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">The IEC 62304 Problem</h2>
+    <p class="section-sub">Medical device software teams spend months on compliance evidence that should be automated.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-stat">6+ months</div>
+        <p>typical time to prepare IEC 62304 evidence for a design review or submission</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">$75K+</div>
+        <p>annual cost of manual compliance using Jama, DOORS, or spreadsheets</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">Class C</div>
+        <p>highest software safety class requires full lifecycle traceability</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">31</div>
+        <p>IEC 62304 rules mapped to specific clauses, enforced on every commit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage">
+  <div class="container">
+    <h2 class="section-title">31 Rules Mapped to IEC 62304 Clauses</h2>
+    <p class="section-sub">Every finding cites the specific clause. Your notified body sees &sect;5.5.3, not just a severity label.</p>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>&sect;5.1 — Software Development Planning</h3>
+        <p>Configuration management, development environment documentation, coding standards enforcement</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;5.2 — Requirements Analysis</h3>
+        <p>Requirements traceability, requirement coverage verification, automated drift detection</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;5.3 — Architecture Design</h3>
+        <p>Architecture rule enforcement, module boundary checks, dependency management</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;5.5 — Unit Implementation</h3>
+        <p>Coding standards (no hardcoded secrets, no eval, secure crypto), code review evidence, test coverage</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;7 — Risk Management</h3>
+        <p>Risk analysis documentation detection, FMEA references, ISO 14971 integration</p>
+      </div>
+      <div class="rule-card">
+        <h3>&sect;8 — Configuration Management</h3>
+        <p>SBOM generation, dependency pinning, version control hygiene, change control evidence</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence">
+  <div class="container">
+    <h2 class="section-title">Audit Evidence Your Notified Body Accepts</h2>
+    <p class="section-sub">When they ask "show me your traceability matrix," you open the Evidence Map.</p>
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Compliance Evidence Map</h3>
+        <p>Sentrik doesn't just find violations. It proves where your code satisfies each IEC 62304 requirement:</p>
+        <ul>
+          <li><strong>&sect;5.5.3</strong> &mdash; Coding standards verified across 43 source files</li>
+          <li><strong>&sect;8.1</strong> &mdash; SBOM generated with CycloneDX format</li>
+          <li><strong>&sect;7.1</strong> &mdash; Risk management documentation found in <code>docs/risk-analysis.adoc</code></li>
+          <li><strong>&sect;5.2.3</strong> &mdash; Requirements traced to implementation files</li>
+        </ul>
+        <p>Cryptographically signed attestations (HMAC-SHA256) prove the evidence hasn't been tampered with.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/evidence-map-dashboard.png" alt="IEC 62304 compliance evidence map showing clause-by-clause status" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="workflow">
+  <div class="container">
+    <h2 class="section-title">From Code to Compliant in Four Steps</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Scan</h3>
+        <code class="step-cmd">sentrik scan</code>
+        <p>31 IEC 62304 rules check your medical device software. Findings map to specific clauses.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Fix</h3>
+        <p>AI-powered fix suggestions explain each violation and generate corrected code. Or use auto-patching for common issues.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Gate</h3>
+        <pre class="step-yaml"><code>- uses: maxgerhardson/sentrik-community@v1</code></pre>
+        <p>Every PR is checked. Non-compliant code is blocked. PR comments cite the specific IEC 62304 clause.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Evidence</h3>
+        <code class="step-cmd">sentrik compliance-map</code>
+        <p>Generate the evidence map, trust center page, and signed attestation for your next design review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="also">
+  <div class="container">
+    <h2 class="section-title">Also Available: Related Medical Device Packs</h2>
+    <p class="section-sub">Sentrik covers the full regulatory landscape for medical device software.</p>
+    <div class="also-grid">
+      <div class="rule-card">
+        <h3>IEC 81001-5-1</h3>
+        <p>Health software cybersecurity. 20 rules. Organization tier.</p>
+      </div>
+      <div class="rule-card">
+        <h3>21 CFR Part 11</h3>
+        <p>FDA electronic records and signatures. 16 rules. Organization tier.</p>
+      </div>
+      <div class="rule-card">
+        <h3>ISO 14971</h3>
+        <p>Medical device risk management. 16 rules. Organization tier.</p>
+      </div>
+      <div class="rule-card">
+        <h3>HIPAA</h3>
+        <p>Healthcare data protection. 25 rules. Team tier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">IEC 62304 Compliance FAQ</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does Sentrik replace Jama Connect or IBM DOORS?</summary>
+        <p>Sentrik complements requirements management tools by automating the code-level traceability and evidence collection that Jama/DOORS don't do. Sentrik verifies that requirements are actually implemented in code and generates the evidence artifacts. Many teams use Sentrik for code compliance and a lighter-weight tool for requirements management.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which software safety classes does Sentrik support?</summary>
+        <p>Sentrik supports Class A, B, and C software. You can configure governance profiles (strict, standard, permissive) to match the rigor required for each safety class. Class C typically uses the strict profile with all human review gates enabled.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can Sentrik detect risk management documentation?</summary>
+        <p>Yes. The Evidence Map searches for .md, .adoc, .rst, and .txt files containing risk management keywords and links them to the relevant IEC 62304 clauses. If you have a risk-analysis.adoc, Sentrik finds it and reports it as evidence for &sect;7.1.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does Sentrik generate an SBOM for FDA submissions?</summary>
+        <p>Yes. <code>sentrik sbom</code> generates a CycloneDX SBOM from your dependency manifests. This satisfies FDA guidance on software transparency and IEC 62304 &sect;8 configuration management requirements.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does Sentrik handle AI-generated code in medical devices?</summary>
+        <p>Sentrik scans all code regardless of origin. The same 31 IEC 62304 rules apply whether code was written by a human or an AI agent. The MCP integration lets AI coding agents check compliance rules before writing code, so generated code passes the gate on the first try.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="early-access">
+  <div class="container cta-inner">
+    <h2>Automate IEC 62304 Compliance</h2>
+    <p class="cta-sub">31 rules on the Team tier. Try the free tier first &mdash; includes OWASP and SOC 2.</p>
+    <div class="cta-cmd">
+      <code>npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="cta-or">or</p>
+    <form name="iec62304-early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="iec62304-early-access" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Get Early Access</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .hero { padding: 10rem 0 5rem; text-align: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3.2rem; line-height: 1.15; }
+  .gradient-text { background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.2rem; color: var(--color-text-muted); max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero-cmd { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 1rem; }
+  .hero-free { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .problem { padding: 5rem 0; background: var(--color-bg-alt); }
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .problem-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .problem-stat { font-size: 2.5rem; font-weight: 800; color: #8b5cf6; margin-bottom: 0.5rem; }
+  .problem-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
+  .coverage { padding: 5rem 0; }
+  .rules-grid, .also-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .also-grid { grid-template-columns: repeat(4, 1fr); }
+  .rule-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; }
+  .rule-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .rule-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .evidence { padding: 5rem 0; background: var(--color-bg-alt); }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+  .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .showcase-text p { color: var(--color-text-muted); line-height: 1.7; }
+  .showcase-text ul { color: var(--color-text-muted); line-height: 2.2; padding-left: 0; list-style: none; margin-top: 1rem; }
+  .showcase-text code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .workflow { padding: 5rem 0; }
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .step-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; text-align: center; }
+  .step-num { width: 40px; height: 40px; background: #8b5cf6; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 1rem; }
+  .step-cmd { display: inline-block; padding: 0.3rem 0.7rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); color: var(--color-accent); border-radius: 6px; font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .step-yaml { text-align: left; margin-top: 0.75rem; padding: 0.5rem 0.8rem; background: rgba(15, 11, 26, 0.6); border: 1px solid var(--color-border); border-radius: 8px; font-size: 0.75rem; }
+  .step-yaml code { font-size: 0.75rem; color: var(--color-text-muted); }
+  .step-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .also { padding: 5rem 0; background: var(--color-bg-alt); }
+  .faq { padding: 5rem 0; }
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 1rem; }
+  .faq-item p { padding: 0 1.25rem 1rem; color: var(--color-text-muted); line-height: 1.7; }
+  .cta { padding: 5rem 0; text-align: center; background: var(--color-bg-alt); }
+  .cta h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .cta-cmd { margin-bottom: 1rem; }
+  .cta-cmd code { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 0.95rem; }
+  .cta-or { color: var(--color-text-muted); margin: 1rem 0; }
+  .cta-form { max-width: 480px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.75rem; }
+  .form-input { flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 1rem; }
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.2rem; }
+    .problem-grid { grid-template-columns: 1fr 1fr; }
+    .rules-grid, .also-grid { grid-template-columns: 1fr; }
+    .showcase-block { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { flex-direction: column; }
+  }
+</style>

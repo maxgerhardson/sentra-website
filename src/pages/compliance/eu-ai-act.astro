@@ -1,0 +1,206 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="EU AI Act Compliance for AI Systems" description="Prepare for the EU AI Act transparency deadline (August 2026). 22 rules covering risk management, data governance, human oversight, and documentation obligations for high-risk AI systems.">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">EU AI Act &mdash; August 2026 Deadline</div>
+    <h1>EU AI Act compliance<br /><span class="gradient-text">before the deadline</span></h1>
+    <p class="hero-sub">
+      Transparency requirements for high-risk AI systems activate August 2, 2026. Sentrik scans your AI code against 22 EU AI Act rules and generates the documentation evidence regulators require.
+    </p>
+    <div class="hero-actions">
+      <code class="hero-cmd">npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="hero-free">EU AI Act pack available on Team tier &mdash; $29/month.</p>
+  </div>
+</section>
+
+<section class="countdown">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">Time Is Running Out</h2>
+    <div class="countdown-grid">
+      <div class="countdown-card">
+        <div class="countdown-date">Aug 2, 2026</div>
+        <p>High-risk AI transparency obligations take effect</p>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-date">Jun 30, 2026</div>
+        <p>Colorado AI Act risk programs mandate</p>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-date">Active Now</div>
+        <p>California EO N-5-26 AI vendor certification</p>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:2rem">Companies deploying high-risk AI systems must meet transparency, documentation, and human oversight requirements. Non-compliance means fines up to &euro;35 million or 7% of global revenue.</p>
+  </div>
+</section>
+
+<section class="coverage">
+  <div class="container">
+    <h2 class="section-title">22 EU AI Act Rules. Mapped to Articles.</h2>
+    <p class="section-sub">Sentrik checks both your code and your documentation against EU AI Act requirements.</p>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>Article 9 &mdash; Risk Management</h3>
+        <p>Risk management system documentation, identification and analysis of known risks, mitigation measures, residual risk acceptance</p>
+      </div>
+      <div class="rule-card">
+        <h3>Article 10 &mdash; Data Governance</h3>
+        <p>Training dataset documentation, data collection processes, labeling operations, bias assessment, data gap analysis</p>
+      </div>
+      <div class="rule-card">
+        <h3>Article 11 &mdash; Technical Documentation</h3>
+        <p>System description, design specifications, development methodology, validation procedures</p>
+      </div>
+      <div class="rule-card">
+        <h3>Article 13 &mdash; Transparency</h3>
+        <p>User-facing documentation, capability limitations disclosure, intended purpose documentation</p>
+      </div>
+      <div class="rule-card">
+        <h3>Article 14 &mdash; Human Oversight</h3>
+        <p>Human-in-the-loop mechanisms, override capabilities, monitoring interfaces</p>
+      </div>
+      <div class="rule-card">
+        <h3>Article 15 &mdash; Accuracy &amp; Robustness</h3>
+        <p>Performance metrics, bias testing, adversarial robustness, fallback mechanisms</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="smart">
+  <div class="container">
+    <h2 class="section-title">Smart Scanning: Only Fires When Relevant</h2>
+    <p class="section-sub">EU AI Act rules only activate when your project uses AI/ML libraries. No false positives on non-AI codebases.</p>
+    <div class="showcase-block">
+      <div class="showcase-text">
+        <h3>Conditional Rules with <code>applies_when</code></h3>
+        <p>Sentrik detects whether your project imports AI libraries like PyTorch, TensorFlow, scikit-learn, Hugging Face Transformers, OpenAI, or Anthropic SDKs. EU AI Act documentation obligations only fire when these imports are detected.</p>
+        <p>No AI code? No EU AI Act findings. Sentrik doesn't waste your time with irrelevant rules.</p>
+      </div>
+      <div class="showcase-img">
+        <img src="/images/evidence-map-dashboard.png" alt="EU AI Act compliance evidence map" class="screenshot" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence">
+  <div class="container">
+    <h2 class="section-title">Documentation Evidence for Regulators</h2>
+    <p class="section-sub">The Evidence Map proves your AI system meets each Article requirement.</p>
+    <div class="evidence-grid">
+      <div class="rule-card">
+        <h3>Code-Level Evidence</h3>
+        <p>Sentrik identifies where your code implements required controls: logging, human oversight hooks, bias checks, fallback mechanisms. Each maps to a specific Article.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Documentation Evidence</h3>
+        <p>Searches your .md, .adoc, and .rst files for risk management documentation, data governance policies, and technical specifications required by Articles 9-11.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Signed Attestation</h3>
+        <p>Cryptographically signed (HMAC-SHA256) compliance attestation proving your system state at a specific point in time. Tamper-evident and auditor-ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">EU AI Act Compliance FAQ</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does the EU AI Act apply to my AI coding agent usage?</summary>
+        <p>If you deploy AI systems classified as high-risk under Annex III (healthcare, critical infrastructure, employment, etc.), yes. The Act applies to deployers, not just providers. If your team uses AI coding agents to build software for these domains, the code must meet transparency and documentation requirements.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if I miss the August 2026 deadline?</summary>
+        <p>Fines for non-compliance with high-risk AI obligations can reach up to &euro;35 million or 7% of annual global revenue, whichever is higher. The transparency requirements in Articles 13-14 are among the first to take effect.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does Sentrik handle the documentation requirements?</summary>
+        <p>Sentrik's EU AI Act pack includes documentation obligations that check for the existence of risk management docs, data governance policies, and technical specifications. The Evidence Map searches your documentation files and links them to specific Article requirements. If documentation is missing, it flags it as a finding.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use Sentrik with NIST AI RMF too?</summary>
+        <p>Yes. Sentrik also has a NIST AI 600-1 Risk Management Framework pack with 15 rules. You can enable both EU AI Act and NIST AI RMF simultaneously for dual-framework coverage.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="early-access">
+  <div class="container cta-inner">
+    <h2>Start EU AI Act Compliance Now</h2>
+    <p class="cta-sub">Don't wait until August 2026. 22 rules on the Team tier. Try the free tier first.</p>
+    <div class="cta-cmd">
+      <code>npm install -g sentrik && sentrik scan</code>
+    </div>
+    <p class="cta-or">or</p>
+    <form name="euaiact-early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="euaiact-early-access" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Get Early Access</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .hero { padding: 10rem 0 5rem; text-align: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3.2rem; line-height: 1.15; }
+  .gradient-text { background: linear-gradient(135deg, #f59e0b, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.2rem; color: var(--color-text-muted); max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero-cmd { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 1rem; }
+  .hero-free { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .countdown { padding: 5rem 0; background: var(--color-bg-alt); }
+  .countdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+  .countdown-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center; }
+  .countdown-date { font-size: 1.8rem; font-weight: 800; color: #ef4444; margin-bottom: 0.5rem; }
+  .countdown-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+  .coverage { padding: 5rem 0; }
+  .rules-grid, .evidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .rule-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; }
+  .rule-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .rule-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .smart { padding: 5rem 0; background: var(--color-bg-alt); }
+  .showcase-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+  .showcase-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .showcase-text p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  .showcase-text code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .evidence { padding: 5rem 0; }
+  .faq { padding: 5rem 0; background: var(--color-bg-alt); }
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; }
+  .faq-item p { padding: 0 1.25rem 1rem; color: var(--color-text-muted); line-height: 1.7; }
+  .cta { padding: 5rem 0; text-align: center; }
+  .cta h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .cta-cmd { margin-bottom: 1rem; }
+  .cta-cmd code { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 0.95rem; }
+  .cta-or { color: var(--color-text-muted); margin: 1rem 0; }
+  .cta-form { max-width: 480px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.75rem; }
+  .form-input { flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 1rem; }
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.2rem; }
+    .countdown-grid { grid-template-columns: 1fr; }
+    .rules-grid, .evidence-grid { grid-template-columns: 1fr; }
+    .showcase-block { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+  }
+</style>
