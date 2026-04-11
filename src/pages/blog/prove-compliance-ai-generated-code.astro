@@ -1,0 +1,205 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="How to Prove Compliance in AI-Generated Code" description="AI coding agents write code fast, but how do you prove it meets regulatory requirements? Learn how compliance evidence maps show auditors exactly where your code satisfies HIPAA, SOC 2, OWASP, and IEC 62304.">
+
+<article class="blog-post">
+  <div class="container blog-container">
+
+    <header class="blog-header">
+      <div class="blog-meta">
+        <span class="blog-date">April 10, 2026</span>
+        <span class="blog-reading">8 min read</span>
+      </div>
+      <h1>How to Prove Compliance in AI-Generated Code</h1>
+      <p class="blog-subtitle">
+        Every security tool tells you what's wrong. None prove what's right. Here's how compliance evidence maps change the audit conversation.
+      </p>
+    </header>
+
+    <div class="blog-body">
+
+      <h2>The Problem: AI Writes Code. Auditors Ask Questions.</h2>
+
+      <p>84% of developers now use AI coding tools (<a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener">Stack Overflow 2025</a>). Claude Code, Cursor, and Copilot generate thousands of lines of code per week. That code ships to production, handles patient data, processes payments, and runs critical infrastructure.</p>
+
+      <p>Then the auditor arrives.</p>
+
+      <p>"Show me where you implement encryption at rest."</p>
+      <p>"Show me your audit logging for ePHI access."</p>
+      <p>"Show me evidence that your access controls meet SOC 2 CC6.1."</p>
+
+      <p>And the engineering team scrambles. Someone opens git blame. Someone searches Confluence. Someone opens a spreadsheet that was last updated three months ago. Six weeks later, the evidence package is assembled — manually, expensively, and probably incomplete.</p>
+
+      <p><strong>This is broken.</strong> Not because the code is non-compliant, but because there's no automated way to prove it is.</p>
+
+      <h2>Why Traditional Security Tools Don't Solve This</h2>
+
+      <p>SAST tools like SonarQube, Semgrep, and Snyk find violations. They tell you "line 45 has an SQL injection vulnerability" or "this function uses MD5 hashing." That's valuable — but it's only half the picture.</p>
+
+      <p>When an auditor asks "show me where you implement audit logging," no existing tool can answer that question. They can tell you where audit logging is <em>missing</em>, but they can't point to the file and line where it's <em>implemented</em>.</p>
+
+      <p>This gap is the difference between:</p>
+
+      <ul>
+        <li><strong>Violation scanning:</strong> "You have 7 critical findings" (every tool does this)</li>
+        <li><strong>Compliance evidence:</strong> "Your code satisfies 124 of 130 applicable requirements, with evidence at these locations" (nobody does this)</li>
+      </ul>
+
+      <h2>Introducing the Compliance Evidence Map</h2>
+
+      <p>A compliance evidence map inverts the traditional scanner model. Instead of only finding what's wrong, it also identifies where your code <em>satisfies</em> each regulatory requirement — with the exact file, line number, and matched pattern.</p>
+
+      <p>For each rule in a compliance framework, the evidence map reports one of four statuses:</p>
+
+      <ul>
+        <li><strong>Met</strong> — code evidence found that satisfies the requirement</li>
+        <li><strong>Violated</strong> — violations detected by the scanner</li>
+        <li><strong>Manual Review</strong> — documentation obligation with no matching docs found</li>
+        <li><strong>Not Applicable</strong> — no files match the rule's scope</li>
+      </ul>
+
+      <p>The coverage percentage tells you how many applicable requirements have verified implementations. An auditor can look at "87.2% coverage — 156 requirements met" and immediately understand your compliance posture.</p>
+
+      <div class="blog-img">
+        <img src="/images/evidence-map-dashboard.png" alt="Compliance Evidence Map showing 87.2% coverage with MET and VIOLATED badges for HIPAA rules" class="screenshot" loading="lazy" />
+        <p class="blog-caption">Sentrik's Evidence Map showing 87.2% compliance coverage on a medical device API project</p>
+      </div>
+
+      <h2>How Evidence Collection Works</h2>
+
+      <p>Different rule types generate evidence in different ways:</p>
+
+      <h3>Required patterns become proof of implementation</h3>
+
+      <p>Many compliance frameworks require specific capabilities to exist in your code. HIPAA requires audit logging. IEC 62304 requires configuration management. SOC 2 requires access controls.</p>
+
+      <p>When a required pattern rule finds the pattern in your code, that's evidence:</p>
+
+      <pre><code>HIPAA-164.312-b (required_pattern): MET
+  → middleware/audit.py:14 — Implements audit-logging-required: import logging
+  → api/patients.py:3 — Implements audit-logging-required: import logging</code></pre>
+
+      <p>The auditor sees exactly where audit logging is implemented, in which files, on which lines.</p>
+
+      <h3>Violation rules prove clean code</h3>
+
+      <p>For rules that check for vulnerabilities (SQL injection, hardcoded secrets, weak crypto), a clean scan across all files is evidence of compliance:</p>
+
+      <pre><code>OWASP-A01-001 (regex): MET
+  → (project-wide) — No violations of no-permissive-cors across 43 file(s)</code></pre>
+
+      <h3>Documentation detection satisfies process requirements</h3>
+
+      <p>Many regulatory frameworks require documentation — risk management plans, data governance policies, security procedures. Sentrik searches your <code>.md</code>, <code>.adoc</code>, <code>.rst</code>, and <code>.txt</code> files for relevant keywords and links them to the requirement:</p>
+
+      <pre><code>HIPAA-164.308-a1 (documentation_obligation): MET
+  → docs/risk-analysis.adoc:14 — Documentation found matching: risk, analysis, vulnerabilities</code></pre>
+
+      <p>If you write your risk management documentation in AsciiDoc and keep it in the repo, Sentrik finds it and links it to HIPAA §164.308(a)(1) automatically.</p>
+
+      <h2>What This Looks Like in Practice</h2>
+
+      <p>Here's a real example from a medical device API project scanned against HIPAA, OWASP, SOC 2, and IEC 62304 simultaneously:</p>
+
+      <pre><code>$ sentrik compliance-map
+
+Compliance Evidence Map
+  Coverage: 87.2%
+  Met: 156    Violated: 18    Manual: 0    N/A: 33</code></pre>
+
+      <p>Out of 207 applicable requirements across four frameworks, 156 have verified code or documentation evidence. 18 have violations that need fixing. Zero require manual review (all documentation obligations were satisfied by files in the repo).</p>
+
+      <p>The HTML report groups results by framework, so the HIPAA auditor sees only HIPAA controls, and the SOC 2 auditor sees only Trust Services Criteria.</p>
+
+      <h2>Smart Rules: Only Fire When Relevant</h2>
+
+      <p>Not every rule applies to every project. HIPAA rules shouldn't fire on a fintech app. EU AI Act rules shouldn't fire on a project with no ML code.</p>
+
+      <p>Sentrik uses <code>applies_when</code> conditions to make rules contextual:</p>
+
+      <ul>
+        <li><strong>HIPAA rules</strong> only fire when code contains patient/health/medical/PHI keywords</li>
+        <li><strong>EU AI Act rules</strong> only fire when PyTorch, TensorFlow, or other ML libraries are imported</li>
+        <li><strong>PCI-DSS rules</strong> only fire when payment/credit card/merchant keywords are present</li>
+      </ul>
+
+      <p>This eliminates false positives from irrelevant frameworks and keeps the evidence map focused on what actually applies to your project.</p>
+
+      <h2>From Evidence Map to Audit Evidence</h2>
+
+      <p>The evidence map is the foundation. On top of it, you can generate:</p>
+
+      <ul>
+        <li><strong>Per-framework compliance reports</strong> — clause-by-clause status for a specific standard</li>
+        <li><strong>Trust center page</strong> — public-safe HTML showing compliance scores without code paths</li>
+        <li><strong>Signed attestation</strong> — HMAC-SHA256 cryptographic proof of compliance state at a point in time</li>
+        <li><strong>Auditor portal</strong> — read-only access with time-limited tokens, no codebase access needed</li>
+        <li><strong>Evidence export</strong> — ZIP bundle with findings, reports, and attestation for audit submission</li>
+      </ul>
+
+      <pre><code>$ sentrik trust-center --org "Your Company"
+$ sentrik attest
+$ sentrik auditor create --name "Jane Smith" --email jane@auditor.com</code></pre>
+
+      <h2>Getting Started</h2>
+
+      <p>Sentrik's free tier includes SOC 2 and OWASP Top 10 — 99 rules with evidence mapping, no credit card required.</p>
+
+      <pre><code>npm install -g sentrik
+sentrik scan
+sentrik compliance-map</code></pre>
+
+      <p>The evidence map generates in seconds from your last scan. For HIPAA, IEC 62304, PCI-DSS, and other regulated frameworks, upgrade to the Team tier at $29/month.</p>
+
+      <p><a href="/#early-access" class="blog-cta">Get Early Access →</a></p>
+
+    </div>
+
+    <footer class="blog-footer">
+      <p>Published April 10, 2026 · <a href="https://docs.sentrik.dev/guides/compliance-evidence-map">Read the full documentation →</a></p>
+    </footer>
+
+  </div>
+</article>
+
+</ComingSoon>
+
+<style>
+  .blog-post { padding: 8rem 0 4rem; }
+  .blog-container { max-width: 720px; }
+  .blog-header { margin-bottom: 3rem; }
+  .blog-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .blog-date, .blog-reading { font-size: 0.85rem; color: var(--color-text-muted); }
+  .blog-header h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; }
+  .blog-subtitle { font-size: 1.2rem; color: var(--color-text-muted); line-height: 1.6; }
+
+  .blog-body h2 { font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1rem; }
+  .blog-body h3 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .blog-body p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 1.05rem; }
+  .blog-body ul { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .blog-body li { margin-bottom: 0.5rem; }
+  .blog-body a { color: var(--color-primary-light); }
+  .blog-body strong { color: var(--color-text); }
+  .blog-body em { color: var(--color-text); font-style: italic; }
+  .blog-body code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; }
+  .blog-body pre { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem 1.25rem; overflow-x: auto; margin-bottom: 1.5rem; }
+  .blog-body pre code { background: none; padding: 0; font-size: 0.85rem; color: var(--color-accent); }
+
+  .blog-img { margin: 2rem 0; }
+  .blog-img .screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border: 1px solid var(--color-border); }
+  .blog-caption { text-align: center; font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.75rem; }
+
+  .blog-cta { display: inline-block; padding: 0.7rem 1.5rem; background: var(--color-primary); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; }
+  .blog-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4); }
+
+  .blog-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border); }
+  .blog-footer p { font-size: 0.9rem; color: var(--color-text-muted); }
+  .blog-footer a { color: var(--color-primary-light); }
+
+  @media (max-width: 600px) {
+    .blog-header h1 { font-size: 1.8rem; }
+    .blog-body h2 { font-size: 1.3rem; }
+  }
+</style>
