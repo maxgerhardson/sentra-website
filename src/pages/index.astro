@@ -370,50 +370,13 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 
 <!-- Free Tier -->
 <section class="free-tier">
-  <div class="container">
+  <div class="container" style="text-align:center">
     <h2 class="section-title">Start Free. No Credit Card.</h2>
-    <p class="section-sub">5 standards packs with 158 rules, forever free. Upgrade when you need more.</p>
-    <div class="free-grid">
-      <div class="free-card">
-        <h3>Free</h3>
-        <div class="free-price">$0<span>/forever</span></div>
-        <ul>
-          <li>OWASP Top 10 (69 rules)</li>
-          <li>SOC 2 (30 rules)</li>
-          <li>Python Security (18 rules)</li>
-          <li>Go Security (15 rules)</li>
-          <li>Supply Chain (26 rules)</li>
-          <li>Dashboard &amp; CLI</li>
-          <li>VS Code extension</li>
-          <li>GitHub Action</li>
-        </ul>
-        <a href="#early-access" class="btn btn-secondary" style="width:100%;text-align:center">Get Started</a>
-      </div>
-      <div class="free-card featured">
-        <h3>Team</h3>
-        <div class="free-price">$29<span>/mo</span></div>
-        <ul>
-          <li>Everything in Free</li>
-          <li>+11 packs: HIPAA, PCI-DSS, ISO 27001, GDPR, FDA IEC 62304, NIST, CMMC, EU AI Act, and more</li>
-          <li>Work item reconciliation</li>
-          <li>Risk scoring on all findings</li>
-          <li>Auto-fix vulnerable deps</li>
-        </ul>
-        <a href="#early-access" class="btn btn-primary" style="width:100%;text-align:center">Get Early Access</a>
-      </div>
-      <div class="free-card">
-        <h3>Organization</h3>
-        <div class="free-price">$99<span>/mo</span></div>
-        <ul>
-          <li>Everything in Team</li>
-          <li>+6 packs: MISRA-C, DO-178C, ISO 26262, ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
-          <li>Parallel scanning</li>
-          <li>Custom rules</li>
-          <li>Governance &amp; audit log</li>
-        </ul>
-        <a href="#early-access" class="btn btn-secondary" style="width:100%;text-align:center">Contact Us</a>
-      </div>
+    <p class="section-sub">5 standards packs with 158 rules — OWASP Top 10, SOC 2, Python Security, Go Security, and Supply Chain. Forever free.</p>
+    <div class="cta-cmd" style="margin-bottom:1.5rem">
+      <code style="display:inline-block;padding:0.7rem 1.5rem;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--color-accent);border-radius:8px;font-size:1rem">npm install -g sentrik && sentrik scan</code>
     </div>
+    <p style="color:var(--color-text-muted);font-size:0.95rem">Upgrade to Team ($29/mo) or Organization ($99/mo) for 22 packs and 526 rules. <a href="#early-access">Request access</a> for pricing details.</p>
   </div>
 </section>
 
