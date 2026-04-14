@@ -368,23 +368,104 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- Free Tier -->
-<section class="free-tier">
-  <div class="container" style="text-align:center">
-    <h2 class="section-title">Start Free. No Credit Card.</h2>
-    <p class="section-sub">5 standards packs with 158 rules — OWASP Top 10, SOC 2, Python Security, Go Security, and Supply Chain. Forever free.</p>
-    <div class="cta-cmd" style="margin-bottom:1.5rem">
-      <code style="display:inline-block;padding:0.7rem 1.5rem;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--color-accent);border-radius:8px;font-size:1rem">npm install -g sentrik && sentrik scan</code>
+<!-- Plans -->
+<section class="plans" id="plans">
+  <div class="container">
+    <h2 class="section-title">Choose Your Plan</h2>
+    <p class="section-sub">Start free. Upgrade when you need more frameworks or enterprise features.</p>
+    <div class="plans-grid">
+
+      <div class="plan-card">
+        <h3>Free</h3>
+        <p class="plan-price">Free forever</p>
+        <ul>
+          <li>5 standards packs (158 rules)</li>
+          <li>OWASP Top 10, SOC 2, Python, Go, Supply Chain</li>
+          <li>CLI scanning &amp; gate</li>
+          <li>Dashboard &amp; Evidence Map</li>
+          <li>VS Code extension</li>
+          <li>GitHub Action</li>
+          <li>Risk scoring on findings</li>
+          <li>SBOM, CVE scanning, secrets detection</li>
+        </ul>
+        <a href="#get-free" class="btn btn-primary" style="width:100%;text-align:center">Get Free Access</a>
+      </div>
+
+      <div class="plan-card featured">
+        <h3>Team</h3>
+        <p class="plan-price">Contact us</p>
+        <ul>
+          <li>Everything in Free</li>
+          <li>16 standards packs (368+ rules)</li>
+          <li>HIPAA, PCI-DSS, ISO 27001, GDPR</li>
+          <li>FDA IEC 62304, NIST, CMMC, EU AI Act</li>
+          <li>Work item reconciliation</li>
+          <li>Auto-fix vulnerable dependencies</li>
+          <li>MCP server for AI agents</li>
+        </ul>
+        <a href="#early-access" class="btn btn-outline" style="width:100%;text-align:center">Request Access</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Organization</h3>
+        <p class="plan-price">Contact us</p>
+        <ul>
+          <li>Everything in Team</li>
+          <li>22 standards packs (526 rules)</li>
+          <li>MISRA-C, DO-178C, ISO 26262</li>
+          <li>ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
+          <li>Parallel scanning</li>
+          <li>Custom rule packs</li>
+          <li>Governance profiles &amp; audit log</li>
+        </ul>
+        <a href="#early-access" class="btn btn-outline" style="width:100%;text-align:center">Request Access</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Enterprise</h3>
+        <p class="plan-price">Contact us</p>
+        <ul>
+          <li>Everything in Organization</li>
+          <li>Seat management &amp; SSO</li>
+          <li>Async approval workflows</li>
+          <li>Auditor portal with token access</li>
+          <li>GRC platform integration</li>
+          <li>Dedicated support</li>
+          <li>Custom SLA</li>
+        </ul>
+        <a href="#early-access" class="btn btn-outline" style="width:100%;text-align:center">Contact Sales</a>
+      </div>
+
     </div>
-    <p style="color:var(--color-text-muted);font-size:0.95rem">Upgrade to Team ($29/mo) or Organization ($99/mo) for 22 packs and 526 rules. <a href="#early-access">Request access</a> for pricing details.</p>
   </div>
 </section>
 
-<!-- Early Access CTA -->
-<section class="cta" id="early-access">
+<!-- Get Free Access (email gate) -->
+<section class="cta" id="get-free">
   <div class="container cta-inner">
-    <h2>Get Early Access</h2>
-    <p class="cta-sub">We're onboarding design partners in medical devices, fintech, and SaaS. Spots are limited.</p>
+    <h2>Get Free Access</h2>
+    <p class="cta-sub">Enter your email to get the install command. 5 packs, 158 rules, forever free.</p>
+    <form name="free-download" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="free-download" />
+      <input type="hidden" name="tier" value="free" />
+      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary">Get Install Command</button>
+      </div>
+    </form>
+    <div id="install-reveal" style="display:none;margin-top:1.5rem">
+      <code style="display:inline-block;padding:0.7rem 1.5rem;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--color-accent);border-radius:8px;font-size:1rem">npm install -g sentrik && sentrik scan</code>
+      <p style="color:var(--color-text-muted);font-size:0.85rem;margin-top:0.75rem">Check your email for getting started instructions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Paid Tier CTA -->
+<section class="cta" id="early-access" style="background:var(--color-bg-alt)">
+  <div class="container cta-inner">
+    <h2>Request Team or Enterprise Access</h2>
+    <p class="cta-sub">We're onboarding design partners in medical devices, fintech, and SaaS.</p>
     <form name="early-access" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="early-access" />
       <p class="hidden" style="display:none"><input name="bot-field" /></p>
@@ -612,10 +693,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .standard-card p { color: var(--color-text-muted); font-size: 0.85rem; }
   .standards-also { text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1.5rem; }
 
-  /* Free Tier Pricing */
-  .free-tier { padding: 5rem 0; }
-  .free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
-  .free-card {
+  /* Plans */
+  .plans { padding: 5rem 0; }
+  .plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .plan-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 12px;
@@ -623,26 +704,25 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     text-align: center;
     transition: border-color 0.2s, transform 0.2s;
   }
-  .free-card:hover { border-color: var(--color-primary); }
-  .free-card.featured {
+  .plan-card:hover { border-color: var(--color-primary); }
+  .plan-card.featured {
     border-color: var(--color-primary);
-    transform: scale(1.03);
+    transform: scale(1.02);
     box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
   }
-  .free-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-  .free-price { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; }
-  .free-price span { font-size: 0.9rem; font-weight: 400; color: var(--color-text-muted); }
-  .free-card ul {
+  .plan-card h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+  .plan-price { font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: 1.25rem; }
+  .plan-card ul {
     list-style: none;
     padding: 0;
     margin: 0 0 1.5rem;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-muted);
     line-height: 2;
   }
-  .free-card li::before { content: "\2713 "; color: var(--color-primary-light); font-weight: 700; }
-  .btn-secondary {
+  .plan-card li::before { content: "\2713 "; color: var(--color-primary-light); font-weight: 700; }
+  .btn-outline {
     display: inline-block;
     padding: 0.7rem 1.5rem;
     border-radius: 8px;
@@ -689,8 +769,8 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     .standards-grid { grid-template-columns: 1fr 1fr; }
     .integrations-grid { grid-template-columns: repeat(3, 1fr); }
     .regulated-grid { grid-template-columns: 1fr 1fr; }
-    .free-grid { grid-template-columns: 1fr; }
-    .free-card.featured { transform: none; }
+    .plans-grid { grid-template-columns: 1fr 1fr; }
+    .plan-card.featured { transform: none; }
     .form-row { flex-direction: column; }
     .form-row-extra { flex-direction: column; }
   }
@@ -724,4 +804,21 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       openLightbox(e.target.src, e.target.alt);
     }
   });
+
+  // Free download form — show install command after submit
+  var freeForm = document.querySelector('form[name="free-download"]');
+  if (freeForm) {
+    freeForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var data = new FormData(freeForm);
+      fetch('/', { method: 'POST', body: data }).then(function() {
+        freeForm.style.display = 'none';
+        document.getElementById('install-reveal').style.display = 'block';
+      }).catch(function() {
+        // Still show the command even if Netlify fails
+        freeForm.style.display = 'none';
+        document.getElementById('install-reveal').style.display = 'block';
+      });
+    });
+  }
 </script>
