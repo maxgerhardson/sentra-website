@@ -440,23 +440,23 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- Get Free Access (email gate) -->
+<!-- Get Free Access (email request) -->
 <section class="cta" id="get-free">
   <div class="container cta-inner">
     <h2>Get Free Access</h2>
-    <p class="cta-sub">Enter your email to get the install command. 5 packs, 158 rules.</p>
-    <form name="free-download" method="POST" data-netlify="true" class="cta-form" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="free-download" />
-      <input type="hidden" name="tier" value="free" />
-      <p class="hidden" style="display:none"><input name="bot-field" /></p>
+    <p class="cta-sub">Request access and we'll be in touch. 5 packs, 158 rules, free forever.</p>
+    <form action="https://formsubmit.co/max@sentrik.dev" method="POST" class="cta-form">
+      <input type="hidden" name="_subject" value="Sentrik Free Access Request" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://sentrik.dev/?free=requested" />
       <div class="form-row">
         <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
-        <button type="submit" class="btn btn-primary">Get Install Command</button>
+        <button type="submit" class="btn btn-primary">Request Free Access</button>
       </div>
     </form>
-    <div id="install-reveal" style="display:none;margin-top:1.5rem">
-      <code style="display:inline-block;padding:0.7rem 1.5rem;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--color-accent);border-radius:8px;font-size:1rem">npm install -g sentrik && sentrik scan</code>
-      <p style="color:var(--color-text-muted);font-size:0.85rem;margin-top:0.75rem">Check your email for getting started instructions.</p>
+    <div id="free-thanks" style="display:none;margin-top:1.5rem;text-align:center">
+      <p style="color:var(--color-accent);font-size:1rem;font-weight:600">&#10003; Request received</p>
+      <p style="color:var(--color-text-muted);font-size:0.85rem;margin-top:0.5rem">We'll be in touch shortly with access details.</p>
     </div>
   </div>
 </section>
@@ -805,20 +805,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     }
   });
 
-  // Free download form — show install command after submit
-  var freeForm = document.querySelector('form[name="free-download"]');
-  if (freeForm) {
-    freeForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var data = new FormData(freeForm);
-      fetch('/', { method: 'POST', body: data }).then(function() {
-        freeForm.style.display = 'none';
-        document.getElementById('install-reveal').style.display = 'block';
-      }).catch(function() {
-        // Still show the command even if Netlify fails
-        freeForm.style.display = 'none';
-        document.getElementById('install-reveal').style.display = 'block';
-      });
-    });
+  // Show thank-you message if redirected back after free access form submit
+  if (window.location.search.includes('free=requested')) {
+    var freeForm = document.querySelector('.cta form[action*="formsubmit"]');
+    if (freeForm) freeForm.style.display = 'none';
+    var thanks = document.getElementById('free-thanks');
+    if (thanks) thanks.style.display = 'block';
   }
 </script>
