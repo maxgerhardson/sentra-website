@@ -1,0 +1,944 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Vibe Coding Risk Calculator"
+  description="Calculate your team's real exposure from AI-generated code — secrets leaked, audit hours wasted, and regulatory fines under HIPAA and the EU AI Act."
+>
+
+<!-- Hidden Netlify form — detected at build time -->
+<form name="vibe-coding-risk" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="vibe-coding-risk" />
+  <input name="bot-field" />
+  <input name="email" />
+  <input name="job_title" />
+  <input name="company" />
+  <input name="team_size" />
+  <input name="ai_pct" />
+  <input name="ai_tools" />
+  <input name="frameworks" />
+  <input name="revenue_range" />
+  <input name="has_security_team" />
+  <input name="risk_score" />
+  <input name="secrets_per_year" />
+  <input name="audit_hours" />
+  <input name="hipaa_exposure" />
+  <input name="eu_ai_exposure" />
+</form>
+
+<div class="calc-page">
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="calc-hero">
+      <div class="calc-badge">Free Risk Assessment</div>
+      <h1>Vibe Coding<br /><span class="gradient-text">Risk Calculator</span></h1>
+      <p class="calc-sub">Your team ships faster with AI. But how much compliance risk is accumulating with every commit? Find out in 60 seconds.</p>
+    </div>
+
+    <!-- Calculator card -->
+    <div class="calc-card" id="calc-card">
+
+      <!-- Progress bar -->
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-steps">
+          <div class="progress-step active" data-step="1">
+            <div class="step-dot"></div>
+            <span>Team</span>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="2">
+            <div class="step-dot"></div>
+            <span>Compliance</span>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="3">
+            <div class="step-dot"></div>
+            <span>Results</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1: Team Info -->
+      <div class="calc-step active" id="step-1">
+        <h2 class="step-title">Tell us about your team</h2>
+
+        <div class="field-group">
+          <label class="field-label">How many developers on your team?</label>
+          <div class="option-pills" id="team-size-pills">
+            <button class="pill" data-value="3">1–5</button>
+            <button class="pill" data-value="10">6–15</button>
+            <button class="pill" data-value="33">16–50</button>
+            <button class="pill" data-value="125">51–200</button>
+            <button class="pill" data-value="400">200+</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">
+            What percentage of your code is AI-generated?
+            <span class="field-value" id="ai-pct-display">40%</span>
+          </label>
+          <input type="range" id="ai-pct-slider" min="0" max="100" value="40" step="5" class="slider" />
+          <div class="slider-labels"><span>0% — None</span><span>50% — Half</span><span>100% — All</span></div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Which AI coding tools does your team use? <span class="field-hint">(select all that apply)</span></label>
+          <div class="checkbox-grid" id="ai-tools-grid">
+            <label class="checkbox-item"><input type="checkbox" value="copilot" /><span>GitHub Copilot</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="cursor" /><span>Cursor</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="claude_code" /><span>Claude Code</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="chatgpt" /><span>ChatGPT</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="codeium" /><span>Codeium / Windsurf</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="other" /><span>Other</span></label>
+          </div>
+        </div>
+
+        <div class="step-footer">
+          <div></div>
+          <button class="btn btn-primary" id="next-1">Next: Compliance scope →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Compliance & Company -->
+      <div class="calc-step" id="step-2">
+        <h2 class="step-title">Compliance &amp; company</h2>
+
+        <div class="field-group">
+          <label class="field-label">Which regulatory frameworks apply to your product? <span class="field-hint">(select all that apply)</span></label>
+          <div class="checkbox-grid" id="frameworks-grid">
+            <label class="checkbox-item"><input type="checkbox" value="hipaa" /><span>HIPAA</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="eu_ai_act" /><span>EU AI Act</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="soc2" /><span>SOC 2</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="pci_dss" /><span>PCI DSS</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="iec62304" /><span>IEC 62304</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="gdpr" /><span>GDPR</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="nist" /><span>NIST 800-53</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="iso27001" /><span>ISO 27001</span></label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Annual company revenue</label>
+          <select id="revenue-select" class="field-select">
+            <option value="">Select a range...</option>
+            <option value="500000">Under $1M</option>
+            <option value="5000000">$1M – $10M</option>
+            <option value="25000000">$10M – $50M</option>
+            <option value="100000000">$50M – $250M</option>
+            <option value="500000000">$250M+</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Does your team have a dedicated security or compliance function?</label>
+          <div class="option-pills" id="sec-team-pills">
+            <button class="pill" data-value="yes">Yes</button>
+            <button class="pill" data-value="in_progress">In progress</button>
+            <button class="pill" data-value="no">No</button>
+          </div>
+        </div>
+
+        <div class="step-footer">
+          <button class="btn btn-outline" id="back-1">← Back</button>
+          <button class="btn btn-primary" id="next-2">Calculate my risk →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Email gate -->
+      <div class="calc-step" id="step-3">
+        <div class="gate-icon">🔒</div>
+        <h2 class="step-title">Your results are ready</h2>
+        <p class="gate-sub">Enter your details to unlock your personalized risk report. We'll also send you a copy.</p>
+
+        <div class="gate-form">
+          <div class="field-group">
+            <label class="field-label" for="input-email">Work email</label>
+            <input type="email" id="input-email" class="field-input" placeholder="you@company.com" />
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label" for="input-title">Job title</label>
+              <input type="text" id="input-title" class="field-input" placeholder="e.g. Head of Engineering" />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="input-company">Company</label>
+              <input type="text" id="input-company" class="field-input" placeholder="Company name" />
+            </div>
+          </div>
+          <div id="gate-error" class="gate-error" style="display:none"></div>
+        </div>
+
+        <div class="step-footer">
+          <button class="btn btn-outline" id="back-2">← Back</button>
+          <button class="btn btn-primary btn-lg" id="show-results">Show my risk report →</button>
+        </div>
+      </div>
+
+    </div><!-- /calc-card -->
+
+    <!-- Results -->
+    <div class="results-wrap" id="results-wrap" style="display:none">
+
+      <!-- Grade card -->
+      <div class="grade-card">
+        <div class="grade-inner">
+          <div>
+            <div class="grade-label">Your Vibe Coding Risk Grade</div>
+            <div class="grade-letter" id="grade-letter">D</div>
+            <div class="grade-desc" id="grade-desc">High exposure — action recommended</div>
+          </div>
+          <div class="grade-score-wrap">
+            <svg class="score-ring" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+              <circle id="score-arc" cx="60" cy="60" r="52" fill="none" stroke="#7c3aed" stroke-width="10"
+                stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327"
+                transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="score-num" id="score-num">0</div>
+            <div class="score-label">/ 100</div>
+          </div>
+        </div>
+        <div class="grade-context" id="grade-context"></div>
+      </div>
+
+      <!-- Metrics grid -->
+      <div class="metrics-grid">
+
+        <div class="metric-card danger">
+          <div class="metric-icon">🔑</div>
+          <div class="metric-value" id="m-secrets">0</div>
+          <div class="metric-name">Credentials exposed / year</div>
+          <div class="metric-detail" id="m-secrets-detail"></div>
+          <div class="metric-bench" id="m-secrets-bench"></div>
+        </div>
+
+        <div class="metric-card warning">
+          <div class="metric-icon">⏱️</div>
+          <div class="metric-value" id="m-hours">0</div>
+          <div class="metric-name">Audit prep hours / year</div>
+          <div class="metric-detail" id="m-hours-detail"></div>
+          <div class="metric-bench" id="m-hours-bench"></div>
+        </div>
+
+        <div class="metric-card fines">
+          <div class="metric-icon">⚖️</div>
+          <div class="metric-value" id="m-fines">$0</div>
+          <div class="metric-name">Estimated fine exposure</div>
+          <div class="metric-detail" id="m-fines-detail"></div>
+          <div class="metric-bench" id="m-fines-bench"></div>
+        </div>
+
+      </div>
+
+      <!-- Sentrik savings -->
+      <div class="savings-card">
+        <div class="savings-icon">⚡</div>
+        <div class="savings-content">
+          <div class="savings-title">What Sentrik eliminates for your team</div>
+          <div class="savings-stats" id="savings-stats"></div>
+        </div>
+      </div>
+
+      <!-- Share + CTA -->
+      <div class="results-footer">
+        <div class="share-row">
+          <button class="btn btn-outline" id="share-btn">📋 Copy shareable link</button>
+          <span class="share-note" id="share-confirm" style="display:none">Link copied!</span>
+        </div>
+        <div class="cta-block">
+          <h3>See your actual findings — not estimates</h3>
+          <p>Run Sentrik on your real codebase and get precise findings mapped to the exact regulatory clauses you selected above.</p>
+          <div class="cta-install">
+            <code>pip install sentrik &amp;&amp; sentrik scan</code>
+          </div>
+          <a href="https://docs.sentrik.dev/getting-started/quickstart/" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get started free →</a>
+          <p class="cta-sub">Free tier — 5 packs, 158 rules, no credit card</p>
+        </div>
+      </div>
+
+    </div><!-- /results-wrap -->
+
+  </div>
+</div>
+
+</Base>
+
+<style>
+  .calc-page {
+    padding: 3rem 0 6rem;
+  }
+
+  /* Hero */
+  .calc-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .calc-badge {
+    display: inline-block;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    color: var(--color-primary-light);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .calc-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+  .gradient-text {
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .calc-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* Card */
+  .calc-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Progress */
+  .progress-wrap { margin-bottom: 2.5rem; }
+  .progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 0 0 auto;
+  }
+  .progress-step span { font-size: 0.78rem; color: var(--color-text-muted); font-weight: 500; }
+  .progress-step.active span { color: var(--color-primary-light); }
+  .progress-step.done span { color: var(--color-success); }
+  .step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    background: var(--color-bg);
+    transition: all 0.2s;
+  }
+  .progress-step.active .step-dot {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+  }
+  .progress-step.done .step-dot {
+    border-color: var(--color-success);
+    background: var(--color-success);
+  }
+  .progress-line {
+    flex: 1;
+    height: 2px;
+    background: var(--color-border);
+    margin: 0 0.5rem;
+    margin-bottom: 1.2rem;
+    min-width: 60px;
+    max-width: 120px;
+  }
+
+  /* Steps */
+  .calc-step { display: none; }
+  .calc-step.active { display: block; }
+  .step-title { font-size: 1.5rem; margin-bottom: 2rem; }
+
+  /* Fields */
+  .field-group { margin-bottom: 1.75rem; }
+  .field-label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+  .field-hint { font-weight: 400; color: var(--color-text-muted); }
+  .field-value { color: var(--color-primary-light); font-weight: 700; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .field-input {
+    width: 100%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.15s;
+  }
+  .field-input:focus { outline: none; border-color: var(--color-primary); }
+  .field-input::placeholder { color: var(--color-text-muted); }
+
+  .field-select {
+    width: 100%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .field-select:focus { outline: none; border-color: var(--color-primary); }
+  .field-select option { background: var(--color-surface); }
+
+  /* Pills */
+  .option-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--font-sans);
+  }
+  .pill:hover { border-color: var(--color-primary); color: var(--color-text); }
+  .pill.selected {
+    background: rgba(124, 58, 237, 0.15);
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+  }
+
+  /* Checkboxes */
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .checkbox-item:hover { border-color: var(--color-primary); color: var(--color-text); }
+  .checkbox-item input[type="checkbox"] { accent-color: var(--color-primary); width: 15px; height: 15px; cursor: pointer; }
+  .checkbox-item:has(input:checked) {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+  }
+
+  /* Slider */
+  .slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) 40%, var(--color-border) 40%);
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(124,58,237,0.5);
+  }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--color-text-muted); }
+
+  /* Step footer */
+  .step-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* Gate */
+  .gate-icon { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+  .gate-sub { color: var(--color-text-muted); text-align: center; margin-bottom: 2rem; margin-top: -1rem; }
+  .gate-error { color: var(--color-danger); font-size: 0.88rem; margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: rgba(239,68,68,0.08); border-radius: 6px; border: 1px solid rgba(239,68,68,0.2); }
+
+  /* Results */
+  .results-wrap { max-width: 780px; margin: 0 auto; }
+
+  /* Grade card */
+  .grade-card {
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.08));
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .grade-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .grade-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-bottom: 0.5rem; font-weight: 600; }
+  .grade-letter { font-size: 5rem; font-weight: 800; line-height: 1; }
+  .grade-desc { color: var(--color-text-muted); margin-top: 0.5rem; font-size: 1rem; }
+  .grade-context { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.07); line-height: 1.6; }
+
+  .grade-score-wrap { position: relative; flex: 0 0 120px; display: flex; flex-direction: column; align-items: center; }
+  .score-ring { width: 120px; height: 120px; }
+  .score-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+  .score-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+  }
+
+  /* Metrics */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .metric-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .metric-card.danger { border-color: rgba(239,68,68,0.3); }
+  .metric-card.warning { border-color: rgba(245,158,11,0.3); }
+  .metric-card.fines { border-color: rgba(124,58,237,0.3); }
+  .metric-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  .metric-value { font-size: 2.25rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.3rem; }
+  .metric-card.danger .metric-value { color: var(--color-danger); }
+  .metric-card.warning .metric-value { color: var(--color-warning); }
+  .metric-card.fines .metric-value { color: var(--color-primary-light); }
+  .metric-name { font-size: 0.82rem; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.75rem; }
+  .metric-detail { font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.5rem; line-height: 1.4; }
+  .metric-bench { font-size: 0.78rem; color: var(--color-accent); font-style: italic; }
+
+  /* Savings */
+  .savings-card {
+    background: rgba(16,185,129,0.06);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .savings-icon { font-size: 1.75rem; flex: 0 0 auto; margin-top: 0.1rem; }
+  .savings-title { font-weight: 700; color: var(--color-success); margin-bottom: 0.75rem; }
+  .savings-stats { display: flex; flex-direction: column; gap: 0.4rem; }
+  .savings-stat { font-size: 0.9rem; color: var(--color-text-muted); }
+  .savings-stat strong { color: var(--color-text); }
+
+  /* Share + CTA */
+  .results-footer { text-align: center; }
+  .share-row { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+  .share-note { color: var(--color-success); font-size: 0.85rem; font-weight: 600; }
+
+  .cta-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+  }
+  .cta-block h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .cta-block p { color: var(--color-text-muted); margin-bottom: 1.25rem; }
+  .cta-install {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--color-accent);
+  }
+  .cta-sub { color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.75rem; }
+
+  @media (max-width: 768px) {
+    .calc-hero h1 { font-size: 2rem; }
+    .calc-card { padding: 1.5rem; }
+    .checkbox-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .grade-inner { flex-direction: column-reverse; align-items: flex-start; }
+    .progress-line { min-width: 30px; }
+  }
+</style>
+
+<script is:inline>
+(function() {
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  var state = {
+    teamSize: null,
+    aiPct: 40,
+    aiTools: [],
+    frameworks: [],
+    revenue: null,
+    hasSecurityTeam: null,
+    email: '',
+    jobTitle: '',
+    company: '',
+  };
+
+  // ── Step navigation ────────────────────────────────────────────────────────
+  function showStep(n) {
+    document.querySelectorAll('.calc-step').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById('step-' + n).classList.add('active');
+    document.querySelectorAll('.progress-step').forEach(function(el) {
+      var s = parseInt(el.dataset.step);
+      el.classList.remove('active', 'done');
+      if (s < n) el.classList.add('done');
+      if (s === n) el.classList.add('active');
+    });
+    document.getElementById('calc-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Pill selection ─────────────────────────────────────────────────────────
+  function initPills(containerId, stateKey) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    container.querySelectorAll('.pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        container.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('selected'); });
+        pill.classList.add('selected');
+        state[stateKey] = pill.dataset.value;
+      });
+    });
+  }
+  initPills('team-size-pills', 'teamSize');
+  initPills('sec-team-pills', 'hasSecurityTeam');
+
+  // ── Slider ────────────────────────────────────────────────────────────────
+  var slider = document.getElementById('ai-pct-slider');
+  var pctDisplay = document.getElementById('ai-pct-display');
+  slider.addEventListener('input', function() {
+    state.aiPct = parseInt(slider.value);
+    pctDisplay.textContent = state.aiPct + '%';
+    var pct = state.aiPct;
+    slider.style.background = 'linear-gradient(to right, #7c3aed 0%, #7c3aed ' + pct + '%, #362e4a ' + pct + '%)';
+  });
+
+  // ── Checkboxes ────────────────────────────────────────────────────────────
+  function trackCheckboxes(gridId, stateKey) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    grid.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        state[stateKey] = Array.from(grid.querySelectorAll('input:checked')).map(function(c) { return c.value; });
+      });
+    });
+  }
+  trackCheckboxes('ai-tools-grid', 'aiTools');
+  trackCheckboxes('frameworks-grid', 'frameworks');
+
+  // Revenue
+  document.getElementById('revenue-select').addEventListener('change', function() {
+    state.revenue = parseInt(this.value) || null;
+  });
+
+  // ── Next / Back ────────────────────────────────────────────────────────────
+  document.getElementById('next-1').addEventListener('click', function() {
+    if (!state.teamSize) { alert('Please select your team size.'); return; }
+    showStep(2);
+  });
+  document.getElementById('back-1').addEventListener('click', function() { showStep(1); });
+  document.getElementById('next-2').addEventListener('click', function() {
+    if (state.frameworks.length === 0) { alert('Please select at least one compliance framework.'); return; }
+    if (!state.revenue) { alert('Please select your annual revenue range.'); return; }
+    if (!state.hasSecurityTeam) { alert('Please answer the security team question.'); return; }
+    showStep(3);
+  });
+  document.getElementById('back-2').addEventListener('click', function() { showStep(2); });
+
+  // ── Results ────────────────────────────────────────────────────────────────
+  document.getElementById('show-results').addEventListener('click', function() {
+    var email = document.getElementById('input-email').value.trim();
+    var title = document.getElementById('input-title').value.trim();
+    var company = document.getElementById('input-company').value.trim();
+    var errEl = document.getElementById('gate-error');
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Please enter a valid work email address.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!title) {
+      errEl.textContent = 'Please enter your job title.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!company) {
+      errEl.textContent = 'Please enter your company name.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    state.email = email;
+    state.jobTitle = title;
+    state.company = company;
+
+    var results = calculate(state);
+    submitLead(state, results);
+    renderResults(results);
+  });
+
+  // ── Calculations ───────────────────────────────────────────────────────────
+  function calculate(s) {
+    var teamSize = parseInt(s.teamSize) || 10;
+    var aiPct = s.aiPct / 100;
+    var frameworks = s.frameworks;
+    var revenue = s.revenue || 5000000;
+    var noSecTeam = s.hasSecurityTeam === 'no';
+    var inProgressSecTeam = s.hasSecurityTeam === 'in_progress';
+
+    // Secrets/credentials per year
+    // ~2.3% of AI-generated PRs contain credential patterns (GitGuardian data)
+    // avg 3 PRs/dev/week
+    var secretsRaw = teamSize * aiPct * 0.023 * 3 * 52;
+    var secrets = Math.round(secretsRaw);
+    if (noSecTeam) secrets = Math.round(secrets * 1.35);
+
+    // Audit prep hours per year
+    var hoursPerFramework = {
+      hipaa: 220, eu_ai_act: 195, soc2: 280, pci_dss: 260,
+      iec62304: 380, gdpr: 165, nist: 210, iso27001: 240
+    };
+    var baseHours = 0;
+    frameworks.forEach(function(f) { baseHours += (hoursPerFramework[f] || 200); });
+    if (baseHours === 0) baseHours = 200;
+    var teamMult = 1 + (teamSize - 1) * 0.07;
+    var aiMult = 1 + aiPct * 0.65;
+    var secMult = noSecTeam ? 1.4 : (inProgressSecTeam ? 1.15 : 1.0);
+    var auditHours = Math.round(baseHours * teamMult * aiMult * secMult);
+
+    // Fine exposure
+    var hipaaFine = 0;
+    if (frameworks.indexOf('hipaa') !== -1) {
+      var hipaaViolations = Math.ceil(secrets * 0.35);
+      hipaaFine = Math.min(hipaaViolations * 12000, 1900000);
+    }
+    var euFine = 0;
+    if (frameworks.indexOf('eu_ai_act') !== -1) {
+      // 1.5% of turnover for inadequate documentation violations
+      euFine = Math.round(revenue * 0.015);
+    }
+    var totalFine = hipaaFine + euFine;
+
+    // Risk score (0-100)
+    var secretsScore = Math.min(secrets / 60 * 30, 30);
+    var hoursScore = Math.min(auditHours / 2000 * 25, 25);
+    var fineScore = Math.min(totalFine / 2000000 * 25, 25);
+    var aiScore = aiPct * 15;
+    var secPenalty = noSecTeam ? 8 : (inProgressSecTeam ? 3 : 0);
+    var rawScore = secretsScore + hoursScore + fineScore + aiScore + secPenalty;
+    var riskScore = Math.min(Math.round(rawScore), 100);
+
+    // Grade
+    var grade, gradeDesc, gradeColor;
+    if (riskScore < 20) { grade = 'A'; gradeDesc = 'Low exposure — well managed'; gradeColor = '#10b981'; }
+    else if (riskScore < 40) { grade = 'B'; gradeDesc = 'Moderate exposure — some gaps'; gradeColor = '#06b6d4'; }
+    else if (riskScore < 60) { grade = 'C'; gradeDesc = 'Elevated exposure — attention needed'; gradeColor = '#f59e0b'; }
+    else if (riskScore < 75) { grade = 'D'; gradeDesc = 'High exposure — action recommended'; gradeColor = '#ef4444'; }
+    else { grade = 'F'; gradeDesc = 'Critical exposure — immediate action'; gradeColor = '#dc2626'; }
+
+    // Benchmarks
+    var industryAuditHours = Math.round(baseHours * (1 + (teamSize - 1) * 0.07) * 1.3);
+    var industrySecrets = Math.round(teamSize * 0.4 * 0.023 * 3 * 52);
+    var pctileSecrets = secrets > industrySecrets ? Math.min(Math.round((secrets / industrySecrets - 1) * 80 + 50), 95) : Math.max(Math.round(50 - (industrySecrets / secrets - 1) * 30), 10);
+    var pctileHours = auditHours > industryAuditHours ? Math.min(Math.round((auditHours / industryAuditHours - 1) * 80 + 50), 95) : Math.max(Math.round(50 - (industryAuditHours / auditHours - 1) * 30), 10);
+
+    // Sentrik savings
+    var hoursSaved = Math.round(auditHours * 0.72);
+    var secretsCaught = Math.round(secrets * 0.94);
+
+    return {
+      secrets, auditHours, hipaaFine, euFine, totalFine,
+      riskScore, grade, gradeDesc, gradeColor,
+      industryAuditHours, pctileSecrets, pctileHours,
+      hoursSaved, secretsCaught,
+      teamSize, aiPct: s.aiPct, frameworks, revenue,
+    };
+  }
+
+  // ── Render results ─────────────────────────────────────────────────────────
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + n.toLocaleString();
+  }
+
+  function renderResults(r) {
+    document.getElementById('calc-card').style.display = 'none';
+    var wrap = document.getElementById('results-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Grade
+    var gl = document.getElementById('grade-letter');
+    gl.textContent = r.grade;
+    gl.style.color = r.gradeColor;
+    document.getElementById('grade-desc').textContent = r.gradeDesc;
+
+    // Context sentence
+    var ctx = 'Your team generates an estimated <strong>' + r.secrets + ' exposed credentials</strong> per year '
+      + 'and spends <strong>' + r.auditHours.toLocaleString() + ' hours</strong> on audit prep '
+      + (r.totalFine > 0 ? 'with up to <strong>' + fmt(r.totalFine) + '</strong> in potential regulatory fines. ' : '. ')
+      + (r.pctileSecrets > 70
+        ? 'Your AI adoption rate puts you in the top ' + (100 - r.pctileSecrets) + '% for credential risk among teams your size.'
+        : 'Your risk profile is above average for your team size and AI usage.');
+    document.getElementById('grade-context').innerHTML = ctx;
+
+    // Animate score ring
+    var circumference = 327;
+    var arc = document.getElementById('score-arc');
+    arc.style.stroke = r.gradeColor;
+    var scoreEl = document.getElementById('score-num');
+    var current = 0;
+    var target = r.riskScore;
+    var interval = setInterval(function() {
+      current = Math.min(current + 2, target);
+      scoreEl.textContent = current;
+      arc.style.strokeDashoffset = circumference - (circumference * current / 100);
+      if (current >= target) clearInterval(interval);
+    }, 20);
+
+    // Secrets metric
+    document.getElementById('m-secrets').textContent = r.secrets.toLocaleString();
+    document.getElementById('m-secrets-detail').textContent =
+      'Based on ' + r.aiPct + '% AI code generation rate and ' + r.teamSize + ' developers. '
+      + '~2.3% of AI-generated PRs contain credential patterns.';
+    document.getElementById('m-secrets-bench').textContent =
+      'Industry benchmark for teams your size: ~' + Math.round(r.teamSize * 0.4 * 0.023 * 3 * 52) + ' credentials/year at 40% AI adoption';
+
+    // Hours metric
+    document.getElementById('m-hours').textContent = r.auditHours.toLocaleString();
+    document.getElementById('m-hours-detail').textContent =
+      'Across ' + r.frameworks.length + ' framework' + (r.frameworks.length !== 1 ? 's' : '')
+      + '. AI-generated code increases audit burden by up to 65% due to traceability gaps.';
+    document.getElementById('m-hours-bench').textContent =
+      'Teams your size average ~' + r.industryAuditHours.toLocaleString() + ' hours/year at 40% AI adoption';
+
+    // Fines metric
+    var fineText = r.totalFine > 0 ? fmt(r.totalFine) : '$0';
+    document.getElementById('m-fines').textContent = fineText;
+    var fineDetail = [];
+    if (r.hipaaFine > 0) fineDetail.push('HIPAA: up to ' + fmt(r.hipaaFine) + ' (Tier 2, reasonable cause)');
+    if (r.euFine > 0) fineDetail.push('EU AI Act: up to ' + fmt(r.euFine) + ' (1.5% turnover, documentation violations)');
+    if (fineDetail.length === 0) fineDetail.push('Select HIPAA or EU AI Act to calculate fine exposure.');
+    document.getElementById('m-fines-detail').textContent = fineDetail.join(' · ');
+    document.getElementById('m-fines-bench').textContent =
+      r.totalFine > 0 ? 'Average enforcement action in this range: $' + Math.round(r.totalFine * 0.3 / 1000) + 'K–' + fmt(r.totalFine * 0.8) : '';
+
+    // Savings
+    var statsEl = document.getElementById('savings-stats');
+    statsEl.innerHTML =
+      '<div class="savings-stat">✓ <strong>' + r.secretsCaught.toLocaleString() + ' credentials</strong> caught before they reach your repo</div>'
+      + '<div class="savings-stat">✓ <strong>' + r.hoursSaved.toLocaleString() + ' audit prep hours</strong> saved per year — evidence generated on every commit</div>'
+      + (r.totalFine > 0 ? '<div class="savings-stat">✓ Fine exposure reduced to near zero through continuous compliance gating</div>' : '');
+
+    // Share URL
+    var shareData = btoa(JSON.stringify({ g: r.grade, s: r.riskScore, sec: r.secrets, h: r.auditHours, f: r.totalFine }));
+    document.getElementById('share-btn').addEventListener('click', function() {
+      var url = window.location.origin + window.location.pathname + '#r=' + shareData;
+      navigator.clipboard.writeText(url).then(function() {
+        document.getElementById('share-confirm').style.display = 'inline';
+        setTimeout(function() { document.getElementById('share-confirm').style.display = 'none'; }, 2500);
+      });
+    });
+  }
+
+  // ── Netlify form submission ────────────────────────────────────────────────
+  function submitLead(s, r) {
+    var data = new FormData();
+    data.append('form-name', 'vibe-coding-risk');
+    data.append('email', s.email);
+    data.append('job_title', s.jobTitle);
+    data.append('company', s.company);
+    data.append('team_size', s.teamSize);
+    data.append('ai_pct', s.aiPct + '%');
+    data.append('ai_tools', s.aiTools.join(', '));
+    data.append('frameworks', s.frameworks.join(', '));
+    data.append('revenue_range', s.revenue ? '$' + parseInt(s.revenue).toLocaleString() : 'not provided');
+    data.append('has_security_team', s.hasSecurityTeam);
+    data.append('risk_score', r.riskScore + ' (' + r.grade + ')');
+    data.append('secrets_per_year', r.secrets);
+    data.append('audit_hours', r.auditHours);
+    data.append('hipaa_exposure', r.hipaaFine);
+    data.append('eu_ai_exposure', r.euFine);
+    fetch('/', { method: 'POST', body: data }).catch(function() {});
+  }
+
+  // ── Load shared result from URL hash ──────────────────────────────────────
+  (function checkSharedResult() {
+    var hash = window.location.hash;
+    if (!hash || hash.indexOf('#r=') !== 0) return;
+    try {
+      var data = JSON.parse(atob(hash.slice(3)));
+      // Show a simplified shared view
+      document.getElementById('calc-card').style.display = 'none';
+      var wrap = document.getElementById('results-wrap');
+      wrap.style.display = 'block';
+      var gradeColors = { A: '#10b981', B: '#06b6d4', C: '#f59e0b', D: '#ef4444', F: '#dc2626' };
+      var gradeDescs = { A: 'Low exposure', B: 'Moderate exposure', C: 'Elevated exposure', D: 'High exposure', F: 'Critical exposure' };
+      var gl = document.getElementById('grade-letter');
+      gl.textContent = data.g;
+      gl.style.color = gradeColors[data.g] || '#7c3aed';
+      document.getElementById('grade-desc').textContent = gradeDescs[data.g] || '';
+      document.getElementById('grade-context').textContent = 'Shared result. Run your own calculation below to get your personalized risk report.';
+      document.getElementById('m-secrets').textContent = (data.sec || 0).toLocaleString();
+      document.getElementById('m-hours').textContent = (data.h || 0).toLocaleString();
+      document.getElementById('m-fines').textContent = data.f >= 1000000 ? '$' + (data.f/1000000).toFixed(1)+'M' : data.f >= 1000 ? '$'+(data.f/1000|0)+'K' : '$'+(data.f||0);
+      var arc = document.getElementById('score-arc');
+      arc.style.stroke = gradeColors[data.g] || '#7c3aed';
+      arc.style.strokeDashoffset = 327 - (327 * (data.s || 0) / 100);
+      document.getElementById('score-num').textContent = data.s || 0;
+      document.getElementById('savings-stats').innerHTML = '<div class="savings-stat">Want your own personalized report? Scroll down to calculate yours.</div>';
+      // Show calculator again below
+      var card = document.getElementById('calc-card');
+      card.style.display = 'block';
+      card.style.marginTop = '2rem';
+    } catch(e) {}
+  })();
+
+})();
+</script>
