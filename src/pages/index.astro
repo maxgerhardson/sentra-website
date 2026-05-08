@@ -440,27 +440,201 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- Hidden Netlify forms -->
+<form name="early-access" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="early-access" />
+  <input name="bot-field" />
+  <input name="email" />
+</form>
+<form name="vibe-risk-homepage" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="vibe-risk-homepage" />
+  <input name="bot-field" />
+  <input name="email" /><input name="job_title" /><input name="company" />
+  <input name="team_size" /><input name="ai_pct" /><input name="ai_tools" />
+  <input name="frameworks" /><input name="revenue_range" /><input name="has_security_team" />
+  <input name="risk_score" /><input name="secrets_per_year" /><input name="audit_hours" />
+  <input name="hipaa_exposure" /><input name="eu_ai_exposure" />
+</form>
+
 <!-- Get Free Access (email request) -->
 <section class="cta" id="get-free">
   <div class="container cta-inner">
     <h2>Get Free Access</h2>
     <p class="cta-sub">Request access and we'll be in touch. 5 packs, 158 rules, free forever.</p>
-    <form action="https://formsubmit.co/max@sentrik.dev" method="POST" class="cta-form">
-      <input type="hidden" name="_subject" value="Sentrik Free Access Request" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://sentrik.dev/?free=requested" />
+    <form id="early-access-form" class="cta-form">
       <div class="form-row">
-        <input type="email" name="email" placeholder="you@company.com" required class="form-input" />
-        <button type="submit" class="btn btn-primary">Request Free Access</button>
+        <input type="email" id="ea-email" name="email" placeholder="you@company.com" required class="form-input" />
+        <button type="submit" class="btn btn-primary" id="ea-submit">Request Free Access</button>
       </div>
+      <div id="ea-error" style="display:none;color:var(--color-danger);font-size:0.85rem;margin-top:0.5rem"></div>
     </form>
     <div id="free-thanks" style="display:none;margin-top:1.5rem;text-align:center">
-      <p style="color:var(--color-accent);font-size:1rem;font-weight:600">&#10003; Request received</p>
-      <p style="color:var(--color-text-muted);font-size:0.85rem;margin-top:0.5rem">We'll be in touch shortly with access details.</p>
+      <p style="color:var(--color-accent);font-size:1rem;font-weight:600">&#10003; Request received — check your risk score below</p>
     </div>
   </div>
 </section>
 
+
+<!-- Vibe Coding Risk Calculator Modal -->
+<div id="risk-modal" class="risk-modal-overlay" style="display:none" onclick="handleRiskOverlayClick(event)">
+  <div class="risk-modal" onclick="event.stopPropagation()">
+    <button class="risk-modal-close" onclick="closeRiskModal()" aria-label="Close">&times;</button>
+    <div class="risk-modal-header">
+      <div class="risk-modal-badge">Free Risk Assessment</div>
+      <h2>Your Vibe Coding Risk Score</h2>
+      <p>Answer a few questions to see your team's real exposure from AI-generated code</p>
+      <div class="risk-steps-indicator">
+        <span class="risk-step-dot active" data-step="1">1</span>
+        <span class="risk-step-line"></span>
+        <span class="risk-step-dot" data-step="2">2</span>
+        <span class="risk-step-line"></span>
+        <span class="risk-step-dot" data-step="3">3</span>
+      </div>
+    </div>
+
+    <!-- Step 1: Team & AI Usage -->
+    <div class="risk-step" id="risk-step-1">
+      <h3>Team &amp; AI Usage</h3>
+      <div class="risk-field">
+        <label>How many engineers on your team?</label>
+        <div class="risk-options" id="team-size-opts">
+          <button class="risk-opt" data-value="3">1–5</button>
+          <button class="risk-opt" data-value="10">6–15</button>
+          <button class="risk-opt" data-value="30">16–50</button>
+          <button class="risk-opt" data-value="100">51–200</button>
+          <button class="risk-opt" data-value="500">200+</button>
+        </div>
+      </div>
+      <div class="risk-field">
+        <label>What % of your code is AI-generated or AI-assisted?</label>
+        <div class="risk-options" id="ai-pct-opts">
+          <button class="risk-opt" data-value="10">Under 20%</button>
+          <button class="risk-opt" data-value="35">20–50%</button>
+          <button class="risk-opt" data-value="65">50–80%</button>
+          <button class="risk-opt" data-value="90">Over 80%</button>
+        </div>
+      </div>
+      <div class="risk-field">
+        <label>Which AI coding tools do you use? <span class="risk-multi">(Select all that apply)</span></label>
+        <div class="risk-options multi" id="ai-tools-opts">
+          <button class="risk-opt" data-value="copilot">GitHub Copilot</button>
+          <button class="risk-opt" data-value="cursor">Cursor</button>
+          <button class="risk-opt" data-value="claude">Claude Code</button>
+          <button class="risk-opt" data-value="amazonq">Amazon Q</button>
+          <button class="risk-opt" data-value="other">Other</button>
+        </div>
+      </div>
+      <div id="step1-error" class="risk-field-error" style="display:none">Please select team size and AI usage %</div>
+      <button class="btn btn-primary risk-next-btn" onclick="riskNext(2)">Next &rarr;</button>
+    </div>
+
+    <!-- Step 2: Compliance & Company -->
+    <div class="risk-step" id="risk-step-2" style="display:none">
+      <h3>Compliance &amp; Company</h3>
+      <div class="risk-field">
+        <label>Which regulatory frameworks apply to your product? <span class="risk-multi">(Select all that apply)</span></label>
+        <div class="risk-options multi" id="frameworks-opts">
+          <button class="risk-opt" data-value="hipaa">HIPAA</button>
+          <button class="risk-opt" data-value="euai">EU AI Act</button>
+          <button class="risk-opt" data-value="soc2">SOC 2</button>
+          <button class="risk-opt" data-value="pci">PCI DSS</button>
+          <button class="risk-opt" data-value="iec62304">IEC 62304</button>
+          <button class="risk-opt" data-value="none">None yet</button>
+        </div>
+      </div>
+      <div class="risk-field">
+        <label>Annual revenue range?</label>
+        <div class="risk-options" id="revenue-opts">
+          <button class="risk-opt" data-value="500000">Under $1M</button>
+          <button class="risk-opt" data-value="5000000">$1M–$10M</button>
+          <button class="risk-opt" data-value="50000000">$10M–$100M</button>
+          <button class="risk-opt" data-value="500000000">$100M+</button>
+        </div>
+      </div>
+      <div class="risk-field">
+        <label>Do you have a dedicated security team?</label>
+        <div class="risk-options" id="sec-team-opts">
+          <button class="risk-opt" data-value="yes">Yes</button>
+          <button class="risk-opt" data-value="no">No / It&apos;s shared</button>
+        </div>
+      </div>
+      <div class="risk-step-nav">
+        <button class="btn btn-outline" onclick="riskBack(1)">&larr; Back</button>
+        <button class="btn btn-primary risk-next-btn" onclick="riskNext(3)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Step 3: About You -->
+    <div class="risk-step" id="risk-step-3" style="display:none">
+      <h3>Almost there</h3>
+      <p class="risk-step-sub">Tell us a bit about yourself and we&apos;ll calculate your score.</p>
+      <div class="risk-field">
+        <label for="modal-job-title">Job title</label>
+        <input type="text" id="modal-job-title" class="form-input" placeholder="e.g. Engineering Manager" />
+      </div>
+      <div class="risk-field">
+        <label for="modal-company">Company</label>
+        <input type="text" id="modal-company" class="form-input" placeholder="Company name" />
+      </div>
+      <div class="risk-step-nav">
+        <button class="btn btn-outline" onclick="riskBack(2)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="calculateRisk()">Calculate My Risk Score</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="risk-step" id="risk-results" style="display:none">
+      <div class="risk-results-header">
+        <div class="risk-grade-ring">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="46" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+            <circle id="risk-ring-arc" cx="55" cy="55" r="46" fill="none" stroke="#ef4444" stroke-width="10"
+              stroke-dasharray="289" stroke-dashoffset="289"
+              stroke-linecap="round" transform="rotate(-90 55 55)"
+              style="transition: stroke-dashoffset 1s ease, stroke 0.5s ease"/>
+          </svg>
+          <div class="risk-grade-label">
+            <span id="risk-grade-letter">F</span>
+            <span class="risk-grade-sub">Grade</span>
+          </div>
+        </div>
+        <div class="risk-score-summary">
+          <div class="risk-score-num" id="risk-score-num">97</div>
+          <div class="risk-score-label">/ 100 Risk Score</div>
+          <p id="risk-headline" class="risk-headline">Critical exposure — immediate action needed</p>
+        </div>
+      </div>
+
+      <div class="risk-metrics-grid">
+        <div class="risk-metric">
+          <div class="risk-metric-val" id="metric-secrets">—</div>
+          <div class="risk-metric-label">Secrets exposed / year</div>
+        </div>
+        <div class="risk-metric">
+          <div class="risk-metric-val" id="metric-audit">—</div>
+          <div class="risk-metric-label">Audit hours / cycle</div>
+        </div>
+        <div class="risk-metric" id="hipaa-row" style="display:none">
+          <div class="risk-metric-val" id="metric-hipaa">—</div>
+          <div class="risk-metric-label">Max HIPAA fine exposure</div>
+        </div>
+        <div class="risk-metric" id="euai-row" style="display:none">
+          <div class="risk-metric-val" id="metric-euai">—</div>
+          <div class="risk-metric-label">EU AI Act fine (1.5% rev)</div>
+        </div>
+      </div>
+
+      <div class="risk-cta-block">
+        <p class="risk-fix-line">Sentrik catches AI-generated vulnerabilities before they reach production — in CI, in your editor, or both.</p>
+        <div class="risk-cta-code"><code>pip install sentrik &amp;&amp; sentrik scan</code></div>
+        <div class="risk-cta-btns">
+          <a href="https://docs.sentrik.dev/getting-started/quickstart/" target="_blank" rel="noopener" class="btn btn-primary">Get Started Free</a>
+          <button class="btn btn-outline" onclick="closeRiskModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Screenshot Lightbox -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -740,6 +914,178 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .form-row-extra { display: flex; gap: 0.75rem; }
   .form-input-sm { font-size: 0.85rem; padding: 0.5rem 0.75rem; }
 
+  /* Risk Calculator Modal */
+  .risk-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  .risk-modal {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .risk-modal-close {
+    position: absolute;
+    top: 1rem; right: 1.25rem;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem;
+    transition: color 0.2s;
+  }
+  .risk-modal-close:hover { color: var(--color-text); }
+  .risk-modal-header { text-align: center; margin-bottom: 2rem; }
+  .risk-modal-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  .risk-modal-header h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .risk-modal-header p { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .risk-steps-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .risk-step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    background: var(--color-bg-alt);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .risk-step-dot.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .risk-step-dot.done {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .risk-step-line {
+    width: 48px; height: 2px;
+    background: var(--color-border);
+  }
+  .risk-step h3 { font-size: 1.15rem; margin-bottom: 1.5rem; }
+  .risk-step-sub { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; margin-top: -0.75rem; }
+  .risk-field { margin-bottom: 1.5rem; }
+  .risk-field label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--color-text);
+  }
+  .risk-multi { font-weight: 400; color: var(--color-text-muted); font-size: 0.8rem; }
+  .risk-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .risk-opt {
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .risk-opt:hover { border-color: var(--color-primary); color: var(--color-text); }
+  .risk-opt.selected {
+    border-color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--color-text);
+  }
+  .risk-field-error { color: var(--color-danger, #ef4444); font-size: 0.82rem; margin-top: -1rem; margin-bottom: 1rem; }
+  .risk-next-btn { width: 100%; margin-top: 0.5rem; }
+  .risk-step-nav { display: flex; gap: 0.75rem; justify-content: space-between; margin-top: 0.5rem; }
+  .risk-step-nav .btn { flex: 1; }
+  /* Results */
+  .risk-results-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .risk-grade-ring { position: relative; flex-shrink: 0; }
+  .risk-grade-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1;
+  }
+  #risk-grade-letter {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-text);
+  }
+  .risk-grade-sub { font-size: 0.65rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .risk-score-num { font-size: 3rem; font-weight: 900; line-height: 1; color: var(--color-text); }
+  .risk-score-label { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+  .risk-headline { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; }
+  .risk-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .risk-metric {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .risk-metric-val { font-size: 1.4rem; font-weight: 800; color: var(--color-accent); margin-bottom: 0.25rem; }
+  .risk-metric-label { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; }
+  .risk-cta-block { text-align: center; }
+  .risk-fix-line { color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6; }
+  .risk-cta-code {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+  }
+  .risk-cta-code code { color: var(--color-accent); font-size: 0.85rem; }
+  .risk-cta-btns { display: flex; gap: 0.75rem; justify-content: center; }
+
   /* Responsive */
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }
@@ -763,22 +1109,18 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 </style>
 
 <script>
+  // ── Lightbox ──────────────────────────────────────────────────────────────
   function openLightbox(src, alt) {
     var lb = document.getElementById('lightbox');
     var img = document.getElementById('lightbox-img');
-    img.src = src;
-    img.alt = alt;
+    img.src = src; img.alt = alt;
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeLightbox() {
-    var lb = document.getElementById('lightbox');
-    lb.classList.remove('open');
+    document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('expandable')) {
       e.preventDefault();
@@ -786,11 +1128,211 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     }
   });
 
-  // Show thank-you message if redirected back after free access form submit
-  if (window.location.search.includes('free=requested')) {
-    var freeForm = document.querySelector('.cta form[action*="formsubmit"]');
-    if (freeForm) freeForm.style.display = 'none';
-    var thanks = document.getElementById('free-thanks');
-    if (thanks) thanks.style.display = 'block';
+  // ── Risk Calculator Modal ─────────────────────────────────────────────────
+  var riskData = { email:'', teamSize:null, aiPct:null, aiTools:[], frameworks:[], revenue:null, hasSecTeam:null, jobTitle:'', company:'' };
+
+  function openRiskModal(email) {
+    riskData.email = email;
+    var modal = document.getElementById('risk-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    // animate ring in on next tick (so transition fires)
+    setTimeout(function() {
+      document.getElementById('risk-ring-arc').style.strokeDashoffset = '289';
+    }, 50);
   }
+  function closeRiskModal() {
+    document.getElementById('risk-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function handleRiskOverlayClick(e) {
+    if (e.target === document.getElementById('risk-modal')) closeRiskModal();
+  }
+
+  function setStepIndicator(step) {
+    document.querySelectorAll('.risk-step-dot').forEach(function(dot) {
+      var s = parseInt(dot.dataset.step);
+      dot.classList.remove('active', 'done');
+      if (s === step) dot.classList.add('active');
+      else if (s < step) dot.classList.add('done', 'active');
+    });
+  }
+
+  function getSelected(groupId) {
+    var group = document.getElementById(groupId);
+    if (!group) return null;
+    if (group.classList.contains('multi')) {
+      return Array.from(group.querySelectorAll('.risk-opt.selected')).map(function(b) { return b.dataset.value; });
+    }
+    var sel = group.querySelector('.risk-opt.selected');
+    return sel ? sel.dataset.value : null;
+  }
+
+  function riskNext(toStep) {
+    if (toStep === 2) {
+      var ts = getSelected('team-size-opts');
+      var ap = getSelected('ai-pct-opts');
+      var errEl = document.getElementById('step1-error');
+      if (!ts || !ap) { errEl.style.display = 'block'; return; }
+      errEl.style.display = 'none';
+      riskData.teamSize = ts;
+      riskData.aiPct = ap;
+      riskData.aiTools = getSelected('ai-tools-opts') || [];
+    } else if (toStep === 3) {
+      riskData.frameworks = getSelected('frameworks-opts') || [];
+      riskData.revenue = getSelected('revenue-opts');
+      riskData.hasSecTeam = getSelected('sec-team-opts');
+    }
+    document.getElementById('risk-step-' + (toStep - 1)).style.display = 'none';
+    document.getElementById('risk-step-' + toStep).style.display = 'block';
+    setStepIndicator(toStep);
+    document.querySelector('.risk-modal').scrollTop = 0;
+  }
+
+  function riskBack(toStep) {
+    document.getElementById('risk-step-' + (toStep + 1)).style.display = 'none';
+    document.getElementById('risk-step-' + toStep).style.display = 'block';
+    setStepIndicator(toStep);
+    document.querySelector('.risk-modal').scrollTop = 0;
+  }
+
+  function calculateRisk() {
+    riskData.jobTitle = document.getElementById('modal-job-title').value || '';
+    riskData.company  = document.getElementById('modal-company').value || '';
+
+    var teamSize  = parseFloat(riskData.teamSize) || 5;
+    var aiPct     = parseFloat(riskData.aiPct) || 10;
+    var revenue   = parseFloat(riskData.revenue) || 1000000;
+    var frameworks = riskData.frameworks || [];
+    var hasSecTeam = riskData.hasSecTeam === 'yes';
+
+    // Secrets exposed per year
+    var secrets = Math.max(1, Math.round(teamSize * (aiPct / 100) * 0.023 * 3 * 52));
+
+    // Audit hours
+    var baseHours = 120;
+    var teamMult = teamSize <= 5 ? 0.8 : teamSize <= 15 ? 1.0 : teamSize <= 50 ? 1.4 : 1.8;
+    var aiMult   = aiPct < 20 ? 1.1 : aiPct < 50 ? 1.3 : aiPct < 80 ? 1.6 : 2.0;
+    var secMult  = hasSecTeam ? 0.7 : 1.3;
+    var auditHours = Math.round(baseHours * teamMult * aiMult * secMult);
+
+    // Regulatory fines
+    var hipaaViolations = Math.max(1, Math.round(secrets * 0.15));
+    var hipaaFine = Math.min(hipaaViolations * 12000, 1900000);
+    var euFine    = Math.round(revenue * 0.015);
+
+    // Risk score 0–100 (higher = worse)
+    var score = 30;
+    score += Math.min(35, Math.round(secrets * 1.5));
+    score += aiPct >= 80 ? 18 : aiPct >= 50 ? 12 : aiPct >= 20 ? 6 : 2;
+    score += hasSecTeam ? -10 : 8;
+    score += frameworks.length >= 3 ? 8 : frameworks.length >= 1 && frameworks[0] !== 'none' ? 4 : 0;
+    score = Math.min(99, Math.max(8, Math.round(score)));
+
+    var grade = score >= 80 ? 'F' : score >= 65 ? 'D' : score >= 50 ? 'C' : score >= 35 ? 'B' : 'A';
+    var gradeColor = score >= 80 ? '#ef4444' : score >= 65 ? '#f97316' : score >= 50 ? '#eab308' : score >= 35 ? '#22c55e' : '#06b6d4';
+    var headline = score >= 80 ? 'Critical exposure — immediate action needed' :
+                   score >= 65 ? 'High risk — significant compliance gaps' :
+                   score >= 50 ? 'Moderate risk — several gaps to address' :
+                   score >= 35 ? 'Low risk — a few areas to tighten' :
+                                 'Minimal risk — well-controlled environment';
+
+    // Update UI
+    document.getElementById('risk-grade-letter').textContent = grade;
+    document.getElementById('risk-score-num').textContent = score;
+    document.getElementById('risk-headline').textContent = headline;
+    var arc = document.getElementById('risk-ring-arc');
+    arc.style.stroke = gradeColor;
+    arc.style.strokeDashoffset = Math.round(289 * (1 - score / 100));
+
+    document.getElementById('metric-secrets').textContent = secrets.toLocaleString();
+    document.getElementById('metric-audit').textContent   = auditHours + ' hrs';
+
+    var hasHipaa = frameworks.indexOf('hipaa') > -1;
+    var hasEuai  = frameworks.indexOf('euai') > -1;
+    document.getElementById('hipaa-row').style.display = hasHipaa ? 'block' : 'none';
+    document.getElementById('euai-row').style.display  = hasEuai  ? 'block' : 'none';
+    if (hasHipaa) document.getElementById('metric-hipaa').textContent = '$' + hipaaFine.toLocaleString();
+    if (hasEuai)  document.getElementById('metric-euai').textContent  = '$' + euFine.toLocaleString();
+
+    // Show results pane
+    document.getElementById('risk-step-3').style.display = 'none';
+    document.getElementById('risk-results').style.display = 'block';
+    document.querySelector('.risk-modal').scrollTop = 0;
+
+    // Submit to Netlify (fire-and-forget)
+    var fd = new FormData();
+    fd.append('form-name',       'vibe-risk-homepage');
+    fd.append('email',           riskData.email);
+    fd.append('job_title',       riskData.jobTitle);
+    fd.append('company',         riskData.company);
+    fd.append('team_size',       riskData.teamSize || '');
+    fd.append('ai_pct',          riskData.aiPct || '');
+    fd.append('ai_tools',        (riskData.aiTools || []).join(','));
+    fd.append('frameworks',      (riskData.frameworks || []).join(','));
+    fd.append('revenue_range',   riskData.revenue || '');
+    fd.append('has_security_team', riskData.hasSecTeam || '');
+    fd.append('risk_score',      score);
+    fd.append('secrets_per_year', secrets);
+    fd.append('audit_hours',     auditHours);
+    fd.append('hipaa_exposure',  hasHipaa ? hipaaFine : '');
+    fd.append('eu_ai_exposure',  hasEuai  ? euFine    : '');
+    fetch('/', { method: 'POST', body: fd }).catch(function() {});
+  }
+
+  // ── Early Access Form ──────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wire up single-select option buttons
+    document.querySelectorAll('.risk-options:not(.multi)').forEach(function(group) {
+      group.querySelectorAll('.risk-opt').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          group.querySelectorAll('.risk-opt').forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+        });
+      });
+    });
+    // Wire up multi-select option buttons
+    document.querySelectorAll('.risk-options.multi').forEach(function(group) {
+      group.querySelectorAll('.risk-opt').forEach(function(btn) {
+        btn.addEventListener('click', function() { btn.classList.toggle('selected'); });
+      });
+    });
+
+    // Intercept "Get Free Access" form
+    var form = document.getElementById('early-access-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email     = document.getElementById('ea-email').value.trim();
+        var submitBtn = document.getElementById('ea-submit');
+        var errorDiv  = document.getElementById('ea-error');
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        errorDiv.style.display = 'none';
+
+        var fd = new FormData();
+        fd.append('form-name', 'early-access');
+        fd.append('email', email);
+
+        fetch('/', { method: 'POST', body: fd })
+          .then(function(res) {
+            if (!res.ok) throw new Error('server error');
+            document.getElementById('free-thanks').style.display = 'block';
+            form.style.display = 'none';
+            openRiskModal(email);
+          })
+          .catch(function() {
+            // Don't block the user — open modal even on network hiccup
+            document.getElementById('free-thanks').style.display = 'block';
+            form.style.display = 'none';
+            openRiskModal(email);
+          });
+      });
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeLightbox(); closeRiskModal(); }
+  });
 </script>
