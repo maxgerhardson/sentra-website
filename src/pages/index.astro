@@ -625,11 +625,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
 
       <div class="risk-cta-block">
-        <p class="risk-fix-line">Sentrik catches AI-generated vulnerabilities before they reach production — in CI, in your editor, or both.</p>
-        <div class="risk-cta-code"><code>pip install sentrik &amp;&amp; sentrik scan</code></div>
+        <p class="risk-fix-line">We&apos;ll send your access details to your email. Sentrik catches AI-generated vulnerabilities before they reach production — in CI, in your editor, or both.</p>
         <div class="risk-cta-btns">
-          <a href="https://docs.sentrik.dev/getting-started/quickstart/" target="_blank" rel="noopener" class="btn btn-primary">Get Started Free</a>
-          <button class="btn btn-outline" onclick="closeRiskModal()">Close</button>
+          <button class="btn btn-outline" onclick="closeRiskModal()">Done</button>
         </div>
       </div>
     </div>
@@ -1074,16 +1072,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .risk-metric-val { font-size: 1.4rem; font-weight: 800; color: var(--color-accent); margin-bottom: 0.25rem; }
   .risk-metric-label { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; }
   .risk-cta-block { text-align: center; }
-  .risk-fix-line { color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6; }
-  .risk-cta-code {
-    display: inline-block;
-    padding: 0.6rem 1.25rem;
-    background: rgba(6, 182, 212, 0.08);
-    border: 1px solid rgba(6, 182, 212, 0.2);
-    border-radius: 8px;
-    margin-bottom: 1.25rem;
-  }
-  .risk-cta-code code { color: var(--color-accent); font-size: 0.85rem; }
+  .risk-fix-line { color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.6; }
   .risk-cta-btns { display: flex; gap: 0.75rem; justify-content: center; }
 
   /* Responsive */
