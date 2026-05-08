@@ -1335,4 +1335,14 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') { closeLightbox(); closeRiskModal(); }
   });
+
+  // Expose to global scope so inline onclick attributes can reach them
+  window.openLightbox = openLightbox;
+  window.closeLightbox = closeLightbox;
+  window.openRiskModal = openRiskModal;
+  window.closeRiskModal = closeRiskModal;
+  window.handleRiskOverlayClick = handleRiskOverlayClick;
+  window.riskNext = riskNext;
+  window.riskBack = riskBack;
+  window.calculateRisk = calculateRisk;
 </script>
