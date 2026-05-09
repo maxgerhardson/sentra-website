@@ -440,21 +440,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
-<!-- Hidden Netlify forms -->
-<form name="early-access" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="early-access" />
-  <input name="bot-field" />
-  <input name="email" />
-</form>
-<form name="vibe-risk-homepage" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="vibe-risk-homepage" />
-  <input name="bot-field" />
-  <input name="email" /><input name="job_title" /><input name="company" />
-  <input name="team_size" /><input name="ai_pct" /><input name="ai_tools" />
-  <input name="frameworks" /><input name="revenue_range" /><input name="has_security_team" />
-  <input name="risk_score" /><input name="secrets_per_year" /><input name="audit_hours" />
-  <input name="hipaa_exposure" /><input name="eu_ai_exposure" />
-</form>
 
 <!-- Get Free Access (email request) -->
 <section class="cta" id="get-free">
@@ -1249,24 +1234,29 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     document.getElementById('risk-results').style.display = 'block';
     document.querySelector('.risk-modal').scrollTop = 0;
 
-    // Submit to Netlify (fire-and-forget)
-    var fd = new FormData();
-    fd.append('form-name',       'vibe-risk-homepage');
-    fd.append('email',           riskData.email);
-    fd.append('job_title',       riskData.jobTitle);
-    fd.append('company',         riskData.company);
-    fd.append('team_size',       riskData.teamSize || '');
-    fd.append('ai_pct',          riskData.aiPct || '');
-    fd.append('ai_tools',        (riskData.aiTools || []).join(','));
-    fd.append('frameworks',      (riskData.frameworks || []).join(','));
-    fd.append('revenue_range',   riskData.revenue || '');
-    fd.append('has_security_team', riskData.hasSecTeam || '');
-    fd.append('risk_score',      score);
-    fd.append('secrets_per_year', secrets);
-    fd.append('audit_hours',     auditHours);
-    fd.append('hipaa_exposure',  hasHipaa ? hipaaFine : '');
-    fd.append('eu_ai_exposure',  hasEuai  ? euFine    : '');
-    fetch('/', { method: 'POST', body: fd }).catch(function() {});
+    // Submit risk data (fire-and-forget)
+    fetch('https://formsubmit.co/ajax/max@sentrik.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Risk Calculator Completed — sentrik.dev',
+        _captcha: 'false',
+        email:             riskData.email,
+        job_title:         riskData.jobTitle,
+        company:           riskData.company,
+        team_size:         riskData.teamSize || '',
+        ai_pct:            riskData.aiPct || '',
+        ai_tools:          (riskData.aiTools || []).join(', '),
+        frameworks:        (riskData.frameworks || []).join(', '),
+        revenue_range:     riskData.revenue || '',
+        has_security_team: riskData.hasSecTeam || '',
+        risk_score:        score,
+        secrets_per_year:  secrets,
+        audit_hours:       auditHours,
+        hipaa_exposure:    hasHipaa ? hipaaFine : '',
+        eu_ai_exposure:    hasEuai  ? euFine    : ''
+      })
+    }).catch(function() {});
   }
 
   // ── Early Access Form ──────────────────────────────────────────────────────
@@ -1304,15 +1294,13 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         fd.append('form-name', 'early-access');
         fd.append('email', email);
 
-        fetch('/', { method: 'POST', body: fd })
-          .then(function(res) {
-            if (!res.ok) throw new Error('server error');
-            document.getElementById('free-thanks').style.display = 'block';
-            form.style.display = 'none';
-            openRiskModal(email);
-          })
-          .catch(function() {
-            // Don't block the user — open modal even on network hiccup
+        fetch('https://formsubmit.co/ajax/max@sentrik.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, _subject: 'New Early Access Request — sentrik.dev', _captcha: 'false' })
+        })
+          .finally(function() {
+            // Always open the modal regardless of network result
             document.getElementById('free-thanks').style.display = 'block';
             form.style.display = 'none';
             openRiskModal(email);
