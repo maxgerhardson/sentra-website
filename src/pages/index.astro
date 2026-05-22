@@ -113,6 +113,31 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- AI Governance Philosophy -->
+<section class="philosophy-section">
+  <div class="container">
+    <h2 class="section-title">Your AI Agents Fly.<br /><span class="gradient-text">You Stay in Command.</span></h2>
+    <p class="section-sub">AI coding agents write the code. Sentrik monitors every move, enforces your compliance boundaries, and produces the signed audit record &mdash; without slowing the agents down.</p>
+    <div class="philosophy-pillars">
+      <div class="philosophy-pillar">
+        <div class="philosophy-icon">&#x1F4E1;</div>
+        <h3>Monitor</h3>
+        <p>Every file touched, every rule evaluated, every agent action logged in a tamper-evident audit trail &mdash; in real time.</p>
+      </div>
+      <div class="philosophy-pillar">
+        <div class="philosophy-icon">&#x1F6A7;</div>
+        <h3>Enforce</h3>
+        <p>Gate boundaries are set by your team, not the AI. Non-compliant code is blocked before it reaches main &mdash; automatically.</p>
+      </div>
+      <div class="philosophy-pillar">
+        <div class="philosophy-icon">&#x2713;</div>
+        <h3>Certify</h3>
+        <p>Cryptographically signed attestations and per-framework evidence bundles, generated at every commit. Audit-ready on demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Dashboard & AI -->
 <section class="dashboard-section">
   <div class="container">
@@ -1060,11 +1085,52 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .risk-fix-line { color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.6; }
   .risk-cta-btns { display: flex; gap: 0.75rem; justify-content: center; }
 
+  /* AI Governance Philosophy */
+  .philosophy-section { padding: 5rem 0; }
+  .philosophy-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .philosophy-pillar {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .philosophy-pillar:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+  .philosophy-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    display: block;
+    line-height: 1;
+  }
+  .philosophy-pillar h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .philosophy-pillar p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
   /* Responsive */
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }
     .problem-grid { grid-template-columns: 1fr 1fr; }
     .steps-grid { grid-template-columns: 1fr; }
+    .philosophy-pillars { grid-template-columns: 1fr; }
     .showcase-block, .showcase-block.reverse { grid-template-columns: 1fr; direction: ltr; }
     .props-grid { grid-template-columns: 1fr 1fr; }
     .standards-grid { grid-template-columns: 1fr 1fr; }
