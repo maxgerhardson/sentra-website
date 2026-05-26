@@ -33,8 +33,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
           <li>Risk scoring on findings</li>
           <li>Community support (GitHub Discussions)</li>
         </ul>
-        <a href="https://marketplace.visualstudio.com/items?itemName=sentrik.sentrik" target="_blank" rel="noopener" class="btn btn-outline tier-cta">Install Free via VS Code</a>
-        <a href="/#get-free" class="tier-alt-cta">Or request access by email</a>
+        <a href="/#get-free" class="btn btn-outline tier-cta">Request Free Access</a>
       </div>
 
       <div class="tier-card">
@@ -103,15 +102,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
 
     </div>
-  </div>
-</section>
-
-<section class="install-banner">
-  <div class="container install-inner">
-    <h2>Get started in under a minute</h2>
-    <p>Install via VS Code Marketplace (works in Cursor too), or run directly from npm.</p>
-    <pre><code>npm install -g sentrik &amp;&amp; sentrik dashboard</code></pre>
-    <p class="install-note">Free tier activates automatically. No account required to start scanning.</p>
   </div>
 </section>
 
@@ -219,26 +209,6 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     text-decoration: none;
   }
   .tier-alt-cta:hover { color: var(--color-primary-light); text-decoration: underline; }
-
-  .install-banner {
-    background: var(--color-bg-alt);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    padding: 4rem 0;
-    text-align: center;
-  }
-  .install-inner h2 { margin-bottom: 0.75rem; }
-  .install-inner p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
-  .install-inner pre {
-    display: inline-block;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 0.75rem 2rem;
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-  }
-  .install-note { font-size: 0.85rem; margin-top: 0; }
 
   .pricing-faq { padding: 5rem 0; }
   .pricing-faq h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
