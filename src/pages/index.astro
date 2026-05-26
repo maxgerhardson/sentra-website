@@ -44,6 +44,21 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- The Governance Gap -->
+<section class="narrative-gap">
+  <div class="container">
+    <div class="narrative-inner">
+      <h2>The assumption that broke compliance</h2>
+      <p class="narrative-lead">Every compliance framework, every audit process, every security review was designed around one thing: <em>a human touched every line of code.</em></p>
+      <p>That assumption is now false for most teams. AI coding assistants write 60&ndash;80% of the code. Developers review at high speed under pressure to merge fast. A developer staring at 400 lines of AI-generated code doesn&rsquo;t know whether it violates HIPAA clause 164.312 or IEC 62304 section 5.5.3 &mdash; and doesn&rsquo;t have time to find out.</p>
+      <p>The result: organizations are running compliance risk they can&rsquo;t see. Not because they&rsquo;re negligent, but because the tools they have weren&rsquo;t designed for this world. Semgrep, Snyk, SonarQube &mdash; they scan for issues. They don&rsquo;t govern AI agents. They don&rsquo;t know that Claude Code wrote the code, that the agent declared a scope of <code>app/db/**</code>, that it actually touched <code>app/auth/login.py</code>, and that this is a scope violation that should be surfaced immediately and logged permanently.</p>
+      <div class="narrative-callout">
+        <strong>Sentrik is the governance layer built for this world.</strong> The AI writes the code. Sentrik enforces the rules, catches violations in real time, and generates the cryptographically signed audit evidence &mdash; automatically, at every commit, without slowing anyone down.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- How It Works -->
 <section class="how-it-works">
   <div class="container">
@@ -72,6 +87,30 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p>Generate cryptographically signed attestations, per-framework compliance reports, and audit-ready evidence bundles. No more 6-week evidence sprints.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- The Scenario -->
+<section class="scenario-section">
+  <div class="container">
+    <h2 class="section-title">Two agents. One project. One that stays in bounds.</h2>
+    <p class="section-sub">This is what AI governance looks like in practice &mdash; not a policy document, but a live enforcement layer that catches problems before they reach main.</p>
+    <div class="scenario-grid">
+      <div class="scenario-agent clean">
+        <div class="scenario-status pass">Gate Passed</div>
+        <h3>Agent 1 &mdash; Fix SQL Injection</h3>
+        <code class="scenario-cmd">sentrik task-bind "Fix SQL injection in patient endpoint" --path "app/routes/patients.py" "app/db/**"</code>
+        <p>Agent declares its intent and authorized file scope. Works within <code>app/db/**</code>. Query parameterized. Gate passes. A signed attestation is generated: <em>&ldquo;IEC 62304 &sect;5.5.3 evaluated. SQL injection finding remediated at commit c28a5d.&rdquo;</em></p>
+      </div>
+      <div class="scenario-agent rogue">
+        <div class="scenario-status fail">Gate Blocked</div>
+        <h3>Agent 2 &mdash; Patch Logging Module</h3>
+        <code class="scenario-cmd">sentrik task-bind "Patch logging module" --path "app/logging/**"</code>
+        <p>Agent declares scope: <code>app/logging/**</code>. Actually touches <code>app/auth/login.py</code>, <code>app/billing/invoice.py</code>, <code>app/secrets/keys.py</code>, and six more files. Sentrik catches it the moment it writes outside its declared scope.</p>
+        <div class="scenario-alert">Anomaly score: 0.92 &nbsp;&bull;&nbsp; Status: VIOLATED<br/>9 unauthorized files &nbsp;&bull;&nbsp; New zones: auth, billing, crypto, secrets<br/>Gate blocked &nbsp;&bull;&nbsp; Rollback available &nbsp;&bull;&nbsp; Signed incident record created</div>
+      </div>
+    </div>
+    <p class="scenario-footer">The security lead sees the violation in the dashboard, reviews the exact out-of-scope files, rolls back with one click, and creates a work item for investigation &mdash; all before any unauthorized code reaches main. The entire incident is logged in a signed, tamper-evident audit record. This is what human-in-the-loop AI governance actually looks like.</p>
   </div>
 </section>
 
@@ -120,19 +159,89 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <p class="section-sub">AI coding agents write the code. Sentrik monitors every move, enforces your compliance boundaries, and produces the signed audit record &mdash; without slowing the agents down.</p>
     <div class="philosophy-pillars">
       <div class="philosophy-pillar">
-        <div class="philosophy-icon">&#x1F4E1;</div>
+        <div class="philosophy-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
         <h3>Monitor</h3>
         <p>Every file touched, every rule evaluated, every agent action logged in a tamper-evident audit trail &mdash; in real time.</p>
       </div>
       <div class="philosophy-pillar">
-        <div class="philosophy-icon">&#x1F6A7;</div>
+        <div class="philosophy-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <h3>Enforce</h3>
         <p>Gate boundaries are set by your team, not the AI. Non-compliant code is blocked before it reaches main &mdash; automatically.</p>
       </div>
       <div class="philosophy-pillar">
-        <div class="philosophy-icon">&#x2713;</div>
+        <div class="philosophy-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l2.09 2.09L17 3l1 2.83L21 7l-1.17 2.83L21 13l-2.83 1L17 17l-2.83-.83L12 18l-2.09-2.09L7 17l-1-2.83L3 13l1.17-2.83L3 7l2.83-1L7 3z"/></svg>
+        </div>
         <h3>Certify</h3>
         <p>Cryptographically signed attestations and per-framework evidence bundles, generated at every commit. Audit-ready on demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who It's For -->
+<section class="audience-section">
+  <div class="container">
+    <h2 class="section-title">One platform. Every stakeholder.</h2>
+    <p class="section-sub">Different people. Different problems. One governance layer that connects them all.</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-role">Developer</div>
+        <h3>Compliance as a fast feedback loop, not a blocker</h3>
+        <p>Findings appear inline in VS Code before you push. AI agents check compliance during code generation via MCP &mdash; so generated code passes the gate on the first try. The gate rarely blocks because it already ran during development.</p>
+        <div class="audience-quote">&ldquo;My first commit is already compliant.&rdquo;</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-role">Engineering Manager</div>
+        <h3>Structural guarantees instead of manual oversight</h3>
+        <p>Non-compliant code structurally cannot merge without a human decision. Scope violations are caught the moment they happen &mdash; not in a post-mortem. Work item traceability maps findings to sprints so compliance has a home in your process.</p>
+        <div class="audience-quote">&ldquo;The gate is always on. I don&rsquo;t have to remember to check.&rdquo;</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-role">CISO / Security Lead</div>
+        <h3>A signed audit trail for every AI action</h3>
+        <p>Cryptographically signed attestations at every commit. Human-in-the-loop approvals for every gated action. Every agent session tracked &mdash; what it intended, what it touched, whether it stayed in scope, and what happened when it didn&rsquo;t.</p>
+        <div class="audience-quote">&ldquo;When the auditor asks, I have the evidence ready.&rdquo;</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-role">Compliance Officer / Auditor</div>
+        <h3>Positive evidence of compliance &mdash; not just a list of violations</h3>
+        <p>The Evidence Map shows where in the code each regulatory requirement is satisfied &mdash; with file, line, and matched pattern. Per-framework compliance reports generated in seconds. Audit prep is a download, not a sprint.</p>
+        <div class="audience-quote">&ldquo;Six weeks of evidence gathering became a five-minute export.&rdquo;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The Regulatory Window -->
+<section class="regulatory-window">
+  <div class="container">
+    <h2 class="section-title">The regulatory window is closing</h2>
+    <p class="section-sub">Regulators are catching up to AI development. Organizations that establish governance now will have processes and evidence in place before enforcement begins &mdash; those that don&rsquo;t will scramble to reconstruct it.</p>
+    <div class="regulatory-grid">
+      <div class="regulatory-item">
+        <div class="reg-status active">Enforcement Active</div>
+        <h3>EU AI Act</h3>
+        <p>High-risk AI systems require human oversight documentation, audit trails, and risk management evidence. AI that assists in developing safety-critical software qualifies. Non-compliance carries fines up to 3% of global revenue.</p>
+      </div>
+      <div class="regulatory-item">
+        <div class="reg-status active">Active &amp; Escalating</div>
+        <h3>HIPAA Enforcement</h3>
+        <p>OCR auditors are now asking specific questions about AI-generated code in healthcare systems. &ldquo;We review it manually&rdquo; is not a defensible answer when AI generates thousands of lines daily.</p>
+      </div>
+      <div class="regulatory-item">
+        <div class="reg-status active">FDA Guidance Issued</div>
+        <h3>FDA / IEC 62304</h3>
+        <p>21 CFR Part 11 and IEC 62304 compliance must be demonstrated across the full development lifecycle &mdash; including AI-assisted code generation. The evidence requirement doesn&rsquo;t stop at the output.</p>
+      </div>
+      <div class="regulatory-item">
+        <div class="reg-status emerging">Questions Now Standard</div>
+        <h3>SOC 2 &amp; NIST AI RMF</h3>
+        <p>SOC 2 auditors are adding AI governance questions to standard assessments. NIST AI RMF requires organizations to demonstrate governance of AI systems. &ldquo;How do you govern AI-generated code?&rdquo; needs a real answer.</p>
       </div>
     </div>
   </div>
@@ -1125,6 +1234,56 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     line-height: 1.65;
   }
 
+  /* Governance Gap Narrative */
+  .narrative-gap { padding: 5rem 0; background: var(--color-bg-alt); }
+  .narrative-inner { max-width: 720px; margin: 0 auto; }
+  .narrative-inner h2 { font-size: 1.9rem; margin-bottom: 1.5rem; }
+  .narrative-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.75; margin-bottom: 1.25rem; }
+  .narrative-lead em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+  .narrative-inner p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.98rem; }
+  .narrative-inner code { background: rgba(6,182,212,0.1); color: var(--color-accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .narrative-callout { border-left: 3px solid var(--color-primary); padding: 1.25rem 1.5rem; background: rgba(99,102,241,0.07); border-radius: 0 10px 10px 0; color: var(--color-text); font-size: 1rem; line-height: 1.7; margin-top: 2rem; }
+
+  /* Two-Agent Scenario */
+  .scenario-section { padding: 5rem 0; }
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0 2rem; }
+  .scenario-agent { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; }
+  .scenario-agent.clean { border-top: 3px solid #10b981; }
+  .scenario-agent.rogue { border-top: 3px solid #ef4444; }
+  .scenario-status { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.04em; }
+  .scenario-status.pass { background: rgba(16,185,129,0.12); color: #10b981; }
+  .scenario-status.fail { background: rgba(239,68,68,0.12); color: #ef4444; }
+  .scenario-agent h3 { font-size: 1.05rem; margin-bottom: 0.75rem; }
+  .scenario-cmd { display: block; background: rgba(6,182,212,0.07); border: 1px solid rgba(6,182,212,0.15); color: var(--color-accent); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.75rem; margin-bottom: 0.75rem; white-space: pre-wrap; word-break: break-all; }
+  .scenario-agent p { color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.65; }
+  .scenario-agent code { background: rgba(255,255,255,0.07); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.82em; }
+  .scenario-alert { margin-top: 1rem; padding: 0.85rem 1rem; background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.22); border-radius: 8px; font-size: 0.8rem; color: #ef4444; line-height: 1.6; font-family: var(--font-mono, monospace); }
+  .scenario-footer { text-align: center; color: var(--color-text-muted); font-size: 0.93rem; line-height: 1.75; max-width: 700px; margin: 0 auto; }
+
+  /* Audience Cards */
+  .audience-section { padding: 5rem 0; }
+  .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .audience-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
+  .audience-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .audience-role { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary-light); margin-bottom: 0.6rem; }
+  .audience-card h3 { font-size: 1rem; margin-bottom: 0.65rem; color: var(--color-text); line-height: 1.45; }
+  .audience-card p { color: var(--color-text-muted); font-size: 0.87rem; line-height: 1.7; margin-bottom: 1rem; }
+  .audience-quote { font-size: 0.85rem; font-style: italic; color: var(--color-text); border-left: 2px solid var(--color-primary); padding-left: 0.75rem; line-height: 1.5; }
+
+  /* Regulatory Window */
+  .regulatory-window { padding: 5rem 0; background: var(--color-bg-alt); }
+  .regulatory-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .regulatory-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s; }
+  .regulatory-item:hover { border-color: var(--color-primary); }
+  .reg-status { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .reg-status.active { background: rgba(239,68,68,0.1); color: #ef4444; }
+  .reg-status.emerging { background: rgba(245,158,11,0.1); color: #f59e0b; }
+  .regulatory-item h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .regulatory-item p { color: var(--color-text-muted); font-size: 0.87rem; line-height: 1.65; }
+
+  /* Philosophy icon SVG color */
+  .philosophy-icon svg { stroke: var(--color-primary-light); }
+
   /* Responsive */
   @media (max-width: 900px) {
     .hero h1 { font-size: 2.2rem; }
@@ -1140,6 +1299,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     .plan-card.featured { transform: none; }
     .form-row { flex-direction: column; }
     .form-row-extra { flex-direction: column; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .regulatory-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
