@@ -1,0 +1,262 @@
+---
+import ComingSoon from '../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="Pricing" description="Sentrik pricing — free tier available, paid tiers for advanced governance. Early access available on request.">
+
+<section class="pricing-hero">
+  <div class="container">
+    <h1>Simple, transparent pricing</h1>
+    <p class="pricing-sub">Start free. Upgrade when you need more frameworks or governance features. Early access &mdash; <a href="/#get-free">request access</a> and we&rsquo;ll be in touch.</p>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="container">
+    <div class="tier-grid">
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Free</h3>
+          <div class="tier-price"><span class="price-amount">$0</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
+        </div>
+        <p class="tier-desc">Everything you need to start governing AI-generated code &mdash; free forever.</p>
+        <ul class="tier-features">
+          <li>5 standards packs (158 rules)</li>
+          <li>OWASP Top 10, SOC 2, Python Security, Go Security, Supply Chain</li>
+          <li>CLI scanning &amp; gate</li>
+          <li>Management dashboard</li>
+          <li>VS Code &amp; Cursor extension</li>
+          <li>MCP server for Claude Code, Cursor, Cline</li>
+          <li>GitHub Action</li>
+          <li>SBOM, CVE scanning, secrets detection</li>
+          <li>Risk scoring on findings</li>
+          <li>Community support (GitHub Discussions)</li>
+        </ul>
+        <a href="https://marketplace.visualstudio.com/items?itemName=sentrik.sentrik" target="_blank" rel="noopener" class="btn btn-outline tier-cta">Install Free via VS Code</a>
+        <a href="/#get-free" class="tier-alt-cta">Or request access by email</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Team</h3>
+          <div class="tier-price"><span class="price-amount">$29</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
+        </div>
+        <p class="tier-desc">Advanced compliance for growing teams with regulatory obligations.</p>
+        <ul class="tier-features">
+          <li>Everything in Free, plus:</li>
+          <li>16 standards packs (368+ rules)</li>
+          <li>HIPAA, PCI-DSS, ISO 27001, GDPR</li>
+          <li>FDA / IEC 62304, NIST 800-53, CMMC, EU AI Act</li>
+          <li>Work item reconciliation (GitHub, Azure DevOps, Jira)</li>
+          <li>PR decoration with regulatory clause citations</li>
+          <li>Auto-fix vulnerable dependencies</li>
+          <li>Compliance evidence map</li>
+          <li>Email support</li>
+        </ul>
+        <a href="mailto:hello@sentrik.dev?subject=Team%20License%20Request" class="btn btn-primary tier-cta">Contact Us</a>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-header">
+          <h3>Organization</h3>
+          <div class="tier-price"><span class="price-amount">$99</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
+        </div>
+        <p class="tier-desc">Full governance for compliance-driven organizations and regulated industries.</p>
+        <ul class="tier-features">
+          <li>Everything in Team, plus:</li>
+          <li>22 standards packs (526 rules)</li>
+          <li>MISRA-C, DO-178C, ISO 26262</li>
+          <li>ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
+          <li>Governance profiles (strict / standard / permissive)</li>
+          <li>AI agent identity &amp; session tracking</li>
+          <li>Task/intent binding with scope enforcement</li>
+          <li>Anomaly detection &amp; blast radius enforcement</li>
+          <li>Signed compliance attestations</li>
+          <li>Parallel scanning &amp; multi-agent scan mode</li>
+          <li>Audit log with HMAC integrity signatures</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="mailto:hello@sentrik.dev?subject=Organization%20License%20Request" class="btn btn-primary tier-cta">Contact Us</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <h3>Enterprise</h3>
+          <div class="tier-price"><span class="price-amount">Custom</span></div>
+        </div>
+        <p class="tier-desc">Full platform for large regulated teams with dedicated support and custom SLAs.</p>
+        <ul class="tier-features">
+          <li>Everything in Organization, plus:</li>
+          <li>Human-in-the-loop approval workflows</li>
+          <li>Auditor portal with time-boxed access tokens</li>
+          <li>GRC integration (Drata, Vanta, Secureframe)</li>
+          <li>C/C++ semantic analysis (clang-tidy / cppcheck)</li>
+          <li>Custom rule pack authoring</li>
+          <li>Seat management &amp; SSO</li>
+          <li>AI harness compliance evidence reports</li>
+          <li>Dedicated support &amp; implementation assistance</li>
+          <li>Custom SLA</li>
+        </ul>
+        <a href="mailto:hello@sentrik.dev?subject=Enterprise%20Inquiry" class="btn btn-primary tier-cta">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="install-banner">
+  <div class="container install-inner">
+    <h2>Get started in under a minute</h2>
+    <p>Install via VS Code Marketplace (works in Cursor too), or run directly from npm.</p>
+    <pre><code>npm install -g sentrik &amp;&amp; sentrik dashboard</code></pre>
+    <p class="install-note">Free tier activates automatically. No account required to start scanning.</p>
+  </div>
+</section>
+
+<section class="pricing-faq">
+  <div class="container">
+    <h2>Common questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>What&rsquo;s included in the free tier?</h3>
+        <p>5 standards packs covering OWASP Top 10, SOC 2, Python Security, Go Security, and Supply Chain Security &mdash; 158 rules total. The VS Code extension, CLI, dashboard, MCP server, and CI/CD gate are all free. Free tier is permanent, not a trial.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I access paid tiers during early access?</h3>
+        <p>Email <a href="mailto:hello@sentrik.dev">hello@sentrik.dev</a> or contact us using the buttons above. We&rsquo;re onboarding teams manually during early access to ensure a quality experience.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it work with Cursor?</h3>
+        <p>Yes. Cursor supports VS Code extensions directly &mdash; install the Sentrik extension from the VS Code Marketplace and it works in Cursor. The MCP server integration also works with Cursor&rsquo;s MCP support.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can it run offline / in air-gapped environments?</h3>
+        <p>Yes. License validation uses HMAC signatures with no phone-home requirement. All scanning runs locally. No cloud dependency for any core feature.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What CI/CD systems are supported?</h3>
+        <p>GitHub Actions (published to Actions Marketplace), Azure Pipelines, and GitLab CI are all supported. The CLI can run in any CI environment that supports npm or pip.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you support custom rules?</h3>
+        <p>Yes &mdash; custom rule packs are available on the Organization and Enterprise tiers. Rules support regex, AST queries (25 languages via tree-sitter), file policies, and LLM-powered semantic checks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .pricing-hero { padding: 6rem 0 3rem; text-align: center; }
+  .pricing-sub { color: var(--color-text-muted); font-size: 1.15rem; margin-top: 1rem; }
+  .pricing-sub a { color: var(--color-primary-light); text-decoration: none; }
+  .pricing-sub a:hover { text-decoration: underline; }
+
+  .tiers { padding: 4rem 0 5rem; }
+  .tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  .tier-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .tier-card.featured { border-color: var(--color-primary); box-shadow: 0 0 30px rgba(124, 58, 237, 0.2); }
+  .tier-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .tier-header { margin-bottom: 1rem; }
+  .tier-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .price-amount { font-size: 2.5rem; font-weight: 800; }
+  .price-period { color: var(--color-text-muted); font-size: 1rem; margin-left: 0.25rem; }
+  .price-seat { display: block; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.15rem; }
+
+  .tier-desc { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+  .tier-features { list-style: none; margin-bottom: 1.5rem; flex: 1; padding: 0; }
+  .tier-features li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.92rem;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .tier-features li:last-child { border-bottom: none; }
+  .tier-features li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: 700;
+  }
+  .tier-features li:first-child { font-weight: 600; color: var(--color-primary-light); }
+  .tier-features li:first-child::before { content: ""; }
+
+  .tier-cta { text-align: center; width: 100%; }
+  .tier-alt-cta {
+    display: block;
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .tier-alt-cta:hover { color: var(--color-primary-light); text-decoration: underline; }
+
+  .install-banner {
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 4rem 0;
+    text-align: center;
+  }
+  .install-inner h2 { margin-bottom: 0.75rem; }
+  .install-inner p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .install-inner pre {
+    display: inline-block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  .install-note { font-size: 0.85rem; margin-top: 0; }
+
+  .pricing-faq { padding: 5rem 0; }
+  .pricing-faq h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
+  .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .faq-item h3 { font-size: 1rem; margin-bottom: 0.6rem; }
+  .faq-item p { color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0; }
+  .faq-item a { color: var(--color-primary-light); text-decoration: none; }
+  .faq-item a:hover { text-decoration: underline; }
+
+  @media (max-width: 1100px) { .tier-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) {
+    .tier-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+</style>

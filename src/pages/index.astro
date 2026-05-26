@@ -10,7 +10,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <div class="hero-badge">Early Access</div>
     <h1>Stop auditing AI code<br /><span class="gradient-text">by hand</span></h1>
     <p class="hero-sub">
-      Sentrik scans every commit against 22 regulatory frameworks, blocks non-compliant code in CI, and generates audit evidence automatically. One CLI. Zero config.
+      Sentrik scans every commit against 22 regulatory frameworks, blocks non-compliant code in CI, and generates audit evidence automatically. Works in VS Code, Cursor, and CI/CD pipelines &mdash; one tool, zero config.
     </p>
     <div class="hero-actions">
       <a href="#get-free" class="btn btn-primary btn-lg">Get Early Access</a>
@@ -25,12 +25,12 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <p class="section-sub">AI writes code faster than humans can review it. Compliance can't keep up.</p>
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-stat">6 weeks</div>
-        <p>average time to prepare compliance evidence for a single audit</p>
+        <div class="problem-stat">Weeks</div>
+        <p>of manual work to gather compliance evidence for a single audit &mdash; without automation</p>
       </div>
       <div class="problem-card">
         <div class="problem-stat">4&ndash;5 tools</div>
-        <p>required today to cover security, compliance, and audit evidence</p>
+        <p>stitched together to cover security, compliance, and audit evidence &mdash; none built for AI agents</p>
       </div>
       <div class="problem-card">
         <div class="problem-stat">36%</div>
@@ -50,7 +50,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <div class="narrative-inner">
       <h2>The assumption that broke compliance</h2>
       <p class="narrative-lead">Every compliance framework, every audit process, every security review was designed around one thing: <em>a human touched every line of code.</em></p>
-      <p>That assumption is now false for most teams. AI coding assistants write 60&ndash;80% of the code. Developers review at high speed under pressure to merge fast. A developer staring at 400 lines of AI-generated code doesn&rsquo;t know whether it violates HIPAA clause 164.312 or IEC 62304 section 5.5.3 &mdash; and doesn&rsquo;t have time to find out.</p>
+      <p>That assumption is now false for most teams. AI coding assistants write an ever-growing share of production code &mdash; on some teams the majority. Developers review at high speed under pressure to merge fast. A developer staring at 400 lines of AI-generated code doesn&rsquo;t know whether it violates HIPAA clause 164.312 or IEC 62304 section 5.5.3 &mdash; and doesn&rsquo;t have time to find out.</p>
       <p>The result: organizations are running compliance risk they can&rsquo;t see. Not because they&rsquo;re negligent, but because the tools they have weren&rsquo;t designed for this world. Semgrep, Snyk, SonarQube &mdash; they scan for issues. They don&rsquo;t govern AI agents. They don&rsquo;t know that Claude Code wrote the code, that the agent declared a scope of <code>app/db/**</code>, that it actually touched <code>app/auth/login.py</code>, and that this is a scope violation that should be surfaced immediately and logged permanently.</p>
       <div class="narrative-callout">
         <strong>Sentrik is the governance layer built for this world.</strong> The AI writes the code. Sentrik enforces the rules, catches violations in real time, and generates the cryptographically signed audit evidence &mdash; automatically, at every commit, without slowing anyone down.
@@ -231,7 +231,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="regulatory-item">
         <div class="reg-status active">Active &amp; Escalating</div>
         <h3>HIPAA Enforcement</h3>
-        <p>OCR auditors are now asking specific questions about AI-generated code in healthcare systems. &ldquo;We review it manually&rdquo; is not a defensible answer when AI generates thousands of lines daily.</p>
+        <p>Healthcare compliance frameworks are increasingly scrutinizing how AI-generated code is governed in systems that handle ePHI. &ldquo;We review it manually&rdquo; is not a scalable answer when AI generates thousands of lines daily.</p>
       </div>
       <div class="regulatory-item">
         <div class="reg-status active">FDA Guidance Issued</div>
@@ -590,6 +590,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <div id="free-thanks" style="display:none;margin-top:1.5rem;text-align:center">
       <p style="color:var(--color-accent);font-size:1rem;font-weight:600">&#10003; Request received — we'll be in touch soon</p>
     </div>
+    <p class="cta-alt-access">Or install instantly &mdash; <a href="https://marketplace.visualstudio.com/items?itemName=sentrik.sentrik" target="_blank" rel="noopener">VS Code Marketplace</a> &middot; Cursor extensions (VS Code extensions work in Cursor)</p>
   </div>
 </section>
 
@@ -739,7 +740,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         </div>
         <div class="risk-metric" id="euai-row" style="display:none">
           <div class="risk-metric-val" id="metric-euai">—</div>
-          <div class="risk-metric-label">EU AI Act fine (1.5% rev)</div>
+          <div class="risk-metric-label">EU AI Act fine (up to 3% revenue)</div>
         </div>
       </div>
 
@@ -1013,6 +1014,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .cta h2 { font-size: 2.2rem; margin-bottom: 0.75rem; }
   .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
   .cta-form { max-width: 560px; margin: 0 auto; }
+  .cta-alt-access { margin-top: 1.25rem; font-size: 0.85rem; color: var(--color-text-muted); }
+  .cta-alt-access a { color: var(--color-primary-light); text-decoration: none; }
+  .cta-alt-access a:hover { text-decoration: underline; }
   .form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
   .form-input {
     flex: 1;

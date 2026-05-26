@@ -39,7 +39,7 @@ const ogDesc = description || "Governance runtime for AI-generated code. 526 rul
     "description": "Governance runtime for AI-generated code. Scan, gate, and prove compliance automatically across 22 regulatory frameworks with 526 pre-built rules.",
     "url": "https://sentrik.dev",
     "downloadUrl": "https://www.npmjs.com/package/sentrik",
-    "softwareVersion": "1.3.0",
+    "softwareVersion": "1.5.0",
     "author": {
       "@type": "Organization",
       "name": "Sentrik",
@@ -105,6 +105,9 @@ const ogDesc = description || "Governance runtime for AI-generated code. 526 rul
     .nav-brand { display: flex; align-items: center; }
     .nav-brand:hover { text-decoration: none; }
     .nav-logo { height: 80px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; margin-right: auto; margin-left: 2rem; }
+    .nav-link { color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
+    .nav-link:hover { color: var(--color-text); text-decoration: none; }
     .nav-cta {
       padding: 0.5rem 1.25rem;
       font-size: 0.85rem;
@@ -125,7 +128,11 @@ const ogDesc = description || "Governance runtime for AI-generated code. 526 rul
       <a href="/" class="nav-brand">
         <img src="/logo.svg" alt="Sentrik" class="nav-logo" />
       </a>
-      <a href="#early-access" class="nav-cta">Get Early Access</a>
+      <div class="nav-links">
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="https://docs.sentrik.dev" target="_blank" rel="noopener" class="nav-link">Docs</a>
+      </div>
+      <a href="/#get-free" class="nav-cta">Get Early Access</a>
     </div>
   </nav>
 
