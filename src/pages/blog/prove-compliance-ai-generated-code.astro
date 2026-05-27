@@ -143,17 +143,42 @@ Compliance Evidence Map
 $ sentrik attest
 $ sentrik auditor create --name "Jane Smith" --email jane@auditor.com</code></pre>
 
+      <h2>The Agent Dimension: Proving Who Wrote What</h2>
+
+      <p>There's a newer layer to this problem that didn't exist two years ago: AI agents don't just write code, they write code autonomously — in loops, across multiple files, sometimes outside their declared scope.</p>
+
+      <p>Proving compliance now means proving <em>who</em> wrote the code, <em>what scope they were authorized to touch</em>, and whether they stayed within bounds. Sentrik tracks this with task binding:</p>
+
+      <pre><code>$ sentrik task-bind "Add audit logging to patient endpoint" \
+    --path "middleware/audit.py" "api/patients.py"</code></pre>
+
+      <p>The agent declares its intent. If it touches <code>app/auth/login.py</code> or <code>app/secrets/keys.py</code> — files outside the declared scope — Sentrik catches it immediately, blocks the gate, and logs a signed incident record. The signed audit trail captures the agent identity, the declared scope, the actual files touched, and a timestamp — all in a tamper-evident format an auditor can verify.</p>
+
+      <p>For EU AI Act Article 18 requirements around AI attribution, Sentrik also generates a per-commit AI attribution report:</p>
+
+      <pre><code>$ sentrik ai-attribution --git-range HEAD~10..HEAD
+
+AI Attribution Report
+  Commits analyzed: 10
+  AI-assisted: 8 (80%)
+  Primary agent: claude-code (6 commits)
+  Human-only: 2 commits</code></pre>
+
+      <p>This is the evidence layer that regulators are starting to ask for — not just "is the code compliant" but "who wrote it and were they operating within declared authority."</p>
+
       <h2>Getting Started</h2>
 
-      <p>Sentrik's free tier includes SOC 2 and OWASP Top 10 — 99 rules with evidence mapping, no credit card required.</p>
+      <p>Sentrik's free tier includes 5 standards packs — OWASP Top 10, SOC 2, Python Security, Go Security, and Supply Chain Security — 158 rules with full evidence mapping. No credit card required.</p>
 
       <pre><code>npm install -g sentrik
 sentrik scan
 sentrik compliance-map</code></pre>
 
-      <p>The evidence map generates in seconds from your last scan. For HIPAA, IEC 62304, PCI-DSS, and other regulated frameworks, upgrade to the Team tier at $29/month.</p>
+      <p>The evidence map generates in seconds from your last scan. Install the VS Code extension for inline diagnostics on every save, or add the MCP server to Claude Code or Cursor so your AI agent queries compliance rules before writing code.</p>
 
-      <p><a href="/#early-access" class="blog-cta">Get Early Access →</a></p>
+      <p>For HIPAA, IEC 62304, PCI-DSS, EU AI Act, and other regulated frameworks, upgrade to the Team tier at $29/month/seat.</p>
+
+      <p><a href="/#get-free" class="blog-cta">Get Early Access →</a></p>
 
     </div>
 
