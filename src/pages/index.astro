@@ -25,12 +25,12 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <p class="section-sub">AI writes code faster than humans can review it. Compliance can't keep up.</p>
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-stat">Weeks</div>
-        <p>of manual work to gather compliance evidence for a single audit &mdash; without automation</p>
+        <div class="problem-stat">$3B</div>
+        <p>fine for TD Bank in 2024 &mdash; 70,000 unreviewed compliance alerts. Manual review doesn&rsquo;t scale <a href="https://www.reuters.com/business/finance/td-bank-pays-3-billion-fine-us-money-laundering-failures-2024-10-10/" target="_blank" rel="noopener" class="stat-cite">[Reuters]</a></p>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">4&ndash;5 tools</div>
-        <p>stitched together to cover security, compliance, and audit evidence &mdash; none built for AI agents</p>
+        <div class="problem-stat">$40B/yr</div>
+        <p>spent on compliance labor in the US alone &mdash; 400,000 workers &mdash; and outcomes are still failing <a href="https://a16z.com" target="_blank" rel="noopener" class="stat-cite">[a16z]</a></p>
       </div>
       <div class="problem-card">
         <div class="problem-stat">36%</div>
@@ -55,6 +55,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="narrative-callout">
         <strong>Sentrik is the governance layer built for this world.</strong> The AI writes the code. Sentrik enforces the rules, catches violations in real time, and generates the cryptographically signed audit evidence &mdash; automatically, at every commit, without slowing anyone down.
       </div>
+      <blockquote class="narrative-quote">
+        &ldquo;For the first time, the risk of an enterprise <em>not</em> modernizing its compliance stack outweighs the risk of change.&rdquo;
+        <cite>&mdash; Andreessen Horowitz, <a href="https://a16z.com/everything-everywhere-is-compliance/" target="_blank" rel="noopener">Everything, Everywhere is Compliance</a> (May 2026)</cite>
+      </blockquote>
     </div>
   </div>
 </section>
@@ -1253,6 +1257,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .narrative-inner p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.98rem; }
   .narrative-inner code { background: rgba(6,182,212,0.1); color: var(--color-accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
   .narrative-callout { border-left: 3px solid var(--color-primary); padding: 1.25rem 1.5rem; background: rgba(99,102,241,0.07); border-radius: 0 10px 10px 0; color: var(--color-text); font-size: 1rem; line-height: 1.7; margin-top: 2rem; }
+  .narrative-quote { margin: 2rem 0 0; padding: 1.25rem 1.5rem; border-left: 3px solid rgba(99,102,241,0.35); font-size: 1.05rem; font-style: italic; color: var(--color-text-muted); line-height: 1.7; }
+  .narrative-quote cite { display: block; margin-top: 0.6rem; font-size: 0.85rem; font-style: normal; color: var(--color-text-muted); }
+  .narrative-quote cite a { color: var(--color-primary-light); }
 
   /* Two-Agent Scenario */
   .scenario-section { padding: 5rem 0; }

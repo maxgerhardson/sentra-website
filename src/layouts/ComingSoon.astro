@@ -105,6 +105,9 @@ const ogDesc = description || "Governance runtime for AI-generated code. 526 rul
     .nav-brand { display: flex; align-items: center; }
     .nav-brand:hover { text-decoration: none; }
     .nav-logo { height: 80px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-link { font-size: 0.875rem; font-weight: 500; color: var(--color-text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-link:hover { color: var(--color-text); text-decoration: none; }
     .nav-cta {
       padding: 0.5rem 1.25rem;
       font-size: 0.85rem;
@@ -125,7 +128,10 @@ const ogDesc = description || "Governance runtime for AI-generated code. 526 rul
       <a href="/" class="nav-brand">
         <img src="/logo.svg" alt="Sentrik" class="nav-logo" />
       </a>
-      <a href="/#get-free" class="nav-cta">Get Early Access</a>
+      <div class="nav-links">
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/#get-free" class="nav-cta">Get Early Access</a>
+      </div>
     </div>
   </nav>
 
