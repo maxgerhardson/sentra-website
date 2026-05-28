@@ -60,7 +60,7 @@ import ComingSoon from '../../layouts/ComingSoon.astro';
         <li><strong>Not Applicable</strong> — no files match the rule's scope</li>
       </ul>
 
-      <p>The coverage percentage tells you how many applicable requirements have verified implementations. An auditor can look at "87.2% coverage — 156 requirements met" and immediately understand your compliance posture.</p>
+      <p>The coverage percentage tells you how many applicable requirements have verified implementations. An auditor can look at "81% coverage — 47 requirements met" and immediately understand your compliance posture.</p>
 
       <div class="blog-img">
         <img src="/images/evidence-map-dashboard.png" alt="Compliance Evidence Map showing 81% OWASP Top 10 coverage with MET badges and project-wide evidence" class="screenshot" loading="lazy" />
@@ -105,13 +105,11 @@ import ComingSoon from '../../layouts/ComingSoon.astro';
 
       <pre><code>$ sentrik compliance-map
 
-Compliance Evidence Map
-  Coverage: 87.2%
-  Met: 156    Violated: 18    Manual: 0    N/A: 33</code></pre>
+Compliance Evidence Map — OWASP Top 10
+  Coverage: 81%
+  Met: 47    Violated: 32    Manual: 25    N/A: 38</code></pre>
 
-      <p>Out of 207 applicable requirements across four frameworks, 156 have verified code or documentation evidence. 18 have violations that need fixing. Zero require manual review (all documentation obligations were satisfied by files in the repo).</p>
-
-      <p>The HTML report groups results by framework, so the HIPAA auditor sees only HIPAA controls, and the SOC 2 auditor sees only Trust Services Criteria.</p>
+      <p>Out of 142 applicable OWASP requirements, 47 have verified code evidence — project-wide clean scans proving the absence of specific vulnerability classes. 32 have active violations that need fixing. The HTML report groups results by framework, so an OWASP auditor sees only Top 10 controls, and a HIPAA auditor sees only their clauses.</p>
 
       <h2>Smart Rules: Only Fire When Relevant</h2>
 
