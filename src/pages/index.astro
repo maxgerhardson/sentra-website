@@ -10,7 +10,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <div class="hero-badge">Early Access</div>
     <h1>Stop auditing AI code<br /><span class="gradient-text">by hand</span></h1>
     <p class="hero-sub">
-      Sentrik scans every commit against 22 regulatory frameworks, blocks non-compliant code in CI, and generates audit evidence automatically. Works in VS Code, Cursor, and CI/CD pipelines &mdash; one tool, zero config.
+      Sentrik scans every commit against 24 regulatory and security frameworks, blocks non-compliant code in CI, and generates audit evidence automatically. Works in VS Code, Cursor, and CI/CD pipelines &mdash; one tool, zero config.
     </p>
     <div class="hero-actions">
       <a href="#get-free" class="btn btn-primary btn-lg">Get Early Access</a>
@@ -30,15 +30,15 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="problem-card">
         <div class="problem-stat">$40B/yr</div>
-        <p>spent on compliance labor in the US alone &mdash; 400,000 workers &mdash; and outcomes are still failing <a href="https://a16z.com" target="_blank" rel="noopener" class="stat-cite">[a16z]</a></p>
+        <p>spent on compliance labor in the US alone &mdash; 400,000 workers &mdash; and outcomes are still failing <a href="https://a16z.com/everything-everywhere-is-compliance/" target="_blank" rel="noopener" class="stat-cite">[a16z]</a></p>
       </div>
       <div class="problem-card">
         <div class="problem-stat">36%</div>
-        <p>of AI-generated code contains security vulnerabilities <a href="https://www.theregister.com/2025/01/24/ai_code_security/" target="_blank" rel="noopener" class="stat-cite">[Stanford]</a></p>
+        <p>of AI-generated code contains security vulnerabilities <a href="https://www.theregister.com/2025/01/24/ai_code_security/" target="_blank" rel="noopener" class="stat-cite">[The Register]</a></p>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">526</div>
-        <p>rules across 22 regulatory frameworks, ready out of the box</p>
+        <div class="problem-stat">595</div>
+        <p>rules across 24 regulatory and security frameworks, ready out of the box</p>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <div class="step-num">1</div>
         <h3>Scan</h3>
         <code class="step-cmd">sentrik scan</code>
-        <p>526 rules check your code against IEC 62304, HIPAA, SOC2, OWASP, GDPR, EU AI Act, NIST 800-53, and 15 more frameworks. Findings map to specific regulatory clauses.</p>
+        <p>595 rules check your code against IEC 62304, HIPAA, SOC2, OWASP, GDPR, EU AI Act, NIST 800-53, and 17 more frameworks. Findings map to specific regulatory clauses.</p>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
@@ -375,7 +375,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="prop-card">
         <div class="prop-icon">&#x26A1;</div>
         <h3>Scan in Seconds</h3>
-        <p>526 rules across 22 frameworks. SQL injection, hardcoded secrets, AI model security, supply chain risks &mdash; mapped to specific regulatory clauses.</p>
+        <p>595 rules across 24 frameworks. SQL injection, hardcoded secrets, AI model security, supply chain risks &mdash; mapped to specific regulatory clauses.</p>
       </div>
       <div class="prop-card">
         <div class="prop-icon">&#x26D4;</div>
@@ -496,7 +496,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 <!-- Standards -->
 <section class="standards">
   <div class="container">
-    <h2 class="section-title">22 Regulatory Frameworks. Built In.</h2>
+    <h2 class="section-title">24 Frameworks. Built In.</h2>
     <p class="section-sub">Medical devices, fintech, healthcare, automotive, aviation, embedded systems.</p>
     <div class="standards-grid">
       <div class="standard-card"><h3>OWASP Top 10</h3><p>Web application security</p></div>
@@ -512,7 +512,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="standard-card"><h3>Supply Chain</h3><p>SLSA, SBOM, dependency integrity</p></div>
       <div class="standard-card"><h3>NIST AI RMF</h3><p>AI risk management</p></div>
     </div>
-    <p class="standards-also">Plus DO-178C, ISO 26262, MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, and language-specific packs for Python, Go, PHP, and Kotlin</p>
+    <p class="standards-also">Plus DO-178C, ISO 26262, MISRA C/C++, ISO 14971, IEC 81001-5-1, 21 CFR Part 11, Cloud IaC (Terraform), and language-specific packs for Python, Go, PHP, Kotlin, and C/C++</p>
   </div>
 </section>
 
@@ -527,11 +527,12 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <h3>Free</h3>
         <p class="plan-price">Free</p>
         <ul>
-          <li>5 standards packs (158 rules)</li>
-          <li>OWASP Top 10, SOC 2, Python, Go, Supply Chain</li>
+          <li>6 standards packs (193 rules)</li>
+          <li>OWASP Top 10, SOC 2, Python, Go, Supply Chain, C/C++</li>
           <li>CLI scanning &amp; gate</li>
           <li>Dashboard &amp; Evidence Map</li>
           <li>VS Code extension</li>
+          <li>MCP server for AI agents</li>
           <li>GitHub Action</li>
           <li>Risk scoring on findings</li>
           <li>SBOM, CVE scanning, secrets detection</li>
@@ -544,12 +545,12 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p class="plan-price">Contact us</p>
         <ul>
           <li>Everything in Free</li>
-          <li>16 standards packs (368+ rules)</li>
+          <li>18 standards packs (475 rules)</li>
           <li>HIPAA, PCI-DSS, ISO 27001, GDPR</li>
-          <li>FDA IEC 62304, NIST, CMMC, EU AI Act</li>
+          <li>FDA IEC 62304, NIST, CMMC, EU AI Act, Cloud IaC</li>
           <li>Work item reconciliation</li>
+          <li>PR decoration with clause citations</li>
           <li>Auto-fix vulnerable dependencies</li>
-          <li>MCP server for AI agents</li>
         </ul>
         <a href="#get-free" class="btn btn-outline" style="width:100%;text-align:center">Get Early Access</a>
       </div>
@@ -559,11 +560,11 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p class="plan-price">Contact us</p>
         <ul>
           <li>Everything in Team</li>
-          <li>22 standards packs (526 rules)</li>
+          <li>24 standards packs (595 rules)</li>
           <li>MISRA-C, DO-178C, ISO 26262</li>
           <li>ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
           <li>Parallel scanning</li>
-          <li>Custom rule packs</li>
+          <li>100 custom rule packs</li>
           <li>Governance profiles &amp; audit log</li>
         </ul>
         <a href="#get-free" class="btn btn-outline" style="width:100%;text-align:center">Get Early Access</a>
@@ -574,7 +575,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <p class="plan-price">Contact us</p>
         <ul>
           <li>Everything in Organization</li>
-          <li>Seat management &amp; SSO</li>
+          <li>Seat management &amp; SSO (coming soon)</li>
           <li>Async approval workflows</li>
           <li>Auditor portal with token access</li>
           <li>GRC platform integration</li>
@@ -593,7 +594,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 <section class="cta" id="get-free">
   <div class="container cta-inner">
     <h2>Get Free Access</h2>
-    <p class="cta-sub">Request access and we'll be in touch. 5 packs, 158 rules, free forever.</p>
+    <p class="cta-sub">Request access and we'll be in touch. 6 packs, 193 rules, free forever.</p>
     <form id="early-access-form" class="cta-form">
       <div class="form-row">
         <input type="email" id="ea-email" name="email" placeholder="you@company.com" required class="form-input" />

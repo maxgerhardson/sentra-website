@@ -6,7 +6,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
 
 <section class="pricing-hero">
   <div class="container">
-    <h1>Simple, transparent pricing</h1>
+    <h1>Plans for every team</h1>
     <p class="pricing-sub">Start free. Upgrade when you need more frameworks or governance features. Early access &mdash; <a href="/#get-free">request access</a> and we&rsquo;ll be in touch.</p>
   </div>
 </section>
@@ -22,10 +22,10 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         </div>
         <p class="tier-desc">Everything you need to start governing AI-generated code &mdash; free forever.</p>
         <ul class="tier-features">
-          <li>5 standards packs (158 rules)</li>
-          <li>OWASP Top 10, SOC 2, Python Security, Go Security, Supply Chain</li>
+          <li>6 standards packs (193 rules)</li>
+          <li>OWASP Top 10, SOC 2, Python Security, Go Security, Supply Chain, C/C++ Coding Standards</li>
           <li>CLI scanning &amp; gate</li>
-          <li>Management dashboard</li>
+          <li>Management dashboard &amp; compliance evidence map</li>
           <li>VS Code &amp; Cursor extension</li>
           <li>MCP server for Claude Code, Cursor, Cline</li>
           <li>GitHub Action</li>
@@ -39,18 +39,17 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="tier-card">
         <div class="tier-header">
           <h3>Team</h3>
-          <div class="tier-price"><span class="price-amount">$29</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
+          <div class="tier-price"><span class="price-contact">Contact us</span></div>
         </div>
         <p class="tier-desc">Advanced compliance for growing teams with regulatory obligations.</p>
         <ul class="tier-features">
           <li>Everything in Free, plus:</li>
-          <li>16 standards packs (368+ rules)</li>
+          <li>18 standards packs (475 rules)</li>
           <li>HIPAA, PCI-DSS, ISO 27001, GDPR</li>
-          <li>FDA / IEC 62304, NIST 800-53, CMMC, EU AI Act</li>
+          <li>FDA / IEC 62304, NIST 800-53, CMMC, EU AI Act, Cloud IaC</li>
           <li>Work item reconciliation (GitHub, Azure DevOps, Jira)</li>
           <li>PR decoration with regulatory clause citations</li>
           <li>Auto-fix vulnerable dependencies</li>
-          <li>Compliance evidence map</li>
           <li>Email support</li>
         </ul>
         <a href="mailto:hello@sentrik.dev?subject=Team%20License%20Request" class="btn btn-primary tier-cta">Contact Us</a>
@@ -60,12 +59,12 @@ import ComingSoon from '../layouts/ComingSoon.astro';
         <div class="tier-badge">Most Popular</div>
         <div class="tier-header">
           <h3>Organization</h3>
-          <div class="tier-price"><span class="price-amount">$99</span><span class="price-period">/mo</span><span class="price-seat">per seat</span></div>
+          <div class="tier-price"><span class="price-contact">Contact us</span></div>
         </div>
         <p class="tier-desc">Full governance for compliance-driven organizations and regulated industries.</p>
         <ul class="tier-features">
           <li>Everything in Team, plus:</li>
-          <li>22 standards packs (526 rules)</li>
+          <li>24 standards packs (595 rules)</li>
           <li>MISRA-C, DO-178C, ISO 26262</li>
           <li>ISO 14971, IEC 81001-5-1, 21 CFR Part 11</li>
           <li>Governance profiles (strict / standard / permissive)</li>
@@ -83,7 +82,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       <div class="tier-card">
         <div class="tier-header">
           <h3>Enterprise</h3>
-          <div class="tier-price"><span class="price-amount">Custom</span></div>
+          <div class="tier-price"><span class="price-contact">Contact us</span></div>
         </div>
         <p class="tier-desc">Full platform for large regulated teams with dedicated support and custom SLAs.</p>
         <ul class="tier-features">
@@ -92,8 +91,8 @@ import ComingSoon from '../layouts/ComingSoon.astro';
           <li>Auditor portal with time-boxed access tokens</li>
           <li>GRC integration (Drata, Vanta, Secureframe)</li>
           <li>C/C++ semantic analysis (clang-tidy / cppcheck)</li>
-          <li>Custom rule pack authoring</li>
-          <li>Seat management &amp; SSO</li>
+          <li>Unlimited custom rule packs</li>
+          <li>Seat management &amp; SSO (coming soon)</li>
           <li>AI harness compliance evidence reports</li>
           <li>Dedicated support &amp; implementation assistance</li>
           <li>Custom SLA</li>
@@ -111,7 +110,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
     <div class="faq-grid">
       <div class="faq-item">
         <h3>What&rsquo;s included in the free tier?</h3>
-        <p>5 standards packs covering OWASP Top 10, SOC 2, Python Security, Go Security, and Supply Chain Security &mdash; 158 rules total. The VS Code extension, CLI, dashboard, MCP server, and CI/CD gate are all free. Free tier is permanent, not a trial.</p>
+        <p>6 standards packs covering OWASP Top 10, SOC 2, Python Security, Go Security, Supply Chain Security, and C/C++ Coding Standards &mdash; 193 rules total. The VS Code extension, CLI, dashboard, evidence map, MCP server, and CI/CD gate are all free. Free tier is permanent, not a trial.</p>
       </div>
       <div class="faq-item">
         <h3>How do I access paid tiers during early access?</h3>
@@ -123,7 +122,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="faq-item">
         <h3>Can it run offline / in air-gapped environments?</h3>
-        <p>Yes. License validation uses HMAC signatures with no phone-home requirement. All scanning runs locally. No cloud dependency for any core feature.</p>
+        <p>Yes. All scanning runs locally with no cloud dependency for any core feature. License keys are validated locally via HMAC signatures; paid keys additionally verify against the licensing portal when a network is available, and degrade gracefully offline &mdash; air-gapped environments keep working without interruption.</p>
       </div>
       <div class="faq-item">
         <h3>What CI/CD systems are supported?</h3>
@@ -131,7 +130,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
       </div>
       <div class="faq-item">
         <h3>Do you support custom rules?</h3>
-        <p>Yes &mdash; custom rule packs are available on the Organization and Enterprise tiers. Rules support regex, AST queries (25 languages via tree-sitter), file policies, and LLM-powered semantic checks.</p>
+        <p>Yes &mdash; custom rule packs are available on every tier: 5 on Free, 25 on Team, 100 on Organization, and unlimited on Enterprise. Rules support regex, AST queries (11 languages via tree-sitter), file policies, and LLM-powered semantic checks.</p>
       </div>
     </div>
   </div>
@@ -174,6 +173,7 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   .tier-header { margin-bottom: 1rem; }
   .tier-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
   .price-amount { font-size: 2.5rem; font-weight: 800; }
+  .price-contact { font-size: 1.5rem; font-weight: 700; line-height: 2.5rem; color: var(--color-text); }
   .price-period { color: var(--color-text-muted); font-size: 1rem; margin-left: 0.25rem; }
   .price-seat { display: block; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.15rem; }
 
