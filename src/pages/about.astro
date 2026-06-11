@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" description="About sentrik and the team behind it.">
+
+<section class="about-hero">
+  <div class="container">
+    <h1>About sentrik</h1>
+    <p class="about-sub">Built by an engineer who saw the compliance gap that AI coding agents create.</p>
+  </div>
+</section>
+
+<section class="about-story">
+  <div class="container about-content">
+    <h2>The Problem</h2>
+    <p>AI coding agents — Copilot, Cursor, Claude Code — generate code faster than any team can review it. But regulated industries (medical devices, fintech, enterprise SaaS) need every line of code to meet compliance standards.</p>
+    <p>Manual code review doesn't scale. Existing static analysis tools don't understand regulatory standards. Teams are stuck choosing between speed and compliance.</p>
+
+    <h2>The Solution</h2>
+    <p>sentrik is a governance runtime that sits between AI agents and production. It scans code against regulatory standards (IEC 62304, OWASP, SOC2), gates PRs in CI/CD, traces findings to work items, and generates audit evidence — all automatically.</p>
+    <p>The free tier is genuinely useful with no limits. Enterprise features (parallel scan, audit logging, approval gates, custom packs) serve teams that need them.</p>
+
+    <h2>What We've Built</h2>
+    <!-- TODO: Add product screenshot montage -->
+    <ul class="built-list">
+      <li><strong>2,350+ automated tests</strong> across the entire platform</li>
+      <li><strong>75+ REST API endpoints</strong> for full programmatic control</li>
+      <li><strong>14 standards packs</strong> &mdash; 8 free (IEC 62304, OWASP, SOC2, HIPAA, PCI DSS, ISO 27001, PHP Security, Kotlin Security) + 6 organization tier</li>
+      <li><strong>30+ CLI commands</strong> &mdash; scan, gate, reconcile, sbom, vulns, licenses, compliance-report, trust-center, and more</li>
+      <li><strong>Confidence scoring</strong> &mdash; heuristic + LLM-based true-positive ranking</li>
+      <li><strong>Supply chain security</strong> &mdash; SBOM generation, vulnerability scanning, license compliance</li>
+      <li><strong>GRC platform integration</strong> &mdash; push evidence to Drata, Vanta, Secureframe via webhooks</li>
+      <li><strong>Multi-repo organization dashboards</strong> &mdash; aggregate compliance across all projects</li>
+      <li><strong>Auditor portals</strong> &mdash; time-boxed read-only access for external reviewers</li>
+      <li><strong>ASPM posture scoring</strong> &mdash; aggregate security posture across compliance, vulnerabilities, trends, and gate reliability</li>
+      <li><strong>MCP security audit</strong> &mdash; scan AI agent MCP configurations for credential exposure, shell injection, and excessive scope</li>
+      <li><strong>False positive tracking</strong> &mdash; per-scan suppression rate metrics for accuracy benchmarking</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>General: <a href="mailto:info@sentrik.dev">info@sentrik.dev</a></p>
+    <p>Support: <a href="mailto:support@sentrik.dev">support@sentrik.dev</a></p>
+    <p>Docs: <a href="https://docs.sentrik.dev">docs.sentrik.dev</a></p>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .about-hero { padding: 6rem 0 3rem; text-align: center; }
+  .about-sub { color: var(--color-text-muted); font-size: 1.2rem; margin-top: 1rem; }
+  .about-content { max-width: 750px; margin: 0 auto; }
+  .about-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+  .about-content p { color: var(--color-text-muted); margin-bottom: 1rem; }
+  .built-list {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .built-list li {
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  @media (max-width: 600px) { }
+</style>

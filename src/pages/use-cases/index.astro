@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Use Cases" description="See how teams use sentrik to enforce compliance across medical devices, fintech, and SaaS products.">
+
+<section class="uc-landing-hero">
+  <div class="container">
+    <div class="uc-badge">Use Cases</div>
+    <h1>Compliance Automation for Every Industry</h1>
+    <p class="uc-landing-sub">sentrik enforces regulatory standards across medical devices, financial services, and SaaS products. See how teams in each industry use it to ship compliant code faster.</p>
+  </div>
+</section>
+
+<section class="uc-cards-section">
+  <div class="container">
+    <div class="uc-cards-grid">
+
+      <a href="/use-cases/medical-devices" class="uc-landing-card">
+        <div class="uc-card-icon">&#x1FA7A;</div>
+        <h2>Medical Devices</h2>
+        <div class="uc-card-standards">IEC 62304 &middot; HIPAA &middot; ISO 14971 &middot; 21 CFR Part 11</div>
+        <p>Enforce Class C software safety requirements, protect patient data (PHI), generate SBOMs for FDA submissions, and maintain auditor-ready traceability from requirements to code.</p>
+        <ul class="uc-card-features">
+          <li>IEC 62304 clause-by-clause compliance scanning</li>
+          <li>HIPAA PHI exposure detection across 8+ languages</li>
+          <li>Auditor portal with time-boxed access for FDA reviewers</li>
+          <li>C/C++ semantic analysis via clang-tidy for MISRA compliance</li>
+          <li>SBOM generation for medical device BOM tracking</li>
+        </ul>
+        <span class="uc-card-cta">Learn more &rarr;</span>
+      </a>
+
+      <a href="/use-cases/fintech" class="uc-landing-card">
+        <div class="uc-card-icon">&#x1F3E6;</div>
+        <h2>Fintech &amp; Financial Services</h2>
+        <div class="uc-card-standards">PCI DSS &middot; SOC2 &middot; OWASP Top 10 &middot; ISO 27001</div>
+        <p>Enforce payment card security standards, maintain SOC2 audit readiness, and catch OWASP vulnerabilities before they reach production. Auto-export evidence to GRC platforms.</p>
+        <ul class="uc-card-features">
+          <li>PCI DSS + SOC2 + OWASP cross-standard scanning</li>
+          <li>GRC integration (Drata, Vanta, Secureframe) for audit automation</li>
+          <li>Evidence export mapped to SOC2 Trust Services controls</li>
+          <li>Change impact analysis for PCI scope assessment</li>
+          <li>License scanning for open-source compliance</li>
+        </ul>
+        <span class="uc-card-cta">Learn more &rarr;</span>
+      </a>
+
+      <a href="/use-cases/saas" class="uc-landing-card">
+        <div class="uc-card-icon">&#x2601;&#xFE0F;</div>
+        <h2>SaaS &amp; AI Agents</h2>
+        <div class="uc-card-standards">OWASP Top 10 &middot; SOC2 &middot; Custom Policies</div>
+        <p>Gate every PR with compliance checks, enforce architecture rules across microservices, and govern AI-generated code. MCP integration lets your AI agent write compliant code from the start.</p>
+        <ul class="uc-card-features">
+          <li>MCP server for Claude Code, Cursor, and VS Code</li>
+          <li>Multi-repo organization dashboard for 50+ projects</li>
+          <li>Policy-as-Code engine for custom organizational standards</li>
+          <li>Architecture rules enforcement across module boundaries</li>
+          <li>Auto-remediation with <code>--fix</code> and <code>--create-pr</code></li>
+        </ul>
+        <span class="uc-card-cta">Learn more &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- TODO: Add industry-specific screenshots to each card -->
+
+<style>
+  .uc-landing-hero { padding: 6rem 0 3rem; text-align: center; }
+  .uc-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .uc-landing-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+  .uc-landing-sub { font-size: 1.1rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+  .uc-cards-section { padding: 0 0 6rem; }
+  .uc-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .uc-landing-card {
+    display: flex; flex-direction: column;
+    background: var(--color-bg-alt); border: 1px solid var(--color-border);
+    border-radius: 14px; padding: 32px; text-decoration: none; color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .uc-landing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border-color: var(--color-primary);
+  }
+  .uc-card-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .uc-landing-card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .uc-card-standards { font-size: 0.8rem; color: var(--color-primary); font-weight: 600; margin-bottom: 12px; letter-spacing: 0.02em; }
+  .uc-landing-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .uc-card-features { list-style: none; padding: 0; margin: 0 0 16px; flex: 1; }
+  .uc-card-features li { font-size: 0.85rem; color: var(--color-text-muted); padding: 4px 0 4px 20px; position: relative; }
+  .uc-card-features li::before { content: "\2713"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+  .uc-card-cta { font-size: 0.9rem; font-weight: 600; color: var(--color-primary); margin-top: auto; }
+
+  @media (max-width: 900px) { .uc-cards-grid { grid-template-columns: 1fr; } }
+</style>
+
+</Base>

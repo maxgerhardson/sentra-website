@@ -1,0 +1,418 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="FAQ" description="Frequently asked questions about sentrik — setup, licensing, CI/CD, standards packs, and more.">
+
+<section class="faq-hero">
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p class="faq-sub">Can't find your answer? <a href="/support">Contact support</a> or ask on <a href="https://github.com/maxgerhardson/sentrik-community/discussions">GitHub Discussions</a>.</p>
+  </div>
+</section>
+
+<section class="faq-content">
+  <div class="container faq-container">
+
+    <div class="faq-category">
+      <h2>Getting Started</h2>
+
+      <details class="faq-item">
+        <summary>How do I install sentrik?</summary>
+        <div class="faq-answer">
+          <p>The fastest way is via npm:</p>
+          <pre><code>npm install -g sentrik</code></pre>
+          <p>This downloads a platform-specific binary (macOS, Linux, Windows). No Python, Docker, or other dependencies required.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need a config file to get started?</summary>
+        <div class="faq-answer">
+          <p>No. sentrik auto-detects your project's languages, CI platform, and applicable standards packs. Just run <code>sentrik scan</code> in any repository and it works immediately. If you want to customize rules or settings, run <code>sentrik init</code> to create a <code>.sentrik/config.yaml</code> file.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What languages does sentrik support?</summary>
+        <div class="faq-answer">
+          <p>sentrik scans any text-based source file using regex pattern matching. Core packs include rules for Python, JavaScript, TypeScript, Java, C#, Go, Rust, and C/C++. Dedicated packs add deep coverage for PHP/Laravel and Kotlin/Android. Python projects get additional analysis via AST checks (complexity metrics, mutable defaults, star imports, nested functions). Custom rules can target any language using <code>file_glob</code> patterns.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I already have a <code>.guard.yaml</code> from an older version. Will it still work?</summary>
+        <div class="faq-answer">
+          <p>Yes. sentrik reads <code>.sentrik/config.yaml</code> first, then falls back to <code>.guard.yaml</code>. Both formats are fully supported. To migrate, run <code>sentrik migrate</code> and it will copy your config to the new location.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Scanning &amp; Gates</h2>
+
+      <details class="faq-item">
+        <summary>What's the difference between <code>sentrik scan</code> and <code>sentrik gate</code>?</summary>
+        <div class="faq-answer">
+          <p><strong>Scan</strong> analyzes your code and writes findings to <code>out/findings.json</code> plus reports (HTML, SARIF, etc.). It always exits 0.</p>
+          <p><strong>Gate</strong> does the same scan but exits with code 1 if blocking findings are found (critical and high severity by default). Use gate in CI/CD to block non-compliant PRs.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I scan only staged files (pre-commit)?</summary>
+        <div class="faq-answer">
+          <p>Use the <code>--staged</code> flag:</p>
+          <pre><code>sentrik scan --staged</code></pre>
+          <p>sentrik also ships with a pre-commit hook. Add it to <code>.pre-commit-config.yaml</code> or run <code>sentrik init</code> to set it up automatically.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I scan only the files changed in a PR?</summary>
+        <div class="faq-answer">
+          <p>Use <code>--git-range</code> to scope to a diff:</p>
+          <pre><code>sentrik gate --git-range "origin/main...HEAD"</code></pre>
+          <p>This only evaluates files changed between your branch and main, which is faster and avoids noise from existing code.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Which severities block the gate?</summary>
+        <div class="faq-answer">
+          <p>By default, <strong>critical</strong> and <strong>high</strong> findings block the gate. You can customize this in your config:</p>
+          <pre><code>governance:
+  gate:
+    fail_on: [critical, high, medium]</code></pre>
+          <p>Or via environment variable: <code>GUARD_GATE_FAIL_ON="critical,high"</code></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I suppress a specific finding?</summary>
+        <div class="faq-answer">
+          <p>Yes. Add a suppression in your config file:</p>
+          <pre><code>suppressions:
+  - rule_id: OWASP-A03-005
+    file: src/legacy.py
+    reason: "Known usage, mitigated by sandboxing"</code></pre>
+          <p>Suppressed findings still appear in reports but don't block the gate.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Standards Packs</h2>
+
+      <details class="faq-item">
+        <summary>Which standards packs are available?</summary>
+        <div class="faq-answer">
+          <p>sentrik ships with 24 standards packs (595 rules). 6 are free forever:</p>
+          <ul>
+            <li><strong>OWASP Top 10</strong> &mdash; Web application security (69 rules)</li>
+            <li><strong>SOC2</strong> &mdash; Trust Services Criteria (30 rules)</li>
+            <li><strong>Python Security</strong> &mdash; eval/exec, pickle, SQLi, Django/Flask (18 rules)</li>
+            <li><strong>Go Security</strong> &mdash; injection, crypto, unsafe, concurrency (15 rules)</li>
+            <li><strong>Supply Chain Security</strong> &mdash; SLSA, SBOM, dependency integrity (26 rules)</li>
+            <li><strong>C/C++ Coding Standards</strong> &mdash; modern C/C++ safety practices (35 rules)</li>
+          </ul>
+          <p>Team tier adds 12 more (HIPAA, PCI DSS, ISO 27001, GDPR, FDA/IEC 62304, NIST 800-53, CMMC, EU AI Act, NIST AI RMF, PHP, Kotlin, Cloud IaC); Organization adds the 6 safety-critical industry packs (IEC 81001-5-1, 21 CFR Part 11, ISO 14971, MISRA C/C++, DO-178C, ISO 26262). Run <code>sentrik list-packs</code> to see all packs and their status.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I use multiple packs at the same time?</summary>
+        <div class="faq-answer">
+          <p>Yes. Enable as many packs as you need:</p>
+          <pre><code>standards_packs:
+  - fda-iec-62304
+  - owasp-top-10
+  - hipaa</code></pre>
+          <p>Rules from all enabled packs are merged and deduplicated.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I write my own custom rules?</summary>
+        <div class="faq-answer">
+          <p>Yes. Add custom rules to your <code>standards.yaml</code> file or the <code>.sentrik/rules/</code> directory using YAML. Rules support regex patterns, required patterns, file policies, tree-sitter AST queries (11 languages), and LLM-powered checks. See the <a href="https://docs.sentrik.dev/standards-packs/authoring-custom-packs/">custom pack authoring guide</a>.</p>
+          <p>Custom packs are available on every tier: 5 on Free, 25 on Team, 100 on Organization, unlimited on Enterprise.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>CI/CD Integration</h2>
+
+      <details class="faq-item">
+        <summary>How do I set up sentrik in GitHub Actions?</summary>
+        <div class="faq-answer">
+          <pre><code>- name: Install sentrik
+  run: npm install -g sentrik
+
+- name: Gate check
+  run: sentrik gate --git-range "origin/main...HEAD" --decorate-pr --status-check
+  env:
+    GITHUB_TOKEN: $&lbrace;&lbrace; secrets.GITHUB_TOKEN &rbrace;&rbrace;</code></pre>
+          <p>The <code>--decorate-pr</code> flag posts a compliance summary comment on the PR showing per-framework findings breakdown, blocking count, and top findings. <code>--status-check</code> reports pass/fail as a commit status.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik work with Azure Pipelines?</summary>
+        <div class="faq-answer">
+          <p>Yes. sentrik supports Azure DevOps with OAuth or PAT authentication, PR decoration, commit status checks, and work item traceability. See the <a href="https://docs.sentrik.dev/guides/ci-cd-integration">CI/CD integration guide</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can sentrik output SARIF for GitHub Code Scanning?</summary>
+        <div class="faq-answer">
+          <p>Yes. sentrik automatically generates a SARIF report at <code>out/report.sarif</code>. Upload it with:</p>
+          <pre><code>- uses: github/codeql-action/upload-sarif@v3
+  with:
+    sarif_file: out/report.sarif</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Licensing &amp; Pricing</h2>
+
+      <details class="faq-item">
+        <summary>Is the free tier really unlimited?</summary>
+        <div class="faq-answer">
+          <p>Yes. Unlimited scans, unlimited files, unlimited users. No throttling, no nag screens, no time limits. The free tier includes 6 standards packs with 193 rules (OWASP Top 10, SOC2, Python Security, Go Security, Supply Chain Security, C/C++ Coding Standards), the dashboard with evidence map, MCP server, REST API, all report formats, and pre-commit hooks.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What do I get with a paid tier?</summary>
+        <div class="faq-answer">
+          <ul>
+            <li><strong>Team</strong> &mdash; 12 additional regulatory packs (HIPAA, PCI DSS, ISO 27001, GDPR, IEC 62304, EU AI Act, and more), work item reconciliation, PR decoration, auto-fix for vulnerable dependencies, email support</li>
+            <li><strong>Organization</strong> &mdash; 6 safety-critical industry packs (IEC 81001-5-1, 21 CFR Part 11, ISO 14971, MISRA C/C++, DO-178C, ISO 26262), governance profiles, audit log with HMAC signatures, parallel scanning, pack overrides, priority support</li>
+            <li><strong>Enterprise</strong> &mdash; Human-in-the-loop approval workflows, auditor portal, GRC integration (Drata, Vanta, Secureframe), unlimited custom packs, dedicated support + implementation assistance</li>
+          </ul>
+          <p>Paid tiers are available by contacting <a href="mailto:hello@sentrik.dev">hello@sentrik.dev</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do license keys work?</summary>
+        <div class="faq-answer">
+          <p>License keys are HMAC-signed and validate locally. Paid keys additionally verify against the licensing portal when a network is available (to catch revoked keys) and degrade gracefully offline &mdash; air-gapped environments keep working. No telemetry. Set your key via the <code>GUARD_LICENSE_KEY</code> environment variable or in your config file.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I try Enterprise features before buying?</summary>
+        <div class="faq-answer">
+          <p>Yes. Email <a href="mailto:hello@sentrik.dev?subject=Trial%20Request">hello@sentrik.dev</a> for a 30-day trial key &mdash; all features unlocked, no credit card required.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens when my trial or license expires?</summary>
+        <div class="faq-answer">
+          <p>Paid features (parallel scan, ML, audit, approvals, custom packs) become unavailable. All core features continue working normally. No data loss, no lock-out.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Work Item Traceability</h2>
+
+      <details class="faq-item">
+        <summary>Which DevOps platforms are supported?</summary>
+        <div class="faq-answer">
+          <p>sentrik integrates with <strong>Azure DevOps</strong>, <strong>GitHub Issues</strong>, and <strong>Jira</strong> (Cloud and Server/Data Center). You can connect via OAuth (Azure DevOps, GitHub, Jira) or personal access tokens.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does "reconcile" do?</summary>
+        <div class="faq-answer">
+          <p><code>sentrik reconcile</code> syncs findings with your work item tracker. It creates new work items for untracked findings, updates existing items when findings change, and closes items when findings are resolved. Use <code>--dry-run</code> to preview actions before making changes.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Auto-Remediation</h2>
+
+      <details class="faq-item">
+        <summary>Can sentrik automatically fix findings?</summary>
+        <div class="faq-answer">
+          <p>Yes. Use <code>sentrik vulns --fix</code> to apply version bumps for vulnerable dependencies, or <code>--create-pr</code> to generate a pull request. For code findings, <code>sentrik apply-patches</code> applies auto-fixes like replacing eval() calls, switching weak crypto, and commenting out unsafe patterns.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What types of fixes are supported?</summary>
+        <div class="faq-answer">
+          <p>Dependency version bumps (requirements.txt, package.json, pyproject.toml, Cargo.toml), code pattern replacements (strcpy&rarr;strncpy, gets&rarr;fgets), and comment-out of unsafe code. Check the Rules tab in the dashboard to see which rules have auto-fix enabled.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Supply Chain &amp; Dependencies</h2>
+
+      <details class="faq-item">
+        <summary>Does sentrik generate SBOMs?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik sbom</code> generates Software Bills of Materials in CycloneDX and SPDX formats from your dependency manifests (package.json, requirements.txt, Cargo.toml, go.mod, CMakeLists.txt, and lockfiles).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik scan for vulnerable dependencies?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik vulns</code> checks all dependencies against the OSV.dev vulnerability database and shows CVE IDs, severity, and available fix versions.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik check dependency licenses?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik licenses</code> queries package registries for license metadata and flags copyleft risk (GPL, AGPL). Use <code>--copyleft-only</code> to see only risky licenses.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Organization &amp; Auditors</h2>
+
+      <details class="faq-item">
+        <summary>Can I view compliance across multiple repositories?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik org-dashboard</code> aggregates findings and compliance scores across all projects in a directory. Available at the Organization tier and above.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can external auditors review findings without VPN access?</summary>
+        <div class="faq-answer">
+          <p>Yes. <code>sentrik auditor create</code> generates a time-boxed portal link. Auditors get read-only access to compliance scores, findings by rule, audit history, and report downloads &mdash; no source code or secrets exposed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does sentrik integrate with GRC platforms like Drata?</summary>
+        <div class="faq-answer">
+          <p>Yes. Configure <code>GUARD_GRC_WEBHOOK_URL</code> to push scan results, gate outcomes, and vulnerability data to Drata, Vanta, Secureframe, or any webhook endpoint.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Privacy &amp; Security</h2>
+
+      <details class="faq-item">
+        <summary>Does sentrik send my code anywhere?</summary>
+        <div class="faq-answer">
+          <p>No. sentrik runs entirely on your machine or in your CI environment. No code is uploaded, no telemetry is collected, no external services are contacted. License validation is offline. The only network calls are ones you explicitly configure (DevOps integrations, PR decoration, vulnerability scanning).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where are OAuth tokens stored?</summary>
+        <div class="faq-answer">
+          <p>OAuth tokens are stored locally in <code>.sentrik/local/oauth_tokens.json</code>, which is gitignored by default. Tokens auto-refresh when they expire. You can disconnect any provider at any time from the dashboard.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<section class="faq-cta">
+  <div class="container faq-cta-inner">
+    <h2>Still have questions?</h2>
+    <p>Reach out and we'll get back to you.</p>
+    <div class="faq-cta-actions">
+      <a href="mailto:support@sentrik.dev" class="btn btn-primary">Email Support</a>
+      <a href="https://github.com/maxgerhardson/sentrik-community/discussions" class="btn btn-outline">Ask the Community</a>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .faq-hero { padding: 6rem 0 3rem; text-align: center; }
+  .faq-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-top: 1rem; }
+  .faq-sub a { color: var(--color-primary-light); }
+
+  .faq-container { max-width: 800px; margin: 0 auto; }
+
+  .faq-category { margin-bottom: 3rem; }
+  .faq-category h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after {
+    content: "\2212";
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+  }
+  .faq-answer p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer ul {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    padding-left: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .faq-answer li { margin-bottom: 0.35rem; }
+  .faq-answer pre {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .faq-answer code { font-size: 0.9em; }
+  .faq-answer a { color: var(--color-primary-light); }
+
+  .faq-cta { background: var(--color-bg-alt); text-align: center; }
+  .faq-cta-inner p { color: var(--color-text-muted); margin: 0.75rem 0 1.5rem; }
+  .faq-cta-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  @media (max-width: 600px) {
+    .faq-cta-actions { flex-direction: column; align-items: center; }
+  }
+</style>
