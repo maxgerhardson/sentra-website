@@ -20,9 +20,9 @@ import Base from '../layouts/Base.astro';
       <details class="faq-item">
         <summary>How do I install sentrik?</summary>
         <div class="faq-answer">
-          <p>The fastest way is via npm:</p>
-          <pre><code>npm install -g sentrik</code></pre>
-          <p>This downloads a platform-specific binary (macOS, Linux, Windows). No Python, Docker, or other dependencies required.</p>
+          <p>Install via pip:</p>
+          <pre><code>pip install sentrik</code></pre>
+          <p>Works on macOS, Linux, and Windows (Python 3.10+). Installing gives you the free tier immediately &mdash; 6 standards packs, no license key, no sign-up. Paid tiers are activated with a license key obtained by contacting <a href="mailto:hello@sentrik.dev">hello@sentrik.dev</a>.</p>
         </div>
       </details>
 
@@ -148,7 +148,7 @@ import Base from '../layouts/Base.astro';
         <summary>How do I set up sentrik in GitHub Actions?</summary>
         <div class="faq-answer">
           <pre><code>- name: Install sentrik
-  run: npm install -g sentrik
+  run: pip install sentrik
 
 - name: Gate check
   run: sentrik gate --git-range "origin/main...HEAD" --decorate-pr --status-check

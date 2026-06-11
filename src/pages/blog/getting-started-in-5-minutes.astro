@@ -16,9 +16,9 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 <h2>1. Install (30 seconds)</h2>
 
-<pre><code>npm install -g sentrik</code></pre>
+<pre><code>pip install sentrik</code></pre>
 
-<p>That's all you need. The npm package downloads a platform-specific binary automatically. No Python, no runtime dependencies.</p>
+<p>That's all you need (Python 3.10+, macOS/Linux/Windows). Installing gives you the free tier immediately &mdash; 6 standards packs, no license key, no sign-up.</p>
 
 <h2>2. Scan (30 seconds)</h2>
 
@@ -78,10 +78,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: "20"
-      - run: npm install -g sentrik
+          python-version: "3.12"
+      - run: pip install sentrik
       - run: sentrik gate --git-range "origin/main...HEAD"</code></pre>
 
 <p>Every PR is now gated. Non-compliant code can't merge.</p>

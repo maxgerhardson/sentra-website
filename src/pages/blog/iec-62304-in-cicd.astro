@@ -29,7 +29,7 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 <h3>Step 1: Install and configure</h3>
 
-<pre><code>npm install -g sentrik
+<pre><code>pip install sentrik
 sentrik add-pack fda-iec-62304      # Or auto-detected from README</code></pre>
 
 <p>The IEC 62304 pack includes 31 rules:</p>
@@ -64,10 +64,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: "20"
-      - run: npm install -g sentrik
+          python-version: "3.12"
+      - run: pip install sentrik
       - run: sentrik gate --git-range "origin/main...HEAD" --decorate-pr
         env:
           GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
@@ -115,7 +115,7 @@ sentrik reconcile              # Create/update/close work items</code></pre>
 
 <p>Try it on any project with medical device software. Install sentrik and scan:</p>
 
-<pre><code>npm install -g sentrik
+<pre><code>pip install sentrik
 sentrik add-pack fda-iec-62304
 sentrik scan
 sentrik gate</code></pre>
