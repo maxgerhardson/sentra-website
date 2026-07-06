@@ -1,0 +1,153 @@
+---
+import ComingSoon from '../../layouts/ComingSoon.astro';
+---
+
+<ComingSoon title="Sentrik vs. Endor Labs AURI" description="AURI finds exploitable vulnerabilities. Sentrik proves regulatory compliance and governs the agents writing your code. An honest comparison for teams evaluating both.">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">Comparison &mdash; Updated July 2026</div>
+    <h1>Sentrik vs. Endor Labs AURI:<br /><span class="gradient-text">different questions, different answers</span></h1>
+    <p class="hero-sub">
+      AURI answers &ldquo;which vulnerabilities are actually exploitable?&rdquo; Sentrik answers &ldquo;can you prove this codebase complies with the regulations you're audited against &mdash; and control the AI agents writing it?&rdquo; Plenty of teams need both answers. Here's an honest map of where each tool wins.
+    </p>
+    <div class="hero-actions">
+      <code class="hero-cmd">pip install sentrik &amp;&amp; sentrik scan</code>
+    </div>
+    <p class="hero-free">Free tier: 6 packs, 193 rules, forever. No credit card.</p>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="container">
+    <h2 class="section-title">The short version</h2>
+    <div class="verdict-grid">
+      <div class="verdict-card">
+        <h3>Choose AURI if&hellip;</h3>
+        <p>Your main pain is vulnerability noise. AURI's reachability analysis traces call graphs into transitive dependencies and container layers to tell a real, callable CVE from one buried in unused code. If you drown in SCA findings, that's their superpower &mdash; and their Package Firewall blocks malicious packages before they land.</p>
+      </div>
+      <div class="verdict-card verdict-sentrik">
+        <h3>Choose Sentrik if&hellip;</h3>
+        <p>You have an audit date. Sentrik maps 595 rules to specific clauses across 24 frameworks &mdash; IEC 62304, HIPAA, PCI DSS, EU AI Act, DO-178C, ISO 26262 &mdash; and generates the evidence auditors ask for: a compliance evidence map, cryptographically signed attestations, and work-item traceability from requirement to line of code.</p>
+      </div>
+      <div class="verdict-card">
+        <h3>Run both if&hellip;</h3>
+        <p>You're a regulated team shipping fast with AI. Use AURI to triage exploitable vulnerabilities; use Sentrik to prove compliance and enforce guardrails on the agents doing the coding. The tools barely overlap &mdash; that's the point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="matrix">
+  <div class="container">
+    <h2 class="section-title">Capability by capability</h2>
+    <p class="section-sub">Based on publicly available information as of July 2026. Spotted an error? <a href="mailto:hello@sentrik.dev">Tell us</a> and we'll fix it.</p>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr><th>Capability</th><th>Sentrik</th><th>Endor Labs AURI</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Regulatory frameworks mapped to code rules</td><td class="win">24 packs / 595 rules, clause-level mapping (IEC 62304, HIPAA, PCI, GDPR, EU AI Act, NIST, CMMC, DO-178C, ISO 26262, MISRA&hellip;)</td><td>Security-focused; no regulatory clause mapping</td></tr>
+          <tr><td>Compliance evidence map (where code <em>satisfies</em> requirements)</td><td class="win">Yes &mdash; per-clause MET/VIOLATED evidence with file and line</td><td>No</td></tr>
+          <tr><td>Signed attestations &amp; audit evidence exports</td><td class="win">HMAC-signed attestations, evidence packages, auditor portal, trust center page</td><td>Reporting dashboards</td></tr>
+          <tr><td>Work-item traceability (Azure DevOps, GitHub, Jira)</td><td class="win">Findings &harr; work items, auto-reconciliation, requirement drift detection</td><td>No</td></tr>
+          <tr><td>SCA reachability analysis</td><td>Import-level + curated CVE-to-function checks</td><td class="win">Call-graph reachability into transitive deps and container layers; claims up to 95% noise reduction</td></tr>
+          <tr><td>Malicious package blocking</td><td>Supply-chain rules pack (SLSA/SSDF); no firewall</td><td class="win">Package Firewall blocks at install time</td></tr>
+          <tr><td>Container image scanning</td><td>No</td><td class="win">Yes</td></tr>
+          <tr><td>AI agent governance</td><td class="win">Task/intent binding, blast-radius zones, trust chains, JIT scope grants, session rollback, anomaly detection, signed harness evidence report</td><td>Agent visibility + policy enforcement (launched May 2026)</td></tr>
+          <tr><td>Human-in-the-loop approval gates</td><td class="win">First-class: any agent action can block on human sign-off (CLI, API, dashboard)</td><td>Policy-based controls</td></tr>
+          <tr><td>Where it runs</td><td class="win">Fully local &mdash; CLI, MCP, dashboard; code never leaves your machine</td><td>SaaS platform + local scanning in the free developer tier</td></tr>
+          <tr><td>AI coding agent integration</td><td>MCP server (23 tools), VS Code, LSP, GitHub Action</td><td>MCP, VS Code, CLI</td></tr>
+          <tr><td>Free tier</td><td>6 packs / 193 rules, no account required</td><td>Developer tier, local scanning</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="depth">
+  <div class="container">
+    <h2 class="section-title">The part nobody else does</h2>
+    <div class="depth-grid">
+      <div class="rule-card">
+        <h3>Evidence, not just findings</h3>
+        <p>Every scanner tells you what's wrong. Auditors ask the opposite question: <em>show me where each requirement is satisfied.</em> Sentrik's Evidence Map answers clause by clause, with the file and line that satisfies it &mdash; the artifact you hand to an auditor, not a bug list.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Agents on a leash you can prove</h3>
+        <p>An agent declares its task and authorized paths before touching code. Out-of-scope writes are flagged, blocked, or escalated to a human. Sessions roll back to the git SHA where they started. And the whole story ships as one signed report &mdash; built for the EU AI Act's human-oversight expectations.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Regulated-industry depth</h3>
+        <p>Medical devices (IEC 62304, ISO 14971, IEC 81001-5-1, 21 CFR Part 11), automotive (ISO 26262, MISRA), avionics (DO-178C), defense (CMMC, NIST 800-53). If your market has a notified body or a certifying authority, there's a pack for it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq-list">
+      <details class="faq-item"><summary>Is Sentrik a replacement for AURI?</summary><p>For vulnerability triage at scale &mdash; no, AURI's reachability analysis is deeper. For compliance evidence, agent governance, and traceability &mdash; AURI doesn't play in that space. Most regulated teams evaluating both end up wanting Sentrik for the audit and governance layer, with a dedicated SCA tool underneath if reachability noise is a problem.</p></details>
+      <details class="faq-item"><summary>Doesn't AURI also do agent governance now?</summary><p>Since May 2026, yes &mdash; visibility and policy enforcement over coding agents. Sentrik's governance layer goes further down the control stack: agents bind to declared tasks with path scopes, high-blast-radius zones gate risky files, delegation carries trust levels, sessions are rollback-able, and everything lands in a signed evidence report. If you need to <em>prove</em> oversight (not just have it), that difference matters.</p></details>
+      <details class="faq-item"><summary>Does my code leave my machine with Sentrik?</summary><p>No. Scanning, gating, the dashboard, and the MCP server all run locally. LLM-powered features are opt-in and provider-agnostic &mdash; point them at Ollama and nothing leaves your network.</p></details>
+      <details class="faq-item"><summary>What does Sentrik cost?</summary><p>The free tier (6 packs, 193 rules) is permanent and needs no account. Team and Organization tiers add the regulated-industry packs, governance profiles, and audit logging &mdash; <a href="mailto:hello@sentrik.dev?subject=Team%20License%20Request">contact us</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>See your compliance evidence in five minutes</h2>
+    <p class="cta-sub">One command. No config, no account, no code leaving your machine.</p>
+    <div class="cta-cmd"><code>pip install sentrik &amp;&amp; sentrik scan &amp;&amp; sentrik compliance-map</code></div>
+  </div>
+</section>
+
+</ComingSoon>
+
+<style>
+  .hero { padding: 10rem 0 5rem; text-align: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: #fff; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero h1 { margin-bottom: 1.5rem; font-size: 3rem; line-height: 1.15; }
+  .gradient-text { background: linear-gradient(135deg, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.15rem; color: var(--color-text-muted); max-width: 720px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero-cmd { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 1rem; }
+  .hero-free { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+  .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.75rem; }
+  .section-sub { text-align: center; color: var(--color-text-muted); font-size: 1rem; margin-bottom: 3rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .verdict { padding: 5rem 0; background: var(--color-bg-alt); }
+  .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .verdict-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; }
+  .verdict-card h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+  .verdict-card p { color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.65; }
+  .verdict-sentrik { border-color: rgba(6, 182, 212, 0.5); box-shadow: 0 0 24px rgba(6, 182, 212, 0.08); }
+  .matrix { padding: 5rem 0; }
+  .table-wrap { overflow-x: auto; }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .cmp-table th, .cmp-table td { padding: 0.85rem 1rem; border: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  .cmp-table th { background: var(--color-bg-alt); font-weight: 700; }
+  .cmp-table td { color: var(--color-text-muted); line-height: 1.55; }
+  .cmp-table td:first-child { color: var(--color-text); font-weight: 600; min-width: 180px; }
+  .cmp-table td.win { color: var(--color-text); background: rgba(6, 182, 212, 0.06); }
+  .depth { padding: 5rem 0; background: var(--color-bg-alt); }
+  .depth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .rule-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem; }
+  .rule-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .rule-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .faq { padding: 5rem 0; }
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; }
+  .faq-item p { padding: 0 1.25rem 1rem; color: var(--color-text-muted); line-height: 1.7; }
+  .cta { padding: 5rem 0; text-align: center; background: var(--color-bg-alt); }
+  .cta h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-sub { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .cta-cmd code { display: inline-block; padding: 0.7rem 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: var(--color-accent); border-radius: 8px; font-size: 0.95rem; }
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.1rem; }
+    .verdict-grid, .depth-grid { grid-template-columns: 1fr; }
+  }
+</style>
