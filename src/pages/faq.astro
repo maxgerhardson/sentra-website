@@ -34,6 +34,14 @@ import Base from '../layouts/Base.astro';
       </details>
 
       <details class="faq-item">
+        <summary>How does sentrik work with Claude Code?</summary>
+        <div class="faq-answer">
+          <p>Run <code>sentrik claude-init</code> once in your repo. It sets up everything Claude Code needs: a project skill (Claude interviews you about your project and enables the right compliance packs), the MCP server with 26 compliance tools, an always-in-context CLAUDE.md section, and a scan-on-edit hook that feeds findings back to Claude after every file it edits &mdash; deterministic, engine-verified feedback at generation time.</p>
+          <p>Then just start <code>claude</code> and say <em>&ldquo;set up sentrik for this project&rdquo;</em>. Cursor and VS Code users get the same MCP tools via <code>sentrik mcp-server</code>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
         <summary>What languages does sentrik support?</summary>
         <div class="faq-answer">
           <p>sentrik scans any text-based source file using regex pattern matching. Core packs include rules for Python, JavaScript, TypeScript, Java, C#, Go, Rust, and C/C++. Dedicated packs add deep coverage for PHP/Laravel and Kotlin/Android. Python projects get additional analysis via AST checks (complexity metrics, mutable defaults, star imports, nested functions). Custom rules can target any language using <code>file_glob</code> patterns.</p>
