@@ -18,6 +18,19 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   </div>
 </section>
 
+<!-- Full Walkthrough Video -->
+<section class="walkthrough">
+  <div class="container">
+    <h2 class="section-title">Watch the Full Walkthrough</h2>
+    <p class="section-sub">Seven minutes, end to end &mdash; scan, compliance evidence, AI fixes, agent governance, threat modeling, and CI &mdash; on a real medical API.</p>
+    <div class="walkthrough-frame">
+      <video class="walkthrough-video" controls preload="metadata" poster="/images/sentrik-demo-poster.png" aria-label="Full Sentrik product walkthrough">
+        <source src="/videos/sentrik-demo.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- The Problem -->
 <section class="problem">
   <div class="container">
@@ -888,6 +901,9 @@ import ComingSoon from '../layouts/ComingSoon.astro';
   }
 
   /* Terminal Demo */
+  .walkthrough { padding: 3.5rem 0 4rem; background: var(--color-bg-alt); }
+  .walkthrough-frame { max-width: 960px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); background: #000; }
+  .walkthrough-video { width: 100%; display: block; }
   .demo { padding: 3rem 0 4rem; background: var(--color-bg-alt); }
   .video-wrapper { max-width: 960px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
   .demo-video { width: 100%; display: block; }
