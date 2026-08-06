@@ -1,0 +1,90 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost
+  title="Who Governs the Handoff? Routing for Multi-Agent Coding"
+  description="AI coding is going multi-agent — a planner hands off to a coder, a coder to a tester. When work crosses agent boundaries, scope and trust leak. Here's how sentrik routes it through a gate."
+  date="2026-08-06"
+>
+
+<p>AI coding is quietly going multi-agent. It's no longer one assistant in your editor — it's a planner that hands work to a coder, a coder that hands off to a test writer, a security agent that gets pulled in for the risky change. The orchestration frameworks make this easy to <em>set up</em>. Almost none of them make it <em>safe</em>.</p>
+
+<p>Here's the problem. The moment work crosses an agent boundary, the guardrails you carefully put on the first agent evaporate. The coder was scoped to <code>src/auth/</code>; the tester it delegates to inherits nothing. A low-trust agent hands a task to a higher-trust one and, in effect, launders its own permissions. Every hop is a place where scope widens, trust escalates, and — when something goes wrong — nobody can say which agent touched what.</p>
+
+<p>For a hobby project, fine. For a medical device API subject to HIPAA and IEC 62304, that's a finding.</p>
+
+<h2>Sentrik routes and gates — it doesn't run your agents</h2>
+
+<p>Sentrik's new multi-agent routing is deliberately <em>not</em> another orchestration runtime. It doesn't spawn agents or execute their work. It sits one layer up and does three governance jobs: it decides <strong>which</strong> agent should handle a piece of work, enforces <strong>whether</strong> a handoff between agents is allowed, and <strong>records</strong> every move. Your harness — Claude Code, Cursor, a CI script, an SDK loop — still invokes the agent. Sentrik is the dispatcher and the gate, not the engine.</p>
+
+<p>That boundary is the whole point. Routing is a small, auditable surface — match, authorize, record — sitting on top of the identity, trust, and task-scope primitives sentrik already enforces for a single agent.</p>
+
+<h2>You write the routes as rules</h2>
+
+<p>Routing rules live in <code>.sentrik/routes.yaml</code>, checked into the repo like everything else. First match wins; anything unmatched escalates to a human — fail-closed by default. Here's a slice from a real medical vitals API, with ePHI endpoints, security middleware, and device firmware:</p>
+
+<pre><code># ePHI paths (HIPAA + 21 CFR 11) — only a high-trust agent; else a human
+- id: phi-data
+  when: &#123; task_type: [fix, feature],
+          paths: ["src/api/routes/patients.py", ".../vitals.py", ".../export.py"],
+          min_trust: fix:any &#125;
+  to: phi-guardian-agent
+  on_unavailable: escalate
+
+# Device firmware (C, IEC 62304 safety-critical) — human sign-off
+- id: firmware
+  when: &#123; paths: ["firmware/**"] &#125;
+  to: firmware-agent
+  on_unavailable: escalate
+
+# After any src/ fix, chain to regression tests (IEC 62304 §5.5)
+- id: needs-tests
+  when: &#123; after: api-general, touched: ["src/**"] &#125;
+  to: test-writer-agent
+
+- default: &#123; to: human &#125;   # fail-closed catch-all</code></pre>
+
+<p>You can dry-run a decision before anything moves:</p>
+
+<pre><code>sentrik route "fix export validation" --type fix --path src/api/routes/export.py
+  -> phi-guardian-agent   (rule phi-data, action route)</code></pre>
+
+<p>Because <code>export.py</code> handles patient data, the work doesn't go to the general-purpose coder — it's routed to the agent trusted with ePHI. Point the same command at <code>README.md</code> and it routes to a human, because nothing matched and the default fails closed.</p>
+
+<h2>What the gate actually enforces</h2>
+
+<p>The value isn't the routing table — it's what sentrik guarantees when an agent actually calls <code>handoff</code>:</p>
+
+<ul>
+  <li><strong>Scope is narrow-only.</strong> The receiving agent's authorized paths can only be a <em>subset</em> of the sender's. An agent that was scoped to the export endpoint can't hand off a task that reaches into <code>src/secrets/</code>. Try to widen the scope, and the handoff escalates instead.</li>
+  <li><strong>Trust is capped, never escalated.</strong> The receiver's effective trust becomes <code>min(sender, receiver)</code>, and it joins the delegation chain. A handoff can only ever <em>narrow</em> what an agent is allowed to do — never grant it more. That closes the privilege-laundering hole directly.</li>
+  <li><strong>Escalation is a real human gate.</strong> When a handoff can't proceed — insufficient trust, an out-of-scope reach, too many hops — sentrik opens a pending approval and blocks the downstream action until a person resolves it. It never silently continues.</li>
+  <li><strong>Every hop is on the ledger.</strong> Each route, handoff, and escalation is audit-logged, attributed to a named agent, and carries the work item through the whole chain. When an auditor asks "which agent changed the export logic, and who approved it?", there's an answer.</li>
+</ul>
+
+<h2>A concrete flow</h2>
+
+<p>Say a developer asks the general API agent to fix input validation on the vitals CSV export. Here's what routing does:</p>
+
+<ol>
+  <li>The agent calls <code>route_task</code>. Because <code>export.py</code> is an ePHI path, sentrik routes it to the <code>phi-guardian-agent</code>, which is trusted for regulated data.</li>
+  <li>The API agent hands off. Sentrik checks trust, scopes the new session to the export path only, creates it as a child in the trust chain, and writes the hop to the ledger.</li>
+  <li>The PHI agent fixes the bug and hands off again — this time to the test writer, per the "after any <code>src/</code> fix, write tests" rule (IEC 62304 expects verification for changes). The test session is narrowed further and trust-capped again.</li>
+  <li>Then the PHI agent reaches for <code>src/api/middleware/encryption.py</code> — outside its lane and above its trust. Sentrik doesn't let it through. It escalates, opens a human approval, and the work waits for sign-off.</li>
+</ol>
+
+<p>No agent gained a permission it didn't start with. Nothing touched a file it wasn't scoped to. And the whole sequence — decision, two handoffs, one escalation — is on a signed ledger a compliance reviewer can read.</p>
+
+<h2>Why this belongs in a governance tool, not an orchestrator</h2>
+
+<p>A generic multi-agent framework will happily let your agents pass work around. What it won't do is tell you a handoff would have widened scope, cap the trust that flows across the boundary, force a human gate on a regulated path, or hand an auditor a complete chain of custody. Those are governance questions, and they only get harder as the number of agents grows.</p>
+
+<p>Routing is available now — drive it from the CLI (<code>sentrik route</code>, <code>routes</code>, <code>handoffs</code>), from agents via MCP tools (<code>route_task</code>, <code>handoff</code>, <code>escalate</code>), or watch it live on the dashboard's Routes page.</p>
+
+<pre><code>pip install sentrik
+sentrik route "your task" --type fix --path src/…</code></pre>
+
+<p>Multi-agent coding is coming whether or not your compliance story is ready for it. The handoff is the new attack surface — govern it there.</p>
+
+</BlogPost>
